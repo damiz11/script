@@ -1,0 +1,928 @@
+<!DOCTYPE html><html lang="en">
+<!-- Mirrored from javascript.info/class-inheritance by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 30 Nov 2017 15:28:44 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><script>window.currentUser = null;</script><title itemprop="name">Class inheritance, super</title><meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, minimum-scale=1.0"><meta name="apple-mobile-web-app-capable" content="yes"><script>if (window.devicePixelRatio > 1) document.cookie = 'pixelRatio=' + window.devicePixelRatio + ';path=/;expires=Tue, 19 Jan 2038 03:14:07 GMT';</script><link href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700%7COpen+Sans+Condensed:700&amp;subset=latin,latin-ext,cyrillic,cyrillic-ext" rel="stylesheet"><link rel="apple-touch-icon-precomposed" href="img/favicon/apple-touch-icon-precomposed.png"><link rel="canonical" href="class-inheritance.html"><meta name="msapplication-TileColor" content="#222A2C"><meta name="msapplication-TileImage" content="/img/favicon/tileicon.png"><!-- favicon the rest--><link rel="icon" href="img/favicon/favicon.png"><meta itemprop="image" content="https://javascript.info/img/site_preview_en_512x512.png"><meta property="og:title" content="Class inheritance, super"><meta property="og:image" content="https://javascript.info/img/site_preview_en_1200x630.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="fb:admins" content="100001562528165"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Class inheritance, super"><meta name="twitter:site" content="@iliakan"><meta name="twitter:creator" content="@iliakan"><meta name="twitter:image" content="https://javascript.info/img/site_preview_en_512x512.png"><link href="pack/styles.da59a89b28153875791083e4a8c5adb3.css" rel="stylesheet"><link rel="prev" href="class.html"><link rel="next" href="instanceof.html"><script>window.GA_ID = "UA-2056213-15";</script><script>window.YANDEX_METRIKA_ID = 32184394;</script><script>window.GoogleAnalyticsObject="ga",window.ga=function(){window.ga.q.push(arguments)},window.ga.q=[],window.ga.l=Date.now(),ga("create",GA_ID,"auto"),window.currentUser&&ga("set","&uid",currentUser.id),window.addEventListener("error",function(e){var r=(e.filename||e.errorUrl)+": "+(e.lineno||e.errorLine),n=e.stack||e.error&&e.error.stack;ga("send","exception",{exDescription:e.message+" "+r+" "+n,exFatal:!0})});</script><script src="https://www.google-analytics.com/analytics.js" async></script><script>ga('send', 'pageview');</script><script>window.metrika={reachGoal:function(){}},window.yandex_metrika_callbacks=[function(){try{window.metrika=new Ya.Metrika({id:YANDEX_METRIKA_ID,webvisor:!0,clickmap:!0,params:{user:window.currentUser&&window.currentUser.id}}),metrika.trackLinks({delay:150}),window.addEventListener("error",function(r){window.metrika.reachGoal("JSERROR",{src:(r.filename||r.errorUrl)+": "+(r.lineno||r.errorLine),stack:r.stack||r.error&&r.error.stack,message:r.message})})}catch(r){}}];</script><script src="http://mc.yandex.ru/metrika/watch.js" async></script><script>window.RECAPTCHA_ID = "6Lf9NyETAAAAACZlg-a9Us2SxvYbeVC1ROWaWv4O";</script><script src="initc4ca.js?1"></script><script src="pack/head.688d4fe7c4cf54e23737.js" defer></script><meta property="og:title" content="Class inheritance, super"><meta property="og:type" content="article"><script src="pack/tutorial.688d4fe7c4cf54e23737.js" defer></script><script src="pack/footer.688d4fe7c4cf54e23737.js" defer></script></head><body class="no-icons"><script>window.fontTest();</script><div class="page-wrapper page-wrapper_sidebar_on"><!--[if lt IE 10]><div style="color:red;text-align:center">Sorry, IE&lt;10 is not supported, please use a newer browser.</div><![endif]--><div class="sitetoolbar sitetoolbar_tutorial"><!-- include ./notification-stripe--><div class="sitetoolbar__content"><div class="sitetoolbar__logo-wrap"><a href="index.html" class="sitetoolbar__link sitetoolbar__link_logo"><img src="img/sitetoolbar__logo_en.svg" width="200" class="sitetoolbar__logo sitetoolbar__logo_normal" alt=""><img src="img/sitetoolbar__logo_small_en.svg" width="70" class="sitetoolbar__logo sitetoolbar__logo_small" alt=""><script>Array.prototype.forEach.call(document.querySelectorAll("img.sitetoolbar__logo"),function(e){var t=document.createElement("object");t.type="image/svg+xml",t.className=e.className,t.style.cssText="left:0;top:0;position:absolute",t.onload=function(){t.onload=null,e.style.visibility="hidden"},t.data=e.src,e.parentNode.insertBefore(t,e)});</script></a></div><div class="sitetoolbar__nav-toggle-wrap"><button type="button" class="sitetoolbar__nav-toggle"></button></div><nav class="sitetoolbar__sections"><ul class="sitetoolbar__sections-list"></ul></nav><div class="sitetoolbar__book-wrap"><a href="ebook.html" class="buy-book-button"><span class="buy-book-button__extra-text">Buy</span>EPUB/PDF</a></div><div class="sitetoolbar__login-wrap"><button data-action-login class="sitetoolbar__login sitetoolbar__login_unready"></button></div><div class="sitetoolbar__search-wrap"><div class="sitetoolbar__search-content"><form method="GET" action="http://javascript.info/search" class="sitetoolbar__search"><button type="button" class="sitetoolbar__search-toggle"></button><div class="sitetoolbar__search-input"><div class="text-input"><input name="query" placeholder="Search on Javascript.info" class="text-input__control" type="text"></div><button type="submit" class="sitetoolbar__find">Search</button></div></form></div></div></div><!-- todo: en variant--><div class="tablet-menu"><div class="tablet-menu__line"><div class="tablet-menu__content"><form action="http://javascript.info/search/" class="tablet-menu-search"><input type="search" name="query" placeholder="Search in the tutorial" required class="tablet-menu-search__input"><button type="submit" name="type" value="articles" class="tablet-menu-search__button">Search</button></form></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><a href="tutorial/map.html" data-action="tutorial-map" class="map"><span class="map__text">Tutorial map</span></a></div></div><!--+e.line--><!--  +e.content--><!--    +b("a").tablet-ebook(href="/ebook")--><!--      +e("span").text Купить учебник--><!--      +e("span").note (EPUB + PDF)--><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="share-icons"><span class="share-icons__title">Share</span><a href="https://twitter.com/share?url=https%3A%2F%2Fjavascript.info%2Fclass-inheritance" class="share share_tw"></a><a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fjavascript.info%2Fclass-inheritance" class="share share_fb"></a><a href="https://plus.google.com/share?url=https%3A%2F%2Fjavascript.info%2Fclass-inheritance" class="share share_gp"></a><a href="https://vkontakte.ru/share.php?url=https%3A%2F%2Fjavascript.info%2Fclass-inheritance" class="share share_vk"></a></div></div></div></div><progress data-sticky value="63" max="67" data-tooltip="Lesson 63 of 67" class="tutorial-progress"></progress></div><div class="page page_sidebar_on"><script>if(localStorage.noSidebar){document.querySelector(".page").classList.remove("page_sidebar_on");var pageWrapper=document.querySelector(".page-wrapper");pageWrapper&&pageWrapper.classList.remove("page-wrapper_sidebar_on")}setTimeout(function(){document.querySelector(".page").classList.add("page_sidebar-animation-on")},0);</script><div class="page__inner"><main class="main main_width-limit"><header class="main__header"><ol class="breadcrumbs"><li itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemref="breadcrumb-1" class="breadcrumbs__item breadcrumbs__item_home"><a href="index.html" itemprop="url" class="breadcrumbs__link"><span itemprop="title" class="breadcrumbs__hidden-text">Учебник</span></a></li><li id="breadcrumb-1" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemref="breadcrumb-2" itemprop="child" class="breadcrumbs__item"><a href="js.html" itemprop="url" class="breadcrumbs__link"><span itemprop="title">The JavaScript language</span></a></li><li id="breadcrumb-2" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemprop="child" class="breadcrumbs__item"><a href="object-oriented-programming.html" itemprop="url" class="breadcrumbs__link"><span itemprop="title">Objects, classes, inheritance</span></a></li></ol><h1 class="main__header-title">Class inheritance, super</h1></header><div class="content"><article itemscope itemtype="http://schema.org/TechArticle"><meta itemprop="name" content="Class inheritance, super"><div itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="email" content="iliakan@gmail.com"><meta itemprop="name" content="Ilya Kantor"></div><div itemprop="articleBody"><p>Classes can extend one another. There’s a nice syntax, technically based on the prototypal inheritance.</p>
+<p>To inherit from another class, we should specify <code>&quot;extends&quot;</code> and the parent class before the brackets <code>{..}</code>.</p>
+<cut>
+<p>Here <code>Rabbit</code> inherits from <code>Animal</code>:</p>
+<div data-trusted="1" class="code-example" data-highlight-block="19-24">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">class Animal {
+
+  constructor(name) {
+    this.speed = 0;
+    this.name = name;
+  }
+
+  run(speed) {
+    this.speed += speed;
+    alert(`${this.name} runs with speed ${this.speed}.`);
+  }
+
+  stop() {
+    this.speed = 0;
+    alert(`${this.name} stopped.`);
+  }
+
+}
+
+// Inherit from Animal
+class Rabbit extends Animal {
+  hide() {
+    alert(`${this.name} hides!`);
+  }
+}
+
+let rabbit = new Rabbit(&quot;White Rabbit&quot;);
+
+rabbit.run(5); // White Rabbit runs with speed 5.
+rabbit.hide(); // White Rabbit hides!</code></pre>
+        </div>
+      </div>
+      
+      </div><p>The <code>extends</code> keyword actually adds a <code>[[Prototype]]</code> reference from <code>Rabbit.prototype</code> to <code>Animal.prototype</code>, just as you expect it to be, and as we’ve seen before.</p>
+<figure><div class="image" style="width:425px">
+      <div class="image__ratio" style="padding-top:71.05882352941177%"></div>
+      <img src="article/class-inheritance/animal-rabbit-extends.png" alt="" width="425" height="302" class="image__image">
+      </div></figure><p>So now <code>rabbit</code> has access both to its own methods and to methods of <code>Animal</code>.</p>
+<div class="important important_smart">
+            <div class="important__header"><span class="important__type">Any expression is allowed after <code>extends</code></span></div>
+            <div class="important__content"><p>Class syntax allows to specify not just a class, but any expression after <code>extends</code>.</p>
+<p>For instance, a function call that generates the parent class:</p>
+<div data-trusted="1" class="code-example" data-highlight-block="6-6">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function f(phrase) {
+  return class {
+    sayHi() { alert(phrase) }
+  }
+}
+
+class User extends f(&quot;Hello&quot;) {}
+
+new User().sayHi(); // Hello</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Here <code>class User</code> inherits from the result of <code>f(&quot;Hello&quot;)</code>.</p>
+<p>That may be useful for advanced programming patterns when we use functions to generate classes depending on many conditions and can inherit from them.</p>
+</div></div>
+<h2><a class="main__anchor" name="overriding-a-method" href="#overriding-a-method">Overriding a method</a></h2><p>Now let’s move forward and override a method. As of now, <code>Rabbit</code> inherits the <code>stop</code> method that sets <code>this.speed = 0</code> from <code>Animal</code>.</p>
+<p>If we specify our own <code>stop</code> in <code>Rabbit</code>, then it will be used instead:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">class Rabbit extends Animal {
+  stop() {
+    // ...this will be used for rabbit.stop()
+  }
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>…But usually we don’t want to totally replace a parent method, but rather to build on top of it, tweak or extend its functionality. We do something in our method, but call the parent method before/after it or in the process.</p>
+<p>Classes provide <code>&quot;super&quot;</code> keyword for that.</p>
+<ul>
+<li><code>super.method(...)</code> to call a parent method.</li>
+<li><code>super(...)</code> to call a parent constructor (inside our constructor only).</li>
+</ul>
+<p>For instance, let our rabbit autohide when stopped:</p>
+<div data-trusted="1" class="code-example" data-highlight-block="24-27">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">class Animal {
+
+  constructor(name) {
+    this.speed = 0;
+    this.name = name;
+  }
+
+  run(speed) {
+    this.speed += speed;
+    alert(`${this.name} runs with speed ${this.speed}.`);
+  }
+
+  stop() {
+    this.speed = 0;
+    alert(`${this.name} stopped.`);
+  }
+
+}
+
+class Rabbit extends Animal {
+  hide() {
+    alert(`${this.name} hides!`);
+  }
+
+  stop() {
+    super.stop(); // call parent stop
+    this.hide(); // and then hide
+  }
+}
+
+let rabbit = new Rabbit(&quot;White Rabbit&quot;);
+
+rabbit.run(5); // White Rabbit runs with speed 5.
+rabbit.stop(); // White Rabbit stopped. White rabbit hides!</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Now <code>Rabbit</code> has the <code>stop</code> method that calls the parent <code>super.stop()</code> in the process.</p>
+<div class="important important_smart">
+            <div class="important__header"><span class="important__type">Arrow functions have no <code>super</code></span></div>
+            <div class="important__content"><p>As was mentioned in the chapter <a href="arrow-functions.html">Arrow functions revisited</a>, arrow functions do not have <code>super</code>.</p>
+<p>If accessed, it’s taken from the outer function. For instance:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">class Rabbit extends Animal {
+  stop() {
+    setTimeout(() =&gt; super.stop(), 1000); // call parent stop after 1sec
+  }
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>The <code>super</code> in the arrow function is the same as in <code>stop()</code>, so it works as intended. If we specified a “regular” function here, there would be an error:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">// Unexpected super
+setTimeout(function() { super.stop() }, 1000);</code></pre>
+        </div>
+      </div>
+      
+      </div></div></div>
+<h2><a class="main__anchor" name="overriding-constructor" href="#overriding-constructor">Overriding constructor</a></h2><p>With constructors it gets a little bit tricky.</p>
+<p>Till now, <code>Rabbit</code> did not have its own <code>constructor</code>.</p>
+<p>According to the <a href="https://tc39.github.io/ecma262/#sec-runtime-semantics-classdefinitionevaluation">specification</a>, if a class extends another class and has no <code>constructor</code>, then the following <code>constructor</code> is generated:</p>
+<div data-trusted="1" class="code-example" data-highlight-block="2-4">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">class Rabbit extends Animal {
+  // generated for extending classes without own constructors
+  constructor(...args) {
+    super(...args);
+  }
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>As we can see, it basically calls the parent <code>constructor</code> passing it all the arguments. That happens if we don’t write a constructor of our own.</p>
+<p>Now let’s add a custom constructor to <code>Rabbit</code>. It will specify the <code>earLength</code> in addition to <code>name</code>:</p>
+<div data-trusted="1" class="code-example" data-highlight-block="10-14,19-20">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">class Animal {
+  constructor(name) {
+    this.speed = 0;
+    this.name = name;
+  }
+  // ...
+}
+
+class Rabbit extends Animal {
+
+  constructor(name, earLength) {
+    this.speed = 0;
+    this.name = name;
+    this.earLength = earLength;
+  }
+
+  // ...
+}
+
+// Doesn't work!
+let rabbit = new Rabbit(&quot;White Rabbit&quot;, 10); // Error: this is not defined.</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Whoops! We’ve got an error. Now we can’t create rabbits. What went wrong?</p>
+<p>The short answer is: constructors in inheriting classes must call <code>super(...)</code>, and (!) do it before using <code>this</code>.</p>
+<p>…But why? What’s going on here? Indeed, the requirement seems strange.</p>
+<p>Of course, there’s an explanation. Let’s get into details, so you’d really understand what’s going on.</p>
+<p>In JavaScript, there’s a distinction between a “constructor function of an inheriting class” and all others. In an inheriting class, the corresponding constructor function is labelled with a special internal property <code>[[ConstructorKind]]:&quot;derived&quot;</code>.</p>
+<p>The difference is:</p>
+<ul>
+<li>When a normal constructor runs, it creates an empty object as <code>this</code> and continues with it.</li>
+<li>But when a derived constructor runs, it doesn’t do it. It expects the parent constructor to do this job.</li>
+</ul>
+<p>So if we’re making a constructor of our own, then we must call <code>super</code>, because otherwise the object with <code>this</code> reference to it won’t be created. And we’ll get an error.</p>
+<p>For <code>Rabbit</code> to work, we need to call <code>super()</code> before using <code>this</code>, like here:</p>
+<div data-trusted="1" class="code-example" data-highlight-block="13-13,20-23">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">class Animal {
+
+  constructor(name) {
+    this.speed = 0;
+    this.name = name;
+  }
+
+  // ...
+}
+
+class Rabbit extends Animal {
+
+  constructor(name, earLength) {
+    super(name);
+    this.earLength = earLength;
+  }
+
+  // ...
+}
+
+// now fine
+let rabbit = new Rabbit(&quot;White Rabbit&quot;, 10);
+alert(rabbit.name); // White Rabbit
+alert(rabbit.earLength); // 10</code></pre>
+        </div>
+      </div>
+      
+      </div><h2><a class="main__anchor" name="super-internals-homeobject" href="#super-internals-homeobject">Super: internals, [[HomeObject]]</a></h2><p>Let’s get a little deeper under the hood of <code>super</code>. We’ll see some interesting things by the way.</p>
+<p>First to say, from all that we’ve learned till now, it’s impossible for <code>super</code> to work.</p>
+<p>Yeah, indeed, let’s ask ourselves, how it could technically work? When an object method runs, it gets the current object as <code>this</code>. If we call <code>super.method()</code> then, how to retrieve the <code>method</code>? Naturally, we need to take the <code>method</code> from the prototype of the current object. How, technically, we (or a JavaScript engine) can do it?</p>
+<p>Maybe we can get the method from <code>[[Prototype]]</code> of <code>this</code>, as <code>this.__proto__.method</code>? Unfortunately, that doesn’t work.</p>
+<p>Let’s try to do it. Without classes, using plain objects for the sake of simplicity.</p>
+<p>Here, <code>rabbit.eat()</code> should call <code>animal.eat()</code> method of the parent object:</p>
+<div data-trusted="1" class="code-example" data-highlight-block="11-12">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let animal = {
+  name: &quot;Animal&quot;,
+  eat() {
+    alert(`${this.name} eats.`);
+  }
+};
+
+let rabbit = {
+  __proto__: animal,
+  name: &quot;Rabbit&quot;,
+  eat() {
+    // that's how super.eat() could presumably work
+    this.__proto__.eat.call(this); // (*)
+  }
+};
+
+rabbit.eat(); // Rabbit eats.</code></pre>
+        </div>
+      </div>
+      
+      </div><p>At the line <code>(*)</code> we take <code>eat</code> from the prototype (<code>animal</code>) and call it in the context of the current object. Please note that <code>.call(this)</code> is important here, because a simple <code>this.__proto__.eat()</code> would execute parent <code>eat</code> in the context of the prototype, not the current object.</p>
+<p>And in the code above it actually works as intended: we have the correct <code>alert</code>.</p>
+<p>Now let’s add one more object to the chain. We’ll see how things break:</p>
+<div data-trusted="1" class="code-example" data-highlight-block="23-23">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let animal = {
+  name: &quot;Animal&quot;,
+  eat() {
+    alert(`${this.name} eats.`);
+  }
+};
+
+let rabbit = {
+  __proto__: animal,
+  eat() {
+    // ...bounce around rabbit-style and call parent (animal) method
+    this.__proto__.eat.call(this); // (*)
+  }
+};
+
+let longEar = {
+  __proto__: rabbit,
+  eat() {
+    // ...do something with long ears and call parent (rabbit) method
+    this.__proto__.eat.call(this); // (**)
+  }
+};
+
+longEar.eat(); // Error: Maximum call stack size exceeded</code></pre>
+        </div>
+      </div>
+      
+      </div><p>The code doesn’t work anymore! We can see the error trying to call <code>longEar.eat()</code>.</p>
+<p>It may be not that obvious, but if we trace <code>longEar.eat()</code> call, then we can see why. In both lines <code>(*)</code> and <code>(**)</code> the value of <code>this</code> is the current object (<code>longEar</code>). That’s essential: all object methods get the current object as <code>this</code>, not a prototype or something.</p>
+<p>So, in both lines <code>(*)</code> and <code>(**)</code> the value of <code>this.__proto__</code> is exactly the same: <code>rabbit</code>. They both call <code>rabbit.eat</code> without going up the chain in the endless loop.</p>
+<p>Here’s the picture of what happens:</p>
+<figure><div class="image" style="width:297px">
+      <div class="image__ratio" style="padding-top:73.06397306397307%"></div>
+      <img src="article/class-inheritance/this-super-loop.png" alt="" width="297" height="217" class="image__image">
+      </div></figure><ol>
+<li>
+<p>Inside <code>longEar.eat()</code>, the line <code>(**)</code> calls <code>rabbit.eat</code> providing it with <code>this=longEar</code>.</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">// inside longEar.eat() we have this = longEar
+this.__proto__.eat.call(this) // (**)
+// becomes
+longEar.__proto__.eat.call(this)
+// that is
+rabbit.eat.call(this);</code></pre>
+        </div>
+      </div>
+      
+      </div></li>
+<li>
+<p>Then in the line <code>(*)</code> of <code>rabbit.eat</code>, we’d like to pass the call even higher in the chain, but <code>this=longEar</code>, so <code>this.__proto__.eat</code> is again <code>rabbit.eat</code>!</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">// inside rabbit.eat() we also have this = longEar
+this.__proto__.eat.call(this) // (*)
+// becomes
+longEar.__proto__.eat.call(this)
+// or (again)
+rabbit.eat.call(this);</code></pre>
+        </div>
+      </div>
+      
+      </div></li>
+<li>
+<p>…So <code>rabbit.eat</code> calls itself in the endless loop, because it can’t ascend any further.</p>
+</li>
+</ol>
+<p>The problem can’t be solved by using <code>this</code> alone.</p>
+<h3><a class="main__anchor" name="homeobject" href="#homeobject"><code>[[HomeObject]]</code></a></h3><p>To provide the solution, JavaScript adds one more special internal property for functions: <code>[[HomeObject]]</code>.</p>
+<p><strong>When a function is specified as a class or object method, its <code>[[HomeObject]]</code> property becomes that object.</strong></p>
+<p>This actually violates the idea of “unbound” functions, because methods remember their objects. And <code>[[HomeObject]]</code> can’t be changed, so this bound is forever. So that’s a very important change in the language.</p>
+<p>But this change is safe. <code>[[HomeObject]]</code> is used only for calling parent methods in <code>super</code>, to resolve the prototype. So it doesn’t break compatibility.</p>
+<p>Let’s see how it works for <code>super</code> – again, using plain objects:</p>
+<div data-trusted="1" class="code-example" data-highlight-block="23-23">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let animal = {
+  name: &quot;Animal&quot;,
+  eat() {         // [[HomeObject]] == animal
+    alert(`${this.name} eats.`);
+  }
+};
+
+let rabbit = {
+  __proto__: animal,
+  name: &quot;Rabbit&quot;,
+  eat() {         // [[HomeObject]] == rabbit
+    super.eat();
+  }
+};
+
+let longEar = {
+  __proto__: rabbit,
+  name: &quot;Long Ear&quot;,
+  eat() {         // [[HomeObject]] == longEar
+    super.eat();
+  }
+};
+
+longEar.eat();  // Long Ear eats.</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Every method remembers its object in the internal <code>[[HomeObject]]</code> property. Then <code>super</code> uses it to resolve the parent prototype.</p>
+<p><code>[[HomeObject]]</code> is defined for methods defined both in classes and in plain objects. But for objects, methods must be specified exactly the given way: as <code>method()</code>, not as <code>&quot;method: function()&quot;</code>.</p>
+<p>In the example below a non-method syntax is used for comparison. <code>[[HomeObject]]</code> property is not set and the inheritance doesn’t work:</p>
+<div data-trusted="1" class="code-example" data-highlight-block="13-13">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let animal = {
+  eat: function() { // should be the short syntax: eat() {...}
+    // ...
+  }
+};
+
+let rabbit = {
+  __proto__: animal,
+  eat: function() {
+    super.eat();
+  }
+};
+
+rabbit.eat();  // Error calling super (because there's no [[HomeObject]])</code></pre>
+        </div>
+      </div>
+      
+      </div><h2><a class="main__anchor" name="static-methods-and-inheritance" href="#static-methods-and-inheritance">Static methods and inheritance</a></h2><p>The <code>class</code> syntax supports inheritance for static properties too.</p>
+<p>For instance:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">class Animal {
+
+  constructor(name, speed) {
+    this.speed = speed;
+    this.name = name;
+  }
+
+  run(speed = 0) {
+    this.speed += speed;
+    alert(`${this.name} runs with speed ${this.speed}.`);
+  }
+
+  static compare(animalA, animalB) {
+    return animalA.speed - animalB.speed;
+  }
+
+}
+
+// Inherit from Animal
+class Rabbit extends Animal {
+  hide() {
+    alert(`${this.name} hides!`);
+  }
+}
+
+let rabbits = [
+  new Rabbit(&quot;White Rabbit&quot;, 10),
+  new Rabbit(&quot;Black Rabbit&quot;, 5)
+];
+
+rabbits.sort(Rabbit.compare);
+
+rabbits[0].run(); // Black Rabbit runs with speed 5.</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Now we can call <code>Rabbit.compare</code> assuming that the inherited <code>Animal.compare</code> will be called.</p>
+<p>How does it work? Again, using prototypes. As you might have already guessed, extends also gives <code>Rabbit</code> the <code>[[Prototype]]</code> reference to <code>Animal</code>.</p>
+<figure><div class="image" style="width:425px">
+      <div class="image__ratio" style="padding-top:71.05882352941177%"></div>
+      <img src="article/class-inheritance/animal-rabbit-static.png" alt="" width="425" height="302" class="image__image">
+      </div></figure><p>So, <code>Rabbit</code> function now inherits from <code>Animal</code> function. And <code>Animal</code> function normally has <code>[[Prototype]]</code> referencing <code>Function.prototype</code>, because it doesn’t <code>extend</code> anything.</p>
+<p>Here, let’s check that:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">class Animal {}
+class Rabbit extends Animal {}
+
+// for static propertites and methods
+alert(Rabbit.__proto__ === Animal); // true
+
+// and the next step is Function.prototype
+alert(Animal.__proto__ === Function.prototype); // true
+
+// that's in addition to the &quot;normal&quot; prototype chain for object methods
+alert(Rabbit.prototype.__proto__ === Animal.prototype);</code></pre>
+        </div>
+      </div>
+      
+      </div><p>This way <code>Rabbit</code> has access to all static methods of <code>Animal</code>.</p>
+<h3><a class="main__anchor" name="no-static-inheritance-in-built-ins" href="#no-static-inheritance-in-built-ins">No static inheritance in built-ins</a></h3><p>Please note that built-in classes don’t have such static <code>[[Prototype]]</code> reference. For instance, <code>Object</code> has <code>Object.defineProperty</code>, <code>Object.keys</code> and so on, but <code>Array</code>, <code>Date</code> etc do not inherit them.</p>
+<p>Here’s the picture structure for <code>Date</code> and <code>Object</code>:</p>
+<figure><div class="image" style="width:457px">
+      <div class="image__ratio" style="padding-top:77.24288840262582%"></div>
+      <img src="article/class-inheritance/object-date-inheritance.png" alt="" width="457" height="353" class="image__image">
+      </div></figure><p>Note, there’s no link between <code>Date</code> and <code>Object</code>. Both <code>Object</code> and <code>Date</code> exist independently. <code>Date.prototype</code> inherits from <code>Object.prototype</code>, but that’s all.</p>
+<p>Such difference exists for historical reasons: there was no thought about class syntax and inheriting static methods at the dawn of JavaScript language.</p>
+<h2><a class="main__anchor" name="natives-are-extendable" href="#natives-are-extendable">Natives are extendable</a></h2><p>Built-in classes like Array, Map and others are extendable also.</p>
+<p>For instance, here <code>PowerArray</code> inherits from the native <code>Array</code>:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">// add one more method to it (can do more)
+class PowerArray extends Array {
+  isEmpty() {
+    return this.length === 0;
+  }
+}
+
+let arr = new PowerArray(1, 2, 5, 10, 50);
+alert(arr.isEmpty()); // false
+
+let filteredArr = arr.filter(item =&gt; item &gt;= 10);
+alert(filteredArr); // 10, 50
+alert(filteredArr.isEmpty()); // false</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Please note one very interesting thing. Built-in methods like <code>filter</code>, <code>map</code> and others – return new objects of exactly the inherited type. They rely on the <code>constructor</code> property to do so.</p>
+<p>In the example above,</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">arr.constructor === PowerArray</code></pre>
+        </div>
+      </div>
+      
+      </div><p>So when <code>arr.filter()</code> is called, it internally creates the new array of results exactly as <code>new PowerArray</code>. And we can keep using its methods further down the chain.</p>
+<p>Even more, we can customize that behavior. The static getter <code>Symbol.species</code>, if exists, returns the constructor to use in such cases.</p>
+<p>For example, here due to <code>Symbol.species</code> built-in methods like <code>map</code>, <code>filter</code> will return “normal” arrays:</p>
+<div data-trusted="1" class="code-example" data-highlight-block="5-8,17-17">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">class PowerArray extends Array {
+  isEmpty() {
+    return this.length === 0;
+  }
+
+  // built-in methods will use this as the constructor
+  static get [Symbol.species]() {
+    return Array;
+  }
+}
+
+let arr = new PowerArray(1, 2, 5, 10, 50);
+alert(arr.isEmpty()); // false
+
+// filter creates new array using arr.constructor[Symbol.species] as constructor
+let filteredArr = arr.filter(item =&gt; item &gt;= 10);
+
+// filteredArr is not PowerArray, but Array
+alert(filteredArr.isEmpty()); // Error: filteredArr.isEmpty is not a function</code></pre>
+        </div>
+      </div>
+      
+      </div><p>We can use it in more advanced keys to strip extended functionality from resulting values if not needed. Or, maybe, to extend it even further.</p>
+</div></article><div class="tasks"><h2 id="tasks" class="tasks__title"><a href="#tasks" class="main__anchor main__anchor_noicon tasks__title-anchor">Tasks</a></h2><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a href="#error-creating-an-instance" name="error-creating-an-instance" class="main__anchor">Error creating an instance</a></h3><a href="task/class-constructor-error.html" target="_blank" class="task__open-link"></a></div><div class="task__header-note"><span title="How important is the task, from 1 to 5" class="task__importance">importance: 5</span></div><div class="task__content"><p>Here’s the code with <code>Rabbit</code> extending <code>Animal</code>.</p>
+<p>Unfortunately, <code>Rabbit</code> objects can’t be created. What’s wrong? Fix it.</p>
+<div data-trusted="1" class="code-example" data-highlight-block="15-15">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">class Animal {
+
+  constructor(name) {
+    this.name = name;
+  }
+
+}
+
+class Rabbit extends Animal {
+  constructor(name) {
+    this.name = name;
+    this.created = Date.now();
+  }
+}
+
+let rabbit = new Rabbit(&quot;White Rabbit&quot;); // Error: this is not defined
+alert(rabbit.name);</code></pre>
+        </div>
+      </div>
+      
+      </div><button type="button" class="task__solution">solution</button><div class="task__answer"><div class="task__answer-content"><p>That’s because the child constructor must call <code>super()</code>.</p>
+<p>Here’s the corrected code:</p>
+<div data-trusted="1" class="code-example" data-highlight-block="10-10,15-15">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">class Animal {
+
+  constructor(name) {
+    this.name = name;
+  }
+
+}
+
+class Rabbit extends Animal {
+  constructor(name) {
+    super(name);
+    this.created = Date.now();
+  }
+}
+
+let rabbit = new Rabbit(&quot;White Rabbit&quot;); // ok now
+alert(rabbit.name); // White Rabbit</code></pre>
+        </div>
+      </div>
+      
+      </div></div><button type="button" title="close" class="close-button task__answer-close"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a href="#extended-clock" name="extended-clock" class="main__anchor">Extended clock</a></h3><a href="task/clock-class-extended.html" target="_blank" class="task__open-link"></a></div><div class="task__header-note"><span title="How important is the task, from 1 to 5" class="task__importance">importance: 5</span></div><div class="task__content"><p>We’ve got a <code>Clock</code> class. As of now, it prints the time every second.</p>
+<p>Create a new class <code>ExtendedClock</code> that inherits from <code>Clock</code> and adds the parameter <code>precision</code> – the number of <code>ms</code> between “ticks”. Should be <code>1000</code> (1 second) by default.</p>
+<ul>
+<li>Your code should be in the file <code>extended-clock.js</code></li>
+<li>Don’t modify the original <code>clock.js</code>. Extend it.</li>
+</ul>
+<p><a href="http://plnkr.co/edit/XZ1YztfCGf5lLKQ56tAO?p=preview" target="_blank" data-plunk-id="XZ1YztfCGf5lLKQ56tAO">Open the sandbox for the task.</a></p><button type="button" class="task__solution">solution</button><div class="task__answer"><div class="task__answer-content"><p><a href="http://plnkr.co/edit/LSBcWONytYD9aqo7tjO1?p=preview" target="_blank" data-plunk-id="LSBcWONytYD9aqo7tjO1">Open the solution in the sandbox.</a></p></div><button type="button" title="close" class="close-button task__answer-close"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a href="#class-extends-object" name="class-extends-object" class="main__anchor">Class extends Object?</a></h3><a href="task/class-extend-object.html" target="_blank" class="task__open-link"></a></div><div class="task__header-note"><span title="How important is the task, from 1 to 5" class="task__importance">importance: 5</span></div><div class="task__content"><p>As we know, all objects normally inherit from <code>Object.prototype</code> and get access to “generic” object methods.</p>
+<p>Like demonstrated here:</p>
+<div data-trusted="1" class="code-example" data-highlight-block="8-10">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">class Rabbit {
+  constructor(name) {
+    this.name = name;
+  }
+}
+
+let rabbit = new Rabbit(&quot;Rab&quot;);
+
+// hasOwnProperty method is from Object.prototype
+// rabbit.__proto__ === Object.prototype
+alert( rabbit.hasOwnProperty('name') ); // true</code></pre>
+        </div>
+      </div>
+      
+      </div><p>So, is it correct to say that <code>&quot;class Rabbit extends Object&quot;</code> does exactly the same as <code>&quot;class Rabbit&quot;</code>, or not?</p>
+<p>Will it work?</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">class Rabbit extends Object {
+  constructor(name) {
+    this.name = name;
+  }
+}
+
+let rabbit = new Rabbit(&quot;Rab&quot;);
+
+alert( rabbit.hasOwnProperty('name') ); // true</code></pre>
+        </div>
+      </div>
+      
+      </div><p>If it won’t please fix the code.</p>
+<p><a href="http://plnkr.co/edit/sGSP3Khqpitwdd2oKs6y?p=preview" target="_blank" data-plunk-id="sGSP3Khqpitwdd2oKs6y">Open the sandbox for the task.</a></p><button type="button" class="task__solution">solution</button><div class="task__answer"><div class="task__answer-content"><p>The answer has two parts.</p>
+<p>The first, an easy one is that the inheriting class needs to call <code>super()</code> in the constructor. Otherwise <code>&quot;this&quot;</code> won’t be “defined”.</p>
+<p>So here’s the fix:</p>
+<div data-trusted="1" class="code-example" data-highlight-block="2-2">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">class Rabbit extends Object {
+  constructor(name) {
+    super(); // need to call the parent constructor when inheriting
+    this.name = name;
+  }
+}
+
+let rabbit = new Rabbit(&quot;Rab&quot;);
+
+alert( rabbit.hasOwnProperty('name') ); // true</code></pre>
+        </div>
+      </div>
+      
+      </div><p>But that’s not all yet.</p>
+<p>Even after the fix, there’s still important difference in <code>&quot;class Rabbit extends Object&quot;</code> versus <code>class Rabbit</code>.</p>
+<p>As we know, the “extends” syntax sets up two prototypes:</p>
+<ol>
+<li>Between <code>&quot;prototype&quot;</code> of the constructor functions (for methods).</li>
+<li>Between the constructor functions itself (for static methods).</li>
+</ol>
+<p>In our case, for <code>class Rabbit extends Object</code> it means:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">class Rabbit extends Object {}
+
+alert( Rabbit.prototype.__proto__ === Object.prototype ); // (1) true
+alert( Rabbit.__proto__ === Object ); // (2) true</code></pre>
+        </div>
+      </div>
+      
+      </div><p>So we can access static methods of <code>Object</code> via <code>Rabbit</code>, like this:</p>
+<div data-trusted="1" class="code-example" data-highlight-block="2-3">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">class Rabbit extends Object {}
+
+// normally we call Object.getOwnPropertyNames
+alert ( Rabbit.getOwnPropertyNames({a: 1, b: 2})); // a,b</code></pre>
+        </div>
+      </div>
+      
+      </div><p>And if we don’t use <code>extends</code>, then <code>class Rabbit</code> does not get the second reference.</p>
+<p>Please compare with it:</p>
+<div data-trusted="1" class="code-example" data-highlight-block="5-6">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">class Rabbit {}
+
+alert( Rabbit.prototype.__proto__ === Object.prototype ); // (1) true
+alert( Rabbit.__proto__ === Object ); // (2) false (!)
+
+// error, no such function in Rabbit
+alert ( Rabbit.getOwnPropertyNames({a: 1, b: 2})); // Error</code></pre>
+        </div>
+      </div>
+      
+      </div><p>For the simple <code>class Rabbit</code>, the <code>Rabbit</code> function has the same prototype</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">class Rabbit {}
+
+// instead of (2) that's correct for Rabbit (just like any function):
+alert( Rabbit.__proto__ === Function.prototype );</code></pre>
+        </div>
+      </div>
+      
+      </div><p>By the way, <code>Function.prototype</code> has “generic” function methods, like <code>call</code>, <code>bind</code> etc. They are ultimately available in both cases, because for the built-in <code>Object</code> constructor, <code>Object.__proto__ === Function.prototype</code>.</p>
+<p>Here’s the picture:</p>
+<figure><div class="image" style="width:424px">
+      <div class="image__ratio" style="padding-top:76.41509433962264%"></div>
+      <img src="task/class-extend-object/rabbit-extends-object.png" alt="" width="424" height="324" class="image__image">
+      </div></figure><p>So, to put it short, there are two differences:</p>
+<table>
+<thead>
+<tr>
+<th>class Rabbit</th>
+<th>class Rabbit extends Object</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>–</td>
+<td>needs to call <code>super()</code> in constructor</td>
+</tr>
+<tr>
+<td><code>Rabbit.__proto__ === Function.prototype</code></td>
+<td><code>Rabbit.__proto__ === Object</code></td>
+</tr>
+</tbody>
+</table>
+<p><a href="http://plnkr.co/edit/75i69n20lBkgNiZmqbqV?p=preview" target="_blank" data-plunk-id="75i69n20lBkgNiZmqbqV">Open the solution in the sandbox.</a></p></div><button type="button" title="close" class="close-button task__answer-close"></button></div></div></div></div></div><!--  include /blocks/banner-bottom--><!--if lang == 'en'--><!--  include /blocks/banner-bottom.en--></div><div class="page__nav-wrap"><a href="class.html" data-tooltip="Classes" class="page__nav page__nav_prev"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Previous lesson</span></a><a href="instanceof.html" data-tooltip="Class checking: &quot;instanceof&quot;" class="page__nav page__nav_next"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Next lesson</span></a></div><div class="article-tablet-foot tablet-only"><div class="article-tablet-foot__layout"><div class="share-icons"><span class="share-icons__title">Share</span><a href="https://twitter.com/share?url=https%3A%2F%2Fjavascript.info%2Fclass-inheritance" class="share share_tw"></a><a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fjavascript.info%2Fclass-inheritance" class="share share_fb"></a><a href="https://plus.google.com/share?url=https%3A%2F%2Fjavascript.info%2Fclass-inheritance" class="share share_gp"></a><a href="https://vkontakte.ru/share.php?url=https%3A%2F%2Fjavascript.info%2Fclass-inheritance" class="share share_vk"></a></div><div class="article-tablet-foot__map"><a href="tutorial/map.html" data-action="tutorial-map" class="map"><span class="map__text">Tutorial map</span></a></div></div></div><div id="comments" class="comments"><div class="comments__header"><h2 class="comments__header-title"><a href="#comments" name="comments">Comments</a></h2><div class="comments__read-before"><span class="comments__read-before-link">read this before commenting…</span><div class="comments__read-before-popup"><div class="comments__read-before-popup-i"><ul><li>You're welcome to post additions, questions to the articles and answers to them.</li><li>To insert a few words of code, use the <code>&lt;code&gt;</code> tag, for several lines – use <code>&lt;pre&gt;</code>, for more than 10 lines – use a sandbox (<a href='http://plnkr.co/edit/?p=preview'>plnkr</a>, <a href='http://jsbin.com/'>JSBin</a>, <a href='http://codepen.io/'>codepen</a>…)</li><li>If you can't understand something in the article – please elaborate.</li></ul></div></div></div></div></div><div id="disqus_thread"></div><script>var disqus_config = function() { if (!this.page) this.page = {}; Object.assign(this.page, {"url":"https:\/\/javascript.info\/class-inheritance","identifier":"\/class-inheritance","title":"Class inheritance, super"}); };</script><script>var disqus_shortname = "javascriptinfo";</script><script>var disqus_enabled = true;</script></main></div><div class="page__sidebar sidebar sidebar_sticky-footer"><button data-sidebar-toggle class="sidebar__toggle"></button><a href="tutorial/map.html" data-action="tutorial-map" data-tooltip="Tutorial map" class="map"></a><div class="sidebar__inner"><div class="sidebar__content"><div class="sidebar__section"><h4 class="sidebar__section-title">Chapter</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a href="object-oriented-programming.html" class="sidebar__link">Objects, classes, inheritance</a></li></ul></nav></div><div class="sidebar__section"><h4 class="sidebar__section-title">Lesson navigation</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a href="#overriding-a-method" class="sidebar__link">Overriding a method</a></li><li class="sidebar__navigation-link"><a href="#overriding-constructor" class="sidebar__link">Overriding constructor</a></li><li class="sidebar__navigation-link"><a href="#super-internals-homeobject" class="sidebar__link">Super: internals, [[HomeObject]]</a></li><li class="sidebar__navigation-link"><a href="#static-methods-and-inheritance" class="sidebar__link">Static methods and inheritance</a></li><li class="sidebar__navigation-link"><a href="#natives-are-extendable" class="sidebar__link">Natives are extendable</a></li></ul></nav></div><div class="sidebar__section"><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a href="#tasks" class="sidebar__link">Tasks (3)</a></li><li class="sidebar__navigation-link"><a href="#comments" class="sidebar__link">Comments</a></li></ul></nav></div><div class="sidebar__section"><div class="sidebar__section-title">Share</div><a href="https://twitter.com/share?url=https%3A%2F%2Fjavascript.info%2Fclass-inheritance" class="share share_tw sidebar__share"></a><a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fjavascript.info%2Fclass-inheritance" class="share share_fb sidebar__share"></a><a href="https://plus.google.com/share?url=https%3A%2F%2Fjavascript.info%2Fclass-inheritance" class="share share_gp sidebar__share"></a></div><div class="sidebar__section"><a href="https://github.com/iliakan/javascript-tutorial-en/tree/master/1-js/07-object-oriented-programming/10-class-inheritance/article.md" class="sidebar__link">Edit on Github</a></div></div></div></div></div></div><div class="page-footer"><div class="page-footer__left"><ul class="page-footer__list"><li class="page-footer__item">©&nbsp;2007—2017&nbsp; Ilya Kantor</li><li class="page-footer__item"><a href="about.html#contact-us" class="page-footer__link">contact us</a></li><li class="page-footer__item"><a href="about.html" class="page-footer__link">about the project</a></li><li class="page-footer__item"><a href="https://learn.javascript.ru/" class="page-footer__link">RU</a> / EN</li></ul></div><div class="page-footer__right"><ul class="page-footer__list"><li class="page-footer__item">powered by <a rel="nofollow" href="http://nodejs.org/" class="page-footer__link">node.js</a>&nbsp;&amp;&nbsp;<a rel="nofollow" href="http://github.com/iliakan/javascript-tutorial-en" class="page-footer__link">open source</a></li></ul></div></div></body>
+<!-- Mirrored from javascript.info/class-inheritance by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 30 Nov 2017 15:28:49 GMT -->
+</html>

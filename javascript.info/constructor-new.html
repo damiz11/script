@@ -1,0 +1,458 @@
+<!DOCTYPE html><html lang="en">
+<!-- Mirrored from javascript.info/constructor-new by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 30 Nov 2017 15:28:03 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><script>window.currentUser = null;</script><title itemprop="name">Constructor, operator &quot;new&quot;</title><meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, minimum-scale=1.0"><meta name="apple-mobile-web-app-capable" content="yes"><script>if (window.devicePixelRatio > 1) document.cookie = 'pixelRatio=' + window.devicePixelRatio + ';path=/;expires=Tue, 19 Jan 2038 03:14:07 GMT';</script><link href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700%7COpen+Sans+Condensed:700&amp;subset=latin,latin-ext,cyrillic,cyrillic-ext" rel="stylesheet"><link rel="apple-touch-icon-precomposed" href="img/favicon/apple-touch-icon-precomposed.png"><link rel="canonical" href="constructor-new.html"><meta name="msapplication-TileColor" content="#222A2C"><meta name="msapplication-TileImage" content="/img/favicon/tileicon.png"><!-- favicon the rest--><link rel="icon" href="img/favicon/favicon.png"><meta itemprop="image" content="https://javascript.info/img/site_preview_en_512x512.png"><meta property="og:title" content="Constructor, operator &quot;new&quot;"><meta property="og:image" content="https://javascript.info/img/site_preview_en_1200x630.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="fb:admins" content="100001562528165"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Constructor, operator &quot;new&quot;"><meta name="twitter:site" content="@iliakan"><meta name="twitter:creator" content="@iliakan"><meta name="twitter:image" content="https://javascript.info/img/site_preview_en_512x512.png"><link href="pack/styles.da59a89b28153875791083e4a8c5adb3.css" rel="stylesheet"><link rel="prev" href="object-toprimitive.html"><link rel="next" href="data-types.html"><script>window.GA_ID = "UA-2056213-15";</script><script>window.YANDEX_METRIKA_ID = 32184394;</script><script>window.GoogleAnalyticsObject="ga",window.ga=function(){window.ga.q.push(arguments)},window.ga.q=[],window.ga.l=Date.now(),ga("create",GA_ID,"auto"),window.currentUser&&ga("set","&uid",currentUser.id),window.addEventListener("error",function(e){var r=(e.filename||e.errorUrl)+": "+(e.lineno||e.errorLine),n=e.stack||e.error&&e.error.stack;ga("send","exception",{exDescription:e.message+" "+r+" "+n,exFatal:!0})});</script><script src="https://www.google-analytics.com/analytics.js" async></script><script>ga('send', 'pageview');</script><script>window.metrika={reachGoal:function(){}},window.yandex_metrika_callbacks=[function(){try{window.metrika=new Ya.Metrika({id:YANDEX_METRIKA_ID,webvisor:!0,clickmap:!0,params:{user:window.currentUser&&window.currentUser.id}}),metrika.trackLinks({delay:150}),window.addEventListener("error",function(r){window.metrika.reachGoal("JSERROR",{src:(r.filename||r.errorUrl)+": "+(r.lineno||r.errorLine),stack:r.stack||r.error&&r.error.stack,message:r.message})})}catch(r){}}];</script><script src="http://mc.yandex.ru/metrika/watch.js" async></script><script>window.RECAPTCHA_ID = "6Lf9NyETAAAAACZlg-a9Us2SxvYbeVC1ROWaWv4O";</script><script src="initc4ca.js?1"></script><script src="pack/head.688d4fe7c4cf54e23737.js" defer></script><meta property="og:title" content="Constructor, operator &quot;new&quot;"><meta property="og:type" content="article"><script src="pack/tutorial.688d4fe7c4cf54e23737.js" defer></script><script src="pack/footer.688d4fe7c4cf54e23737.js" defer></script></head><body class="no-icons"><script>window.fontTest();</script><div class="page-wrapper page-wrapper_sidebar_on"><!--[if lt IE 10]><div style="color:red;text-align:center">Sorry, IE&lt;10 is not supported, please use a newer browser.</div><![endif]--><div class="sitetoolbar sitetoolbar_tutorial"><!-- include ./notification-stripe--><div class="sitetoolbar__content"><div class="sitetoolbar__logo-wrap"><a href="index.html" class="sitetoolbar__link sitetoolbar__link_logo"><img src="img/sitetoolbar__logo_en.svg" width="200" class="sitetoolbar__logo sitetoolbar__logo_normal" alt=""><img src="img/sitetoolbar__logo_small_en.svg" width="70" class="sitetoolbar__logo sitetoolbar__logo_small" alt=""><script>Array.prototype.forEach.call(document.querySelectorAll("img.sitetoolbar__logo"),function(e){var t=document.createElement("object");t.type="image/svg+xml",t.className=e.className,t.style.cssText="left:0;top:0;position:absolute",t.onload=function(){t.onload=null,e.style.visibility="hidden"},t.data=e.src,e.parentNode.insertBefore(t,e)});</script></a></div><div class="sitetoolbar__nav-toggle-wrap"><button type="button" class="sitetoolbar__nav-toggle"></button></div><nav class="sitetoolbar__sections"><ul class="sitetoolbar__sections-list"></ul></nav><div class="sitetoolbar__book-wrap"><a href="ebook.html" class="buy-book-button"><span class="buy-book-button__extra-text">Buy</span>EPUB/PDF</a></div><div class="sitetoolbar__login-wrap"><button data-action-login class="sitetoolbar__login sitetoolbar__login_unready"></button></div><div class="sitetoolbar__search-wrap"><div class="sitetoolbar__search-content"><form method="GET" action="http://javascript.info/search" class="sitetoolbar__search"><button type="button" class="sitetoolbar__search-toggle"></button><div class="sitetoolbar__search-input"><div class="text-input"><input name="query" placeholder="Search on Javascript.info" class="text-input__control" type="text"></div><button type="submit" class="sitetoolbar__find">Search</button></div></form></div></div></div><!-- todo: en variant--><div class="tablet-menu"><div class="tablet-menu__line"><div class="tablet-menu__content"><form action="http://javascript.info/search/" class="tablet-menu-search"><input type="search" name="query" placeholder="Search in the tutorial" required class="tablet-menu-search__input"><button type="submit" name="type" value="articles" class="tablet-menu-search__button">Search</button></form></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><a href="tutorial/map.html" data-action="tutorial-map" class="map"><span class="map__text">Tutorial map</span></a></div></div><!--+e.line--><!--  +e.content--><!--    +b("a").tablet-ebook(href="/ebook")--><!--      +e("span").text Купить учебник--><!--      +e("span").note (EPUB + PDF)--><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="share-icons"><span class="share-icons__title">Share</span><a href="https://twitter.com/share?url=https%3A%2F%2Fjavascript.info%2Fconstructor-new" class="share share_tw"></a><a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fjavascript.info%2Fconstructor-new" class="share share_fb"></a><a href="https://plus.google.com/share?url=https%3A%2F%2Fjavascript.info%2Fconstructor-new" class="share share_gp"></a><a href="https://vkontakte.ru/share.php?url=https%3A%2F%2Fjavascript.info%2Fconstructor-new" class="share share_vk"></a></div></div></div></div><progress data-sticky value="31" max="67" data-tooltip="Lesson 31 of 67" class="tutorial-progress"></progress></div><div class="page page_sidebar_on"><script>if(localStorage.noSidebar){document.querySelector(".page").classList.remove("page_sidebar_on");var pageWrapper=document.querySelector(".page-wrapper");pageWrapper&&pageWrapper.classList.remove("page-wrapper_sidebar_on")}setTimeout(function(){document.querySelector(".page").classList.add("page_sidebar-animation-on")},0);</script><div class="page__inner"><main class="main main_width-limit"><header class="main__header"><ol class="breadcrumbs"><li itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemref="breadcrumb-1" class="breadcrumbs__item breadcrumbs__item_home"><a href="index.html" itemprop="url" class="breadcrumbs__link"><span itemprop="title" class="breadcrumbs__hidden-text">Учебник</span></a></li><li id="breadcrumb-1" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemref="breadcrumb-2" itemprop="child" class="breadcrumbs__item"><a href="js.html" itemprop="url" class="breadcrumbs__link"><span itemprop="title">The JavaScript language</span></a></li><li id="breadcrumb-2" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemprop="child" class="breadcrumbs__item"><a href="object-basics.html" itemprop="url" class="breadcrumbs__link"><span itemprop="title">Objects: the basics</span></a></li></ol><h1 class="main__header-title">Constructor, operator &quot;new&quot;</h1></header><div class="content"><article itemscope itemtype="http://schema.org/TechArticle"><meta itemprop="name" content="Constructor, operator &quot;new&quot;"><div itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="email" content="iliakan@gmail.com"><meta itemprop="name" content="Ilya Kantor"></div><div itemprop="articleBody"><p>The regular <code>{...}</code> syntax allows to create one object. But often we need to create many similar objects, like multiple users or menu items and so on.</p>
+<p>That can be done using constructor functions and the <code>&quot;new&quot;</code> operator.</p>
+<cut>
+<h2><a class="main__anchor" name="constructor-function" href="#constructor-function">Constructor function</a></h2><p>Constructor functions technically are regular functions. There are two conventions though:</p>
+<ol>
+<li>They are named with capital letter first.</li>
+<li>They should be executed only with <code>&quot;new&quot;</code> operator.</li>
+</ol>
+<p>For instance:</p>
+<div data-trusted="1" class="code-example" data-highlight-block="5-5">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function User(name) {
+  this.name = name;
+  this.isAdmin = false;
+}
+
+let user = new User(&quot;Jack&quot;);
+
+alert(user.name); // Jack
+alert(user.isAdmin); // false</code></pre>
+        </div>
+      </div>
+      
+      </div><p>When a function is executed as <code>new User(...)</code>, it does the following steps:</p>
+<ol>
+<li>A new empty object is created and assigned to <code>this</code>.</li>
+<li>The function body executes. Usually it modifies <code>this</code>, adds new properties to it.</li>
+<li>The value of <code>this</code> is returned.</li>
+</ol>
+<p>In other words, <code>new User(...)</code> does something like:</p>
+<div data-trusted="1" class="code-example" data-highlight-block="1-1,7-7">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function User(name) {
+  // this = {};  (implicitly)
+
+  // add properties to this
+  this.name = name;
+  this.isAdmin = false;
+
+  // return this;  (implicitly)
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>So the result of <code>new User(&quot;Jack&quot;)</code> is the same object as:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let user = {
+  name: &quot;Jack&quot;,
+  isAdmin: false
+};</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Now if we want to create other users, we can call <code>new User(&quot;Ann&quot;)</code>, <code>new User(&quot;Alice&quot;)</code> and so on. Much shorter than using literals every time, and also easy to read.</p>
+<p>That’s the main purpose of constructors – to implement reusable object creation code.</p>
+<p>Let’s note once again – technically, any function can be used as a constructor. That is: any function can be run with <code>new</code>, and it will execute the algorithm above. The “capital letter first” is a common agreement, to make it clear that a function is to be run with <code>new</code>.</p>
+<div class="important important_smart">
+            <div class="important__header"><span class="important__type">new function() { … }</span></div>
+            <div class="important__content"><p>If we have many lines of code all about creation of a single complex object, we can wrap them in constructor function, like this:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let user = new function() {
+  this.name = &quot;John&quot;;
+  this.isAdmin = false;
+
+  // ...other code for user creation
+  // maybe complex logic and statements
+  // local variables etc
+};</code></pre>
+        </div>
+      </div>
+      
+      </div><p>The constructor can’t be called again, because it is not saved anywhere, just created and called. So this trick aims to encapsulate the code that constructs the single object, without future reuse.</p>
+</div></div>
+<h2><a class="main__anchor" name="dual-syntax-constructors-new-target" href="#dual-syntax-constructors-new-target">Dual-syntax constructors: new.target</a></h2><p>Inside a function, we can check whether it was called with <code>new</code> or without it, using a special <code>new.target</code> property.</p>
+<p>It is empty for regular calls and equals the function if called with <code>new</code>:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function User() {
+  alert(new.target);
+}
+
+// without new:
+User(); // undefined
+
+// with new:
+new User(); // function User { ... }</code></pre>
+        </div>
+      </div>
+      
+      </div><p>That can be used to allow both <code>new</code> and regular syntax to work the same:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function User(name) {
+  if (!new.target) { // if you run me without new
+    return new User(name); // ...I will add new for you
+  }
+
+  this.name = name;
+}
+
+let john = User(&quot;John&quot;); // redirects call to new User
+alert(john.name); // John</code></pre>
+        </div>
+      </div>
+      
+      </div><p>This approach is sometimes used in libraries to make the syntax more flexible. Probably not a good thing to use everywhere though, because omitting <code>new</code> makes it a bit less obvious what’s going on. With <code>new</code> we all know that the new object is being created, that’s a good thing.</p>
+<h2><a class="main__anchor" name="return-from-constructors" href="#return-from-constructors">Return from constructors</a></h2><p>Usually, constructors do not have a <code>return</code> statement. Their task is to write all necessary stuff into <code>this</code>, and it automatically becomes the result.</p>
+<p>But if there is a <code>return</code> statement, then the rule is simple:</p>
+<ul>
+<li>If <code>return</code> is called with object, then it is returned instead of <code>this</code>.</li>
+<li>If <code>return</code> is called with a primitive, it’s ignored.</li>
+</ul>
+<p>In other words, <code>return</code> with an object returns that object, in all other cases <code>this</code> is returned.</p>
+<p>For instance, here <code>return</code> overrides <code>this</code> by returning an object:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function BigUser() {
+
+  this.name = &quot;John&quot;;
+
+  return { name: &quot;Godzilla&quot; };  // &lt;-- returns an object
+}
+
+alert( new BigUser().name );  // Godzilla, got that object ^^</code></pre>
+        </div>
+      </div>
+      
+      </div><p>And here’s an example with an empty <code>return</code> (or we could place a primitive after it, doesn’t matter):</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function SmallUser() {
+
+  this.name = &quot;John&quot;;
+
+  return; // finishes the execution, returns this
+
+  // ...
+
+}
+
+alert( new SmallUser().name );  // John</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Usually constructors don’t have a <code>return</code> statement. Here we mention the special behavior with returning objects mainly for the sake of completeness.</p>
+<div class="important important_smart">
+            <div class="important__header"><span class="important__type">Omitting parentheses</span></div>
+            <div class="important__content"><p>By the way, we can omit parentheses after <code>new</code>, if it has no arguments:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let user = new User; // &lt;-- no parentheses
+// same as
+let user = new User();</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Omitting parentheses here is not considered a “good style”, but the syntax is permitted by specification.</p>
+</div></div>
+<h2><a class="main__anchor" name="methods-in-constructor" href="#methods-in-constructor">Methods in constructor</a></h2><p>Using constructor functions to create objects gives a great deal of flexibility. The constructor function may have parameters that define how to construct the object, and what to put in it.</p>
+<p>Of course, we can add to <code>this</code> not only properties, but methods as well.</p>
+<p>For instance, <code>new User(name)</code> below creates an object with the given <code>name</code> and the method <code>sayHi</code>:</p>
+<div data-trusted="1" class="code-example" data-highlight-block="8-10">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function User(name) {
+  this.name = name;
+
+  this.sayHi = function() {
+    alert( &quot;My name is: &quot; + this.name );
+  };
+}
+
+let john = new User(&quot;John&quot;);
+
+john.sayHi(); // My name is: John
+
+/*
+john = {
+   name: &quot;John&quot;,
+   sayHi: function() { ... }
+}
+*/</code></pre>
+        </div>
+      </div>
+      
+      </div><h2><a class="main__anchor" name="summary" href="#summary">Summary</a></h2><ul>
+<li>Constructor functions or, briefly, constructors, are regular functions, but there’s a common agreement to name them with capital letter first.</li>
+<li>Constructor functions should only be called using <code>new</code>. Such a call implies a creation of empty <code>this</code> at the start and returning the populated one at the end.</li>
+</ul>
+<p>We can use constructor functions to make multiple similar objects.</p>
+<p>JavaScript provides constructor functions for many built-in language objects: like <code>Date</code> for dates, <code>Set</code> for sets and others that we plan to study.</p>
+<div class="important important_smart">
+            <div class="important__header"><span class="important__type">Objects, we’ll be back!</span></div>
+            <div class="important__content"><p>In this chapter we only cover the basics about objects and constructors. They are essential for learning more about data types and functions in the next chapters.</p>
+<p>After we learn that, in the chapter <a href="object-oriented-programming.html">Objects, classes, inheritance</a> we return to objects and cover them in-depth, including inheritance and classes.</p>
+</div></div>
+</div></article><div class="tasks"><h2 id="tasks" class="tasks__title"><a href="#tasks" class="main__anchor main__anchor_noicon tasks__title-anchor">Tasks</a></h2><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a href="#two-functions-one-object" name="two-functions-one-object" class="main__anchor">Two functions – one object</a></h3><a href="task/two-functions-one-object.html" target="_blank" class="task__open-link"></a></div><div class="task__header-note"><span title="How important is the task, from 1 to 5" class="task__importance">importance: 2</span></div><div class="task__content"><p>Is it possible to create functions <code>A</code> and <code>B</code> such as <code>new A()==new B()</code>?</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function A() { ... }
+function B() { ... }
+
+let a = new A;
+let b = new B;
+
+alert( a == b ); // true</code></pre>
+        </div>
+      </div>
+      
+      </div><p>If it is, then provide an example of their code.</p>
+<button type="button" class="task__solution">solution</button><div class="task__answer"><div class="task__answer-content"><p>Yes, it’s possible.</p>
+<p>If a function returns an object then <code>new</code> returns it instead of <code>this</code>.</p>
+<p>So thay can, for instance, return the same externally defined object <code>obj</code>:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let obj = {};
+
+function A() { return obj; }
+function B() { return obj; }
+
+alert( new A() == new B() ); // true</code></pre>
+        </div>
+      </div>
+      
+      </div></div><button type="button" title="close" class="close-button task__answer-close"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a href="#create-new-calculator" name="create-new-calculator" class="main__anchor">Create new Calculator</a></h3><a href="task/calculator-constructor.html" target="_blank" class="task__open-link"></a></div><div class="task__header-note"><span title="How important is the task, from 1 to 5" class="task__importance">importance: 5</span></div><div class="task__content"><p>Create a constructor function <code>Calculator</code> that creates objects with 3 methods:</p>
+<ul>
+<li><code>read()</code> asks for two values using <code>prompt</code> and remembers them in object properties.</li>
+<li><code>sum()</code> returns the sum of these properties.</li>
+<li><code>mul()</code> returns the multiplication product of these properties.</li>
+</ul>
+<p>For instance:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let calculator = new Calculator();
+calculator.read();
+
+alert( &quot;Sum=&quot; + calculator.sum() );
+alert( &quot;Mul=&quot; + calculator.mul() );</code></pre>
+        </div>
+      </div>
+      
+      </div><p><a href="#" onclick="event.preventDefault(); runDemo(this)">Run the demo</a></p><p><a href="http://plnkr.co/edit/vsilDmkdOZkftqI8eZIl?p=preview" target="_blank" data-plunk-id="vsilDmkdOZkftqI8eZIl">Open the sandbox with tests.</a></p><button type="button" class="task__solution">solution</button><div class="task__answer"><div class="task__answer-content"><div data-trusted="1" class="code-example" data-demo="1">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function Calculator() {
+
+  this.read = function() {
+    this.a = +prompt('a?', 0);
+    this.b = +prompt('b?', 0);
+  };
+
+  this.sum = function() {
+    return this.a + this.b;
+  };
+
+  this.mul = function() {
+    return this.a * this.b;
+  };
+}
+
+let calculator = new Calculator();
+calculator.read();
+
+alert( &quot;Sum=&quot; + calculator.sum() );
+alert( &quot;Mul=&quot; + calculator.mul() );</code></pre>
+        </div>
+      </div>
+      
+      </div><p><a href="http://plnkr.co/edit/adHC1ycmyjUICiSlsKAQ?p=preview" target="_blank" data-plunk-id="adHC1ycmyjUICiSlsKAQ">Open the solution with tests in the sandbox.</a></p></div><button type="button" title="close" class="close-button task__answer-close"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a href="#create-new-accumulator" name="create-new-accumulator" class="main__anchor">Create new Accumulator</a></h3><a href="task/accumulator.html" target="_blank" class="task__open-link"></a></div><div class="task__header-note"><span title="How important is the task, from 1 to 5" class="task__importance">importance: 5</span></div><div class="task__content"><p>Create a constructor function <code>Accumulator(startingValue)</code>.</p>
+<p>Object that it creates should:</p>
+<ul>
+<li>Store the “current value” in the property <code>value</code>. The starting value is set to the argument of the constructor <code>startingValue</code>.</li>
+<li>The <code>read()</code> method should use <code>prompt</code> to read a new number and add it to <code>value</code>.</li>
+</ul>
+<p>In other words, the <code>value</code> property is the sum of all user-entered values with the initial value  <code>startingValue</code>.</p>
+<p>Here’s the demo of the code:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let accumulator = new Accumulator(1); // initial value 1
+accumulator.read(); // adds the user-entered value
+accumulator.read(); // adds the user-entered value
+alert(accumulator.value); // shows the sum of these values</code></pre>
+        </div>
+      </div>
+      
+      </div><p><a href="#" onclick="event.preventDefault(); runDemo(this)">Run the demo</a></p><p><a href="http://plnkr.co/edit/uKdZnwR9KzNURvxZFzNs?p=preview" target="_blank" data-plunk-id="uKdZnwR9KzNURvxZFzNs">Open the sandbox with tests.</a></p><button type="button" class="task__solution">solution</button><div class="task__answer"><div class="task__answer-content"><div data-trusted="1" class="code-example" data-demo="1">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function Accumulator(startingValue) {
+  this.value = startingValue;
+
+  this.read = function() {
+    this.value += +prompt('How much to add?', 0);
+  };
+
+}
+
+let accumulator = new Accumulator(1);
+accumulator.read();
+accumulator.read();
+alert(accumulator.value);</code></pre>
+        </div>
+      </div>
+      
+      </div><p><a href="http://plnkr.co/edit/k4eKaquxqX68t7OTMnI6?p=preview" target="_blank" data-plunk-id="k4eKaquxqX68t7OTMnI6">Open the solution with tests in the sandbox.</a></p></div><button type="button" title="close" class="close-button task__answer-close"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a href="#create-an-extendable-calculator" name="create-an-extendable-calculator" class="main__anchor">Create an extendable calculator</a></h3><a href="task/calculator-extendable.html" target="_blank" class="task__open-link"></a></div><div class="task__header-note"><span title="How important is the task, from 1 to 5" class="task__importance">importance: 5</span></div><div class="task__content"><p>Create a constructor function <code>Calculator</code> that creates “extendable” calculator objects.</p>
+<p>The task consists of two parts.</p>
+<ol>
+<li>
+<p>First, implement the method <code>calculate(str)</code> that takes a string like <code>&quot;1 + 2&quot;</code> in the format “NUMBER operator NUMBER” (space-delimited) and returns the result. Should understand plus <code>+</code> and minus <code>-</code>.</p>
+<p>Usage example:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let calc = new Calculator;
+
+alert( calc.calculate(&quot;3 + 7&quot;) ); // 10</code></pre>
+        </div>
+      </div>
+      
+      </div></li>
+<li>
+<p>Then add the method <code>addOperator(name, func)</code> that teaches the calculator a new operation. It takes the operator <code>name</code> and the two-argument function <code>func(a,b)</code> that implements it.</p>
+<p>For instance, let’s add the multiplication <code>*</code>, division <code>/</code> and power <code>**</code>:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let powerCalc = new Calculator;
+powerCalc.addMethod(&quot;*&quot;, (a, b) =&gt; a * b);
+powerCalc.addMethod(&quot;/&quot;, (a, b) =&gt; a / b);
+powerCalc.addMethod(&quot;**&quot;, (a, b) =&gt; a ** b);
+
+let result = powerCalc.calculate(&quot;2 ** 3&quot;);
+alert( result ); // 8</code></pre>
+        </div>
+      </div>
+      
+      </div></li>
+</ol>
+<ul>
+<li>No brackets or complex expressions in this task.</li>
+<li>The numbers and the operator are delimited with exactly one space.</li>
+<li>There may be error handling if you’d like to add it.</li>
+</ul>
+<p><a href="http://plnkr.co/edit/vCf22OGYDXKjjzwkh0jc?p=preview" target="_blank" data-plunk-id="vCf22OGYDXKjjzwkh0jc">Open the sandbox with tests.</a></p><button type="button" class="task__solution">solution</button><div class="task__answer"><div class="task__answer-content"><ul>
+<li>Please note how methods are stored. They are simply added to the internal object.</li>
+<li>All tests and numeric conversions are done in the <code>calculate</code> method. In future it may be extended to support more complex expressions.</li>
+</ul>
+<p><a href="http://plnkr.co/edit/KAgnUzk2uCspMmJIBZqN?p=preview" target="_blank" data-plunk-id="KAgnUzk2uCspMmJIBZqN">Open the solution with tests in the sandbox.</a></p></div><button type="button" title="close" class="close-button task__answer-close"></button></div></div></div></div></div><!--  include /blocks/banner-bottom--><!--if lang == 'en'--><!--  include /blocks/banner-bottom.en--></div><div class="page__nav-wrap"><a href="object-toprimitive.html" data-tooltip="Object to primitive conversion" class="page__nav page__nav_prev"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Previous lesson</span></a><a href="data-types.html" data-tooltip="Data types" class="page__nav page__nav_next"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Next lesson</span></a></div><div class="article-tablet-foot tablet-only"><div class="article-tablet-foot__layout"><div class="share-icons"><span class="share-icons__title">Share</span><a href="https://twitter.com/share?url=https%3A%2F%2Fjavascript.info%2Fconstructor-new" class="share share_tw"></a><a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fjavascript.info%2Fconstructor-new" class="share share_fb"></a><a href="https://plus.google.com/share?url=https%3A%2F%2Fjavascript.info%2Fconstructor-new" class="share share_gp"></a><a href="https://vkontakte.ru/share.php?url=https%3A%2F%2Fjavascript.info%2Fconstructor-new" class="share share_vk"></a></div><div class="article-tablet-foot__map"><a href="tutorial/map.html" data-action="tutorial-map" class="map"><span class="map__text">Tutorial map</span></a></div></div></div><div id="comments" class="comments"><div class="comments__header"><h2 class="comments__header-title"><a href="#comments" name="comments">Comments</a></h2><div class="comments__read-before"><span class="comments__read-before-link">read this before commenting…</span><div class="comments__read-before-popup"><div class="comments__read-before-popup-i"><ul><li>You're welcome to post additions, questions to the articles and answers to them.</li><li>To insert a few words of code, use the <code>&lt;code&gt;</code> tag, for several lines – use <code>&lt;pre&gt;</code>, for more than 10 lines – use a sandbox (<a href='http://plnkr.co/edit/?p=preview'>plnkr</a>, <a href='http://jsbin.com/'>JSBin</a>, <a href='http://codepen.io/'>codepen</a>…)</li><li>If you can't understand something in the article – please elaborate.</li></ul></div></div></div></div></div><div id="disqus_thread"></div><script>var disqus_config = function() { if (!this.page) this.page = {}; Object.assign(this.page, {"url":"https:\/\/javascript.info\/constructor-new","identifier":"\/constructor-new","title":"Constructor, operator \"new\""}); };</script><script>var disqus_shortname = "javascriptinfo";</script><script>var disqus_enabled = true;</script></main></div><div class="page__sidebar sidebar sidebar_sticky-footer"><button data-sidebar-toggle class="sidebar__toggle"></button><a href="tutorial/map.html" data-action="tutorial-map" data-tooltip="Tutorial map" class="map"></a><div class="sidebar__inner"><div class="sidebar__content"><div class="sidebar__section"><h4 class="sidebar__section-title">Chapter</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a href="object-basics.html" class="sidebar__link">Objects: the basics</a></li></ul></nav></div><div class="sidebar__section"><h4 class="sidebar__section-title">Lesson navigation</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a href="#constructor-function" class="sidebar__link">Constructor function</a></li><li class="sidebar__navigation-link"><a href="#dual-syntax-constructors-new-target" class="sidebar__link">Dual-syntax constructors: new.target</a></li><li class="sidebar__navigation-link"><a href="#return-from-constructors" class="sidebar__link">Return from constructors</a></li><li class="sidebar__navigation-link"><a href="#methods-in-constructor" class="sidebar__link">Methods in constructor</a></li><li class="sidebar__navigation-link"><a href="#summary" class="sidebar__link">Summary</a></li></ul></nav></div><div class="sidebar__section"><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a href="#tasks" class="sidebar__link">Tasks (4)</a></li><li class="sidebar__navigation-link"><a href="#comments" class="sidebar__link">Comments</a></li></ul></nav></div><div class="sidebar__section"><div class="sidebar__section-title">Share</div><a href="https://twitter.com/share?url=https%3A%2F%2Fjavascript.info%2Fconstructor-new" class="share share_tw sidebar__share"></a><a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fjavascript.info%2Fconstructor-new" class="share share_fb sidebar__share"></a><a href="https://plus.google.com/share?url=https%3A%2F%2Fjavascript.info%2Fconstructor-new" class="share share_gp sidebar__share"></a></div><div class="sidebar__section"><a href="https://github.com/iliakan/javascript-tutorial-en/tree/master/1-js/04-object-basics/06-constructor-new/article.md" class="sidebar__link">Edit on Github</a></div></div></div></div></div></div><div class="page-footer"><div class="page-footer__left"><ul class="page-footer__list"><li class="page-footer__item">©&nbsp;2007—2017&nbsp; Ilya Kantor</li><li class="page-footer__item"><a href="about.html#contact-us" class="page-footer__link">contact us</a></li><li class="page-footer__item"><a href="about.html" class="page-footer__link">about the project</a></li><li class="page-footer__item"><a href="https://learn.javascript.ru/" class="page-footer__link">RU</a> / EN</li></ul></div><div class="page-footer__right"><ul class="page-footer__list"><li class="page-footer__item">powered by <a rel="nofollow" href="http://nodejs.org/" class="page-footer__link">node.js</a>&nbsp;&amp;&nbsp;<a rel="nofollow" href="http://github.com/iliakan/javascript-tutorial-en" class="page-footer__link">open source</a></li></ul></div></div></body>
+<!-- Mirrored from javascript.info/constructor-new by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 30 Nov 2017 15:28:03 GMT -->
+</html>

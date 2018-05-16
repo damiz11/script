@@ -1,0 +1,388 @@
+<!DOCTYPE html><html lang="en">
+<!-- Mirrored from javascript.info/property-descriptors by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 30 Nov 2017 15:28:28 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><script>window.currentUser = null;</script><title itemprop="name">Property flags and descriptors</title><meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, minimum-scale=1.0"><meta name="apple-mobile-web-app-capable" content="yes"><script>if (window.devicePixelRatio > 1) document.cookie = 'pixelRatio=' + window.devicePixelRatio + ';path=/;expires=Tue, 19 Jan 2038 03:14:07 GMT';</script><link href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700%7COpen+Sans+Condensed:700&amp;subset=latin,latin-ext,cyrillic,cyrillic-ext" rel="stylesheet"><link rel="apple-touch-icon-precomposed" href="img/favicon/apple-touch-icon-precomposed.png"><link rel="canonical" href="property-descriptors.html"><meta name="msapplication-TileColor" content="#222A2C"><meta name="msapplication-TileImage" content="/img/favicon/tileicon.png"><!-- favicon the rest--><link rel="icon" href="img/favicon/favicon.png"><meta itemprop="image" content="https://javascript.info/img/site_preview_en_512x512.png"><meta property="og:title" content="Property flags and descriptors"><meta property="og:image" content="https://javascript.info/img/site_preview_en_1200x630.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="fb:admins" content="100001562528165"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Property flags and descriptors"><meta name="twitter:site" content="@iliakan"><meta name="twitter:creator" content="@iliakan"><meta name="twitter:image" content="https://javascript.info/img/site_preview_en_512x512.png"><link href="pack/styles.da59a89b28153875791083e4a8c5adb3.css" rel="stylesheet"><link rel="prev" href="object-oriented-programming.html"><link rel="next" href="property-accessors.html"><script>window.GA_ID = "UA-2056213-15";</script><script>window.YANDEX_METRIKA_ID = 32184394;</script><script>window.GoogleAnalyticsObject="ga",window.ga=function(){window.ga.q.push(arguments)},window.ga.q=[],window.ga.l=Date.now(),ga("create",GA_ID,"auto"),window.currentUser&&ga("set","&uid",currentUser.id),window.addEventListener("error",function(e){var r=(e.filename||e.errorUrl)+": "+(e.lineno||e.errorLine),n=e.stack||e.error&&e.error.stack;ga("send","exception",{exDescription:e.message+" "+r+" "+n,exFatal:!0})});</script><script src="https://www.google-analytics.com/analytics.js" async></script><script>ga('send', 'pageview');</script><script>window.metrika={reachGoal:function(){}},window.yandex_metrika_callbacks=[function(){try{window.metrika=new Ya.Metrika({id:YANDEX_METRIKA_ID,webvisor:!0,clickmap:!0,params:{user:window.currentUser&&window.currentUser.id}}),metrika.trackLinks({delay:150}),window.addEventListener("error",function(r){window.metrika.reachGoal("JSERROR",{src:(r.filename||r.errorUrl)+": "+(r.lineno||r.errorLine),stack:r.stack||r.error&&r.error.stack,message:r.message})})}catch(r){}}];</script><script src="http://mc.yandex.ru/metrika/watch.js" async></script><script>window.RECAPTCHA_ID = "6Lf9NyETAAAAACZlg-a9Us2SxvYbeVC1ROWaWv4O";</script><script src="initc4ca.js?1"></script><script src="pack/head.688d4fe7c4cf54e23737.js" defer></script><meta property="og:title" content="Property flags and descriptors"><meta property="og:type" content="article"><script src="pack/tutorial.688d4fe7c4cf54e23737.js" defer></script><script src="pack/footer.688d4fe7c4cf54e23737.js" defer></script></head><body class="no-icons"><script>window.fontTest();</script><div class="page-wrapper page-wrapper_sidebar_on"><!--[if lt IE 10]><div style="color:red;text-align:center">Sorry, IE&lt;10 is not supported, please use a newer browser.</div><![endif]--><div class="sitetoolbar sitetoolbar_tutorial"><!-- include ./notification-stripe--><div class="sitetoolbar__content"><div class="sitetoolbar__logo-wrap"><a href="index.html" class="sitetoolbar__link sitetoolbar__link_logo"><img src="img/sitetoolbar__logo_en.svg" width="200" class="sitetoolbar__logo sitetoolbar__logo_normal" alt=""><img src="img/sitetoolbar__logo_small_en.svg" width="70" class="sitetoolbar__logo sitetoolbar__logo_small" alt=""><script>Array.prototype.forEach.call(document.querySelectorAll("img.sitetoolbar__logo"),function(e){var t=document.createElement("object");t.type="image/svg+xml",t.className=e.className,t.style.cssText="left:0;top:0;position:absolute",t.onload=function(){t.onload=null,e.style.visibility="hidden"},t.data=e.src,e.parentNode.insertBefore(t,e)});</script></a></div><div class="sitetoolbar__nav-toggle-wrap"><button type="button" class="sitetoolbar__nav-toggle"></button></div><nav class="sitetoolbar__sections"><ul class="sitetoolbar__sections-list"></ul></nav><div class="sitetoolbar__book-wrap"><a href="ebook.html" class="buy-book-button"><span class="buy-book-button__extra-text">Buy</span>EPUB/PDF</a></div><div class="sitetoolbar__login-wrap"><button data-action-login class="sitetoolbar__login sitetoolbar__login_unready"></button></div><div class="sitetoolbar__search-wrap"><div class="sitetoolbar__search-content"><form method="GET" action="http://javascript.info/search" class="sitetoolbar__search"><button type="button" class="sitetoolbar__search-toggle"></button><div class="sitetoolbar__search-input"><div class="text-input"><input name="query" placeholder="Search on Javascript.info" class="text-input__control" type="text"></div><button type="submit" class="sitetoolbar__find">Search</button></div></form></div></div></div><!-- todo: en variant--><div class="tablet-menu"><div class="tablet-menu__line"><div class="tablet-menu__content"><form action="http://javascript.info/search/" class="tablet-menu-search"><input type="search" name="query" placeholder="Search in the tutorial" required class="tablet-menu-search__input"><button type="submit" name="type" value="articles" class="tablet-menu-search__button">Search</button></form></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><a href="tutorial/map.html" data-action="tutorial-map" class="map"><span class="map__text">Tutorial map</span></a></div></div><!--+e.line--><!--  +e.content--><!--    +b("a").tablet-ebook(href="/ebook")--><!--      +e("span").text Купить учебник--><!--      +e("span").note (EPUB + PDF)--><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="share-icons"><span class="share-icons__title">Share</span><a href="https://twitter.com/share?url=https%3A%2F%2Fjavascript.info%2Fproperty-descriptors" class="share share_tw"></a><a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fjavascript.info%2Fproperty-descriptors" class="share share_fb"></a><a href="https://plus.google.com/share?url=https%3A%2F%2Fjavascript.info%2Fproperty-descriptors" class="share share_gp"></a><a href="https://vkontakte.ru/share.php?url=https%3A%2F%2Fjavascript.info%2Fproperty-descriptors" class="share share_vk"></a></div></div></div></div><progress data-sticky value="55" max="67" data-tooltip="Lesson 55 of 67" class="tutorial-progress"></progress></div><div class="page page_sidebar_on"><script>if(localStorage.noSidebar){document.querySelector(".page").classList.remove("page_sidebar_on");var pageWrapper=document.querySelector(".page-wrapper");pageWrapper&&pageWrapper.classList.remove("page-wrapper_sidebar_on")}setTimeout(function(){document.querySelector(".page").classList.add("page_sidebar-animation-on")},0);</script><div class="page__inner"><main class="main main_width-limit"><header class="main__header"><ol class="breadcrumbs"><li itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemref="breadcrumb-1" class="breadcrumbs__item breadcrumbs__item_home"><a href="index.html" itemprop="url" class="breadcrumbs__link"><span itemprop="title" class="breadcrumbs__hidden-text">Учебник</span></a></li><li id="breadcrumb-1" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemref="breadcrumb-2" itemprop="child" class="breadcrumbs__item"><a href="js.html" itemprop="url" class="breadcrumbs__link"><span itemprop="title">The JavaScript language</span></a></li><li id="breadcrumb-2" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemprop="child" class="breadcrumbs__item"><a href="object-oriented-programming.html" itemprop="url" class="breadcrumbs__link"><span itemprop="title">Objects, classes, inheritance</span></a></li></ol><h1 class="main__header-title">Property flags and descriptors</h1></header><div class="content"><article itemscope itemtype="http://schema.org/TechArticle"><meta itemprop="name" content="Property flags and descriptors"><div itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="email" content="iliakan@gmail.com"><meta itemprop="name" content="Ilya Kantor"></div><div itemprop="articleBody"><p>As we know, objects can store properties.</p>
+<p>Till now, a property was a simple “key-value” pair to us. But an object property is actually more complex and tunable thing.</p>
+<cut>
+<h2><a class="main__anchor" name="property-flags" href="#property-flags">Property flags</a></h2><p>Object properties, besides a <strong><code>value</code></strong>, have three special attributes (so-called “flags”):</p>
+<ul>
+<li><strong><code>writable</code></strong> – if <code>true</code>, can be changed, otherwise it’s read-only.</li>
+<li><strong><code>enumerable</code></strong> – if <code>true</code>, then listed in loops, otherwise not listed.</li>
+<li><strong><code>configurable</code></strong> – if <code>true</code>, the property can be deleted and these attributes can be modified, otherwise not.</li>
+</ul>
+<p>We didn’t see them yet, because generally they do not show up. When we create a property “the usual way”, all of them are <code>true</code>. But we also can change them anytime.</p>
+<p>First, let’s see how to get those flags.</p>
+<p>The method <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/getOwnPropertyDescriptor">Object.getOwnPropertyDescriptor</a> allows to query the <em>full</em> information about a property.</p>
+<p>The syntax is:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let descriptor = Object.getOwnPropertyDescriptor(obj, propertyName);</code></pre>
+        </div>
+      </div>
+      
+      </div><dl>
+<dt><code>obj</code></dt>
+<dd>The object to get information from.</dd>
+<dt><code>propertyName</code></dt>
+<dd>The name of the property.</dd>
+</dl>
+<p>The returned value is a so-called “property descriptor” object: it contains the value and all the flags.</p>
+<p>For instance:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let user = {
+  name: &quot;John&quot;
+};
+
+let descriptor = Object.getOwnPropertyDescriptor(user, 'name');
+
+alert( JSON.stringify(descriptor, null, 2 ) );
+/* property descriptor:
+{
+  &quot;value&quot;: &quot;John&quot;,
+  &quot;writable&quot;: true,
+  &quot;enumerable&quot;: true,
+  &quot;configurable&quot;: true
+}
+*/</code></pre>
+        </div>
+      </div>
+      
+      </div><p>To change the flags, we can use <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty">Object.defineProperty</a>.</p>
+<p>The syntax is:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">Object.defineProperty(obj, propertyName, descriptor)</code></pre>
+        </div>
+      </div>
+      
+      </div><dl>
+<dt><code>obj</code>, <code>propertyName</code></dt>
+<dd>The object and property to work on.</dd>
+<dt><code>descriptor</code></dt>
+<dd>Property descriptor to apply.</dd>
+</dl>
+<p>If the property exists, <code>defineProperty</code> updates its flags. Otherwise, it creates the property with the given value and flags; in that case, if a flag is not supplied, it is assumed <code>false</code>.</p>
+<p>For instance, here a property <code>name</code> is created with all falsy flags:</p>
+<div data-trusted="1" class="code-example" data-highlight-block="2-4,12-14">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let user = {};
+
+Object.defineProperty(user, &quot;name&quot;, {
+  value: &quot;John&quot;
+});
+
+let descriptor = Object.getOwnPropertyDescriptor(user, 'name');
+
+alert( JSON.stringify(descriptor, null, 2 ) );
+/*
+{
+  &quot;value&quot;: &quot;John&quot;,
+  &quot;writable&quot;: false,
+  &quot;enumerable&quot;: false,
+  &quot;configurable&quot;: false
+}
+ */</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Compare it with “normally created” <code>user.name</code> above: now all flags are falsy. If that’s not what we want then we’d better set them to <code>true</code> in <code>descriptor</code>.</p>
+<p>Now let’s see effects of the flags by example.</p>
+<h2><a class="main__anchor" name="read-only" href="#read-only">Read-only</a></h2><p>Let’s make <code>user.name</code> read-only by changing <code>writable</code> flag:</p>
+<div data-trusted="1" class="code-example" data-highlight-block="5-5,8-8">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let user = {
+  name: &quot;John&quot;
+};
+
+Object.defineProperty(user, &quot;name&quot;, {
+  writable: false
+});
+
+user.name = &quot;Pete&quot;; // Error: Cannot assign to read only property 'name'...</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Now no one can change the name of our user, unless he applies his own <code>defineProperty</code> to override ours.</p>
+<p>Here’s the same operation, but for the case when a property doesn’t exist:</p>
+<div data-trusted="1" class="code-example" data-highlight-block="3-6">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let user = { };
+
+Object.defineProperty(user, &quot;name&quot;, {
+  value: &quot;Pete&quot;,
+  // for new properties need to explicitly list what's true
+  enumerable: true,
+  configurable: true
+});
+
+alert(user.name); // Pete
+user.name = &quot;Alice&quot;; // Error</code></pre>
+        </div>
+      </div>
+      
+      </div><h2><a class="main__anchor" name="non-enumerable" href="#non-enumerable">Non-enumerable</a></h2><p>Now let’s add a custom <code>toString</code> to <code>user</code>.</p>
+<p>Normally, a built-in <code>toString</code> for objects is non-enumerable, it does not show up in <code>for..in</code>. But if we add <code>toString</code> of our own, then by default it shows up in <code>for..in</code>, like this:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let user = {
+  name: &quot;John&quot;,
+  toString() {
+    return this.name;
+  }
+};
+
+// By default, both our properties are listed:
+for (let key in user) alert(key); // name, toString</code></pre>
+        </div>
+      </div>
+      
+      </div><p>If we don’t like it, then we can set <code>enumerable:false</code>. Then it won’t appear in <code>for..in</code> loop, just like the built-in one:</p>
+<div data-trusted="1" class="code-example" data-highlight-block="8-8,11-11">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let user = {
+  name: &quot;John&quot;,
+  toString() {
+    return this.name;
+  }
+};
+
+Object.defineProperty(user, &quot;toString&quot;, {
+  enumerable: false
+});
+
+// Now our toString disappears:
+for (let key in user) alert(key); // name</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Non-enumerable properties are also excluded from <code>Object.keys</code>:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">alert(Object.keys(user)); // name</code></pre>
+        </div>
+      </div>
+      
+      </div><h2><a class="main__anchor" name="non-configurable" href="#non-configurable">Non-configurable</a></h2><p>The non-configurable flag (<code>configurable:false</code>) is sometimes preset for built-in objects and properties.</p>
+<p>A non-configurable property can not be deleted or altered with <code>defineProperty</code>.</p>
+<p>For instance, <code>Math.PI</code> is both read-only, non-enumerable and non-configurable:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let descriptor = Object.getOwnPropertyDescriptor(Math, 'PI');
+
+alert( JSON.stringify(descriptor, null, 2 ) );
+/*
+{
+  &quot;value&quot;: 3.141592653589793,
+  &quot;writable&quot;: false,
+  &quot;enumerable&quot;: false,
+  &quot;configurable&quot;: false
+}
+*/</code></pre>
+        </div>
+      </div>
+      
+      </div><p>So, a programmer is unable to change the value of <code>Math.PI</code> or overwrite it.</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">Math.PI = 3; // Error
+
+// delete Math.PI won't work either</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Making a property non-configurable is a one-way road. We cannot change it back, because <code>defineProperty</code> doesn’t work on non-configurable properties.</p>
+<p>Here we are making <code>user.name</code> a “forever sealed” constant:</p>
+<div data-trusted="1" class="code-example" data-highlight-block="8-13">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let user = { };
+
+Object.defineProperty(user, &quot;name&quot;, {
+  value: &quot;John&quot;,
+  writable: false,
+  configurable: false
+});
+
+// won't be able to change user.name or its flags
+// all this won't work:
+//   user.name = &quot;Pete&quot;
+//   delete user.name
+//   defineProperty(user, &quot;name&quot;, ...)
+Object.defineProperty(user, &quot;name&quot;, {writable: true}); // Error</code></pre>
+        </div>
+      </div>
+      
+      </div><div class="important important_smart">
+            <div class="important__header"><span class="important__type">Errors appear only in use strict</span></div>
+            <div class="important__content"><p>In the non-strict mode, no errors occur when writing to read-only properties and such. But the operation still won’t succeed. Flag-violating actions are just silently ignored in non-strict.</p>
+</div></div>
+<h2><a class="main__anchor" name="object-defineproperties" href="#object-defineproperties">Object.defineProperties</a></h2><p>There’s a method <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperties">Object.defineProperties(obj, descriptors)</a> that allows to define many properties at once.</p>
+<p>The syntax is:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">Object.defineProperties(obj, {
+  prop1: descriptor1,
+  prop2: descriptor2
+  // ...
+});</code></pre>
+        </div>
+      </div>
+      
+      </div><p>For instance:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">Object.defineProperties(user, {
+  name: { value: &quot;John&quot;, writable: false },
+  surname: { value: &quot;Smith&quot;, writable: false },
+  // ...
+});</code></pre>
+        </div>
+      </div>
+      
+      </div><p>So, we can set many properties at once.</p>
+<h2><a class="main__anchor" name="object-getownpropertydescriptors" href="#object-getownpropertydescriptors">Object.getOwnPropertyDescriptors</a></h2><p>To get all property descriptors at once, we can use the method <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/getOwnPropertyDescriptors">Object.getOwnPropertyDescriptors(obj)</a>.</p>
+<p>Together with <code>Object.defineProperties</code> it can be used as a “flags-aware” way of cloning an object:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let clone = Object.defineProperties({}, Object.getOwnPropertyDescriptors(obj));</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Normally when we clone an object, we use an assignment to copy properties, like this:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">for (let key in user) {
+  clone[key] = user[key]
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>…But that does not copy flags. So if we want a “better” clone then <code>Object.defineProperties</code> is preferred.</p>
+<p>Another difference is that <code>for..in</code> ignores symbolic properties, but <code>Object.getOwnPropertyDescriptors</code> returns <em>all</em> property descriptors including symbolic ones.</p>
+<h2><a class="main__anchor" name="sealing-an-object-globally" href="#sealing-an-object-globally">Sealing an object globally</a></h2><p>Property descriptors work at the level of individual properties.</p>
+<p>There are also methods that limit access to the <em>whole</em> object:</p>
+<dl>
+<dt><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/preventExtensions">Object.preventExtensions(obj)</a></dt>
+<dd>Forbids to add properties to the object.</dd>
+<dt><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/seal">Object.seal(obj)</a></dt>
+<dd>Forbids to add/remove properties, sets for all existing properties <code>configurable: false</code>.</dd>
+<dt><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/freeze">Object.freeze(obj)</a></dt>
+<dd>Forbids to add/remove/change properties, sets for all existing properties <code>configurable: false, writable: false</code>.</dd>
+</dl>
+<p>And also there are tests for them:</p>
+<dl>
+<dt><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/isExtensible">Object.isExtensible(obj)</a></dt>
+<dd>Returns <code>false</code> if adding properties is forbidden, otherwise <code>true</code>.</dd>
+<dt><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/isSealed">Object.isSealed(obj)</a></dt>
+<dd>Returns <code>true</code> if adding/removing properties is forbidden, and all existing properties have <code>configurable: false</code>.</dd>
+<dt><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/isFrozen">Object.isFrozen(obj)</a></dt>
+<dd>Returns <code>true</code> if adding/removing/changing properties is forbidden, and all current properties are <code>configurable: false, writable: false</code>.</dd>
+</dl>
+<p>These methods are rarely used in practice.</p>
+</div></article><!--  include /blocks/banner-bottom--><!--if lang == 'en'--><!--  include /blocks/banner-bottom.en--></div><div class="page__nav-wrap"><a href="object-oriented-programming.html" data-tooltip="Objects, classes, inheritance" class="page__nav page__nav_prev"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Previous lesson</span></a><a href="property-accessors.html" data-tooltip="Property getters and setters" class="page__nav page__nav_next"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Next lesson</span></a></div><div class="article-tablet-foot tablet-only"><div class="article-tablet-foot__layout"><div class="share-icons"><span class="share-icons__title">Share</span><a href="https://twitter.com/share?url=https%3A%2F%2Fjavascript.info%2Fproperty-descriptors" class="share share_tw"></a><a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fjavascript.info%2Fproperty-descriptors" class="share share_fb"></a><a href="https://plus.google.com/share?url=https%3A%2F%2Fjavascript.info%2Fproperty-descriptors" class="share share_gp"></a><a href="https://vkontakte.ru/share.php?url=https%3A%2F%2Fjavascript.info%2Fproperty-descriptors" class="share share_vk"></a></div><div class="article-tablet-foot__map"><a href="tutorial/map.html" data-action="tutorial-map" class="map"><span class="map__text">Tutorial map</span></a></div></div></div><div id="comments" class="comments"><div class="comments__header"><h2 class="comments__header-title"><a href="#comments" name="comments">Comments</a></h2><div class="comments__read-before"><span class="comments__read-before-link">read this before commenting…</span><div class="comments__read-before-popup"><div class="comments__read-before-popup-i"><ul><li>You're welcome to post additions, questions to the articles and answers to them.</li><li>To insert a few words of code, use the <code>&lt;code&gt;</code> tag, for several lines – use <code>&lt;pre&gt;</code>, for more than 10 lines – use a sandbox (<a href='http://plnkr.co/edit/?p=preview'>plnkr</a>, <a href='http://jsbin.com/'>JSBin</a>, <a href='http://codepen.io/'>codepen</a>…)</li><li>If you can't understand something in the article – please elaborate.</li></ul></div></div></div></div></div><div id="disqus_thread"></div><script>var disqus_config = function() { if (!this.page) this.page = {}; Object.assign(this.page, {"url":"https:\/\/javascript.info\/property-descriptors","identifier":"\/property-descriptors","title":"Property flags and descriptors"}); };</script><script>var disqus_shortname = "javascriptinfo";</script><script>var disqus_enabled = true;</script></main></div><div class="page__sidebar sidebar sidebar_sticky-footer"><button data-sidebar-toggle class="sidebar__toggle"></button><a href="tutorial/map.html" data-action="tutorial-map" data-tooltip="Tutorial map" class="map"></a><div class="sidebar__inner"><div class="sidebar__content"><div class="sidebar__section"><h4 class="sidebar__section-title">Chapter</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a href="object-oriented-programming.html" class="sidebar__link">Objects, classes, inheritance</a></li></ul></nav></div><div class="sidebar__section"><h4 class="sidebar__section-title">Lesson navigation</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a href="#property-flags" class="sidebar__link">Property flags</a></li><li class="sidebar__navigation-link"><a href="#read-only" class="sidebar__link">Read-only</a></li><li class="sidebar__navigation-link"><a href="#non-enumerable" class="sidebar__link">Non-enumerable</a></li><li class="sidebar__navigation-link"><a href="#non-configurable" class="sidebar__link">Non-configurable</a></li><li class="sidebar__navigation-link"><a href="#object-defineproperties" class="sidebar__link">Object.defineProperties</a></li><li class="sidebar__navigation-link"><a href="#object-getownpropertydescriptors" class="sidebar__link">Object.getOwnPropertyDescriptors</a></li><li class="sidebar__navigation-link"><a href="#sealing-an-object-globally" class="sidebar__link">Sealing an object globally</a></li></ul></nav></div><div class="sidebar__section"><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a href="#comments" class="sidebar__link">Comments</a></li></ul></nav></div><div class="sidebar__section"><div class="sidebar__section-title">Share</div><a href="https://twitter.com/share?url=https%3A%2F%2Fjavascript.info%2Fproperty-descriptors" class="share share_tw sidebar__share"></a><a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fjavascript.info%2Fproperty-descriptors" class="share share_fb sidebar__share"></a><a href="https://plus.google.com/share?url=https%3A%2F%2Fjavascript.info%2Fproperty-descriptors" class="share share_gp sidebar__share"></a></div><div class="sidebar__section"><a href="https://github.com/iliakan/javascript-tutorial-en/tree/master/1-js/07-object-oriented-programming/01-property-descriptors/article.md" class="sidebar__link">Edit on Github</a></div></div></div></div></div></div><div class="page-footer"><div class="page-footer__left"><ul class="page-footer__list"><li class="page-footer__item">©&nbsp;2007—2017&nbsp; Ilya Kantor</li><li class="page-footer__item"><a href="about.html#contact-us" class="page-footer__link">contact us</a></li><li class="page-footer__item"><a href="about.html" class="page-footer__link">about the project</a></li><li class="page-footer__item"><a href="https://learn.javascript.ru/" class="page-footer__link">RU</a> / EN</li></ul></div><div class="page-footer__right"><ul class="page-footer__list"><li class="page-footer__item">powered by <a rel="nofollow" href="http://nodejs.org/" class="page-footer__link">node.js</a>&nbsp;&amp;&nbsp;<a rel="nofollow" href="http://github.com/iliakan/javascript-tutorial-en" class="page-footer__link">open source</a></li></ul></div></div></body>
+<!-- Mirrored from javascript.info/property-descriptors by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 30 Nov 2017 15:28:28 GMT -->
+</html>

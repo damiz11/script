@@ -1,0 +1,76 @@
+<!DOCTYPE html><html lang="en">
+<!-- Mirrored from javascript.info/task/move-ball-field by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 30 Nov 2017 15:31:15 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><script>window.currentUser = null;</script><title itemprop="name">Move the ball across the field</title><meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, minimum-scale=1.0"><meta name="apple-mobile-web-app-capable" content="yes"><script>if (window.devicePixelRatio > 1) document.cookie = 'pixelRatio=' + window.devicePixelRatio + ';path=/;expires=Tue, 19 Jan 2038 03:14:07 GMT';</script><link href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700%7COpen+Sans+Condensed:700&amp;subset=latin,latin-ext,cyrillic,cyrillic-ext" rel="stylesheet"><link rel="apple-touch-icon-precomposed" href="../img/favicon/apple-touch-icon-precomposed.png"><link rel="canonical" href="move-ball-field.html"><meta name="msapplication-TileColor" content="#222A2C"><meta name="msapplication-TileImage" content="/img/favicon/tileicon.png"><!-- favicon the rest--><link rel="icon" href="../img/favicon/favicon.png"><meta itemprop="image" content="https://javascript.info/img/site_preview_en_512x512.png"><meta property="og:title" content="Move the ball across the field"><meta property="og:image" content="https://javascript.info/img/site_preview_en_1200x630.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="fb:admins" content="100001562528165"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Move the ball across the field"><meta name="twitter:site" content="@iliakan"><meta name="twitter:creator" content="@iliakan"><meta name="twitter:image" content="https://javascript.info/img/site_preview_en_512x512.png"><link href="../pack/styles.da59a89b28153875791083e4a8c5adb3.css" rel="stylesheet"><script>window.GA_ID = "UA-2056213-15";</script><script>window.YANDEX_METRIKA_ID = 32184394;</script><script>window.GoogleAnalyticsObject="ga",window.ga=function(){window.ga.q.push(arguments)},window.ga.q=[],window.ga.l=Date.now(),ga("create",GA_ID,"auto"),window.currentUser&&ga("set","&uid",currentUser.id),window.addEventListener("error",function(e){var r=(e.filename||e.errorUrl)+": "+(e.lineno||e.errorLine),n=e.stack||e.error&&e.error.stack;ga("send","exception",{exDescription:e.message+" "+r+" "+n,exFatal:!0})});</script><script src="https://www.google-analytics.com/analytics.js" async></script><script>ga('send', 'pageview');</script><script>window.metrika={reachGoal:function(){}},window.yandex_metrika_callbacks=[function(){try{window.metrika=new Ya.Metrika({id:YANDEX_METRIKA_ID,webvisor:!0,clickmap:!0,params:{user:window.currentUser&&window.currentUser.id}}),metrika.trackLinks({delay:150}),window.addEventListener("error",function(r){window.metrika.reachGoal("JSERROR",{src:(r.filename||r.errorUrl)+": "+(r.lineno||r.errorLine),stack:r.stack||r.error&&r.error.stack,message:r.message})})}catch(r){}}];</script><script src="http://mc.yandex.ru/metrika/watch.js" async></script><script>window.RECAPTCHA_ID = "6Lf9NyETAAAAACZlg-a9Us2SxvYbeVC1ROWaWv4O";</script><script src="../initc4ca.js?1"></script><script src="../pack/head.688d4fe7c4cf54e23737.js" defer></script><script src="../pack/tutorial.688d4fe7c4cf54e23737.js" defer></script><script src="../pack/footer.688d4fe7c4cf54e23737.js" defer></script></head><body class="no-icons"><script>window.fontTest();</script><div class="page-wrapper"><div class="page"><script>if(localStorage.noSidebar){document.querySelector(".page").classList.remove("page_sidebar_on");var pageWrapper=document.querySelector(".page-wrapper");pageWrapper&&pageWrapper.classList.remove("page-wrapper_sidebar_on")}setTimeout(function(){document.querySelector(".page").classList.add("page_sidebar-animation-on")},0);</script><div class="page__inner"><main class="main main_width-limit"><div style="display:none" class="breadcrumbs"><li itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemref="breadcrumb-1" class="breadcrumbs__item breadcrumbs__item_home"><a href="../index.html" itemprop="url" class="breadcrumbs__link"><span itemprop="title" class="breadcrumbs__hidden-text">Учебник</span></a></li><li id="breadcrumb-1" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemref="breadcrumb-2" itemprop="child" class="breadcrumbs__item"><a href="../ui.html" itemprop="url" class="breadcrumbs__link"><span itemprop="title">Browser: Document, Events, Interfaces</span></a></li><li id="breadcrumb-2" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemref="breadcrumb-3" itemprop="child" class="breadcrumbs__item"><a href="../events.html" itemprop="url" class="breadcrumbs__link"><span itemprop="title">Introduction into Events</span></a></li><li id="breadcrumb-3" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemprop="child" class="breadcrumbs__item"><a href="../introduction-browser-events.html" itemprop="url" class="breadcrumbs__link"><span itemprop="title">Introduction to browser events</span></a></li></div><div itemscope itemtype="http://schema.org/TechArticle" class="task-single"><meta itemprop="name" content="Move the ball across the field"><div itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="email" content="iliakan@gmail.com"><meta itemprop="name" content="Ilya Kantor"></div><a href="../introduction-browser-events.html" class="task-single__back"><span>Back to the lesson</span></a><div itemprop="articleBody" class="task task-single__task"><div class="task__header"><div class="task__title-wrap"><h2 class="task__title">Move the ball across the field</h2></div><div class="task__header-note"><span title="How important is the task, from 1 to 5" class="task__importance">importance: 5</span></div></div><div class="task__content"><p>Move the ball across the field to a click. Like this:</p>
+<div class="code-result">
+    <div class="code-result__toolbar toolbar"><div class="toolbar__tool">
+        <a href="https://en.js.cx/task/move-ball-field/solution/" target="_blank" title="open in new window" class="toolbar__button toolbar__button_external"></a>
+      </div>
+      </div>
+    <iframe class="code-result__iframe" data-trusted="1" style="height:260px" src="https://en.js.cx/task/move-ball-field/solution/"></iframe>
+  </div><p>Requirements:</p>
+<ul>
+<li>The ball center should come exactly under the pointer on click (if possible without crossing the field edge).</li>
+<li>CSS-animation is welcome.</li>
+<li>The ball must not cross field boundaries.</li>
+<li>When the page is scrolled, nothing should break.</li>
+</ul>
+<p>Notes:</p>
+<ul>
+<li>The code should also work with different ball and field sizes, not be bound to any fixed values.</li>
+<li>Use properties <code>event.clientX/event.clientY</code> for click coordinates.</li>
+</ul>
+<p><a href="http://plnkr.co/edit/021wJG1HpUqplMqVAFog?p=preview" target="_blank" data-plunk-id="021wJG1HpUqplMqVAFog">Open the sandbox for the task.</a></p><button type="button" class="task__solution">solution</button><div class="task__answer"><div class="task__answer-content"><p>First we need to choose a method of positioning the ball.</p>
+<p>We can’t use <code>position:fixed</code> for it, because scrolling the page would move the ball from the field.</p>
+<p>So we should use <code>position:absolute</code> and, to make the positioning really solid, make <code>field</code> itself positioned.</p>
+<p>Then the ball will be positioned relatively to the field:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-css"><code class="language-css">#field {
+  width: 200px;
+  height: 150px;
+  position: relative;
+}
+
+#ball {
+  position: absolute;
+  left: 0; /* relative to the closest positioned ancestor (field) */
+  top: 0;
+  transition: 1s all; /* CSS animation for left/top makes the ball fly */
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Next we need to assign the correct <code>ball.style.position.left/top</code>. They contain field-relative coordinates now.</p>
+<p>Here’s the picture:</p>
+<figure><div class="image" style="width:501px">
+      <div class="image__ratio" style="padding-top:63.07385229540918%"></div>
+      <img src="move-ball-field/move-ball-coords.png" alt="" width="501" height="316" class="image__image">
+      </div></figure><p>We have <code>event.clientX/clientY</code> – window-relative coordinates of the click.</p>
+<p>To get field-relative <code>left</code> coordinate of the click, we can substract the field left edge and the border width:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let left = event.clientX - fieldInnerCoords.left - field.clientLeft;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Normally, <code>ball.style.position.left</code> means the “left edge of the element” (the ball). So if we assign that <code>left</code>, then the ball edge would be under the mouse cursor.</p>
+<p>We need to move the ball half-width left and half-height up to make it center.</p>
+<p>So the final <code>left</code> would be:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let left = event.clientX - fieldInnerCoords.left - field.clientLeft - ball.offsetWidth/2;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>The vertical coordinate is calculated using the same logic.</p>
+<p>Please note that the ball width/height must be known at the time we access <code>ball.offsetWidth</code>. Should be specified in HTML or CSS.</p>
+<p><a href="http://plnkr.co/edit/uicFeQ8SWHYctHdiows7?p=preview" target="_blank" data-plunk-id="uicFeQ8SWHYctHdiows7">Open the solution in the sandbox.</a></p></div><button type="button" title="close" class="close-button task__answer-close"></button></div></div></div></div></main></div></div></div><div class="page-footer"><div class="page-footer__left"><ul class="page-footer__list"><li class="page-footer__item">©&nbsp;2007—2017&nbsp; Ilya Kantor</li><li class="page-footer__item"><a href="../about.html#contact-us" class="page-footer__link">contact us</a></li><li class="page-footer__item"><a href="../about.html" class="page-footer__link">about the project</a></li><li class="page-footer__item"><a href="https://learn.javascript.ru/" class="page-footer__link">RU</a> / EN</li></ul></div><div class="page-footer__right"><ul class="page-footer__list"><li class="page-footer__item">powered by <a rel="nofollow" href="http://nodejs.org/" class="page-footer__link">node.js</a>&nbsp;&amp;&nbsp;<a rel="nofollow" href="http://github.com/iliakan/javascript-tutorial-en" class="page-footer__link">open source</a></li></ul></div></div></body>
+<!-- Mirrored from javascript.info/task/move-ball-field by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 30 Nov 2017 15:31:15 GMT -->
+</html>

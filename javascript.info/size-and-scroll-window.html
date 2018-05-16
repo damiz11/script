@@ -1,0 +1,171 @@
+<!DOCTYPE html><html lang="en">
+<!-- Mirrored from javascript.info/size-and-scroll-window by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 30 Nov 2017 15:29:47 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><script>window.currentUser = null;</script><title itemprop="name">Window sizes and scrolling</title><meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, minimum-scale=1.0"><meta name="apple-mobile-web-app-capable" content="yes"><script>if (window.devicePixelRatio > 1) document.cookie = 'pixelRatio=' + window.devicePixelRatio + ';path=/;expires=Tue, 19 Jan 2038 03:14:07 GMT';</script><link href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700%7COpen+Sans+Condensed:700&amp;subset=latin,latin-ext,cyrillic,cyrillic-ext" rel="stylesheet"><link rel="apple-touch-icon-precomposed" href="img/favicon/apple-touch-icon-precomposed.png"><link rel="canonical" href="size-and-scroll-window.html"><meta name="msapplication-TileColor" content="#222A2C"><meta name="msapplication-TileImage" content="/img/favicon/tileicon.png"><!-- favicon the rest--><link rel="icon" href="img/favicon/favicon.png"><meta itemprop="image" content="https://javascript.info/img/site_preview_en_512x512.png"><meta property="og:title" content="Window sizes and scrolling"><meta property="og:image" content="https://javascript.info/img/site_preview_en_1200x630.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="fb:admins" content="100001562528165"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Window sizes and scrolling"><meta name="twitter:site" content="@iliakan"><meta name="twitter:creator" content="@iliakan"><meta name="twitter:image" content="https://javascript.info/img/site_preview_en_512x512.png"><link href="pack/styles.da59a89b28153875791083e4a8c5adb3.css" rel="stylesheet"><link rel="prev" href="size-and-scroll.html"><link rel="next" href="coordinates.html"><script>window.GA_ID = "UA-2056213-15";</script><script>window.YANDEX_METRIKA_ID = 32184394;</script><script>window.GoogleAnalyticsObject="ga",window.ga=function(){window.ga.q.push(arguments)},window.ga.q=[],window.ga.l=Date.now(),ga("create",GA_ID,"auto"),window.currentUser&&ga("set","&uid",currentUser.id),window.addEventListener("error",function(e){var r=(e.filename||e.errorUrl)+": "+(e.lineno||e.errorLine),n=e.stack||e.error&&e.error.stack;ga("send","exception",{exDescription:e.message+" "+r+" "+n,exFatal:!0})});</script><script src="https://www.google-analytics.com/analytics.js" async></script><script>ga('send', 'pageview');</script><script>window.metrika={reachGoal:function(){}},window.yandex_metrika_callbacks=[function(){try{window.metrika=new Ya.Metrika({id:YANDEX_METRIKA_ID,webvisor:!0,clickmap:!0,params:{user:window.currentUser&&window.currentUser.id}}),metrika.trackLinks({delay:150}),window.addEventListener("error",function(r){window.metrika.reachGoal("JSERROR",{src:(r.filename||r.errorUrl)+": "+(r.lineno||r.errorLine),stack:r.stack||r.error&&r.error.stack,message:r.message})})}catch(r){}}];</script><script src="http://mc.yandex.ru/metrika/watch.js" async></script><script>window.RECAPTCHA_ID = "6Lf9NyETAAAAACZlg-a9Us2SxvYbeVC1ROWaWv4O";</script><script src="initc4ca.js?1"></script><script src="pack/head.688d4fe7c4cf54e23737.js" defer></script><meta property="og:title" content="Window sizes and scrolling"><meta property="og:type" content="article"><script src="pack/tutorial.688d4fe7c4cf54e23737.js" defer></script><script src="pack/footer.688d4fe7c4cf54e23737.js" defer></script></head><body class="no-icons"><script>window.fontTest();</script><div class="page-wrapper page-wrapper_sidebar_on"><!--[if lt IE 10]><div style="color:red;text-align:center">Sorry, IE&lt;10 is not supported, please use a newer browser.</div><![endif]--><div class="sitetoolbar sitetoolbar_tutorial"><!-- include ./notification-stripe--><div class="sitetoolbar__content"><div class="sitetoolbar__logo-wrap"><a href="index.html" class="sitetoolbar__link sitetoolbar__link_logo"><img src="img/sitetoolbar__logo_en.svg" width="200" class="sitetoolbar__logo sitetoolbar__logo_normal" alt=""><img src="img/sitetoolbar__logo_small_en.svg" width="70" class="sitetoolbar__logo sitetoolbar__logo_small" alt=""><script>Array.prototype.forEach.call(document.querySelectorAll("img.sitetoolbar__logo"),function(e){var t=document.createElement("object");t.type="image/svg+xml",t.className=e.className,t.style.cssText="left:0;top:0;position:absolute",t.onload=function(){t.onload=null,e.style.visibility="hidden"},t.data=e.src,e.parentNode.insertBefore(t,e)});</script></a></div><div class="sitetoolbar__nav-toggle-wrap"><button type="button" class="sitetoolbar__nav-toggle"></button></div><nav class="sitetoolbar__sections"><ul class="sitetoolbar__sections-list"></ul></nav><div class="sitetoolbar__book-wrap"><a href="ebook.html" class="buy-book-button"><span class="buy-book-button__extra-text">Buy</span>EPUB/PDF</a></div><div class="sitetoolbar__login-wrap"><button data-action-login class="sitetoolbar__login sitetoolbar__login_unready"></button></div><div class="sitetoolbar__search-wrap"><div class="sitetoolbar__search-content"><form method="GET" action="http://javascript.info/search" class="sitetoolbar__search"><button type="button" class="sitetoolbar__search-toggle"></button><div class="sitetoolbar__search-input"><div class="text-input"><input name="query" placeholder="Search on Javascript.info" class="text-input__control" type="text"></div><button type="submit" class="sitetoolbar__find">Search</button></div></form></div></div></div><!-- todo: en variant--><div class="tablet-menu"><div class="tablet-menu__line"><div class="tablet-menu__content"><form action="http://javascript.info/search/" class="tablet-menu-search"><input type="search" name="query" placeholder="Search in the tutorial" required class="tablet-menu-search__input"><button type="submit" name="type" value="articles" class="tablet-menu-search__button">Search</button></form></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><a href="tutorial/map.html" data-action="tutorial-map" class="map"><span class="map__text">Tutorial map</span></a></div></div><!--+e.line--><!--  +e.content--><!--    +b("a").tablet-ebook(href="/ebook")--><!--      +e("span").text Купить учебник--><!--      +e("span").note (EPUB + PDF)--><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="share-icons"><span class="share-icons__title">Share</span><a href="https://twitter.com/share?url=https%3A%2F%2Fjavascript.info%2Fsize-and-scroll-window" class="share share_tw"></a><a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fjavascript.info%2Fsize-and-scroll-window" class="share share_fb"></a><a href="https://plus.google.com/share?url=https%3A%2F%2Fjavascript.info%2Fsize-and-scroll-window" class="share share_gp"></a><a href="https://vkontakte.ru/share.php?url=https%3A%2F%2Fjavascript.info%2Fsize-and-scroll-window" class="share share_vk"></a></div></div></div></div><progress data-sticky value="10" max="27" data-tooltip="Lesson 10 of 27" class="tutorial-progress"></progress></div><div class="page page_sidebar_on"><script>if(localStorage.noSidebar){document.querySelector(".page").classList.remove("page_sidebar_on");var pageWrapper=document.querySelector(".page-wrapper");pageWrapper&&pageWrapper.classList.remove("page-wrapper_sidebar_on")}setTimeout(function(){document.querySelector(".page").classList.add("page_sidebar-animation-on")},0);</script><div class="page__inner"><main class="main main_width-limit"><header class="main__header"><ol class="breadcrumbs"><li itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemref="breadcrumb-1" class="breadcrumbs__item breadcrumbs__item_home"><a href="index.html" itemprop="url" class="breadcrumbs__link"><span itemprop="title" class="breadcrumbs__hidden-text">Учебник</span></a></li><li id="breadcrumb-1" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemref="breadcrumb-2" itemprop="child" class="breadcrumbs__item"><a href="ui.html" itemprop="url" class="breadcrumbs__link"><span itemprop="title">Browser: Document, Events, Interfaces</span></a></li><li id="breadcrumb-2" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemprop="child" class="breadcrumbs__item"><a href="document.html" itemprop="url" class="breadcrumbs__link"><span itemprop="title">Document</span></a></li></ol><h1 class="main__header-title">Window sizes and scrolling</h1></header><div class="content"><article itemscope itemtype="http://schema.org/TechArticle"><meta itemprop="name" content="Window sizes and scrolling"><div itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="email" content="iliakan@gmail.com"><meta itemprop="name" content="Ilya Kantor"></div><div itemprop="articleBody"><p>How to find out the width of the browser window? How to get the full height of the document, including the scrolled out part? How to scroll the page using JavaScript?</p>
+<p>From the DOM point of view, the root document element is <code>document.documentElement</code>. That element corresponds to <code>&lt;html&gt;</code> and has geometry properties described in the <a href="size-and-scroll.html">previous chapter</a>. For some cases we can use it, but there are additional methods and peculiarities important enough to consider.</p>
+<cut>
+<h2><a class="main__anchor" name="width-height-of-the-window" href="#width-height-of-the-window">Width/height of the window</a></h2><p>Properties <code>clientWidth/clientHeight</code> of <code>document.documentElement</code> is exactly what we want here:</p>
+<figure><div class="image" style="width:442px">
+      <div class="image__ratio" style="padding-top:42.30769230769231%"></div>
+      <img src="article/size-and-scroll-window/document-client-width-height.png" alt="" width="442" height="187" class="image__image">
+      </div></figure><p>For instance, this button shows the height of your window:</p>
+<p><button onclick="alert(document.documentElement.clientHeight)">alert(document.documentElement.clientHeight)</button></p>
+<div class="important important_warn">
+            <div class="important__header"><span class="important__type">Not <code>window.innerWidth/Height</code></span></div>
+            <div class="important__content"><p>Browsers also support properties <code>window.innerWidth/innerHeight</code>. They look like what we want. So what’s the difference?</p>
+<p>If there’s a scrollbar occupying some space, <code>clientWidth/clientHeight</code> provide the width/height inside it. In other words, they return width/height of the visible part of the document, available for the content.</p>
+<p>And <code>window.innerWidth/innerHeight</code> ignore the scrollbar.</p>
+<p>If there’s a scrollbar, and it occupies some space, then these two lines show different values:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">alert( window.innerWidth ); // full window width
+alert( document.documentElement.clientWidth ); // window width minus the scrollbar</code></pre>
+        </div>
+      </div>
+      
+      </div><p>In most cases we need the <em>available</em> window width: to draw or position something. That is: inside scrollbars if there are any. So we should use <code>documentElement.clientHeight/Width</code>.</p>
+</div></div>
+<div class="important important_warn">
+            <div class="important__header"><span class="important__type"><code>DOCTYPE</code> is important</span></div>
+            <div class="important__content"><p>Please note: top-level geometry properties may work a little bit differently when there’s no <code>&lt;!DOCTYPE HTML&gt;</code> in HTML. Odd things are possible.</p>
+<p>In modern HTML we should always write <code>DOCTYPE</code>. Generally that’s not a JavaScript question, but here it affects JavaScript as well.</p>
+</div></div>
+<h2><a class="main__anchor" name="width-height-of-the-document" href="#width-height-of-the-document">Width/height of the document</a></h2><p>Theoretically, as the root document element is <code>documentElement.clientWidth/Height</code>, and it encloses all the content, we could measure its full size as <code>documentElement.scrollWidth/scrollHeight</code>.</p>
+<p>These properties work well for regular elements. But for the whole page these properties do not work as intended. In Chrome/Safari/Opera if there’s no scroll, then <code>documentElement.scrollHeight</code> may be even less than  <code>documentElement.clientHeight</code>! For regular elements that’s a nonsense.</p>
+<p>To have a reliable full window size, we should take the maximum of these properties:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let scrollHeight = Math.max(
+  document.body.scrollHeight, document.documentElement.scrollHeight,
+  document.body.offsetHeight, document.documentElement.offsetHeight,
+  document.body.clientHeight, document.documentElement.clientHeight
+);
+
+alert('Full document height, with scrolled out part: ' + scrollHeight);</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Why so? Better don’t ask. These inconsistencies come from ancient times, not a “smart” logic.</p>
+<h2><a class="main__anchor" name="page-scroll" href="#page-scroll">Get the current scroll</a></h2><p>Regular elements have their current scroll state in <code>elem.scrollLeft/scrollTop</code>.</p>
+<p>What’s with the page? Most browsers provide <code>documentElement.scrollLeft/Top</code> for the document scroll, but Chrome/Safari/Opera have bugs (like <a href="https://code.google.com/p/chromium/issues/detail?id=157855">157855</a>, <a href="https://bugs.webkit.org/show_bug.cgi?id=106133">106133</a>) and we should use  <code>document.body</code> instead of <code>document.documentElement</code> there.</p>
+<p>Luckily, we don’t have to remember these peculiarities at all, because of the special properties <code>window.pageXOffset/pageYOffset</code>:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">alert('Current scroll from the top: ' + window.pageYOffset);
+alert('Current scroll from the left: ' + window.pageXOffset);</code></pre>
+        </div>
+      </div>
+      
+      </div><p>These properties are read-only.</p>
+<h2><a class="main__anchor" name="window-scroll" href="#window-scroll">Scrolling: scrollTo, scrollBy, scrollIntoView</a></h2><div class="important important_warn">
+            <div class="important__header"><span class="important__type">Important:</span></div>
+            <div class="important__content"><p>To scroll the page from JavaScript, its DOM must be fully built.</p>
+<p>For instance, if we try to scroll the page from the script in <code>&lt;head&gt;</code>, it won’t work.</p>
+</div></div>
+<p>Regular elements can be scrolled by changing <code>scrollTop/scrollLeft</code>.</p>
+<p>We can do the same for the page:</p>
+<ul>
+<li>For all browsers except Chrome/Safari/Opera: modify  <code>document.documentElement.scrollTop/Left</code>.</li>
+<li>In Chrome/Safari/Opera: use <code>document.body.scrollTop/Left</code> instead.</li>
+</ul>
+<p>It should work, but smells like cross-browser incompatibilities. Not good. Fortunately, there’s a simpler, more universal solution: special methods  <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/scrollBy">window.scrollBy(x,y)</a> and <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/scrollTo">window.scrollTo(pageX,pageY)</a>.</p>
+<ul>
+<li>
+<p>The method <code>scrollBy(x,y)</code> scrolls the page relative to its current position. For instance, <code>scrollBy(0,10)</code> scrolls the page <code>10px</code> down.</p>
+<p>The button below demonstrates this:</p>
+<p><button onclick="window.scrollBy(0,10)">window.scrollBy(0,10)</button></p>
+</li>
+<li>
+<p>The method <code>scrollTo(pageX,pageY)</code> scrolls the page relative to the document top-left corner. It’s like setting <code>scrollLeft/scrollTop</code>.</p>
+<p>To scroll to the very beginning, we can use <code>scrollTo(0,0)</code>.</p>
+<p><button onclick="window.scrollTo(0,0)">window.scrollTo(0,0)</button></p>
+</li>
+</ul>
+<p>These methods work for all browsers the same way.</p>
+<h2><a class="main__anchor" name="scrollintoview" href="#scrollintoview">scrollIntoView</a></h2><p>For completeness, let’s cover one more method:  <a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView">elem.scrollIntoView(top)</a>.</p>
+<p>The call to <code>elem.scrollIntoView(top)</code> scrolls the page to make <code>elem</code> visible. It has one argument:</p>
+<ul>
+<li>if <code>top=true</code> (that’s the default), then the page will be scrolled to make <code>elem</code> appear on the top of the window. The upper edge of the element is aligned with the window top.</li>
+<li>if <code>top=false</code>, then the page scrolls to make <code>elem</code> appear at the bottom. The bottom edge of the element is aligned with the window bottom.</li>
+</ul>
+<p>The button below scrolls the page to make itself show at the window top:</p>
+<p><button onclick="this.scrollIntoView()">this.scrollIntoView()</button></p>
+<p>And this button scrolls the page to show it at the bottom:</p>
+<p><button onclick="this.scrollIntoView(false)">this.scrollIntoView(false)</button></p>
+<h2><a class="main__anchor" name="forbid-the-scrolling" href="#forbid-the-scrolling">Forbid the scrolling</a></h2><p>Sometimes we need to make the document “unscrollable”. For instance, when we need to cover it with a large message requiring immediate attention, and we want the visitor to interact with that message, not with the document.</p>
+<p>To make the document unscrollable, its enough to set <code>document.body.style.overflow = &quot;hidden&quot;</code>. The page will freeze on its current scroll.</p>
+<p>Try it:</p>
+<p><button onclick="document.body.style.overflow = 'hidden'"><code>document.body.style.overflow = 'hidden'</code></button></p>
+<p><button onclick="document.body.style.overflow = ''"><code>document.body.style.overflow = ''</code></button></p>
+<p>The first button freezes the scroll, the second one resumes it.</p>
+<p>We can use the same technique to “freeze” the scroll for other elements, not just for <code>document.body</code>.</p>
+<p>The drawback of the method is that the scrollbar disappears. If it occupied some space, then that space is now free, and the content “jumps” to fill it.</p>
+<p>That looks a bit odd, but can be worked around if we compare <code>clientWidth</code> before and after the freeze, and if it increased (the scrollbar disappeared) then add <code>padding</code> to <code>document.body</code> in place of the scrollbar, to keep the content width same.</p>
+<h2><a class="main__anchor" name="summary" href="#summary">Summary</a></h2><p>Geometry:</p>
+<ul>
+<li>
+<p>Width/height of the visible part of the document (content area width/height): <code>document.documentElement.clientWidth/Height</code></p>
+</li>
+<li>
+<p>Width/height of the whole document, with the scrolled out part:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let scrollHeight = Math.max(
+  document.body.scrollHeight, document.documentElement.scrollHeight,
+  document.body.offsetHeight, document.documentElement.offsetHeight,
+  document.body.clientHeight, document.documentElement.clientHeight
+);</code></pre>
+        </div>
+      </div>
+      
+      </div></li>
+</ul>
+<p>Scrolling:</p>
+<ul>
+<li>
+<p>Read the current scroll: <code>window.pageYOffset/pageXOffset</code>.</p>
+</li>
+<li>
+<p>Change the current scroll:</p>
+<ul>
+<li><code>window.scrollTo(pageX,pageY)</code> – absolute coordinates,</li>
+<li><code>window.scrollBy(x,y)</code> – scroll relative the current place,</li>
+<li><code>elem.scrollIntoView(top)</code> – scroll to make <code>elem</code> visible (align with the top/bottom of the window).</li>
+</ul>
+</li>
+</ul>
+</div></article><!--  include /blocks/banner-bottom--><!--if lang == 'en'--><!--  include /blocks/banner-bottom.en--></div><div class="page__nav-wrap"><a href="size-and-scroll.html" data-tooltip="Element size and scrolling" class="page__nav page__nav_prev"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Previous lesson</span></a><a href="coordinates.html" data-tooltip="Coordinates" class="page__nav page__nav_next"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Next lesson</span></a></div><div class="article-tablet-foot tablet-only"><div class="article-tablet-foot__layout"><div class="share-icons"><span class="share-icons__title">Share</span><a href="https://twitter.com/share?url=https%3A%2F%2Fjavascript.info%2Fsize-and-scroll-window" class="share share_tw"></a><a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fjavascript.info%2Fsize-and-scroll-window" class="share share_fb"></a><a href="https://plus.google.com/share?url=https%3A%2F%2Fjavascript.info%2Fsize-and-scroll-window" class="share share_gp"></a><a href="https://vkontakte.ru/share.php?url=https%3A%2F%2Fjavascript.info%2Fsize-and-scroll-window" class="share share_vk"></a></div><div class="article-tablet-foot__map"><a href="tutorial/map.html" data-action="tutorial-map" class="map"><span class="map__text">Tutorial map</span></a></div></div></div><div id="comments" class="comments"><div class="comments__header"><h2 class="comments__header-title"><a href="#comments" name="comments">Comments</a></h2><div class="comments__read-before"><span class="comments__read-before-link">read this before commenting…</span><div class="comments__read-before-popup"><div class="comments__read-before-popup-i"><ul><li>You're welcome to post additions, questions to the articles and answers to them.</li><li>To insert a few words of code, use the <code>&lt;code&gt;</code> tag, for several lines – use <code>&lt;pre&gt;</code>, for more than 10 lines – use a sandbox (<a href='http://plnkr.co/edit/?p=preview'>plnkr</a>, <a href='http://jsbin.com/'>JSBin</a>, <a href='http://codepen.io/'>codepen</a>…)</li><li>If you can't understand something in the article – please elaborate.</li></ul></div></div></div></div></div><div id="disqus_thread"></div><script>var disqus_config = function() { if (!this.page) this.page = {}; Object.assign(this.page, {"url":"https:\/\/javascript.info\/size-and-scroll-window","identifier":"\/size-and-scroll-window","title":"Window sizes and scrolling"}); };</script><script>var disqus_shortname = "javascriptinfo";</script><script>var disqus_enabled = true;</script></main></div><div class="page__sidebar sidebar sidebar_sticky-footer"><button data-sidebar-toggle class="sidebar__toggle"></button><a href="tutorial/map.html" data-action="tutorial-map" data-tooltip="Tutorial map" class="map"></a><div class="sidebar__inner"><div class="sidebar__content"><div class="sidebar__section"><h4 class="sidebar__section-title">Chapter</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a href="document.html" class="sidebar__link">Document</a></li></ul></nav></div><div class="sidebar__section"><h4 class="sidebar__section-title">Lesson navigation</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a href="#width-height-of-the-window" class="sidebar__link">Width/height of the window</a></li><li class="sidebar__navigation-link"><a href="#width-height-of-the-document" class="sidebar__link">Width/height of the document</a></li><li class="sidebar__navigation-link"><a href="#page-scroll" class="sidebar__link">Get the current scroll</a></li><li class="sidebar__navigation-link"><a href="#window-scroll" class="sidebar__link">Scrolling: scrollTo, scrollBy, scrollIntoView</a></li><li class="sidebar__navigation-link"><a href="#scrollintoview" class="sidebar__link">scrollIntoView</a></li><li class="sidebar__navigation-link"><a href="#forbid-the-scrolling" class="sidebar__link">Forbid the scrolling</a></li><li class="sidebar__navigation-link"><a href="#summary" class="sidebar__link">Summary</a></li></ul></nav></div><div class="sidebar__section"><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a href="#comments" class="sidebar__link">Comments</a></li></ul></nav></div><div class="sidebar__section"><div class="sidebar__section-title">Share</div><a href="https://twitter.com/share?url=https%3A%2F%2Fjavascript.info%2Fsize-and-scroll-window" class="share share_tw sidebar__share"></a><a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fjavascript.info%2Fsize-and-scroll-window" class="share share_fb sidebar__share"></a><a href="https://plus.google.com/share?url=https%3A%2F%2Fjavascript.info%2Fsize-and-scroll-window" class="share share_gp sidebar__share"></a></div><div class="sidebar__section"><a href="https://github.com/iliakan/javascript-tutorial-en/tree/master/2-ui/1-document/10-size-and-scroll-window/article.md" class="sidebar__link">Edit on Github</a></div></div></div></div></div></div><div class="page-footer"><div class="page-footer__left"><ul class="page-footer__list"><li class="page-footer__item">©&nbsp;2007—2017&nbsp; Ilya Kantor</li><li class="page-footer__item"><a href="about.html#contact-us" class="page-footer__link">contact us</a></li><li class="page-footer__item"><a href="about.html" class="page-footer__link">about the project</a></li><li class="page-footer__item"><a href="https://learn.javascript.ru/" class="page-footer__link">RU</a> / EN</li></ul></div><div class="page-footer__right"><ul class="page-footer__list"><li class="page-footer__item">powered by <a rel="nofollow" href="http://nodejs.org/" class="page-footer__link">node.js</a>&nbsp;&amp;&nbsp;<a rel="nofollow" href="http://github.com/iliakan/javascript-tutorial-en" class="page-footer__link">open source</a></li></ul></div></div></body>
+<!-- Mirrored from javascript.info/size-and-scroll-window by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 30 Nov 2017 15:29:48 GMT -->
+</html>

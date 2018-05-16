@@ -1,0 +1,957 @@
+<!DOCTYPE html><html lang="en">
+<!-- Mirrored from javascript.info/array by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 30 Nov 2017 15:28:03 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><script>window.currentUser = null;</script><title itemprop="name">Arrays</title><meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, minimum-scale=1.0"><meta name="apple-mobile-web-app-capable" content="yes"><script>if (window.devicePixelRatio > 1) document.cookie = 'pixelRatio=' + window.devicePixelRatio + ';path=/;expires=Tue, 19 Jan 2038 03:14:07 GMT';</script><link href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700%7COpen+Sans+Condensed:700&amp;subset=latin,latin-ext,cyrillic,cyrillic-ext" rel="stylesheet"><link rel="apple-touch-icon-precomposed" href="img/favicon/apple-touch-icon-precomposed.png"><link rel="canonical" href="array.html"><meta name="msapplication-TileColor" content="#222A2C"><meta name="msapplication-TileImage" content="/img/favicon/tileicon.png"><!-- favicon the rest--><link rel="icon" href="img/favicon/favicon.png"><meta itemprop="image" content="https://javascript.info/img/site_preview_en_512x512.png"><meta property="og:title" content="Arrays"><meta property="og:image" content="https://javascript.info/img/site_preview_en_1200x630.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="fb:admins" content="100001562528165"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Arrays"><meta name="twitter:site" content="@iliakan"><meta name="twitter:creator" content="@iliakan"><meta name="twitter:image" content="https://javascript.info/img/site_preview_en_512x512.png"><link href="pack/styles.da59a89b28153875791083e4a8c5adb3.css" rel="stylesheet"><link rel="prev" href="string.html"><link rel="next" href="array-methods.html"><script>window.GA_ID = "UA-2056213-15";</script><script>window.YANDEX_METRIKA_ID = 32184394;</script><script>window.GoogleAnalyticsObject="ga",window.ga=function(){window.ga.q.push(arguments)},window.ga.q=[],window.ga.l=Date.now(),ga("create",GA_ID,"auto"),window.currentUser&&ga("set","&uid",currentUser.id),window.addEventListener("error",function(e){var r=(e.filename||e.errorUrl)+": "+(e.lineno||e.errorLine),n=e.stack||e.error&&e.error.stack;ga("send","exception",{exDescription:e.message+" "+r+" "+n,exFatal:!0})});</script><script src="https://www.google-analytics.com/analytics.js" async></script><script>ga('send', 'pageview');</script><script>window.metrika={reachGoal:function(){}},window.yandex_metrika_callbacks=[function(){try{window.metrika=new Ya.Metrika({id:YANDEX_METRIKA_ID,webvisor:!0,clickmap:!0,params:{user:window.currentUser&&window.currentUser.id}}),metrika.trackLinks({delay:150}),window.addEventListener("error",function(r){window.metrika.reachGoal("JSERROR",{src:(r.filename||r.errorUrl)+": "+(r.lineno||r.errorLine),stack:r.stack||r.error&&r.error.stack,message:r.message})})}catch(r){}}];</script><script src="http://mc.yandex.ru/metrika/watch.js" async></script><script>window.RECAPTCHA_ID = "6Lf9NyETAAAAACZlg-a9Us2SxvYbeVC1ROWaWv4O";</script><script src="initc4ca.js?1"></script><script src="pack/head.688d4fe7c4cf54e23737.js" defer></script><meta property="og:title" content="Arrays"><meta property="og:type" content="article"><script src="pack/tutorial.688d4fe7c4cf54e23737.js" defer></script><script src="pack/footer.688d4fe7c4cf54e23737.js" defer></script></head><body class="no-icons"><script>window.fontTest();</script><div class="page-wrapper page-wrapper_sidebar_on"><!--[if lt IE 10]><div style="color:red;text-align:center">Sorry, IE&lt;10 is not supported, please use a newer browser.</div><![endif]--><div class="sitetoolbar sitetoolbar_tutorial"><!-- include ./notification-stripe--><div class="sitetoolbar__content"><div class="sitetoolbar__logo-wrap"><a href="index.html" class="sitetoolbar__link sitetoolbar__link_logo"><img src="img/sitetoolbar__logo_en.svg" width="200" class="sitetoolbar__logo sitetoolbar__logo_normal" alt=""><img src="img/sitetoolbar__logo_small_en.svg" width="70" class="sitetoolbar__logo sitetoolbar__logo_small" alt=""><script>Array.prototype.forEach.call(document.querySelectorAll("img.sitetoolbar__logo"),function(e){var t=document.createElement("object");t.type="image/svg+xml",t.className=e.className,t.style.cssText="left:0;top:0;position:absolute",t.onload=function(){t.onload=null,e.style.visibility="hidden"},t.data=e.src,e.parentNode.insertBefore(t,e)});</script></a></div><div class="sitetoolbar__nav-toggle-wrap"><button type="button" class="sitetoolbar__nav-toggle"></button></div><nav class="sitetoolbar__sections"><ul class="sitetoolbar__sections-list"></ul></nav><div class="sitetoolbar__book-wrap"><a href="ebook.html" class="buy-book-button"><span class="buy-book-button__extra-text">Buy</span>EPUB/PDF</a></div><div class="sitetoolbar__login-wrap"><button data-action-login class="sitetoolbar__login sitetoolbar__login_unready"></button></div><div class="sitetoolbar__search-wrap"><div class="sitetoolbar__search-content"><form method="GET" action="http://javascript.info/search" class="sitetoolbar__search"><button type="button" class="sitetoolbar__search-toggle"></button><div class="sitetoolbar__search-input"><div class="text-input"><input name="query" placeholder="Search on Javascript.info" class="text-input__control" type="text"></div><button type="submit" class="sitetoolbar__find">Search</button></div></form></div></div></div><!-- todo: en variant--><div class="tablet-menu"><div class="tablet-menu__line"><div class="tablet-menu__content"><form action="http://javascript.info/search/" class="tablet-menu-search"><input type="search" name="query" placeholder="Search in the tutorial" required class="tablet-menu-search__input"><button type="submit" name="type" value="articles" class="tablet-menu-search__button">Search</button></form></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><a href="tutorial/map.html" data-action="tutorial-map" class="map"><span class="map__text">Tutorial map</span></a></div></div><!--+e.line--><!--  +e.content--><!--    +b("a").tablet-ebook(href="/ebook")--><!--      +e("span").text Купить учебник--><!--      +e("span").note (EPUB + PDF)--><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="share-icons"><span class="share-icons__title">Share</span><a href="https://twitter.com/share?url=https%3A%2F%2Fjavascript.info%2Farray" class="share share_tw"></a><a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fjavascript.info%2Farray" class="share share_fb"></a><a href="https://plus.google.com/share?url=https%3A%2F%2Fjavascript.info%2Farray" class="share share_gp"></a><a href="https://vkontakte.ru/share.php?url=https%3A%2F%2Fjavascript.info%2Farray" class="share share_vk"></a></div></div></div></div><progress data-sticky value="35" max="67" data-tooltip="Lesson 35 of 67" class="tutorial-progress"></progress></div><div class="page page_sidebar_on"><script>if(localStorage.noSidebar){document.querySelector(".page").classList.remove("page_sidebar_on");var pageWrapper=document.querySelector(".page-wrapper");pageWrapper&&pageWrapper.classList.remove("page-wrapper_sidebar_on")}setTimeout(function(){document.querySelector(".page").classList.add("page_sidebar-animation-on")},0);</script><div class="page__inner"><main class="main main_width-limit"><header class="main__header"><ol class="breadcrumbs"><li itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemref="breadcrumb-1" class="breadcrumbs__item breadcrumbs__item_home"><a href="index.html" itemprop="url" class="breadcrumbs__link"><span itemprop="title" class="breadcrumbs__hidden-text">Учебник</span></a></li><li id="breadcrumb-1" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemref="breadcrumb-2" itemprop="child" class="breadcrumbs__item"><a href="js.html" itemprop="url" class="breadcrumbs__link"><span itemprop="title">The JavaScript language</span></a></li><li id="breadcrumb-2" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemprop="child" class="breadcrumbs__item"><a href="data-types.html" itemprop="url" class="breadcrumbs__link"><span itemprop="title">Data types</span></a></li></ol><h1 class="main__header-title">Arrays</h1></header><div class="content"><article itemscope itemtype="http://schema.org/TechArticle"><meta itemprop="name" content="Arrays"><div itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="email" content="iliakan@gmail.com"><meta itemprop="name" content="Ilya Kantor"></div><div itemprop="articleBody"><p>Objects allow to store keyed collections of values. That’s fine.</p>
+<p>But quite often we find that we need an <em>ordered collection</em>, where we have a 1st, a 2nd, a 3rd element and so on. For example, we need that to store a list of something: users, goods, HTML elements etc.</p>
+<p>It is not convenient to use an object here, because it provides no methods to manage the order of elements. We can’t insert a new property “between” the existing ones. Objects are just not meant for such use.</p>
+<p>There exists a special data structure named <code>Array</code>, to store ordered collections.</p>
+<cut>
+<h2><a class="main__anchor" name="declaration" href="#declaration">Declaration</a></h2><p>There are two syntaxes for creating an empty array:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let arr = new Array();
+let arr = [];</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Almost all the time, the second syntax is used. We can supply initial elements in the brackets:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let fruits = [&quot;Apple&quot;, &quot;Orange&quot;, &quot;Plum&quot;];</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Array elements are numbered, starting with zero.</p>
+<p>We can get an element by its number in square brackets:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let fruits = [&quot;Apple&quot;, &quot;Orange&quot;, &quot;Plum&quot;];
+
+alert( fruits[0] ); // Apple
+alert( fruits[1] ); // Orange
+alert( fruits[2] ); // Plum</code></pre>
+        </div>
+      </div>
+      
+      </div><p>We can replace an element:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">fruits[2] = 'Pear'; // now [&quot;Apple&quot;, &quot;Orange&quot;, &quot;Pear&quot;]</code></pre>
+        </div>
+      </div>
+      
+      </div><p>…Or add a new one to the array:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">fruits[3] = 'Lemon'; // now [&quot;Apple&quot;, &quot;Orange&quot;, &quot;Pear&quot;, &quot;Lemon&quot;]</code></pre>
+        </div>
+      </div>
+      
+      </div><p>The total count of the elements in the array is its <code>length</code>:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let fruits = [&quot;Apple&quot;, &quot;Orange&quot;, &quot;Plum&quot;];
+
+alert( fruits.length ); // 3</code></pre>
+        </div>
+      </div>
+      
+      </div><p>We can also use <code>alert</code> to show the whole array.</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let fruits = [&quot;Apple&quot;, &quot;Orange&quot;, &quot;Plum&quot;];
+
+alert( fruits ); // Apple,Orange,Plum</code></pre>
+        </div>
+      </div>
+      
+      </div><p>An array can store elements of any type.</p>
+<p>For instance:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">// mix of values
+let arr = [ 'Apple', { name: 'John' }, true, function() { alert('hello'); } ];
+
+// get the object at index 1 and then show its name
+alert( arr[1].name ); // John
+
+// get the function at index 3 and run it
+arr[3](); // hello</code></pre>
+        </div>
+      </div>
+      
+      </div><div class="important important_smart">
+            <div class="important__header"><span class="important__type">Trailing comma</span></div>
+            <div class="important__content"><p>An array, just like an object, may end with a comma:</p>
+<div data-trusted="1" class="code-example" data-highlight-inline="3:8-9">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let fruits = [
+  &quot;Apple&quot;,
+  &quot;Orange&quot;,
+  &quot;Plum&quot;,
+];</code></pre>
+        </div>
+      </div>
+      
+      </div><p>The “trailing comma” style makes it easier to insert/remove items, because all lines become alike.</p>
+</div></div>
+<h2><a class="main__anchor" name="methods-pop-push-shift-unshift" href="#methods-pop-push-shift-unshift">Methods pop/push, shift/unshift</a></h2><p>A <a href="https://en.wikipedia.org/wiki/Queue_(abstract_data_type)">queue</a> is one of most common uses of an array. In computer science, this means an ordered collection of elements which supports two operations:</p>
+<ul>
+<li><code>push</code> appends an element to the end.</li>
+<li><code>shift</code> get an element from the beginning, advancing the queue, so that the 2nd element becomes the 1st.</li>
+</ul>
+<figure><div class="image" style="width:172px">
+      <div class="image__ratio" style="padding-top:54.06976744186046%"></div>
+      <img src="article/array/queue.png" alt="" width="172" height="93" class="image__image">
+      </div></figure><p>Arrays support both operations.</p>
+<p>In practice we meet it very often. For example, a queue of messages that need to be shown on-screen.</p>
+<p>There’s another use case for arrays – the data structure named <a href="https://en.wikipedia.org/wiki/Stack_(abstract_data_type)">stack</a>.</p>
+<p>It supports two operations:</p>
+<ul>
+<li><code>push</code> adds an element to the end.</li>
+<li><code>pop</code> takes an element from the end.</li>
+</ul>
+<p>So new elements are added or taken always from the “end”.</p>
+<p>A stack is usually illustrated as a pack of cards: new cards are added to the top or taken from the top:</p>
+<figure><div class="image" style="width:123px">
+      <div class="image__ratio" style="padding-top:106.5040650406504%"></div>
+      <img src="article/array/stack.png" alt="" width="123" height="131" class="image__image">
+      </div></figure><p>For stacks, the latest pushed item is received first, that’s also called LIFO (Last-In-First-Out) principle. For queues, we have FIFO (First-In-First-Out).</p>
+<p>Arrays in JavaScript can work both as a queue and as a stack. They allow to add/remove elements both to/from the beginning or the end.</p>
+<p>In computer science the data structure that allows it is called <a href="https://en.wikipedia.org/wiki/Double-ended_queue">deque</a>.</p>
+<p><strong>Methods that work with the end of the array:</strong></p>
+<dl>
+<dt><code>pop</code></dt>
+<dd>
+<p>Extracts the last element of the array and returns it:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let fruits = [&quot;Apple&quot;, &quot;Orange&quot;, &quot;Pear&quot;];
+
+alert( fruits.pop() ); // remove &quot;Pear&quot; and alert it
+
+alert( fruits ); // Apple, Orange</code></pre>
+        </div>
+      </div>
+      
+      </div></dd>
+<dt><code>push</code></dt>
+<dd>
+<p>Append the element to the end of the array:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let fruits = [&quot;Apple&quot;, &quot;Orange&quot;];
+
+fruits.push(&quot;Pear&quot;);
+
+alert( fruits ); // Apple, Orange, Pear</code></pre>
+        </div>
+      </div>
+      
+      </div><p>The call <code>fruits.push(...)</code> is equal to <code>fruits[fruits.length] = ...</code>.</p>
+</dd>
+</dl>
+<p><strong>Methods that work with the beginning of the array:</strong></p>
+<dl>
+<dt><code>shift</code></dt>
+<dd>
+<p>Extracts the first element of the array and returns it:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let fruits = [&quot;Apple&quot;, &quot;Orange&quot;, &quot;Pear&quot;];
+
+alert( fruits.shift() ); // remove Apple and alert it
+
+alert( fruits ); // Orange, Pear</code></pre>
+        </div>
+      </div>
+      
+      </div></dd>
+<dt><code>unshift</code></dt>
+<dd>
+<p>Add the element to the beginning of the array:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let fruits = [&quot;Orange&quot;, &quot;Pear&quot;];
+
+fruits.unshift('Apple');
+
+alert( fruits ); // Apple, Orange, Pear</code></pre>
+        </div>
+      </div>
+      
+      </div></dd>
+</dl>
+<p>Methods <code>push</code> and <code>unshift</code> can add multiple elements at once:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let fruits = [&quot;Apple&quot;];
+
+fruits.push(&quot;Orange&quot;, &quot;Peach&quot;);
+fruits.unshift(&quot;Pineapple&quot;, &quot;Lemon&quot;);
+
+// [&quot;Pineapple&quot;, &quot;Lemon&quot;, &quot;Apple&quot;, &quot;Orange&quot;, &quot;Peach&quot;]
+alert( fruits );</code></pre>
+        </div>
+      </div>
+      
+      </div><h2><a class="main__anchor" name="internals" href="#internals">Internals</a></h2><p>An array is a special kind of object. The square brackets used to access a property <code>arr[0]</code> actually come from the object syntax. Numbers are used as keys.</p>
+<p>They extend objects providing special methods to work with ordered collections of data and also the <code>length</code> property. But at the core it’s still an object.</p>
+<p>Remember, there are only 7 basic types in JavaScript. Array is an object and thus behaves like an object.</p>
+<p>For instance, it is copied by reference:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let fruits = [&quot;Banana&quot;]
+
+let arr = fruits; // copy by reference (two variables reference the same array)
+
+alert( arr === fruits ); // true
+
+arr.push(&quot;Pear&quot;); // modify the array by reference
+
+alert( fruits ); // Banana, Pear - 2 items now</code></pre>
+        </div>
+      </div>
+      
+      </div><p>…But what makes arrays really  special is their internal representation. The engine tries to store its elements in the contiguous memory area, one after another, just as depicted on the illustrations in this chapter, and there are other optimizations as well, to make arrays work really fast.</p>
+<p>But they all break if we quit working with an array as with an “ordered collection” and start working with it as if it were a regular object.</p>
+<p>For instance, technically we can do this:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let fruits = []; // make an array
+
+fruits[99999] = 5; // assign a property with the index far greater than its length
+
+fruits.age = 25; // create a property with an arbitrary name</code></pre>
+        </div>
+      </div>
+      
+      </div><p>That’s possible, because arrays are objects at their base. We can add any properties to them.</p>
+<p>But the engine will see that we’re working with the array as with a regular object. Array-specific optimizations are not suited for such cases and will be turned off, their benefits disappear.</p>
+<p>The ways to misuse an array:</p>
+<ul>
+<li>Add a non-numeric property like <code>arr.test = 5</code>.</li>
+<li>Make holes, like: add <code>arr[0]</code> and then <code>arr[1000]</code> (and nothing between them).</li>
+<li>Fill the array in the reverse order, like <code>arr[1000]</code>, <code>arr[999]</code> and so on.</li>
+</ul>
+<p>Please think of arrays as special structures to work with the <em>ordered data</em>. They provide special methods for that. Arrays are carefully tuned inside JavaScript engines to work with contiguous ordered data, please use them this way. And if you need arbitrary keys, chances are high that you actually require a regular object <code>{}</code>.</p>
+<h2><a class="main__anchor" name="performance" href="#performance">Performance</a></h2><p>Methods <code>push/pop</code> run fast, while <code>shift/unshift</code> are slow.</p>
+<figure><div class="image" style="width:327px">
+      <div class="image__ratio" style="padding-top:45.87155963302752%"></div>
+      <img src="article/array/array-speed.png" alt="" width="327" height="150" class="image__image">
+      </div></figure><p>Why is it faster to work with the end of an array than with its beginning? Let’s see what happens during the execution:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">fruits.shift(); // take 1 element from the start</code></pre>
+        </div>
+      </div>
+      
+      </div><p>It’s not enough to take and remove the element with the number <code>0</code>. Other elements need to be renumbered as well.</p>
+<p>The <code>shift</code> operation must do 3 things:</p>
+<ol>
+<li>Remove the element with the index <code>0</code>.</li>
+<li>Move all elements to the left, renumber them from the index <code>1</code> to <code>0</code>, from <code>2</code> to <code>1</code> and so on.</li>
+<li>Update the <code>length</code> property.</li>
+</ol>
+<figure><div class="image" style="width:593px">
+      <div class="image__ratio" style="padding-top:23.946037099494095%"></div>
+      <img src="article/array/array-shift.png" alt="" width="593" height="142" class="image__image">
+      </div></figure><p><strong>The more elements in the array, the more time to move them, more in-memory operations.</strong></p>
+<p>The similar thing happens with <code>unshift</code>: to add an element to the beginning of the array, we need first to move existing elements to the right, increasing their indexes.</p>
+<p>And what’s with <code>push/pop</code>? They do not need to move anything. To extract an element from the end, the <code>pop</code> method cleans the index and shortens <code>length</code>.</p>
+<p>The actions for the <code>pop</code> operation:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">fruits.pop(); // take 1 element from the end</code></pre>
+        </div>
+      </div>
+      
+      </div><figure><div class="image" style="width:462px">
+      <div class="image__ratio" style="padding-top:25.324675324675322%"></div>
+      <img src="article/array/array-pop.png" alt="" width="462" height="117" class="image__image">
+      </div></figure><p><strong>The <code>pop</code> method does not need to move anything, because other elements keep their indexes. That’s why it’s blazingly fast.</strong></p>
+<p>The similar thing with the <code>push</code> method.</p>
+<h2><a class="main__anchor" name="loops" href="#loops">Loops</a></h2><p>One of the oldest ways to cycle array items is the <code>for</code> loop over indexes:</p>
+<div data-trusted="1" class="code-example" data-highlight-block="2-2">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let arr = [&quot;Apple&quot;, &quot;Orange&quot;, &quot;Pear&quot;];
+
+for (let i = 0; i &lt; arr.length; i++) {
+  alert( arr[i] );
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>But for arrays there is another form of loop, <code>for..of</code>:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let fruits = [&quot;Apple&quot;, &quot;Orange&quot;, &quot;Plum&quot;];
+
+// iterates over array elements
+for (let fruit of fruits) {
+  alert( fruit );
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>The <code>for..of</code> doesn’t give access to the number of the current element, just its value, but in most cases that’s enough. And it’s shorter.</p>
+<p>Technically, because arrays are objects, it is also possible to use <code>for..in</code>:</p>
+<div data-trusted="1" class="code-example" data-highlight-block="2-2">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let arr = [&quot;Apple&quot;, &quot;Orange&quot;, &quot;Pear&quot;];
+
+for (let key in arr) {
+  alert( arr[key] ); // Apple, Orange, Pear
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>But that’s actually a bad idea. There are potential problems with it:</p>
+<ol>
+<li>
+<p>The loop <code>for..in</code> iterates over <em>all properties</em>, not only the numeric ones.</p>
+<p>There are so-called “array-like” objects in the browser and in other environments, that <em>look like arrays</em>. That is, they have <code>length</code> and indexes properties, but they may also have other non-numeric properties and methods, which we usually don’t need. The <code>for..in</code> loop will list them though. So if we need to work with array-like objects, then these “extra” properties can become a problem.</p>
+</li>
+<li>
+<p>The <code>for..in</code> loop is optimized for generic objects, not arrays, and thus is 10-100 times slower. Of course, it’s still very fast. The speedup may matter only in bottlenecks or just irrelevant. But still we should be aware of the difference.</p>
+</li>
+</ol>
+<p>Generally, we shouldn’t use <code>for..in</code> for arrays.</p>
+<h2><a class="main__anchor" name="a-word-about-length" href="#a-word-about-length">A word about “length”</a></h2><p>The <code>length</code> property automatically updates when we modify the array. To be precise, it is actually not the count of values in the array, but the greatest numeric index plus one.</p>
+<p>For instance, a single element with a large index gives a big length:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let fruits = [];
+fruits[123] = &quot;Apple&quot;;
+
+alert( fruits.length ); // 124</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Note that we usually don’t use arrays like that.</p>
+<p>Another interesting thing about the <code>length</code> property is that it’s writable.</p>
+<p>If we increase it manually, nothing interesting happens. But if we decrease it, the array is truncated. The process is irreversible, here’s the example:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let arr = [1, 2, 3, 4, 5];
+
+arr.length = 2; // truncate to 2 elements
+alert( arr ); // [1, 2]
+
+arr.length = 5; // return length back
+alert( arr[3] ); // undefined: the values do not return</code></pre>
+        </div>
+      </div>
+      
+      </div><p>So, the simplest way to clear the array is: <code>arr.length = 0;</code>.</p>
+<h2><a class="main__anchor" name="new-array" href="#new-array">new Array()</a></h2><p>There is one more syntax to create an array:</p>
+<div data-trusted="1" class="code-example" data-highlight-inline="0:10-19">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let arr = new Array(&quot;Apple&quot;, &quot;Pear&quot;, &quot;etc&quot;);</code></pre>
+        </div>
+      </div>
+      
+      </div><p>It’s rarely used, because square brackets <code>[]</code> are shorter. Also there’s a tricky feature with it.</p>
+<p>If <code>new Array</code> is called with a single argument which is a number, then it creates an array <em>without items, but with the given length</em>.</p>
+<p>Let’s see how one can shoot himself in the foot:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let arr = new Array(2); // will it create an array of [2] ?
+
+alert( arr[0] ); // undefined! no elements.
+
+alert( arr.length ); // length 2</code></pre>
+        </div>
+      </div>
+      
+      </div><p>In the code above, <code>new Array(number)</code> has all elements <code>undefined</code>.</p>
+<p>To evade such surprises, we usually use square brackets, unless we really know what we’re doing.</p>
+<h2><a class="main__anchor" name="multidimensional-arrays" href="#multidimensional-arrays">Multidimensional arrays</a></h2><p>Arrays can have items that are also arrays. We can use it for multidimensional arrays, to store matrices:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let matrix = [
+  [1, 2, 3],
+  [4, 5, 6],
+  [7, 8, 9]
+];
+
+alert( matrix[1][1] ); // the central element</code></pre>
+        </div>
+      </div>
+      
+      </div><h2><a class="main__anchor" name="tostring" href="#tostring">toString</a></h2><p>Arrays have their own implementation of <code>toString</code> method that returns a comma-separated list of elements.</p>
+<p>For instance:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let arr = [1, 2, 3];
+
+alert( arr ); // 1,2,3
+alert( String(arr) === '1,2,3' ); // true</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Also, let’s try this:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">alert( [] + 1 ); // &quot;1&quot;
+alert( [1] + 1 ); // &quot;11&quot;
+alert( [1,2] + 1 ); // &quot;1,21&quot;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Arrays do not have <code>Symbol.toPrimitive</code>, neither a viable <code>valueOf</code>, they implement only <code>toString</code> conversion, so here <code>[]</code> becomes an empty string, <code>[1]</code> becomes <code>&quot;1&quot;</code> and <code>[1,2]</code> becomes <code>&quot;1,2&quot;</code>.</p>
+<p>When the binary plus <code>&quot;+&quot;</code> operator adds something to a string, it converts it to a string as well, so the next step looks like this:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">alert( &quot;&quot; + 1 ); // &quot;1&quot;
+alert( &quot;1&quot; + 1 ); // &quot;11&quot;
+alert( &quot;1,2&quot; + 1 ); // &quot;1,21&quot;</code></pre>
+        </div>
+      </div>
+      
+      </div><h2><a class="main__anchor" name="summary" href="#summary">Summary</a></h2><p>Array is a special kind of objects, suited to store and manage ordered data items.</p>
+<ul>
+<li>
+<p>The declaration:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">// square brackets (usual)
+let arr = [item1, item2...];
+
+// new Array (exceptionally rare)
+let arr = new Array(item1, item2...);</code></pre>
+        </div>
+      </div>
+      
+      </div><p>The call to <code>new Array(number)</code> creates an array with the given length, but without elements.</p>
+</li>
+<li>
+<p>The <code>length</code> property is the array length or, to be precise, its last numeric index plus one. It is auto-adjusted by array methods.</p>
+</li>
+<li>
+<p>If we shorten <code>length</code> manually, the array is truncated.</p>
+</li>
+</ul>
+<p>We can use an array as a deque with the following operations:</p>
+<ul>
+<li><code>push(...items)</code> adds <code>items</code> to the end.</li>
+<li><code>pop()</code> removes the element from the end and returns it.</li>
+<li><code>shift()</code> removes the element from the beginning and returns it.</li>
+<li><code>unshift(...items)</code> adds items to the beginning.</li>
+</ul>
+<p>To loop over the elements of the array:</p>
+<ul>
+<li><code>for (let i=0; i&lt;arr.length; i++)</code> – works fastest, old-browser-compatible.</li>
+<li><code>for (let item of arr)</code> – the modern syntax for items only,</li>
+<li><code>for (let i in arr)</code> – never use.</li>
+</ul>
+<p>We will return to arrays and study more methods to add, remove, extract elements and sort arrays in the chapter <a href="array-methods.html">Array methods</a>.</p>
+</div></article><div class="tasks"><h2 id="tasks" class="tasks__title"><a href="#tasks" class="main__anchor main__anchor_noicon tasks__title-anchor">Tasks</a></h2><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a href="#is-array-copied" name="is-array-copied" class="main__anchor">Is array copied?</a></h3><a href="task/item-value.html" target="_blank" class="task__open-link"></a></div><div class="task__header-note"><span title="How important is the task, from 1 to 5" class="task__importance">importance: 3</span></div><div class="task__content"><p>What is this code going to show?</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let fruits = [&quot;Apples&quot;, &quot;Pear&quot;, &quot;Orange&quot;];
+
+// push a new value into the &quot;copy&quot;
+let shoppingCart = fruits;
+shoppingCart.push(&quot;Banana&quot;);
+
+// what's in fruits?
+alert( fruits.length ); // ?</code></pre>
+        </div>
+      </div>
+      
+      </div><button type="button" class="task__solution">solution</button><div class="task__answer"><div class="task__answer-content"><p>The result is <code>4</code>:</p>
+<div data-trusted="1" class="code-example" data-highlight-block="6-6">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let fruits = [&quot;Apples&quot;, &quot;Pear&quot;, &quot;Orange&quot;];
+
+let shoppingCart = fruits;
+
+shoppingCart.push(&quot;Banana&quot;);
+
+alert( fruits.length ); // 4</code></pre>
+        </div>
+      </div>
+      
+      </div><p>That’s because arrays are objects. So both <code>shoppingCart</code> and <code>fruits</code> are the references to the same array.</p>
+</div><button type="button" title="close" class="close-button task__answer-close"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a href="#array-operations" name="array-operations" class="main__anchor">Array operations.</a></h3><a href="task/create-array.html" target="_blank" class="task__open-link"></a></div><div class="task__header-note"><span title="How important is the task, from 1 to 5" class="task__importance">importance: 5</span></div><div class="task__content"><p>Let’s try 5 array operations.</p>
+<ol>
+<li>Create an array <code>styles</code> with items “Jazz” and “Blues”.</li>
+<li>Append “Rock-n-Roll” to the end.</li>
+<li>Replace the value in the middle by “Classics”. Your code for finding the middle value should work for any arrays with odd length.</li>
+<li>Strip off the first value of the array and show it.</li>
+<li>Prepend <code>Rap</code> and <code>Reggae</code> to the array.</li>
+</ol>
+<p>The array in the process:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">Jazz, Blues
+Jazz, Bues, Rock-n-Roll
+Jazz, Classics, Rock-n-Roll
+Classics, Rock-n-Roll
+Rap, Reggae, Classics, Rock-n-Roll</code></pre>
+        </div>
+      </div>
+      
+      </div><button type="button" class="task__solution">solution</button><div class="task__answer"><div class="task__answer-content"><div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let styles = [&quot;Jazz&quot;, &quot;Blues&quot;];
+styles.push(&quot;Rock-n-Roll&quot;);
+styles[Math.floor((styles.length - 1) / 2)] = &quot;Classics&quot;;
+alert( styles.shift() );
+styles.unshift(&quot;Rap&quot;, &quot;Reggie&quot;);</code></pre>
+        </div>
+      </div>
+      
+      </div></div><button type="button" title="close" class="close-button task__answer-close"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a href="#calling-in-an-array-context" name="calling-in-an-array-context" class="main__anchor">Calling in an array context</a></h3><a href="task/call-array-this.html" target="_blank" class="task__open-link"></a></div><div class="task__header-note"><span title="How important is the task, from 1 to 5" class="task__importance">importance: 5</span></div><div class="task__content"><p>What is the result? Why?</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let arr = [&quot;a&quot;, &quot;b&quot;];
+
+arr.push(function() {
+  alert( this );
+})
+
+arr[2](); // ?</code></pre>
+        </div>
+      </div>
+      
+      </div><button type="button" class="task__solution">solution</button><div class="task__answer"><div class="task__answer-content"><p>The call <code>arr[2]()</code> is syntactically the good old <code>obj[method]()</code>, in the role of <code>obj</code> we have <code>arr</code>, and in the role of <code>method</code> we have <code>2</code>.</p>
+<p>So we have a call of the function <code>arr[2]</code> as an object method. Naturally, it receives <code>this</code> referencing the object <code>arr</code> and outputs the array:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let arr = [&quot;a&quot;, &quot;b&quot;];
+
+arr.push(function() {
+  alert( this );
+})
+
+arr[2](); // &quot;a&quot;,&quot;b&quot;,function</code></pre>
+        </div>
+      </div>
+      
+      </div><p>The array has 3 values: initially it had two, plus the function.</p>
+</div><button type="button" title="close" class="close-button task__answer-close"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a href="#sum-input-numbers" name="sum-input-numbers" class="main__anchor">Sum input numbers</a></h3><a href="task/array-input-sum.html" target="_blank" class="task__open-link"></a></div><div class="task__header-note"><span title="How important is the task, from 1 to 5" class="task__importance">importance: 4</span></div><div class="task__content"><p>Write the function <code>sumInput()</code> that:</p>
+<ul>
+<li>Asks the user for values using <code>prompt</code> and stores the values in the array.</li>
+<li>Finishes asking when the user enters a non-numeric value, an empty string, or presses “Cancel”.</li>
+<li>Calculates and returns the sum of array items.</li>
+</ul>
+<p>P.S. A zero <code>0</code> is a valid number, please don’t stop the input on zero.</p>
+<p><a href="#" onclick="event.preventDefault(); runDemo(this)">Run the demo</a></p><button type="button" class="task__solution">solution</button><div class="task__answer"><div class="task__answer-content"><p>Please note the subtle, but important detail of the solution. We don’t convert <code>value</code> to number instantly after <code>prompt</code>, because after <code>value = +value</code> we would not be able to tell an empty string (stop sign) from the zero (valid number). We do it later instead.</p>
+<div data-trusted="1" class="code-example" data-demo="1">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function sumInput() {
+
+  let numbers = [];
+
+  while (true) {
+
+    let value = prompt(&quot;A number please?&quot;, 0);
+
+    // should we cancel?
+    if (value === &quot;&quot; || value === null || !isFinite(value)) break;
+
+    numbers.push(+value);
+  }
+
+  let sum = 0;
+  for (let number of numbers) {
+    sum += number;
+  }
+  return sum;
+}
+
+alert( sumInput() );</code></pre>
+        </div>
+      </div>
+      
+      </div></div><button type="button" title="close" class="close-button task__answer-close"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a href="#a-maximal-subarray" name="a-maximal-subarray" class="main__anchor">A maximal subarray</a></h3><a href="task/maximal-subarray.html" target="_blank" class="task__open-link"></a></div><div class="task__header-note"><span title="How important is the task, from 1 to 5" class="task__importance">importance: 2</span></div><div class="task__content"><p>The input is an array of numbers, e.g. <code>arr = [1, -2, 3, 4, -9, 6]</code>.</p>
+<p>The task is: find the contiguous subarray of <code>arr</code> with the maximal sum of items.</p>
+<p>Write the function <code>getMaxSubSum(arr)</code> that will find return that sum.</p>
+<p>For instance:</p>
+<div data-trusted="1" class="code-example" data-highlight-inline="0:18-22,1:14-25,2:28-30,3:22-26,4:14-17,5:14-21">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">getMaxSubSum([-1, 2, 3, -9]) = 5 (the sum of highlighted items)
+getMaxSubSum([2, -1, 2, 3, -9]) = 6
+getMaxSubSum([-1, 2, 3, -9, 11]) = 11
+getMaxSubSum([-2, -1, 1, 2]) = 3
+getMaxSubSum([100, -9, 2, -3, 5]) = 100
+getMaxSubSum([1, 2, 3]) = 6 (take all)</code></pre>
+        </div>
+      </div>
+      
+      </div><p>If all items are negative, it means that we take none (the subarray is empty), so the sum is zero:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">getMaxSubSum([-1, -2, -3]) = 0</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Please try to think of a fast solution: <a href="https://en.wikipedia.org/wiki/Big_O_notation">O(n<sup>2</sup>)</a> or even O(n) if you can.</p>
+<p><a href="http://plnkr.co/edit/UHrd7pOZxSmJgM2hvLyU?p=preview" target="_blank" data-plunk-id="UHrd7pOZxSmJgM2hvLyU">Open the sandbox with tests.</a></p><button type="button" class="task__solution">solution</button><div class="task__answer"><div class="task__step task__step_open"><button type="button" onclick="showStep(this)" class="task__step-show">The slow solution</button><div class="task__answer-content"><h4 class="task__step-title">The slow solution</h4><p>We can calculate all possible subsums.</p>
+<p>The simplest way is to take every element and calculate sums of all subarrays starting from it.</p>
+<p>For instance, for <code>[-1, 2, 3, -9, 11]</code>:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">// Starting from -1:
+-1
+-1 + 2
+-1 + 2 + 3
+-1 + 2 + 3 + (-9)
+-1 + 2 + 3 + (-9) + 11
+
+// Starting from 2:
+2
+2 + 3
+2 + 3 + (-9)
+2 + 3 + (-9) + 11
+
+// Starting from 3:
+3
+3 + (-9)
+3 + (-9) + 11
+
+// Starting from -9
+-9
+-9 + 11
+
+// Starting from -11
+-11</code></pre>
+        </div>
+      </div>
+      
+      </div><p>The code is actually a nested loop: the external loop over array elements, and the internal counts subsums starting with the current element.</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function getMaxSubSum(arr) {
+  let maxSum = 0; // if we take no elements, zero will be returned
+
+  for (let i = 0; i &lt; arr.length; i++) {
+    let sumFixedStart = 0;
+    for (let j = i; j &lt; arr.length; j++) {
+      sumFixedStart += arr[j];
+      maxSum = Math.max(maxSum, sumFixedStart);
+    }
+  }
+
+  return maxSum;
+}
+
+alert( getMaxSubSum([-1, 2, 3, -9]) ); // 5
+alert( getMaxSubSum([-1, 2, 3, -9, 11]) ); // 11
+alert( getMaxSubSum([-2, -1, 1, 2]) ); // 3
+alert( getMaxSubSum([1, 2, 3]) ); // 6
+alert( getMaxSubSum([100, -9, 2, -3, 5]) ); // 100</code></pre>
+        </div>
+      </div>
+      
+      </div><p>The solution has a time complexety of <a href="https://en.wikipedia.org/wiki/Big_O_notation">O(n<sup>2</sup>)</a>. In other words, if we increase the array size 2 times, the algorithm will work 4 times longer.</p>
+<p>For big arrays (1000, 10000 or more items) such algorithms can lead to a seroius sluggishness.</p>
+</div></div><div class="task__step task__step_open"><button type="button" onclick="showStep(this)" class="task__step-show">Fast solution</button><div class="task__answer-content"><h4 class="task__step-title">Fast solution</h4><p>Let’s walk the array and keep the current partial sum of elements in the variable <code>s</code>. If <code>s</code> becomes negative at some point, then assign <code>s=0</code>. The maximum of all such <code>s</code> will be the answer.</p>
+<p>If the description is too vague, please see the code, it’s short enough:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function getMaxSubSum(arr) {
+  let maxSum = 0;
+  let partialSum = 0;
+
+  for (let item of arr) { // for each item of arr
+    partialSum += item; // add it to partialSum
+    maxSum = Math.max(maxSum, partialSum); // remember the maximum
+    if (partialSum &lt; 0) partialSum = 0; // zero if negative
+  }
+
+  return maxSum;
+}
+
+alert( getMaxSubSum([-1, 2, 3, -9]) ); // 5
+alert( getMaxSubSum([-1, 2, 3, -9, 11]) ); // 11
+alert( getMaxSubSum([-2, -1, 1, 2]) ); // 3
+alert( getMaxSubSum([100, -9, 2, -3, 5]) ); // 100
+alert( getMaxSubSum([1, 2, 3]) ); // 6
+alert( getMaxSubSum([-1, -2, -3]) ); // 0</code></pre>
+        </div>
+      </div>
+      
+      </div><p>The algorithm requires exactly 1 array pass, so the time complexity is O(n).</p>
+<p>You can find more detail information about the algorithm here: <a href="http://en.wikipedia.org/wiki/Maximum_subarray_problem">Maximum subarray problem</a>. If it’s still not obvious why that works, then please trace the algorithm on the examples above, see how it works, that’s better than any words.</p>
+<p><a href="http://plnkr.co/edit/6cxNY5xLMMtuoEYfgeD5?p=preview" target="_blank" data-plunk-id="6cxNY5xLMMtuoEYfgeD5">Open the solution with tests in the sandbox.</a></p></div></div><button type="button" title="close" class="close-button task__answer-close"></button></div></div></div></div></div><!--  include /blocks/banner-bottom--><!--if lang == 'en'--><!--  include /blocks/banner-bottom.en--></div><div class="page__nav-wrap"><a href="string.html" data-tooltip="Strings" class="page__nav page__nav_prev"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Previous lesson</span></a><a href="array-methods.html" data-tooltip="Array methods" class="page__nav page__nav_next"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Next lesson</span></a></div><div class="article-tablet-foot tablet-only"><div class="article-tablet-foot__layout"><div class="share-icons"><span class="share-icons__title">Share</span><a href="https://twitter.com/share?url=https%3A%2F%2Fjavascript.info%2Farray" class="share share_tw"></a><a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fjavascript.info%2Farray" class="share share_fb"></a><a href="https://plus.google.com/share?url=https%3A%2F%2Fjavascript.info%2Farray" class="share share_gp"></a><a href="https://vkontakte.ru/share.php?url=https%3A%2F%2Fjavascript.info%2Farray" class="share share_vk"></a></div><div class="article-tablet-foot__map"><a href="tutorial/map.html" data-action="tutorial-map" class="map"><span class="map__text">Tutorial map</span></a></div></div></div><div id="comments" class="comments"><div class="comments__header"><h2 class="comments__header-title"><a href="#comments" name="comments">Comments</a></h2><div class="comments__read-before"><span class="comments__read-before-link">read this before commenting…</span><div class="comments__read-before-popup"><div class="comments__read-before-popup-i"><ul><li>You're welcome to post additions, questions to the articles and answers to them.</li><li>To insert a few words of code, use the <code>&lt;code&gt;</code> tag, for several lines – use <code>&lt;pre&gt;</code>, for more than 10 lines – use a sandbox (<a href='http://plnkr.co/edit/?p=preview'>plnkr</a>, <a href='http://jsbin.com/'>JSBin</a>, <a href='http://codepen.io/'>codepen</a>…)</li><li>If you can't understand something in the article – please elaborate.</li></ul></div></div></div></div></div><div id="disqus_thread"></div><script>var disqus_config = function() { if (!this.page) this.page = {}; Object.assign(this.page, {"url":"https:\/\/javascript.info\/array","identifier":"\/array","title":"Arrays"}); };</script><script>var disqus_shortname = "javascriptinfo";</script><script>var disqus_enabled = true;</script></main></div><div class="page__sidebar sidebar sidebar_sticky-footer"><button data-sidebar-toggle class="sidebar__toggle"></button><a href="tutorial/map.html" data-action="tutorial-map" data-tooltip="Tutorial map" class="map"></a><div class="sidebar__inner"><div class="sidebar__content"><div class="sidebar__section"><h4 class="sidebar__section-title">Chapter</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a href="data-types.html" class="sidebar__link">Data types</a></li></ul></nav></div><div class="sidebar__section"><h4 class="sidebar__section-title">Lesson navigation</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a href="#declaration" class="sidebar__link">Declaration</a></li><li class="sidebar__navigation-link"><a href="#methods-pop-push-shift-unshift" class="sidebar__link">Methods pop/push, shift/unshift</a></li><li class="sidebar__navigation-link"><a href="#internals" class="sidebar__link">Internals</a></li><li class="sidebar__navigation-link"><a href="#performance" class="sidebar__link">Performance</a></li><li class="sidebar__navigation-link"><a href="#loops" class="sidebar__link">Loops</a></li><li class="sidebar__navigation-link"><a href="#a-word-about-length" class="sidebar__link">A word about “length”</a></li><li class="sidebar__navigation-link"><a href="#new-array" class="sidebar__link">new Array()</a></li><li class="sidebar__navigation-link"><a href="#multidimensional-arrays" class="sidebar__link">Multidimensional arrays</a></li><li class="sidebar__navigation-link"><a href="#tostring" class="sidebar__link">toString</a></li><li class="sidebar__navigation-link"><a href="#summary" class="sidebar__link">Summary</a></li></ul></nav></div><div class="sidebar__section"><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a href="#tasks" class="sidebar__link">Tasks (5)</a></li><li class="sidebar__navigation-link"><a href="#comments" class="sidebar__link">Comments</a></li></ul></nav></div><div class="sidebar__section"><div class="sidebar__section-title">Share</div><a href="https://twitter.com/share?url=https%3A%2F%2Fjavascript.info%2Farray" class="share share_tw sidebar__share"></a><a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fjavascript.info%2Farray" class="share share_fb sidebar__share"></a><a href="https://plus.google.com/share?url=https%3A%2F%2Fjavascript.info%2Farray" class="share share_gp sidebar__share"></a></div><div class="sidebar__section"><a href="https://github.com/iliakan/javascript-tutorial-en/tree/master/1-js/05-data-types/04-array/article.md" class="sidebar__link">Edit on Github</a></div></div></div></div></div></div><div class="page-footer"><div class="page-footer__left"><ul class="page-footer__list"><li class="page-footer__item">©&nbsp;2007—2017&nbsp; Ilya Kantor</li><li class="page-footer__item"><a href="about.html#contact-us" class="page-footer__link">contact us</a></li><li class="page-footer__item"><a href="about.html" class="page-footer__link">about the project</a></li><li class="page-footer__item"><a href="https://learn.javascript.ru/" class="page-footer__link">RU</a> / EN</li></ul></div><div class="page-footer__right"><ul class="page-footer__list"><li class="page-footer__item">powered by <a rel="nofollow" href="http://nodejs.org/" class="page-footer__link">node.js</a>&nbsp;&amp;&nbsp;<a rel="nofollow" href="http://github.com/iliakan/javascript-tutorial-en" class="page-footer__link">open source</a></li></ul></div></div></body>
+<!-- Mirrored from javascript.info/array by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 30 Nov 2017 15:28:05 GMT -->
+</html>

@@ -1,0 +1,455 @@
+<!DOCTYPE html><html lang="en">
+<!-- Mirrored from javascript.info/class by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 30 Nov 2017 15:28:42 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><script>window.currentUser = null;</script><title itemprop="name">Classes</title><meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, minimum-scale=1.0"><meta name="apple-mobile-web-app-capable" content="yes"><script>if (window.devicePixelRatio > 1) document.cookie = 'pixelRatio=' + window.devicePixelRatio + ';path=/;expires=Tue, 19 Jan 2038 03:14:07 GMT';</script><link href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700%7COpen+Sans+Condensed:700&amp;subset=latin,latin-ext,cyrillic,cyrillic-ext" rel="stylesheet"><link rel="apple-touch-icon-precomposed" href="img/favicon/apple-touch-icon-precomposed.png"><link rel="canonical" href="class.html"><meta name="msapplication-TileColor" content="#222A2C"><meta name="msapplication-TileImage" content="/img/favicon/tileicon.png"><!-- favicon the rest--><link rel="icon" href="img/favicon/favicon.png"><meta itemprop="image" content="https://javascript.info/img/site_preview_en_512x512.png"><meta property="og:title" content="Classes"><meta property="og:image" content="https://javascript.info/img/site_preview_en_1200x630.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="fb:admins" content="100001562528165"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Classes"><meta name="twitter:site" content="@iliakan"><meta name="twitter:creator" content="@iliakan"><meta name="twitter:image" content="https://javascript.info/img/site_preview_en_512x512.png"><link href="pack/styles.da59a89b28153875791083e4a8c5adb3.css" rel="stylesheet"><link rel="prev" href="class-patterns.html"><link rel="next" href="class-inheritance.html"><script>window.GA_ID = "UA-2056213-15";</script><script>window.YANDEX_METRIKA_ID = 32184394;</script><script>window.GoogleAnalyticsObject="ga",window.ga=function(){window.ga.q.push(arguments)},window.ga.q=[],window.ga.l=Date.now(),ga("create",GA_ID,"auto"),window.currentUser&&ga("set","&uid",currentUser.id),window.addEventListener("error",function(e){var r=(e.filename||e.errorUrl)+": "+(e.lineno||e.errorLine),n=e.stack||e.error&&e.error.stack;ga("send","exception",{exDescription:e.message+" "+r+" "+n,exFatal:!0})});</script><script src="https://www.google-analytics.com/analytics.js" async></script><script>ga('send', 'pageview');</script><script>window.metrika={reachGoal:function(){}},window.yandex_metrika_callbacks=[function(){try{window.metrika=new Ya.Metrika({id:YANDEX_METRIKA_ID,webvisor:!0,clickmap:!0,params:{user:window.currentUser&&window.currentUser.id}}),metrika.trackLinks({delay:150}),window.addEventListener("error",function(r){window.metrika.reachGoal("JSERROR",{src:(r.filename||r.errorUrl)+": "+(r.lineno||r.errorLine),stack:r.stack||r.error&&r.error.stack,message:r.message})})}catch(r){}}];</script><script src="http://mc.yandex.ru/metrika/watch.js" async></script><script>window.RECAPTCHA_ID = "6Lf9NyETAAAAACZlg-a9Us2SxvYbeVC1ROWaWv4O";</script><script src="initc4ca.js?1"></script><script src="pack/head.688d4fe7c4cf54e23737.js" defer></script><meta property="og:title" content="Classes"><meta property="og:type" content="article"><script src="pack/tutorial.688d4fe7c4cf54e23737.js" defer></script><script src="pack/footer.688d4fe7c4cf54e23737.js" defer></script></head><body class="no-icons"><script>window.fontTest();</script><div class="page-wrapper page-wrapper_sidebar_on"><!--[if lt IE 10]><div style="color:red;text-align:center">Sorry, IE&lt;10 is not supported, please use a newer browser.</div><![endif]--><div class="sitetoolbar sitetoolbar_tutorial"><!-- include ./notification-stripe--><div class="sitetoolbar__content"><div class="sitetoolbar__logo-wrap"><a href="index.html" class="sitetoolbar__link sitetoolbar__link_logo"><img src="img/sitetoolbar__logo_en.svg" width="200" class="sitetoolbar__logo sitetoolbar__logo_normal" alt=""><img src="img/sitetoolbar__logo_small_en.svg" width="70" class="sitetoolbar__logo sitetoolbar__logo_small" alt=""><script>Array.prototype.forEach.call(document.querySelectorAll("img.sitetoolbar__logo"),function(e){var t=document.createElement("object");t.type="image/svg+xml",t.className=e.className,t.style.cssText="left:0;top:0;position:absolute",t.onload=function(){t.onload=null,e.style.visibility="hidden"},t.data=e.src,e.parentNode.insertBefore(t,e)});</script></a></div><div class="sitetoolbar__nav-toggle-wrap"><button type="button" class="sitetoolbar__nav-toggle"></button></div><nav class="sitetoolbar__sections"><ul class="sitetoolbar__sections-list"></ul></nav><div class="sitetoolbar__book-wrap"><a href="ebook.html" class="buy-book-button"><span class="buy-book-button__extra-text">Buy</span>EPUB/PDF</a></div><div class="sitetoolbar__login-wrap"><button data-action-login class="sitetoolbar__login sitetoolbar__login_unready"></button></div><div class="sitetoolbar__search-wrap"><div class="sitetoolbar__search-content"><form method="GET" action="http://javascript.info/search" class="sitetoolbar__search"><button type="button" class="sitetoolbar__search-toggle"></button><div class="sitetoolbar__search-input"><div class="text-input"><input name="query" placeholder="Search on Javascript.info" class="text-input__control" type="text"></div><button type="submit" class="sitetoolbar__find">Search</button></div></form></div></div></div><!-- todo: en variant--><div class="tablet-menu"><div class="tablet-menu__line"><div class="tablet-menu__content"><form action="http://javascript.info/search/" class="tablet-menu-search"><input type="search" name="query" placeholder="Search in the tutorial" required class="tablet-menu-search__input"><button type="submit" name="type" value="articles" class="tablet-menu-search__button">Search</button></form></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><a href="tutorial/map.html" data-action="tutorial-map" class="map"><span class="map__text">Tutorial map</span></a></div></div><!--+e.line--><!--  +e.content--><!--    +b("a").tablet-ebook(href="/ebook")--><!--      +e("span").text Купить учебник--><!--      +e("span").note (EPUB + PDF)--><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="share-icons"><span class="share-icons__title">Share</span><a href="https://twitter.com/share?url=https%3A%2F%2Fjavascript.info%2Fclass" class="share share_tw"></a><a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fjavascript.info%2Fclass" class="share share_fb"></a><a href="https://plus.google.com/share?url=https%3A%2F%2Fjavascript.info%2Fclass" class="share share_gp"></a><a href="https://vkontakte.ru/share.php?url=https%3A%2F%2Fjavascript.info%2Fclass" class="share share_vk"></a></div></div></div></div><progress data-sticky value="62" max="67" data-tooltip="Lesson 62 of 67" class="tutorial-progress"></progress></div><div class="page page_sidebar_on"><script>if(localStorage.noSidebar){document.querySelector(".page").classList.remove("page_sidebar_on");var pageWrapper=document.querySelector(".page-wrapper");pageWrapper&&pageWrapper.classList.remove("page-wrapper_sidebar_on")}setTimeout(function(){document.querySelector(".page").classList.add("page_sidebar-animation-on")},0);</script><div class="page__inner"><main class="main main_width-limit"><header class="main__header"><ol class="breadcrumbs"><li itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemref="breadcrumb-1" class="breadcrumbs__item breadcrumbs__item_home"><a href="index.html" itemprop="url" class="breadcrumbs__link"><span itemprop="title" class="breadcrumbs__hidden-text">Учебник</span></a></li><li id="breadcrumb-1" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemref="breadcrumb-2" itemprop="child" class="breadcrumbs__item"><a href="js.html" itemprop="url" class="breadcrumbs__link"><span itemprop="title">The JavaScript language</span></a></li><li id="breadcrumb-2" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemprop="child" class="breadcrumbs__item"><a href="object-oriented-programming.html" itemprop="url" class="breadcrumbs__link"><span itemprop="title">Objects, classes, inheritance</span></a></li></ol><h1 class="main__header-title">Classes</h1></header><div class="content"><article itemscope itemtype="http://schema.org/TechArticle"><meta itemprop="name" content="Classes"><div itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="email" content="iliakan@gmail.com"><meta itemprop="name" content="Ilya Kantor"></div><div itemprop="articleBody"><p>The “class” construct allows to define prototype-based classes with a clean, nice-looking syntax.</p>
+<cut>
+<h2><a class="main__anchor" name="the-class-syntax" href="#the-class-syntax">The “class” syntax</a></h2><p>The <code>class</code> syntax is versatile, we’ll start with a simple example first.</p>
+<p>Here’s a prototype-based class <code>User</code>:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function User(name) {
+  this.name = name;
+}
+
+User.prototype.sayHi = function() {
+  alert(this.name);
+}
+
+let user = new User(&quot;John&quot;);
+user.sayHi();</code></pre>
+        </div>
+      </div>
+      
+      </div><p>…And that’s the same using <code>class</code> syntax:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">class User {
+
+  constructor(name) {
+    this.name = name;
+  }
+
+  sayHi() {
+    alert(this.name);
+  }
+
+}
+
+let user = new User(&quot;John&quot;);
+user.sayHi();</code></pre>
+        </div>
+      </div>
+      
+      </div><p>It’s easy to see that the two examples are alike. Just please note that methods in a class do not have a comma between them. Novice developers sometimes forget it and put a comma between class methods, and things don’t work. That’s not a literal object, but a class syntax.</p>
+<p>So, what exactly does <code>class</code> do? We may think that it defines a new language-level entity, but that would be wrong.</p>
+<p>The <code>class User {...}</code> here actually does two things:</p>
+<ol>
+<li>Declares a variable <code>User</code> that references the function named <code>&quot;constructor&quot;</code>.</li>
+<li>Puts into <code>User.prototype</code> methods listed in the definition. Here it includes <code>sayHi</code> and the <code>constructor</code>.</li>
+</ol>
+<p>Here’s the code to dig into the class and see that:</p>
+<div data-trusted="1" class="code-example" data-highlight-block="5-5,8-8">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">class User {
+  constructor(name) { this.name = name; }
+  sayHi() { alert(this.name); }
+}
+
+// proof: User is the &quot;constructor&quot; function
+alert(User === User.prototype.constructor); // true
+
+// proof: there are two methods in its &quot;prototype&quot;
+alert(Object.getOwnPropertyNames(User.prototype)); // constructor, sayHi</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Here’s the illustration of what <code>class User</code> creates:</p>
+<figure><div class="image" style="width:465px">
+      <div class="image__ratio" style="padding-top:18.494623655913976%"></div>
+      <img src="article/class/class-user.png" alt="" width="465" height="86" class="image__image">
+      </div></figure><p>So <code>class</code> is a special syntax to define a constructor together with its prototype methods.</p>
+<p>…But not only that. There are minor tweaks here and there:</p>
+<dl>
+<dt>Constructors require <code>new</code></dt>
+<dd>Unlike a regular function, a class <code>constructor</code> can’t be called without <code>new</code>:</dd>
+</dl>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">class User {
+  constructor() {}
+}
+
+alert(typeof User); // function
+User(); // Error: Class constructor User cannot be invoked without 'new'</code></pre>
+        </div>
+      </div>
+      
+      </div><dl>
+<dt>Different string output</dt>
+<dd>If we output it like <code>alert(User)</code>, some engines show <code>&quot;class User...&quot;</code>, while others show <code>&quot;function User...&quot;</code>.</dd>
+</dl>
+<p>Please don’t be confused: the string representation may vary, but that’s still a function, there is no separate “class” entity in JavaScript language.</p>
+<dl>
+<dt>Class methods are non-enumerable</dt>
+<dd>A class definition sets <code>enumerable</code> flag to <code>false</code> for all methods in the <code>&quot;prototype&quot;</code>. That’s good, because if we <code>for..in</code> over an object, we usually don’t want its class methods.</dd>
+<dt>Classes have a default <code>constructor() {}</code></dt>
+<dd>If there’s no <code>constructor</code> in the <code>class</code> construct, then an empty function is generated, same as if we had written <code>constructor() {}</code>.</dd>
+<dt>Classes always <code>use strict</code></dt>
+<dd>All code inside the class construct is automatically in strict mode.</dd>
+</dl>
+<h3><a class="main__anchor" name="getters-setters" href="#getters-setters">Getters/setters</a></h3><p>Classes may also include getters/setters. Here’s an example with <code>user.name</code> implemented using them:</p>
+<div data-trusted="1" class="code-example" data-highlight-block="7-7,11-11">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">class User {
+
+  constructor(name) {
+    // invokes the setter
+    this.name = name;
+  }
+
+  get name() {
+    return this._name;
+  }
+
+  set name(value) {
+    if (value.length &lt; 4) {
+      alert(&quot;Name is too short.&quot;);
+      return;
+    }
+    this._name = value;
+  }
+
+}
+
+let user = new User(&quot;John&quot;);
+alert(user.name); // John
+
+user = new User(&quot;&quot;); // Name too short.</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Internally, getters and setters are also created on the <code>User</code> prototype, like this:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">Object.defineProperties(User.prototype, {
+  name: {
+    get() {
+      return this._name
+    },
+    set(name) {
+      // ...
+    }
+  }
+});</code></pre>
+        </div>
+      </div>
+      
+      </div><h3><a class="main__anchor" name="only-methods" href="#only-methods">Only methods</a></h3><p>Unlike object literals, no <code>property:value</code> assignments are allowed inside <code>class</code>. There may be only methods and getters/setters. There is some work going on in the specification to lift that limitation, but it’s not yet there.</p>
+<p>If we really need to put a non-function value into the prototype, then we can alter <code>prototype</code> manually, like this:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">class User { }
+
+User.prototype.test = 5;
+
+alert( new User().test ); // 5</code></pre>
+        </div>
+      </div>
+      
+      </div><p>So, technically that’s possible, but we should know why we’re doing it. Such properties will be shared among all objects of the class.</p>
+<p>An “in-class” alternative is to use a getter:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">class User {
+  get test() {
+    return 5;
+  }
+}
+
+alert( new User().test ); // 5</code></pre>
+        </div>
+      </div>
+      
+      </div><p>From the external code, the usage is the same. But the getter variant is a bit slower.</p>
+<h2><a class="main__anchor" name="class-expression" href="#class-expression">Class Expression</a></h2><p>Just like functions, classes can be defined inside another expression, passed around, returned etc.</p>
+<p>Here’s a class-returning function (“class factory”):</p>
+<div data-trusted="1" class="code-example" data-highlight-block="1-6">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function makeClass(phrase) {
+  // declare a class and return it
+  return class {
+    sayHi() {
+      alert(phrase);
+    };
+  };
+}
+
+let User = makeClass(&quot;Hello&quot;);
+
+new User().sayHi(); // Hello</code></pre>
+        </div>
+      </div>
+      
+      </div><p>That’s quite normal if we recall that <code>class</code> is just a special form of a function-with-prototype definition.</p>
+<p>And, like Named Function Expressions, such classes also may have a name, that is visible inside that class only:</p>
+<div data-trusted="1" class="code-example" data-highlight-inline="1:17-24">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">// &quot;Named Class Expression&quot; (alas, no such term, but that's what's going on)
+let User = class MyClass {
+  sayHi() {
+    alert(MyClass); // MyClass is visible only inside the class
+  }
+};
+
+new User().sayHi(); // works, shows MyClass definition
+
+alert(MyClass); // error, MyClass not visible outside of the class</code></pre>
+        </div>
+      </div>
+      
+      </div><h2><a class="main__anchor" name="static-methods" href="#static-methods">Static methods</a></h2><p>We can also assign methods to the class function, not to its <code>&quot;prototype&quot;</code>. Such methods are called <em>static</em>.</p>
+<p>An example:</p>
+<div data-trusted="1" class="code-example" data-highlight-block="1-1">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">class User {
+  static staticMethod() {
+    alert(this === User);
+  }
+}
+
+User.staticMethod(); // true</code></pre>
+        </div>
+      </div>
+      
+      </div><p>That actually does the same as assigning it as a function property:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function User() { }
+
+User.staticMethod = function() {
+  alert(this === User);
+};</code></pre>
+        </div>
+      </div>
+      
+      </div><p>The value of <code>this</code> inside <code>User.staticMethod()</code> is the class constructor <code>User</code> itself (the “object before dot” rule).</p>
+<p>Usually, static methods are used to implement functions that belong to the class, but not to any particular object of it.</p>
+<p>For instance, we have <code>Article</code> objects and need a function to compare them. The natural choice would be <code>Article.compare</code>, like this:</p>
+<div data-trusted="1" class="code-example" data-highlight-block="6-8,18-18">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">class Article {
+  constructor(title, date) {
+    this.title = title;
+    this.date = date;
+  }
+
+  static compare(articleA, articleB) {
+    return articleA.date - articleB.date;
+  }
+}
+
+// usage
+let articles = [
+  new Article(&quot;Mind&quot;, new Date(2016, 1, 1)),
+  new Article(&quot;Body&quot;, new Date(2016, 0, 1)),
+  new Article(&quot;JavaScript&quot;, new Date(2016, 11, 1))
+];
+
+articles.sort(Article.compare);
+
+alert( articles[0].title ); // Body</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Here <code>Article.compare</code> stands “over” the articles, as a means to compare them. It’s not a method of an article, but rather of the whole class.</p>
+<p>Another example would be a so-called “factory” method. Imagine, we need few ways to create an article:</p>
+<ol>
+<li>Create by given parameters (<code>title</code>, <code>date</code> etc).</li>
+<li>Create an empty article with today’s date.</li>
+<li>…</li>
+</ol>
+<p>The first way can be implemented by the constructor. And for the second one we can make a static method of the class.</p>
+<p>Like <code>Article.createTodays()</code> here:</p>
+<div data-trusted="1" class="code-example" data-highlight-block="6-9">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">class Article {
+  constructor(title, date) {
+    this.title = title;
+    this.date = date;
+  }
+
+  static createTodays() {
+    // remember, this = Article
+    return new this(&quot;Today's digest&quot;, new Date());
+  }
+}
+
+let article = Article.createTodays();
+
+alert( article.title ); // Todays digest</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Now every time we need to create a today’s digest, we can call <code>Article.createTodays()</code>. Once again, that’s not a method of an article, but a method of the whole class.</p>
+<p>Static methods are also used in database-related classes to search/save/remove entries from the database, like this:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">// assuming Article is a special class for managing articles
+// static method to remove the article:
+Article.remove({id: 12345});</code></pre>
+        </div>
+      </div>
+      
+      </div><h2><a class="main__anchor" name="summary" href="#summary">Summary</a></h2><p>The basic class syntax looks like this:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">class MyClass {
+  constructor(...) {
+    // ...
+  }
+  method1(...) {}
+  method2(...) {}
+  get something(...) {}
+  set something(...) {}
+  static staticMethod(..) {}
+  // ...
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>The value of <code>MyClass</code> is a function provided as <code>constructor</code>. If there’s no <code>constructor</code>, then an empty function.</p>
+<p>In any case, methods listed in the class declaration become members of its <code>prototype</code>, with the exception of static methods that are written into the function itself and callable as <code>MyClass.staticMethod()</code>. Static methods are used when we need a function bound to a class, but not to any object of that class.</p>
+<p>In the next chapter we’ll learn more about classes, including inheritance.</p>
+</div></article><div class="tasks"><h2 id="tasks" class="tasks__title"><a href="#tasks" class="main__anchor main__anchor_noicon tasks__title-anchor">Tasks</a></h2><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a href="#rewrite-to-class" name="rewrite-to-class" class="main__anchor">Rewrite to class</a></h3><a href="task/rewrite-to-class.html" target="_blank" class="task__open-link"></a></div><div class="task__header-note"><span title="How important is the task, from 1 to 5" class="task__importance">importance: 5</span></div><div class="task__content"><p>Rewrite the <code>Clock</code> class from prototypes to the modern “class” syntax.</p>
+<p>P.S. The clock ticks in the console, open it to see.</p>
+<p><a href="http://plnkr.co/edit/DbapfmzhczwDfu27e1Wb?p=preview" target="_blank" data-plunk-id="DbapfmzhczwDfu27e1Wb">Open the sandbox for the task.</a></p><button type="button" class="task__solution">solution</button><div class="task__answer"><div class="task__answer-content"><p><a href="http://plnkr.co/edit/1alwgdIhuYgwVhGek6yT?p=preview" target="_blank" data-plunk-id="1alwgdIhuYgwVhGek6yT">Open the solution in the sandbox.</a></p></div><button type="button" title="close" class="close-button task__answer-close"></button></div></div></div></div></div><!--  include /blocks/banner-bottom--><!--if lang == 'en'--><!--  include /blocks/banner-bottom.en--></div><div class="page__nav-wrap"><a href="class-patterns.html" data-tooltip="Class patterns" class="page__nav page__nav_prev"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Previous lesson</span></a><a href="class-inheritance.html" data-tooltip="Class inheritance, super" class="page__nav page__nav_next"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Next lesson</span></a></div><div class="article-tablet-foot tablet-only"><div class="article-tablet-foot__layout"><div class="share-icons"><span class="share-icons__title">Share</span><a href="https://twitter.com/share?url=https%3A%2F%2Fjavascript.info%2Fclass" class="share share_tw"></a><a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fjavascript.info%2Fclass" class="share share_fb"></a><a href="https://plus.google.com/share?url=https%3A%2F%2Fjavascript.info%2Fclass" class="share share_gp"></a><a href="https://vkontakte.ru/share.php?url=https%3A%2F%2Fjavascript.info%2Fclass" class="share share_vk"></a></div><div class="article-tablet-foot__map"><a href="tutorial/map.html" data-action="tutorial-map" class="map"><span class="map__text">Tutorial map</span></a></div></div></div><div id="comments" class="comments"><div class="comments__header"><h2 class="comments__header-title"><a href="#comments" name="comments">Comments</a></h2><div class="comments__read-before"><span class="comments__read-before-link">read this before commenting…</span><div class="comments__read-before-popup"><div class="comments__read-before-popup-i"><ul><li>You're welcome to post additions, questions to the articles and answers to them.</li><li>To insert a few words of code, use the <code>&lt;code&gt;</code> tag, for several lines – use <code>&lt;pre&gt;</code>, for more than 10 lines – use a sandbox (<a href='http://plnkr.co/edit/?p=preview'>plnkr</a>, <a href='http://jsbin.com/'>JSBin</a>, <a href='http://codepen.io/'>codepen</a>…)</li><li>If you can't understand something in the article – please elaborate.</li></ul></div></div></div></div></div><div id="disqus_thread"></div><script>var disqus_config = function() { if (!this.page) this.page = {}; Object.assign(this.page, {"url":"https:\/\/javascript.info\/class","identifier":"\/class","title":"Classes"}); };</script><script>var disqus_shortname = "javascriptinfo";</script><script>var disqus_enabled = true;</script></main></div><div class="page__sidebar sidebar sidebar_sticky-footer"><button data-sidebar-toggle class="sidebar__toggle"></button><a href="tutorial/map.html" data-action="tutorial-map" data-tooltip="Tutorial map" class="map"></a><div class="sidebar__inner"><div class="sidebar__content"><div class="sidebar__section"><h4 class="sidebar__section-title">Chapter</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a href="object-oriented-programming.html" class="sidebar__link">Objects, classes, inheritance</a></li></ul></nav></div><div class="sidebar__section"><h4 class="sidebar__section-title">Lesson navigation</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a href="#the-class-syntax" class="sidebar__link">The “class” syntax</a></li><li class="sidebar__navigation-link"><a href="#class-expression" class="sidebar__link">Class Expression</a></li><li class="sidebar__navigation-link"><a href="#static-methods" class="sidebar__link">Static methods</a></li><li class="sidebar__navigation-link"><a href="#summary" class="sidebar__link">Summary</a></li></ul></nav></div><div class="sidebar__section"><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a href="#tasks" class="sidebar__link">Tasks (1)</a></li><li class="sidebar__navigation-link"><a href="#comments" class="sidebar__link">Comments</a></li></ul></nav></div><div class="sidebar__section"><div class="sidebar__section-title">Share</div><a href="https://twitter.com/share?url=https%3A%2F%2Fjavascript.info%2Fclass" class="share share_tw sidebar__share"></a><a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fjavascript.info%2Fclass" class="share share_fb sidebar__share"></a><a href="https://plus.google.com/share?url=https%3A%2F%2Fjavascript.info%2Fclass" class="share share_gp sidebar__share"></a></div><div class="sidebar__section"><a href="https://github.com/iliakan/javascript-tutorial-en/tree/master/1-js/07-object-oriented-programming/09-class/article.md" class="sidebar__link">Edit on Github</a></div></div></div></div></div></div><div class="page-footer"><div class="page-footer__left"><ul class="page-footer__list"><li class="page-footer__item">©&nbsp;2007—2017&nbsp; Ilya Kantor</li><li class="page-footer__item"><a href="about.html#contact-us" class="page-footer__link">contact us</a></li><li class="page-footer__item"><a href="about.html" class="page-footer__link">about the project</a></li><li class="page-footer__item"><a href="https://learn.javascript.ru/" class="page-footer__link">RU</a> / EN</li></ul></div><div class="page-footer__right"><ul class="page-footer__list"><li class="page-footer__item">powered by <a rel="nofollow" href="http://nodejs.org/" class="page-footer__link">node.js</a>&nbsp;&amp;&nbsp;<a rel="nofollow" href="http://github.com/iliakan/javascript-tutorial-en" class="page-footer__link">open source</a></li></ul></div></div></body>
+<!-- Mirrored from javascript.info/class by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 30 Nov 2017 15:28:43 GMT -->
+</html>

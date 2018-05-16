@@ -1,0 +1,31 @@
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{9AE66E24-D2D9-4FF2-AB7F-CE79F20F2B8B}") = "MessageBox", "MessageBox.ftn95p", "{0BE04F83-14FB-4943-A7BE-CFB68599F127}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		CheckMate|.NET = CheckMate|.NET
+		CheckMate|Win32 = CheckMate|Win32
+		Debug|.NET = Debug|.NET
+		Debug|Win32 = Debug|Win32
+		Release|.NET = Release|.NET
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0BE04F83-14FB-4943-A7BE-CFB68599F127}.CheckMate|.NET.ActiveCfg = CheckMate|Win32
+		{0BE04F83-14FB-4943-A7BE-CFB68599F127}.CheckMate|.NET.Build.0 = CheckMate|Win32
+		{0BE04F83-14FB-4943-A7BE-CFB68599F127}.CheckMate|Win32.ActiveCfg = CheckMate|Win32
+		{0BE04F83-14FB-4943-A7BE-CFB68599F127}.CheckMate|Win32.Build.0 = CheckMate|Win32
+		{0BE04F83-14FB-4943-A7BE-CFB68599F127}.Debug|.NET.ActiveCfg = Debug|.NET
+		{0BE04F83-14FB-4943-A7BE-CFB68599F127}.Debug|.NET.Build.0 = Debug|.NET
+		{0BE04F83-14FB-4943-A7BE-CFB68599F127}.Debug|Win32.ActiveCfg = Debug|Win32
+		{0BE04F83-14FB-4943-A7BE-CFB68599F127}.Debug|Win32.Build.0 = Debug|Win32
+		{0BE04F83-14FB-4943-A7BE-CFB68599F127}.Release|.NET.ActiveCfg = Release|Win32
+		{0BE04F83-14FB-4943-A7BE-CFB68599F127}.Release|.NET.Build.0 = Release|Win32
+		{0BE04F83-14FB-4943-A7BE-CFB68599F127}.Release|Win32.ActiveCfg = Release|Win32
+		{0BE04F83-14FB-4943-A7BE-CFB68599F127}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

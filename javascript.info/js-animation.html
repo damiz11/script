@@ -1,0 +1,810 @@
+<!DOCTYPE html><html lang="en">
+<!-- Mirrored from javascript.info/js-animation by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 30 Nov 2017 15:30:40 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><script>window.currentUser = null;</script><title itemprop="name">JavaScript animations</title><meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, minimum-scale=1.0"><meta name="apple-mobile-web-app-capable" content="yes"><script>if (window.devicePixelRatio > 1) document.cookie = 'pixelRatio=' + window.devicePixelRatio + ';path=/;expires=Tue, 19 Jan 2038 03:14:07 GMT';</script><link href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700%7COpen+Sans+Condensed:700&amp;subset=latin,latin-ext,cyrillic,cyrillic-ext" rel="stylesheet"><link rel="apple-touch-icon-precomposed" href="img/favicon/apple-touch-icon-precomposed.png"><link rel="canonical" href="js-animation.html"><meta name="msapplication-TileColor" content="#222A2C"><meta name="msapplication-TileImage" content="/img/favicon/tileicon.png"><!-- favicon the rest--><link rel="icon" href="img/favicon/favicon.png"><meta itemprop="image" content="https://javascript.info/img/site_preview_en_512x512.png"><meta property="og:title" content="JavaScript animations"><meta property="og:image" content="https://javascript.info/img/site_preview_en_1200x630.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="fb:admins" content="100001562528165"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="JavaScript animations"><meta name="twitter:site" content="@iliakan"><meta name="twitter:creator" content="@iliakan"><meta name="twitter:image" content="https://javascript.info/img/site_preview_en_512x512.png"><link href="pack/styles.da59a89b28153875791083e4a8c5adb3.css" rel="stylesheet"><link rel="prev" href="css-animations.html"><link rel="next" href="frames-and-windows.html"><script>window.GA_ID = "UA-2056213-15";</script><script>window.YANDEX_METRIKA_ID = 32184394;</script><script>window.GoogleAnalyticsObject="ga",window.ga=function(){window.ga.q.push(arguments)},window.ga.q=[],window.ga.l=Date.now(),ga("create",GA_ID,"auto"),window.currentUser&&ga("set","&uid",currentUser.id),window.addEventListener("error",function(e){var r=(e.filename||e.errorUrl)+": "+(e.lineno||e.errorLine),n=e.stack||e.error&&e.error.stack;ga("send","exception",{exDescription:e.message+" "+r+" "+n,exFatal:!0})});</script><script src="https://www.google-analytics.com/analytics.js" async></script><script>ga('send', 'pageview');</script><script>window.metrika={reachGoal:function(){}},window.yandex_metrika_callbacks=[function(){try{window.metrika=new Ya.Metrika({id:YANDEX_METRIKA_ID,webvisor:!0,clickmap:!0,params:{user:window.currentUser&&window.currentUser.id}}),metrika.trackLinks({delay:150}),window.addEventListener("error",function(r){window.metrika.reachGoal("JSERROR",{src:(r.filename||r.errorUrl)+": "+(r.lineno||r.errorLine),stack:r.stack||r.error&&r.error.stack,message:r.message})})}catch(r){}}];</script><script src="http://mc.yandex.ru/metrika/watch.js" async></script><script>window.RECAPTCHA_ID = "6Lf9NyETAAAAACZlg-a9Us2SxvYbeVC1ROWaWv4O";</script><script src="initc4ca.js?1"></script><script src="pack/head.688d4fe7c4cf54e23737.js" defer></script><meta property="og:title" content="JavaScript animations"><meta property="og:type" content="article"><script src="pack/tutorial.688d4fe7c4cf54e23737.js" defer></script><script src="pack/footer.688d4fe7c4cf54e23737.js" defer></script></head><body class="no-icons"><script>window.fontTest();</script><div class="page-wrapper page-wrapper_sidebar_on"><!--[if lt IE 10]><div style="color:red;text-align:center">Sorry, IE&lt;10 is not supported, please use a newer browser.</div><![endif]--><div class="sitetoolbar sitetoolbar_tutorial"><!-- include ./notification-stripe--><div class="sitetoolbar__content"><div class="sitetoolbar__logo-wrap"><a href="index.html" class="sitetoolbar__link sitetoolbar__link_logo"><img src="img/sitetoolbar__logo_en.svg" width="200" class="sitetoolbar__logo sitetoolbar__logo_normal" alt=""><img src="img/sitetoolbar__logo_small_en.svg" width="70" class="sitetoolbar__logo sitetoolbar__logo_small" alt=""><script>Array.prototype.forEach.call(document.querySelectorAll("img.sitetoolbar__logo"),function(e){var t=document.createElement("object");t.type="image/svg+xml",t.className=e.className,t.style.cssText="left:0;top:0;position:absolute",t.onload=function(){t.onload=null,e.style.visibility="hidden"},t.data=e.src,e.parentNode.insertBefore(t,e)});</script></a></div><div class="sitetoolbar__nav-toggle-wrap"><button type="button" class="sitetoolbar__nav-toggle"></button></div><nav class="sitetoolbar__sections"><ul class="sitetoolbar__sections-list"></ul></nav><div class="sitetoolbar__book-wrap"><a href="ebook.html" class="buy-book-button"><span class="buy-book-button__extra-text">Buy</span>EPUB/PDF</a></div><div class="sitetoolbar__login-wrap"><button data-action-login class="sitetoolbar__login sitetoolbar__login_unready"></button></div><div class="sitetoolbar__search-wrap"><div class="sitetoolbar__search-content"><form method="GET" action="http://javascript.info/search" class="sitetoolbar__search"><button type="button" class="sitetoolbar__search-toggle"></button><div class="sitetoolbar__search-input"><div class="text-input"><input name="query" placeholder="Search on Javascript.info" class="text-input__control" type="text"></div><button type="submit" class="sitetoolbar__find">Search</button></div></form></div></div></div><!-- todo: en variant--><div class="tablet-menu"><div class="tablet-menu__line"><div class="tablet-menu__content"><form action="http://javascript.info/search/" class="tablet-menu-search"><input type="search" name="query" placeholder="Search in the tutorial" required class="tablet-menu-search__input"><button type="submit" name="type" value="articles" class="tablet-menu-search__button">Search</button></form></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><a href="tutorial/map.html" data-action="tutorial-map" class="map"><span class="map__text">Tutorial map</span></a></div></div><!--+e.line--><!--  +e.content--><!--    +b("a").tablet-ebook(href="/ebook")--><!--      +e("span").text Купить учебник--><!--      +e("span").note (EPUB + PDF)--><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="share-icons"><span class="share-icons__title">Share</span><a href="https://twitter.com/share?url=https%3A%2F%2Fjavascript.info%2Fjs-animation" class="share share_tw"></a><a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fjavascript.info%2Fjs-animation" class="share share_fb"></a><a href="https://plus.google.com/share?url=https%3A%2F%2Fjavascript.info%2Fjs-animation" class="share share_gp"></a><a href="https://vkontakte.ru/share.php?url=https%3A%2F%2Fjavascript.info%2Fjs-animation" class="share share_vk"></a></div></div></div></div><progress data-sticky value="3" max="3" data-tooltip="Lesson 3 of 3" class="tutorial-progress"></progress></div><div class="page page_sidebar_on"><script>if(localStorage.noSidebar){document.querySelector(".page").classList.remove("page_sidebar_on");var pageWrapper=document.querySelector(".page-wrapper");pageWrapper&&pageWrapper.classList.remove("page-wrapper_sidebar_on")}setTimeout(function(){document.querySelector(".page").classList.add("page_sidebar-animation-on")},0);</script><div class="page__inner"><main class="main main_width-limit"><header class="main__header"><ol class="breadcrumbs"><li itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemref="breadcrumb-1" class="breadcrumbs__item breadcrumbs__item_home"><a href="index.html" itemprop="url" class="breadcrumbs__link"><span itemprop="title" class="breadcrumbs__hidden-text">Учебник</span></a></li><li id="breadcrumb-1" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemprop="child" class="breadcrumbs__item"><a href="animation.html" itemprop="url" class="breadcrumbs__link"><span itemprop="title">Animation</span></a></li></ol><h1 class="main__header-title">JavaScript animations</h1></header><div class="content"><article itemscope itemtype="http://schema.org/TechArticle"><meta itemprop="name" content="JavaScript animations"><div itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="email" content="iliakan@gmail.com"><meta itemprop="name" content="Ilya Kantor"></div><div itemprop="articleBody"><p>JavaScript animations can handle things that CSS can’t.</p>
+<p>For instance, moving along a complex path, with a timing function different from Bezier curves, or an animation on a canvas.</p>
+<cut>
+<h2><a class="main__anchor" name="setinterval" href="#setinterval">setInterval</a></h2><p>From the HTML/CSS point of view, an animation is a gradual change of the style property. For instance, changing <code>style.left</code> from <code>0px</code> to <code>100px</code> moves the element.</p>
+<p>And if we increase it in <code>setInterval</code>, by making 50 small changes per second, then it looks smooth. That’s the same principle as in the cinema: 24 or more frames per second is enough to make it look smooth.</p>
+<p>The pseudo-code can look like this:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let delay = 1000 / 50; // in 1 second 50 frames
+let timer = setInterval(function() {
+  if (animation complete) clearInterval(timer);
+  else increase style.left
+}, delay)</code></pre>
+        </div>
+      </div>
+      
+      </div><p>More complete example of the animation:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let start = Date.now(); // remember start time
+
+let timer = setInterval(function() {
+  // how much time passed from the start?
+  let timePassed = Date.now() - start;
+
+  if (timePassed &gt;= 2000) {
+    clearInterval(timer); // finish the animation after 2 seconds
+    return;
+  }
+
+  // draw the animation at the moment timePassed
+  draw(timePassed);
+
+}, 20);
+
+// as timePassed goes from 0 to 2000
+// left gets values from 0px to 400px
+function draw(timePassed) {
+  train.style.left = timePassed / 5 + 'px';
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Click for the demo:</p>
+<div class="code-tabs code-tabs_result_on"><div class="code-tabs__tools"><div class="code-tabs__scroll-wrap"><button title="&amp;larr;" data-code-tabs-left class="code-tabs__scroll-button code-tabs__scroll-button_left"></button></div><div class="code-tabs__switches-wrap"><div data-code-tabs-switches class="code-tabs__switches"><div class="code-tabs__switches-items"><div class="code-tabs__switch code-tabs__switch_current">Result</div><div class="code-tabs__switch">index.html</div></div></div></div><div class="code-tabs__scroll-wrap"><button title="&amp;rarr;" data-code-tabs-right class="code-tabs__scroll-button code-tabs__scroll-button_right"></button></div><div class="code-tabs__buttons"><a target="_blank" title="undefined: No translation for [markit.codeTabs.open_new_window]" href="article/js-animation/move/index.html" class="code-tabs__button code-tabs__button_external"></a><a target="_blank" title="edit in the sandbox" href="http://plnkr.co/edit/LabvtJ7jitdbsN6BXuQ1?p=preview" class="code-tabs__button code-tabs__button_edit"></a></div></div><div data-code-tabs-content style="height:200px" class="code-tabs__content"><div class="code-tabs__section code-tabs__section_current"><iframe src="article/js-animation/move/index.html" class="code-tabs__result"></iframe></div><div class="code-tabs__section"><pre class="language-markup line-numbers"><code>&lt;!DOCTYPE HTML&gt;
+&lt;html&gt;
+
+&lt;head&gt;
+  &lt;style&gt;
+    #train {
+      position: relative;
+      cursor: pointer;
+    }
+  &lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+
+  &lt;img id=&quot;train&quot; src=&quot;https://js.cx/clipart/train.gif&quot;&gt;
+
+
+  &lt;script&gt;
+    train.onclick = function() {
+      let start = Date.now();
+
+      let timer = setInterval(function() {
+        let timePassed = Date.now() - start;
+
+        train.style.left = timePassed / 5 + 'px';
+
+        if (timePassed &gt; 2000) clearInterval(timer);
+
+      }, 20);
+    }
+  &lt;/script&gt;
+
+
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre></div></div></div><h2><a class="main__anchor" name="requestanimationframe" href="#requestanimationframe">requestAnimationFrame</a></h2><p>Let’s imagine we have several animations running simultaneously.</p>
+<p>If we run them separately, each one with its own <code>setInterval(..., 20)</code>, then the browser would have to repaint much more often than every <code>20ms</code>.</p>
+<p>Each <code>setInterval</code> triggers once per <code>20ms</code>, but they are independent, so we have several independent runs within <code>20ms</code>.</p>
+<p>These several independent redraws should be grouped together, to make it easier for the browser.</p>
+<p>In other words, this:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">setInterval(function() {
+  animate1();
+  animate2();
+  animate3();
+}, 20)</code></pre>
+        </div>
+      </div>
+      
+      </div><p>…Is lighter than this:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">setInterval(animate1, 20);
+setInterval(animate2, 20);
+setInterval(animate3, 20);</code></pre>
+        </div>
+      </div>
+      
+      </div><p>There’s one more thing to keep in mind. Sometimes when CPU is overloaded, or there are other reasons to  redraw less often. For instance, if the browser tab is hidden, then there’s totally no point in drawing.</p>
+<p>There’s a standard <a href="http://www.w3.org/TR/animation-timing/">Animation timing</a> that provides the function <code>requestAnimationFrame</code>.</p>
+<p>It addresses all these issues and even more.</p>
+<p>The syntax:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let requestId = requestAnimationFrame(callback)</code></pre>
+        </div>
+      </div>
+      
+      </div><p>That schedules the <code>callback</code> function to run in the closest time when the browser wants to do animation.</p>
+<p>If we do changes in elements in <code>callback</code> then they will be grouped together with other <code>requestAnimationFrame</code> callbacks and with CSS animations. So there will be one geometry recalculation and repaint instead of many.</p>
+<p>The returned value <code>requestId</code> can be used to cancel the call:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">// cancel the scheduled execution of callback
+cancelAnimationFrame(requestId);</code></pre>
+        </div>
+      </div>
+      
+      </div><p>The <code>callback</code> gets one argument – the time passed from the beginning of the page load in microseconds. This time can also be obtained by calling <a href="https://developer.mozilla.org/en-US/docs/Web/API/Performance/now">performance.now()</a>.</p>
+<p>Usually <code>callback</code> runs very soon, unless the CPU is overloaded or the laptop battery is almost discharged, or there’s another reason.</p>
+<p>The code below shows the time between first 20 runs for <code>requestAnimationFrame</code>. Usually it’s 10-20ms:</p>
+<div data-trusted="1" class="code-example" data-demo-height="40" data-refresh="1">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="show" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;script&gt;
+  let prev = performance.now();
+  let times = 0;
+
+  requestAnimationFrame(function measure(time) {
+    document.body.insertAdjacentHTML(&quot;beforeEnd&quot;, Math.floor(time - prev) + &quot; &quot;);
+    prev = time;
+
+    if (times++ &lt; 10) requestAnimationFrame(measure);
+  })
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><h2><a class="main__anchor" name="structured-animation" href="#structured-animation">Structured animation</a></h2><p>Now we can make a more universal animation function based on <code>requestAnimationFrame</code>:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function animate({timing, draw, duration}) {
+
+  let start = performance.now();
+
+  requestAnimationFrame(function animate(time) {
+    // timeFraction goes from 0 to 1
+    let timeFraction = (time - start) / duration;
+    if (timeFraction &gt; 1) timeFraction = 1;
+
+    // calculate the current animation state
+    let progress = timing(timeFraction)
+
+    draw(progress); // draw it
+
+    if (timeFraction &lt; 1) {
+      requestAnimationFrame(animate);
+    }
+
+  });
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Function <code>animate</code> accepts 3 parameters that essentially describes the animation:</p>
+<dl>
+<dt><code>duration</code></dt>
+<dd>
+<p>Total time of animation. Like, <code>1000</code>.</p>
+</dd>
+<dt><code>timing(timeFraction)</code></dt>
+<dd>
+<p>Timing function, like CSS-property <code>transition-timing-function</code> that gets the fraction of time that passed (<code>0</code> at start, <code>1</code> at the end) and returns the animation completion (like <code>y</code> on the Bezier curve).</p>
+<p>For instance, a linear function means that the animation goes on uniformly with the same speed:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function linear(timeFraction) {
+  return timeFraction;
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>It’s graph:
+<img src="article/js-animation/linear.png" alt="" width="196" height="195"></p>
+<p>That’s just like <code>transition-timing-function: linear</code>. There are more interesting variants shown below.</p>
+</dd>
+<dt><code>draw(progress)</code></dt>
+<dd>
+<p>The function that takes the animation completion state and draws it. The value <code>progress=0</code> denotes the beginning animation state, and <code>progress=1</code> – the end state.</p>
+<p>This is that function that actually draws out the animation.</p>
+<p>It can move the element:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function draw(progress) {
+  train.style.left = progress + 'px';
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>…Or do anything else, we can animate anything, in any way.</p>
+</dd>
+</dl>
+<p>Let’s animate the element <code>width</code> from <code>0</code> to <code>100%</code> using our function.</p>
+<p>Click on the element for the demo:</p>
+<div class="code-tabs code-tabs_result_on"><div class="code-tabs__tools"><div class="code-tabs__scroll-wrap"><button title="&amp;larr;" data-code-tabs-left class="code-tabs__scroll-button code-tabs__scroll-button_left"></button></div><div class="code-tabs__switches-wrap"><div data-code-tabs-switches class="code-tabs__switches"><div class="code-tabs__switches-items"><div class="code-tabs__switch code-tabs__switch_current">Result</div><div class="code-tabs__switch">animate.js</div><div class="code-tabs__switch">index.html</div></div></div></div><div class="code-tabs__scroll-wrap"><button title="&amp;rarr;" data-code-tabs-right class="code-tabs__scroll-button code-tabs__scroll-button_right"></button></div><div class="code-tabs__buttons"><a target="_blank" title="undefined: No translation for [markit.codeTabs.open_new_window]" href="article/js-animation/width/index.html" class="code-tabs__button code-tabs__button_external"></a><a target="_blank" title="edit in the sandbox" href="http://plnkr.co/edit/nkb9ktPTwqIHfQtwJ6Oo?p=preview" class="code-tabs__button code-tabs__button_edit"></a></div></div><div data-code-tabs-content style="height:60px" class="code-tabs__content"><div class="code-tabs__section code-tabs__section_current"><iframe src="article/js-animation/width/index.html" class="code-tabs__result"></iframe></div><div class="code-tabs__section"><pre class="language-javascript line-numbers"><code>function animate({duration, draw, timing}) {
+
+  let start = performance.now();
+
+  requestAnimationFrame(function animate(time) {
+    let timeFraction = (time - start) / duration;
+    if (timeFraction &gt; 1) timeFraction = 1;
+
+    let progress = timing(timeFraction)
+
+    draw(progress);
+
+    if (timeFraction &lt; 1) {
+      requestAnimationFrame(animate);
+    }
+
+  });
+}</code></pre></div><div class="code-tabs__section"><pre class="language-markup line-numbers"><code>&lt;!DOCTYPE HTML&gt;
+&lt;html&gt;
+
+&lt;head&gt;
+  &lt;meta charset=&quot;utf-8&quot;&gt;
+  &lt;style&gt;
+    progress {
+      width: 5%;
+    }
+  &lt;/style&gt;
+  &lt;script src=&quot;animate.js&quot;&gt;&lt;/script&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+
+
+  &lt;progress id=&quot;elem&quot;&gt;&lt;/progress&gt;
+
+  &lt;script&gt;
+    elem.onclick = function() {
+      animate({
+        duration: 1000,
+        timing: function(timeFraction) {
+          return timeFraction;
+        },
+        draw: function(progress) {
+          elem.style.width = progress * 100 + '%';
+        }
+      });
+    };
+  &lt;/script&gt;
+
+
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre></div></div></div><p>The code for it:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">animate({
+  duration: 1000,
+  timing(timeFraction) {
+    return timeFraction;
+  },
+  draw(progress) {
+    elem.style.width = progress * 100 + '%';
+  }
+});</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Unlike CSS animation, we can make any timing function and any drawing function here. The timing function is not limited by Bezier curves. And <code>draw</code> can go beyond properties, create new elements for like fireworks animation or something.</p>
+<h2><a class="main__anchor" name="timing-functions" href="#timing-functions">Timing functions</a></h2><p>We saw the simplest, linear timing function above.</p>
+<p>Let’s see more of them. We’ll try movement animations with different timing functions to see how they work.</p>
+<h3><a class="main__anchor" name="power-of-n" href="#power-of-n">Power of n</a></h3><p>If we want to speed up the animation, we can use <code>progress</code> in the power <code>n</code>.</p>
+<p>For instance, a parabolic curve:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function quad(timeFraction) {
+  return Math.pow(timeFraction, 2)
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>The graph:</p>
+<figure><div class="image" style="width:196px">
+      <div class="image__ratio" style="padding-top:99.48979591836735%"></div>
+      <img src="article/js-animation/quad.png" alt="" width="196" height="195" class="image__image">
+      </div></figure><p>See in action (click to activate):</p>
+<div class="code-result">
+    <div class="code-result__toolbar toolbar"><div class="toolbar__tool">
+        <a href="https://en.js.cx/article/js-animation/quad/" target="_blank" title="open in new window" class="toolbar__button toolbar__button_external"></a>
+      </div>
+      </div>
+    <iframe class="code-result__iframe" data-trusted="1" style="height:40px" src="https://en.js.cx/article/js-animation/quad/"></iframe>
+  </div><p>…Or the cubic curve or event greater <code>n</code>. Increasing the power makes it speed up faster.</p>
+<p>Here’s the graph for <code>progress</code> in the power <code>5</code>:</p>
+<figure><div class="image" style="width:196px">
+      <div class="image__ratio" style="padding-top:99.48979591836735%"></div>
+      <img src="article/js-animation/quint.png" alt="" width="196" height="195" class="image__image">
+      </div></figure><p>In action:</p>
+<div class="code-result">
+    <div class="code-result__toolbar toolbar"><div class="toolbar__tool">
+        <a href="https://en.js.cx/article/js-animation/quint/" target="_blank" title="open in new window" class="toolbar__button toolbar__button_external"></a>
+      </div>
+      </div>
+    <iframe class="code-result__iframe" data-trusted="1" style="height:40px" src="https://en.js.cx/article/js-animation/quint/"></iframe>
+  </div><h3><a class="main__anchor" name="the-arc" href="#the-arc">The arc</a></h3><p>Function:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function circ(timeFraction) {
+  return 1 - Math.sin(Math.acos(timeFraction));
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>The graph:</p>
+<figure><div class="image" style="width:196px">
+      <div class="image__ratio" style="padding-top:99.48979591836735%"></div>
+      <img src="article/js-animation/circ.png" alt="" width="196" height="195" class="image__image">
+      </div></figure><div class="code-result">
+    <div class="code-result__toolbar toolbar"><div class="toolbar__tool">
+        <a href="https://en.js.cx/article/js-animation/circ/" target="_blank" title="open in new window" class="toolbar__button toolbar__button_external"></a>
+      </div>
+      </div>
+    <iframe class="code-result__iframe" data-trusted="1" style="height:40px" src="https://en.js.cx/article/js-animation/circ/"></iframe>
+  </div><h3><a class="main__anchor" name="back-bow-shooting" href="#back-bow-shooting">Back: bow shooting</a></h3><p>This function does the “bow shooting”. First we “pull the bowstring”, and then “shoot”.</p>
+<p>Unlike previous functions, it depends on an additional parameter <code>x</code>, the “elasticity coefficient”. The distance of “bowstring pulling” is defined by it.</p>
+<p>The code:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function back(x, timeFraction) {
+  return Math.pow(timeFraction, 2) * ((x + 1) * timeFraction - x)
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p><strong>The graph for <code>x = 1.5</code>:</strong></p>
+<figure><div class="image" style="width:196px">
+      <div class="image__ratio" style="padding-top:99.48979591836735%"></div>
+      <img src="article/js-animation/back.png" alt="" width="196" height="195" class="image__image">
+      </div></figure><p>For animation we use it with a specific value of <code>x</code>. Example for <code>x = 1.5</code>:</p>
+<div class="code-result">
+    <div class="code-result__toolbar toolbar"><div class="toolbar__tool">
+        <a href="https://en.js.cx/article/js-animation/back/" target="_blank" title="open in new window" class="toolbar__button toolbar__button_external"></a>
+      </div>
+      </div>
+    <iframe class="code-result__iframe" data-trusted="1" style="height:40px" src="https://en.js.cx/article/js-animation/back/"></iframe>
+  </div><h3><a class="main__anchor" name="bounce" href="#bounce">Bounce</a></h3><p>Imagine we are dropping a ball. It falls down, then bounces back a few times and stops.</p>
+<p>The <code>bounce</code> function does the same, but in the reverse order: “bouncing” starts immediately. It uses few special coefficients for that:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function bounce(timeFraction) {
+  for (let a = 0, b = 1, result; 1; a += b, b /= 2) {
+    if (timeFraction &gt;= (7 - 4 * a) / 11) {
+      return -Math.pow((11 - 6 * a - 11 * timeFraction) / 4, 2) + Math.pow(b, 2)
+    }
+  }
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>In action:</p>
+<div class="code-result">
+    <div class="code-result__toolbar toolbar"><div class="toolbar__tool">
+        <a href="https://en.js.cx/article/js-animation/bounce/" target="_blank" title="open in new window" class="toolbar__button toolbar__button_external"></a>
+      </div>
+      </div>
+    <iframe class="code-result__iframe" data-trusted="1" style="height:40px" src="https://en.js.cx/article/js-animation/bounce/"></iframe>
+  </div><h3><a class="main__anchor" name="elastic-animation" href="#elastic-animation">Elastic animation</a></h3><p>One more “elastic” function that accepts an additional parameter <code>x</code> for the “initial range”.</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function elastic(x, timeFraction) {
+  return Math.pow(2, 10 * (timeFraction - 1)) * Math.cos(20 * Math.PI * x / 3 * timeFraction)
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p><strong>The graph for <code>x=1.5</code>:</strong>
+<img src="article/js-animation/elastic.png" alt="" width="196" height="348"></p>
+<p>In action for <code>x=1.5</code>:</p>
+<div class="code-result">
+    <div class="code-result__toolbar toolbar"><div class="toolbar__tool">
+        <a href="https://en.js.cx/article/js-animation/elastic/" target="_blank" title="open in new window" class="toolbar__button toolbar__button_external"></a>
+      </div>
+      </div>
+    <iframe class="code-result__iframe" data-trusted="1" style="height:40px" src="https://en.js.cx/article/js-animation/elastic/"></iframe>
+  </div><h2><a class="main__anchor" name="reversal-ease" href="#reversal-ease">Reversal: ease*</a></h2><p>So we have a collection of timing functions. Their direct application is called “easeIn”.</p>
+<p>Sometimes we need to show the animation in the reverse order. That’s done with the “easeOut” transform.</p>
+<h3><a class="main__anchor" name="easeout" href="#easeout">easeOut</a></h3><p>In the “easeOut” mode the <code>timing</code> function is put into a wrapper <code>timingEaseOut</code>:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">timingEaseOut(timeFraction) = 1 - timing(1 - timeFraction)</code></pre>
+        </div>
+      </div>
+      
+      </div><p>In other words, we have a “transform” function <code>makeEaseOut</code> that takes a “regular” timing function and returns the wrapper around it:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">// accepts a timing function, returns the transformed variant
+function makeEaseOut(timing) {
+  return function(timeFraction) {
+    return 1 - timing(1 - timeFraction);
+  }
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>For instance, we can take the <code>bounce</code> function described above and apply it:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let bounceEaseOut = makeEaseOut(bounce);</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Then the bounce will be not in the beginning, but at the end of the animation. Looks even better:</p>
+<div class="code-tabs code-tabs_result_on"><div class="code-tabs__tools"><div class="code-tabs__scroll-wrap"><button title="&amp;larr;" data-code-tabs-left class="code-tabs__scroll-button code-tabs__scroll-button_left"></button></div><div class="code-tabs__switches-wrap"><div data-code-tabs-switches class="code-tabs__switches"><div class="code-tabs__switches-items"><div class="code-tabs__switch code-tabs__switch_current">Result</div><div class="code-tabs__switch">style.css</div><div class="code-tabs__switch">index.html</div></div></div></div><div class="code-tabs__scroll-wrap"><button title="&amp;rarr;" data-code-tabs-right class="code-tabs__scroll-button code-tabs__scroll-button_right"></button></div><div class="code-tabs__buttons"><a target="_blank" title="undefined: No translation for [markit.codeTabs.open_new_window]" href="article/js-animation/bounce-easeout/index.html" class="code-tabs__button code-tabs__button_external"></a><a target="_blank" title="edit in the sandbox" href="http://plnkr.co/edit/devX4AzD5xMb0axuyQ7G?p=preview" class="code-tabs__button code-tabs__button_edit"></a></div></div><div data-code-tabs-content style="height:200px" class="code-tabs__content"><div class="code-tabs__section code-tabs__section_current"><iframe src="article/js-animation/bounce-easeout/index.html" class="code-tabs__result"></iframe></div><div class="code-tabs__section"><pre class="language-css line-numbers"><code>#brick {
+  width: 40px;
+  height: 20px;
+  background: #EE6B47;
+  position: relative;
+  cursor: pointer;
+}
+
+#path {
+  outline: 1px solid #E8C48E;
+  width: 540px;
+  height: 20px;
+}</code></pre></div><div class="code-tabs__section"><pre class="language-markup line-numbers"><code>&lt;!DOCTYPE HTML&gt;
+&lt;html&gt;
+
+&lt;head&gt;
+  &lt;meta charset=&quot;utf-8&quot;&gt;
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;style.css&quot;&gt;
+  &lt;script src=&quot;https://js.cx/libs/animate.js&quot;&gt;&lt;/script&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+
+
+  &lt;div id=&quot;path&quot;&gt;
+    &lt;div id=&quot;brick&quot;&gt;&lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;script&gt;
+    function makeEaseOut(timing) {
+      return function(timeFraction) {
+        return 1 - timing(1 - timeFraction);
+      }
+    }
+
+    function bounce(timeFraction) {
+      for (let a = 0, b = 1, result; 1; a += b, b /= 2) {
+        if (timeFraction &gt;= (7 - 4 * a) / 11) {
+          return -Math.pow((11 - 6 * a - 11 * timeFraction) / 4, 2) + Math.pow(b, 2)
+        }
+      }
+    }
+
+    let bounceEaseOut = makeEaseOut(bounce);
+
+    brick.onclick = function() {
+      animate({
+        duration: 3000,
+        timing: bounceEaseOut,
+        draw: function(progress) {
+          brick.style.left = progress * 500 + 'px';
+        }
+      });
+    };
+  &lt;/script&gt;
+
+
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre></div></div></div><p>Here we can see how the transform changes the behavior of the function:</p>
+<figure><div class="image" style="width:196px">
+      <div class="image__ratio" style="padding-top:99.48979591836735%"></div>
+      <img src="article/js-animation/bounce-inout.png" alt="" width="196" height="195" class="image__image">
+      </div></figure><p>If there’s an animation effect in the beginning, like bouncing – it will be shown at the end.</p>
+<p>In the graph above the <span style="color:#EE6B47">regular bounce</span> has the red color, and the <span style="color:#62C0DC">easeOut bounce</span> is blue.</p>
+<ul>
+<li>Regular bounce – the object bounces at the bottom, then at the end sharply jumps to the top.</li>
+<li>After <code>easeOut</code> – it first jumps to the top, then bounces there.</li>
+</ul>
+<h3><a class="main__anchor" name="easeinout" href="#easeinout">easeInOut</a></h3><p>We also can show the effect both in the beginning and the end of the animation. The transform is called “easeInOut”.</p>
+<p>Given the timing function, we calculate the animation state like this:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">if (timeFraction &lt;= 0.5) { // first half of the animation
+  return timing(2 * timeFraction) / 2;
+} else { // second half of the animation
+  return (2 - timing(2 * (1 - timeFraction))) / 2;
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>The wrapper code:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function makeEaseInOut(timing) {
+  return function(timeFraction) {
+    if (timeFraction &lt; .5)
+      return timing(2 * timeFraction) / 2;
+    else
+      return (2 - timing(2 * (1 - timeFraction))) / 2;
+  }
+}
+
+bounceEaseInOut = makeEaseInOut(bounce);</code></pre>
+        </div>
+      </div>
+      
+      </div><p>In action, <code>bounceEaseInOut</code>:</p>
+<div class="code-tabs code-tabs_result_on"><div class="code-tabs__tools"><div class="code-tabs__scroll-wrap"><button title="&amp;larr;" data-code-tabs-left class="code-tabs__scroll-button code-tabs__scroll-button_left"></button></div><div class="code-tabs__switches-wrap"><div data-code-tabs-switches class="code-tabs__switches"><div class="code-tabs__switches-items"><div class="code-tabs__switch code-tabs__switch_current">Result</div><div class="code-tabs__switch">style.css</div><div class="code-tabs__switch">index.html</div></div></div></div><div class="code-tabs__scroll-wrap"><button title="&amp;rarr;" data-code-tabs-right class="code-tabs__scroll-button code-tabs__scroll-button_right"></button></div><div class="code-tabs__buttons"><a target="_blank" title="undefined: No translation for [markit.codeTabs.open_new_window]" href="article/js-animation/bounce-easeinout/index.html" class="code-tabs__button code-tabs__button_external"></a><a target="_blank" title="edit in the sandbox" href="http://plnkr.co/edit/nw8e2xuzCeau9GM8gmQ0?p=preview" class="code-tabs__button code-tabs__button_edit"></a></div></div><div data-code-tabs-content style="height:200px" class="code-tabs__content"><div class="code-tabs__section code-tabs__section_current"><iframe src="article/js-animation/bounce-easeinout/index.html" class="code-tabs__result"></iframe></div><div class="code-tabs__section"><pre class="language-css line-numbers"><code>#brick {
+  width: 40px;
+  height: 20px;
+  background: #EE6B47;
+  position: relative;
+  cursor: pointer;
+}
+
+#path {
+  outline: 1px solid #E8C48E;
+  width: 540px;
+  height: 20px;
+}</code></pre></div><div class="code-tabs__section"><pre class="language-markup line-numbers"><code>&lt;!DOCTYPE HTML&gt;
+&lt;html&gt;
+
+&lt;head&gt;
+  &lt;meta charset=&quot;utf-8&quot;&gt;
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;style.css&quot;&gt;
+  &lt;script src=&quot;https://js.cx/libs/animate.js&quot;&gt;&lt;/script&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+
+
+  &lt;div id=&quot;path&quot;&gt;
+    &lt;div id=&quot;brick&quot;&gt;&lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;script&gt;
+    function makeEaseInOut(timing) {
+      return function(timeFraction) {
+        if (timeFraction &lt; .5)
+          return timing(2 * timeFraction) / 2;
+        else
+          return (2 - timing(2 * (1 - timeFraction))) / 2;
+      }
+    }
+
+
+    function bounce(timeFraction) {
+      for (let a = 0, b = 1, result; 1; a += b, b /= 2) {
+        if (timeFraction &gt;= (7 - 4 * a) / 11) {
+          return -Math.pow((11 - 6 * a - 11 * timeFraction) / 4, 2) + Math.pow(b, 2)
+        }
+      }
+    }
+
+    let bounceEaseInOut = makeEaseInOut(bounce);
+
+    brick.onclick = function() {
+      animate({
+        duration: 3000,
+        timing: bounceEaseInOut,
+        draw: function(progress) {
+          brick.style.left = progress * 500 + 'px';
+        }
+      });
+    };
+  &lt;/script&gt;
+
+
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre></div></div></div><p>The “easeInOut” transform joins two graphs into one: <code>easeIn</code> (regular) for the first half of the animation and <code>easeOut</code> (reversed) – for the second part.</p>
+<p>The effect is clearly seen if we compare the graphs of <code>easeIn</code>, <code>easeOut</code> and <code>easeInOut</code> of the <code>circ</code> timing function:</p>
+<figure><div class="image" style="width:196px">
+      <div class="image__ratio" style="padding-top:99.48979591836735%"></div>
+      <img src="article/js-animation/circ-ease.png" alt="" width="196" height="195" class="image__image">
+      </div></figure><ul>
+<li><span style="color:#EE6B47">Red</span> is the regular variantof <code>circ</code> (<code>easeIn</code>).</li>
+<li><span style="color:#8DB173">Green</span> – <code>easeOut</code>.</li>
+<li><span style="color:#62C0DC">Blue</span> – <code>easeInOut</code>.</li>
+</ul>
+<p>As we can see, the graph of the first half of the animation is the scaled down <code>easeIn</code>, and the second half is the scaled down <code>easeOut</code>. As a result, the animation starts and finishes with the same effect.</p>
+<h2><a class="main__anchor" name="more-interesting-draw" href="#more-interesting-draw">More interesting “draw”</a></h2><p>Instead of moving the element we can do something else. All we need is to write the write the proper <code>draw</code>.</p>
+<p>Here’s the animated “bouncing” text typing:</p>
+<div class="code-tabs code-tabs_result_on"><div class="code-tabs__tools"><div class="code-tabs__scroll-wrap"><button title="&amp;larr;" data-code-tabs-left class="code-tabs__scroll-button code-tabs__scroll-button_left"></button></div><div class="code-tabs__switches-wrap"><div data-code-tabs-switches class="code-tabs__switches"><div class="code-tabs__switches-items"><div class="code-tabs__switch code-tabs__switch_current">Result</div><div class="code-tabs__switch">style.css</div><div class="code-tabs__switch">index.html</div></div></div></div><div class="code-tabs__scroll-wrap"><button title="&amp;rarr;" data-code-tabs-right class="code-tabs__scroll-button code-tabs__scroll-button_right"></button></div><div class="code-tabs__buttons"><a target="_blank" title="undefined: No translation for [markit.codeTabs.open_new_window]" href="article/js-animation/text/index.html" class="code-tabs__button code-tabs__button_external"></a><a target="_blank" title="edit in the sandbox" href="http://plnkr.co/edit/ZRwXZdsRUTev6UsmIdop?p=preview" class="code-tabs__button code-tabs__button_edit"></a></div></div><div data-code-tabs-content style="height:200px" class="code-tabs__content"><div class="code-tabs__section code-tabs__section_current"><iframe src="article/js-animation/text/index.html" class="code-tabs__result"></iframe></div><div class="code-tabs__section"><pre class="language-css line-numbers"><code>textarea {
+  display: block;
+  border: 1px solid #BBB;
+  color: #444;
+  font-size: 110%;
+}
+
+button {
+  margin-top: 10px;
+}</code></pre></div><div class="code-tabs__section"><pre class="language-markup line-numbers"><code>&lt;!DOCTYPE HTML&gt;
+&lt;html&gt;
+
+&lt;head&gt;
+  &lt;meta charset=&quot;utf-8&quot;&gt;
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;style.css&quot;&gt;
+  &lt;script src=&quot;https://js.cx/libs/animate.js&quot;&gt;&lt;/script&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+
+
+  &lt;textarea id=&quot;textExample&quot; rows=&quot;5&quot; cols=&quot;60&quot;&gt;He took his vorpal sword in hand:
+Long time the manxome foe he sought—
+So rested he by the Tumtum tree,
+And stood awhile in thought.
+  &lt;/textarea&gt;
+
+  &lt;button onclick=&quot;animateText(textExample)&quot;&gt;Run the animated typing!&lt;/button&gt;
+
+  &lt;script&gt;
+    function animateText(textArea) {
+      let text = textArea.value;
+      let to = text.length,
+        from = 0;
+
+      animate({
+        duration: 5000,
+        timing: bounce,
+        draw: function(progress) {
+          let result = (to - from) * progress + from;
+          textArea.value = text.substr(0, Math.ceil(result))
+        }
+      });
+    }
+
+
+    function bounce(timeFraction) {
+      for (let a = 0, b = 1, result; 1; a += b, b /= 2) {
+        if (timeFraction &gt;= (7 - 4 * a) / 11) {
+          return -Math.pow((11 - 6 * a - 11 * timeFraction) / 4, 2) + Math.pow(b, 2)
+        }
+      }
+    }
+  &lt;/script&gt;
+
+
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre></div></div></div><h2><a class="main__anchor" name="summary" href="#summary">Summary</a></h2><p>JavaScript animation should be implemented via <code>requestAnimationFrame</code>. That built-in method allows to setup a callback function to run when the browser will be preparing a repaint. Usually that’s very soon, but the exact time depends on the browser.</p>
+<p>When a page is in the background, there are no repaints at all, so the callback won’t run: the animation will be suspended and won’t consume resources. That’s great.</p>
+<p>Here’s the helper <code>animate</code> function to setup most animations:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function animate({timing, draw, duration}) {
+
+  let start = performance.now();
+
+  requestAnimationFrame(function animate(time) {
+    // timeFraction goes from 0 to 1
+    let timeFraction = (time - start) / duration;
+    if (timeFraction &gt; 1) timeFraction = 1;
+
+    // calculate the current animation state
+    let progress = timing(timeFraction);
+
+    draw(progress); // draw it
+
+    if (timeFraction &lt; 1) {
+      requestAnimationFrame(animate);
+    }
+
+  });
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Options:</p>
+<ul>
+<li><code>duration</code> – the total animation time in ms.</li>
+<li><code>timing</code> – the function to calculate animation progress. Gets a time fraction from 0 to 1, returns the animation progress, usually from 0 to 1.</li>
+<li><code>draw</code> – the function to draw the animation.</li>
+</ul>
+<p>Surely we could improve it, add more bells and whistles, but JavaScript animations are not applied on a daily basis. They are used to do something interesting and non-standard. So you’d want to add the features that you need when you need them.</p>
+<p>JavaScript animations can use any timing function. We covered a lot of examples and transformations to make them even more versatile. Unlike CSS, we are not limited to Bezier curves here.</p>
+<p>The same is about <code>draw</code>: we can animate anything, not just CSS properties.</p>
+</div></article><div class="tasks"><h2 id="tasks" class="tasks__title"><a href="#tasks" class="main__anchor main__anchor_noicon tasks__title-anchor">Tasks</a></h2><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a href="#animate-the-bouncing-ball" name="animate-the-bouncing-ball" class="main__anchor">Animate the bouncing ball</a></h3><a href="task/animate-ball.html" target="_blank" class="task__open-link"></a></div><div class="task__header-note"><span title="How important is the task, from 1 to 5" class="task__importance">importance: 5</span></div><div class="task__content"><p>Make a bouncing ball. Click to see how it should look:</p>
+<div class="code-result">
+    <div class="code-result__toolbar toolbar"></div>
+    <iframe class="code-result__iframe" data-trusted="1" style="height:250px" src="https://en.js.cx/task/animate-ball/solution/"></iframe>
+  </div><p><a href="http://plnkr.co/edit/FJDfepvCOFAlsZsc15yr?p=preview" target="_blank" data-plunk-id="FJDfepvCOFAlsZsc15yr">Open the sandbox for the task.</a></p><button type="button" class="task__solution">solution</button><div class="task__answer"><div class="task__answer-content"><p>To bounce we can use CSS property <code>top</code> and <code>position:absolute</code> for the ball inside the field with <code>position:relative</code>.</p>
+<p>The bottom coordinate of the field is <code>field.clientHeight</code>. But the <code>top</code> property gives coordinates for the top of the ball, the edge position is <code>field.clientHeight - ball.clientHeight</code>.</p>
+<p>So we animate the <code>top</code> from <code>0</code> to <code>field.clientHeight - ball.clientHeight</code>.</p>
+<p>Now to get the “bouncing” effect we can use the timing function <code>bounce</code> in <code>easeOut</code> mode.</p>
+<p>Here’s the final code for the animation:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let to = field.clientHeight - ball.clientHeight;
+
+animate({
+  duration: 2000,
+  timing: makeEaseOut(bounce),
+  draw(progress) {
+    ball.style.top = to * progress + 'px'
+  }
+});</code></pre>
+        </div>
+      </div>
+      
+      </div><p><a href="http://plnkr.co/edit/KY5XWCmFb6Jc8HjGt1zh?p=preview" target="_blank" data-plunk-id="KY5XWCmFb6Jc8HjGt1zh">Open the solution in the sandbox.</a></p></div><button type="button" title="close" class="close-button task__answer-close"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a href="#animate-the-ball-bouncing-to-the-left" name="animate-the-ball-bouncing-to-the-left" class="main__anchor">Animate the ball bouncing to the left</a></h3><a href="task/animate-ball-hops.html" target="_blank" class="task__open-link"></a></div><div class="task__header-note"><span title="How important is the task, from 1 to 5" class="task__importance">importance: 5</span></div><div class="task__content"><p>Make the ball bounce to the left. Like this:</p>
+<div class="code-result">
+    <div class="code-result__toolbar toolbar"></div>
+    <iframe class="code-result__iframe" data-trusted="1" style="height:250px" src="https://en.js.cx/task/animate-ball-hops/solution/"></iframe>
+  </div><p>Write the animation code. The distance to the right is <code>100px</code>.</p>
+<p>Take the solution of the previous task <a href="task/animate-ball.html">Animate the bouncing ball</a> as the source.</p>
+<button type="button" class="task__solution">solution</button><div class="task__answer"><div class="task__answer-content"><p>In the task <a href="task/animate-ball.html">Animate the bouncing ball</a> we had only one property to animate. Now we need one more: <code>elem.style.left</code>.</p>
+<p>The horizontal coordinate changes by another law: it does not “bounce”, but gradually increases shifting the ball to the right.</p>
+<p>We can write one more <code>animate</code> for it.</p>
+<p>As the time function we could use <code>linear</code>, but something like <code>makeEaseOut(quad)</code> looks much better.</p>
+<p>The code:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let height = field.clientHeight - ball.clientHeight;
+let width = 100;
+
+// animate top (bouncing)
+animate({
+  duration: 2000,
+  timing: makeEaseOut(bounce),
+  draw: function(progress) {
+    ball.style.top = height * progress + 'px'
+  }
+});
+
+// animate left (moving to the right)
+animate({
+  duration: 2000,
+  timing: makeEaseOut(quad),
+  draw: function(progress) {
+    ball.style.left = width * progress + &quot;px&quot;
+  }
+});</code></pre>
+        </div>
+      </div>
+      
+      </div><p><a href="http://plnkr.co/edit/7JpscYeZeC4mqigLPbx5?p=preview" target="_blank" data-plunk-id="7JpscYeZeC4mqigLPbx5">Open the solution in the sandbox.</a></p></div><button type="button" title="close" class="close-button task__answer-close"></button></div></div></div></div></div><!--  include /blocks/banner-bottom--><!--if lang == 'en'--><!--  include /blocks/banner-bottom.en--></div><div class="page__nav-wrap"><a href="css-animations.html" data-tooltip="CSS-animations" class="page__nav page__nav_prev"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Previous lesson</span></a><a href="frames-and-windows.html" data-tooltip="Frames and windows" class="page__nav page__nav_next"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Next lesson</span></a></div><div class="article-tablet-foot tablet-only"><div class="article-tablet-foot__layout"><div class="share-icons"><span class="share-icons__title">Share</span><a href="https://twitter.com/share?url=https%3A%2F%2Fjavascript.info%2Fjs-animation" class="share share_tw"></a><a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fjavascript.info%2Fjs-animation" class="share share_fb"></a><a href="https://plus.google.com/share?url=https%3A%2F%2Fjavascript.info%2Fjs-animation" class="share share_gp"></a><a href="https://vkontakte.ru/share.php?url=https%3A%2F%2Fjavascript.info%2Fjs-animation" class="share share_vk"></a></div><div class="article-tablet-foot__map"><a href="tutorial/map.html" data-action="tutorial-map" class="map"><span class="map__text">Tutorial map</span></a></div></div></div><div id="comments" class="comments"><div class="comments__header"><h2 class="comments__header-title"><a href="#comments" name="comments">Comments</a></h2><div class="comments__read-before"><span class="comments__read-before-link">read this before commenting…</span><div class="comments__read-before-popup"><div class="comments__read-before-popup-i"><ul><li>You're welcome to post additions, questions to the articles and answers to them.</li><li>To insert a few words of code, use the <code>&lt;code&gt;</code> tag, for several lines – use <code>&lt;pre&gt;</code>, for more than 10 lines – use a sandbox (<a href='http://plnkr.co/edit/?p=preview'>plnkr</a>, <a href='http://jsbin.com/'>JSBin</a>, <a href='http://codepen.io/'>codepen</a>…)</li><li>If you can't understand something in the article – please elaborate.</li></ul></div></div></div></div></div><div id="disqus_thread"></div><script>var disqus_config = function() { if (!this.page) this.page = {}; Object.assign(this.page, {"url":"https:\/\/javascript.info\/js-animation","identifier":"\/js-animation","title":"JavaScript animations"}); };</script><script>var disqus_shortname = "javascriptinfo";</script><script>var disqus_enabled = true;</script></main></div><div class="page__sidebar sidebar sidebar_sticky-footer"><button data-sidebar-toggle class="sidebar__toggle"></button><a href="tutorial/map.html" data-action="tutorial-map" data-tooltip="Tutorial map" class="map"></a><div class="sidebar__inner"><div class="sidebar__content"><div class="sidebar__section"><h4 class="sidebar__section-title">Chapter</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a href="animation.html" class="sidebar__link">Animation</a></li></ul></nav></div><div class="sidebar__section"><h4 class="sidebar__section-title">Lesson navigation</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a href="#setinterval" class="sidebar__link">setInterval</a></li><li class="sidebar__navigation-link"><a href="#requestanimationframe" class="sidebar__link">requestAnimationFrame</a></li><li class="sidebar__navigation-link"><a href="#structured-animation" class="sidebar__link">Structured animation</a></li><li class="sidebar__navigation-link"><a href="#timing-functions" class="sidebar__link">Timing functions</a></li><li class="sidebar__navigation-link"><a href="#reversal-ease" class="sidebar__link">Reversal: ease*</a></li><li class="sidebar__navigation-link"><a href="#more-interesting-draw" class="sidebar__link">More interesting “draw”</a></li><li class="sidebar__navigation-link"><a href="#summary" class="sidebar__link">Summary</a></li></ul></nav></div><div class="sidebar__section"><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a href="#tasks" class="sidebar__link">Tasks (2)</a></li><li class="sidebar__navigation-link"><a href="#comments" class="sidebar__link">Comments</a></li></ul></nav></div><div class="sidebar__section"><div class="sidebar__section-title">Share</div><a href="https://twitter.com/share?url=https%3A%2F%2Fjavascript.info%2Fjs-animation" class="share share_tw sidebar__share"></a><a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fjavascript.info%2Fjs-animation" class="share share_fb sidebar__share"></a><a href="https://plus.google.com/share?url=https%3A%2F%2Fjavascript.info%2Fjs-animation" class="share share_gp sidebar__share"></a></div><div class="sidebar__section"><a href="https://github.com/iliakan/javascript-tutorial-en/tree/master/3-animation/3-js-animation/article.md" class="sidebar__link">Edit on Github</a></div></div></div></div></div></div><div class="page-footer"><div class="page-footer__left"><ul class="page-footer__list"><li class="page-footer__item">©&nbsp;2007—2017&nbsp; Ilya Kantor</li><li class="page-footer__item"><a href="about.html#contact-us" class="page-footer__link">contact us</a></li><li class="page-footer__item"><a href="about.html" class="page-footer__link">about the project</a></li><li class="page-footer__item"><a href="https://learn.javascript.ru/" class="page-footer__link">RU</a> / EN</li></ul></div><div class="page-footer__right"><ul class="page-footer__list"><li class="page-footer__item">powered by <a rel="nofollow" href="http://nodejs.org/" class="page-footer__link">node.js</a>&nbsp;&amp;&nbsp;<a rel="nofollow" href="http://github.com/iliakan/javascript-tutorial-en" class="page-footer__link">open source</a></li></ul></div></div></body>
+<!-- Mirrored from javascript.info/js-animation by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 30 Nov 2017 15:30:42 GMT -->
+</html>

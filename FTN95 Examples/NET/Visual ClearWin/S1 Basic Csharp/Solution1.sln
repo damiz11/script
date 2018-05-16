@@ -1,0 +1,59 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsApplication", "WindowsApplication1\WindowsApplication.csproj", "{15CE05FC-95BD-40E2-A7E8-F97B4B4C53DA}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{FDDF9C0B-7F1F-454F-BCAE-4B4E5ACCE74A}") = "Resources", "Project1\Resources.ftn95p", "{A25426C1-B184-4C58-ADE3-04F1BA9261E1}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		CheckMate .NET = CheckMate .NET
+		CheckMate Win32 = CheckMate Win32
+		Debug = Debug
+		Debug .NET = Debug .NET
+		Debug Win32 = Debug Win32
+		Release = Release
+		Release .NET = Release .NET
+		Release Win32 = Release Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{15CE05FC-95BD-40E2-A7E8-F97B4B4C53DA}.CheckMate .NET.ActiveCfg = Release|.NET
+		{15CE05FC-95BD-40E2-A7E8-F97B4B4C53DA}.CheckMate .NET.Build.0 = Release|.NET
+		{15CE05FC-95BD-40E2-A7E8-F97B4B4C53DA}.CheckMate Win32.ActiveCfg = Release|.NET
+		{15CE05FC-95BD-40E2-A7E8-F97B4B4C53DA}.CheckMate Win32.Build.0 = Release|.NET
+		{15CE05FC-95BD-40E2-A7E8-F97B4B4C53DA}.Debug.ActiveCfg = Debug|.NET
+		{15CE05FC-95BD-40E2-A7E8-F97B4B4C53DA}.Debug.Build.0 = Debug|.NET
+		{15CE05FC-95BD-40E2-A7E8-F97B4B4C53DA}.Debug .NET.ActiveCfg = Debug|.NET
+		{15CE05FC-95BD-40E2-A7E8-F97B4B4C53DA}.Debug .NET.Build.0 = Debug|.NET
+		{15CE05FC-95BD-40E2-A7E8-F97B4B4C53DA}.Debug Win32.ActiveCfg = Debug|.NET
+		{15CE05FC-95BD-40E2-A7E8-F97B4B4C53DA}.Debug Win32.Build.0 = Debug|.NET
+		{15CE05FC-95BD-40E2-A7E8-F97B4B4C53DA}.Release.ActiveCfg = Release|.NET
+		{15CE05FC-95BD-40E2-A7E8-F97B4B4C53DA}.Release.Build.0 = Release|.NET
+		{15CE05FC-95BD-40E2-A7E8-F97B4B4C53DA}.Release .NET.ActiveCfg = Release|.NET
+		{15CE05FC-95BD-40E2-A7E8-F97B4B4C53DA}.Release .NET.Build.0 = Release|.NET
+		{15CE05FC-95BD-40E2-A7E8-F97B4B4C53DA}.Release Win32.ActiveCfg = Release|.NET
+		{15CE05FC-95BD-40E2-A7E8-F97B4B4C53DA}.Release Win32.Build.0 = Release|.NET
+		{A25426C1-B184-4C58-ADE3-04F1BA9261E1}.CheckMate .NET.ActiveCfg = CheckMate|.NET
+		{A25426C1-B184-4C58-ADE3-04F1BA9261E1}.CheckMate .NET.Build.0 = CheckMate|.NET
+		{A25426C1-B184-4C58-ADE3-04F1BA9261E1}.CheckMate Win32.ActiveCfg = CheckMate|Win32
+		{A25426C1-B184-4C58-ADE3-04F1BA9261E1}.CheckMate Win32.Build.0 = CheckMate|Win32
+		{A25426C1-B184-4C58-ADE3-04F1BA9261E1}.Debug.ActiveCfg = Debug|Win32
+		{A25426C1-B184-4C58-ADE3-04F1BA9261E1}.Debug.Build.0 = Debug|Win32
+		{A25426C1-B184-4C58-ADE3-04F1BA9261E1}.Debug .NET.ActiveCfg = Debug|.NET
+		{A25426C1-B184-4C58-ADE3-04F1BA9261E1}.Debug .NET.Build.0 = Debug|.NET
+		{A25426C1-B184-4C58-ADE3-04F1BA9261E1}.Debug Win32.ActiveCfg = Debug|Win32
+		{A25426C1-B184-4C58-ADE3-04F1BA9261E1}.Debug Win32.Build.0 = Debug|Win32
+		{A25426C1-B184-4C58-ADE3-04F1BA9261E1}.Release.ActiveCfg = Release|Win32
+		{A25426C1-B184-4C58-ADE3-04F1BA9261E1}.Release.Build.0 = Release|Win32
+		{A25426C1-B184-4C58-ADE3-04F1BA9261E1}.Release .NET.ActiveCfg = Release|.NET
+		{A25426C1-B184-4C58-ADE3-04F1BA9261E1}.Release .NET.Build.0 = Release|.NET
+		{A25426C1-B184-4C58-ADE3-04F1BA9261E1}.Release Win32.ActiveCfg = Release|Win32
+		{A25426C1-B184-4C58-ADE3-04F1BA9261E1}.Release Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

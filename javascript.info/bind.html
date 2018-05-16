@@ -1,0 +1,479 @@
+<!DOCTYPE html><html lang="en">
+<!-- Mirrored from javascript.info/bind by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 30 Nov 2017 15:28:28 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><script>window.currentUser = null;</script><title itemprop="name">Function binding</title><meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, minimum-scale=1.0"><meta name="apple-mobile-web-app-capable" content="yes"><script>if (window.devicePixelRatio > 1) document.cookie = 'pixelRatio=' + window.devicePixelRatio + ';path=/;expires=Tue, 19 Jan 2038 03:14:07 GMT';</script><link href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700%7COpen+Sans+Condensed:700&amp;subset=latin,latin-ext,cyrillic,cyrillic-ext" rel="stylesheet"><link rel="apple-touch-icon-precomposed" href="img/favicon/apple-touch-icon-precomposed.png"><link rel="canonical" href="bind.html"><meta name="msapplication-TileColor" content="#222A2C"><meta name="msapplication-TileImage" content="/img/favicon/tileicon.png"><!-- favicon the rest--><link rel="icon" href="img/favicon/favicon.png"><meta itemprop="image" content="https://javascript.info/img/site_preview_en_512x512.png"><meta property="og:title" content="Function binding"><meta property="og:image" content="https://javascript.info/img/site_preview_en_1200x630.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="fb:admins" content="100001562528165"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Function binding"><meta name="twitter:site" content="@iliakan"><meta name="twitter:creator" content="@iliakan"><meta name="twitter:image" content="https://javascript.info/img/site_preview_en_512x512.png"><link href="pack/styles.da59a89b28153875791083e4a8c5adb3.css" rel="stylesheet"><link rel="prev" href="call-apply-decorators.html"><link rel="next" href="currying-partials.html"><script>window.GA_ID = "UA-2056213-15";</script><script>window.YANDEX_METRIKA_ID = 32184394;</script><script>window.GoogleAnalyticsObject="ga",window.ga=function(){window.ga.q.push(arguments)},window.ga.q=[],window.ga.l=Date.now(),ga("create",GA_ID,"auto"),window.currentUser&&ga("set","&uid",currentUser.id),window.addEventListener("error",function(e){var r=(e.filename||e.errorUrl)+": "+(e.lineno||e.errorLine),n=e.stack||e.error&&e.error.stack;ga("send","exception",{exDescription:e.message+" "+r+" "+n,exFatal:!0})});</script><script src="https://www.google-analytics.com/analytics.js" async></script><script>ga('send', 'pageview');</script><script>window.metrika={reachGoal:function(){}},window.yandex_metrika_callbacks=[function(){try{window.metrika=new Ya.Metrika({id:YANDEX_METRIKA_ID,webvisor:!0,clickmap:!0,params:{user:window.currentUser&&window.currentUser.id}}),metrika.trackLinks({delay:150}),window.addEventListener("error",function(r){window.metrika.reachGoal("JSERROR",{src:(r.filename||r.errorUrl)+": "+(r.lineno||r.errorLine),stack:r.stack||r.error&&r.error.stack,message:r.message})})}catch(r){}}];</script><script src="http://mc.yandex.ru/metrika/watch.js" async></script><script>window.RECAPTCHA_ID = "6Lf9NyETAAAAACZlg-a9Us2SxvYbeVC1ROWaWv4O";</script><script src="initc4ca.js?1"></script><script src="pack/head.688d4fe7c4cf54e23737.js" defer></script><script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.14.0/lodash.min.js"></script>
+<script>
+function mul(a, b) {
+  return a * b;
+};
+
+function ask(question, answer, ok, fail) {
+  let result = prompt(question, '');
+  if (result.toLowerCase() == answer.toLowerCase()) ok();
+  else fail();
+}
+
+function bind(func, context /*, args*/) {
+  let bindArgs = [].slice.call(arguments, 2); // (1)
+  function wrapper() {                        // (2)
+    let args = [].slice.call(arguments);
+    let unshiftArgs = bindArgs.concat(args);  // (3)
+    return func.apply(context, unshiftArgs);  // (4)
+  }
+  return wrapper;
+}
+</script><meta property="og:title" content="Function binding"><meta property="og:type" content="article"><script src="pack/tutorial.688d4fe7c4cf54e23737.js" defer></script><script src="pack/footer.688d4fe7c4cf54e23737.js" defer></script></head><body class="no-icons"><script>window.fontTest();</script><div class="page-wrapper page-wrapper_sidebar_on"><!--[if lt IE 10]><div style="color:red;text-align:center">Sorry, IE&lt;10 is not supported, please use a newer browser.</div><![endif]--><div class="sitetoolbar sitetoolbar_tutorial"><!-- include ./notification-stripe--><div class="sitetoolbar__content"><div class="sitetoolbar__logo-wrap"><a href="index.html" class="sitetoolbar__link sitetoolbar__link_logo"><img src="img/sitetoolbar__logo_en.svg" width="200" class="sitetoolbar__logo sitetoolbar__logo_normal" alt=""><img src="img/sitetoolbar__logo_small_en.svg" width="70" class="sitetoolbar__logo sitetoolbar__logo_small" alt=""><script>Array.prototype.forEach.call(document.querySelectorAll("img.sitetoolbar__logo"),function(e){var t=document.createElement("object");t.type="image/svg+xml",t.className=e.className,t.style.cssText="left:0;top:0;position:absolute",t.onload=function(){t.onload=null,e.style.visibility="hidden"},t.data=e.src,e.parentNode.insertBefore(t,e)});</script></a></div><div class="sitetoolbar__nav-toggle-wrap"><button type="button" class="sitetoolbar__nav-toggle"></button></div><nav class="sitetoolbar__sections"><ul class="sitetoolbar__sections-list"></ul></nav><div class="sitetoolbar__book-wrap"><a href="ebook.html" class="buy-book-button"><span class="buy-book-button__extra-text">Buy</span>EPUB/PDF</a></div><div class="sitetoolbar__login-wrap"><button data-action-login class="sitetoolbar__login sitetoolbar__login_unready"></button></div><div class="sitetoolbar__search-wrap"><div class="sitetoolbar__search-content"><form method="GET" action="http://javascript.info/search" class="sitetoolbar__search"><button type="button" class="sitetoolbar__search-toggle"></button><div class="sitetoolbar__search-input"><div class="text-input"><input name="query" placeholder="Search on Javascript.info" class="text-input__control" type="text"></div><button type="submit" class="sitetoolbar__find">Search</button></div></form></div></div></div><!-- todo: en variant--><div class="tablet-menu"><div class="tablet-menu__line"><div class="tablet-menu__content"><form action="http://javascript.info/search/" class="tablet-menu-search"><input type="search" name="query" placeholder="Search in the tutorial" required class="tablet-menu-search__input"><button type="submit" name="type" value="articles" class="tablet-menu-search__button">Search</button></form></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><a href="tutorial/map.html" data-action="tutorial-map" class="map"><span class="map__text">Tutorial map</span></a></div></div><!--+e.line--><!--  +e.content--><!--    +b("a").tablet-ebook(href="/ebook")--><!--      +e("span").text Купить учебник--><!--      +e("span").note (EPUB + PDF)--><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="share-icons"><span class="share-icons__title">Share</span><a href="https://twitter.com/share?url=https%3A%2F%2Fjavascript.info%2Fbind" class="share share_tw"></a><a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fjavascript.info%2Fbind" class="share share_fb"></a><a href="https://plus.google.com/share?url=https%3A%2F%2Fjavascript.info%2Fbind" class="share share_gp"></a><a href="https://vkontakte.ru/share.php?url=https%3A%2F%2Fjavascript.info%2Fbind" class="share share_vk"></a></div></div></div></div><progress data-sticky value="52" max="67" data-tooltip="Lesson 52 of 67" class="tutorial-progress"></progress></div><div class="page page_sidebar_on"><script>if(localStorage.noSidebar){document.querySelector(".page").classList.remove("page_sidebar_on");var pageWrapper=document.querySelector(".page-wrapper");pageWrapper&&pageWrapper.classList.remove("page-wrapper_sidebar_on")}setTimeout(function(){document.querySelector(".page").classList.add("page_sidebar-animation-on")},0);</script><div class="page__inner"><main class="main main_width-limit"><header class="main__header"><ol class="breadcrumbs"><li itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemref="breadcrumb-1" class="breadcrumbs__item breadcrumbs__item_home"><a href="index.html" itemprop="url" class="breadcrumbs__link"><span itemprop="title" class="breadcrumbs__hidden-text">Учебник</span></a></li><li id="breadcrumb-1" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemref="breadcrumb-2" itemprop="child" class="breadcrumbs__item"><a href="js.html" itemprop="url" class="breadcrumbs__link"><span itemprop="title">The JavaScript language</span></a></li><li id="breadcrumb-2" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemprop="child" class="breadcrumbs__item"><a href="advanced-functions.html" itemprop="url" class="breadcrumbs__link"><span itemprop="title">Advanced working with functions</span></a></li></ol><h1 class="main__header-title">Function binding</h1></header><div class="content"><article itemscope itemtype="http://schema.org/TechArticle"><meta itemprop="name" content="Function binding"><div itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="email" content="iliakan@gmail.com"><meta itemprop="name" content="Ilya Kantor"></div><div itemprop="articleBody"><p>When using <code>setTimeout</code> with object methods or passing object methods along, there’s a known problem: &quot;losing <code>this</code>&quot;.</p>
+<p>Suddenly, <code>this</code> just stops working right. The situation is typical for novice developers, but happens with experienced ones as well.</p>
+<cut>
+<h2><a class="main__anchor" name="losing-this" href="#losing-this">Losing “this”</a></h2><p>We already know that in JavaScript it’s easy to lose <code>this</code>. Once a method is passed somewhere separately from the object – <code>this</code> is lost.</p>
+<p>Here’s how it may happen with <code>setTimeout</code>:</p>
+<div data-trusted="1" class="code-example" data-highlight-block="7-7">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let user = {
+  firstName: &quot;John&quot;,
+  sayHi() {
+    alert(`Hello, ${this.firstName}!`);
+  }
+};
+
+setTimeout(user.sayHi, 1000); // Hello, undefined!</code></pre>
+        </div>
+      </div>
+      
+      </div><p>As we can see, the output shows not “John” as <code>this.firstName</code>, but <code>undefined</code>!</p>
+<p>That’s because <code>setTimeout</code> got the function <code>user.sayHi</code>, separately from the object. The last line can be rewritten as:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let f = user.sayHi;
+setTimeout(f, 1000); // lost user context</code></pre>
+        </div>
+      </div>
+      
+      </div><p>The method <code>setTimeout</code> in-browser is a little special: it sets <code>this=window</code> for the function call (for Node.JS, <code>this</code> becomes the timer object, but doesn’t really matter here). So for <code>this.firstName</code> it tries to get <code>window.firstName</code>, which does not exist. In other similar cases as we’ll see, usually <code>this</code> just becomes <code>undefined</code>.</p>
+<p>The task is quite typical – we want to pass an object method somewhere else (here – to the scheduler) where it will be called. How to make sure that it will be called in the right context?</p>
+<h2><a class="main__anchor" name="solution-1-a-wrapper" href="#solution-1-a-wrapper">Solution 1: a wrapper</a></h2><p>The simplest solution is to use an wrapping function:</p>
+<div data-trusted="1" class="code-example" data-highlight-block="7-9">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let user = {
+  firstName: &quot;John&quot;,
+  sayHi() {
+    alert(`Hello, ${this.firstName}!`);
+  }
+};
+
+setTimeout(function() {
+  user.sayHi(); // Hello, John!
+}, 1000);</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Now it works, because it receives <code>user</code> from the outer lexical environment, and then calls the method normally.</p>
+<p>The same, but shorter:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">setTimeout(() =&gt; user.sayHi(), 1000); // Hello, John!</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Looks fine, but a slight vulnerability appears in our code structure.</p>
+<p>What if before <code>setTimeout</code> triggers (there’s one second delay!) <code>user</code> changes value? Then, suddenly, it will call the wrong object!</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let user = {
+  firstName: &quot;John&quot;,
+  sayHi() {
+    alert(`Hello, ${this.firstName}!`);
+  }
+};
+
+setTimeout(() =&gt; user.sayHi(), 1000);
+
+// ...within 1 second
+user = { sayHi() { alert(&quot;Another user in setTimeout!&quot;); } };
+
+// Another user in setTimeout?!?</code></pre>
+        </div>
+      </div>
+      
+      </div><p>The next solution guarantees that such thing won’t happen.</p>
+<h2><a class="main__anchor" name="solution-2-bind" href="#solution-2-bind">Solution 2: bind</a></h2><p>Functions provide a built-in method <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/bind">bind</a> that allows to fix <code>this</code>.</p>
+<p>The basic syntax is:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">// more complex syntax will be little later
+let boundFunc = func.bind(context);</code></pre>
+        </div>
+      </div>
+      
+      </div><p>The result of <code>func.bind(context)</code> is a special function-like “exotic object”, that is callable as function and transparently passes the call to <code>func</code> setting <code>this=context</code>.</p>
+<p>In other words, calling <code>boundFunc</code> is like <code>func</code> with fixed <code>this</code>.</p>
+<p>For instance, here <code>funcUser</code> passes a call to <code>func</code> with <code>this=user</code>:</p>
+<div data-trusted="1" class="code-example" data-highlight-block="8-9">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let user = {
+  firstName: &quot;John&quot;
+};
+
+function func() {
+  alert(this.firstName);
+}
+
+let funcUser = func.bind(user);
+funcUser(); // John</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Here <code>func.bind(user)</code> as a “bound variant” of <code>func</code>, with fixed <code>this=user</code>.</p>
+<p>All arguments are passed to the original <code>func</code> “as is”, for instance:</p>
+<div data-trusted="1" class="code-example" data-highlight-block="11-11">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let user = {
+  firstName: &quot;John&quot;
+};
+
+function func(phrase) {
+  alert(phrase + ', ' + this.firstName);
+}
+
+// bind this to user
+let funcUser = func.bind(user);
+
+funcUser(&quot;Hello&quot;); // Hello, John (argument &quot;Hello&quot; is passed, and this=user)</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Now let’s try with an object method:</p>
+<div data-trusted="1" class="code-example" data-highlight-block="7-7">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let user = {
+  firstName: &quot;John&quot;,
+  sayHi() {
+    alert(`Hello, ${this.firstName}!`);
+  }
+};
+
+let sayHi = user.sayHi.bind(user); // (*)
+
+sayHi(); // Hello, John!
+
+setTimeout(sayHi, 1000); // Hello, John!</code></pre>
+        </div>
+      </div>
+      
+      </div><p>In the line <code>(*)</code> we take the method <code>user.sayHi</code> and bind it to <code>user</code>. The <code>sayHi</code> is a “bound” function, that can be called alone or passed to <code>setTimeout</code> – doesn’t matter, the context will be right.</p>
+<p>Here we can see that arguments are passed “as is”, only <code>this</code> is fixed by <code>bind</code>:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let user = {
+  firstName: &quot;John&quot;,
+  say(phrase) {
+    alert(`${phrase}, ${this.firstName}!`);
+  }
+};
+
+let say = user.say.bind(user);
+
+say(&quot;Hello&quot;); // Hello, John (&quot;Hello&quot; argument is passed to say)
+say(&quot;Bye&quot;); // Bye, John (&quot;Bye&quot; is passed to say)</code></pre>
+        </div>
+      </div>
+      
+      </div><div class="important important_smart">
+            <div class="important__header"><span class="important__type">Convenience method: <code>bindAll</code></span></div>
+            <div class="important__content"><p>If an object has many methods and we plan to actively pass it around, then we could bind them all in a loop:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">for (let key in user) {
+  if (typeof user[key] == 'function') {
+    user[key] = user[key].bind(user);
+  }
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>JavaScript libraries also provide functions for convenient mass binding , e.g. <a href="http://lodash.com/docs#bindAll">_.bindAll(obj)</a> in lodash.</p>
+</div></div>
+<h2><a class="main__anchor" name="summary" href="#summary">Summary</a></h2><p>Method <code>func.bind(context, ...args)</code> returns a “bound variant” of function <code>func</code> that fixes the context <code>this</code> and first arguments if given.</p>
+<p>Usually we apply <code>bind</code> to fix <code>this</code> in an object method, so that we can pass it somewhere. For example, to <code>setTimeout</code>. There are more reasons to <code>bind</code> in the modern development, we’ll meet them later.</p>
+</div></article><div class="tasks"><h2 id="tasks" class="tasks__title"><a href="#tasks" class="main__anchor main__anchor_noicon tasks__title-anchor">Tasks</a></h2><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a href="#bound-function-as-a-method" name="bound-function-as-a-method" class="main__anchor">Bound function as a method</a></h3><a href="task/write-to-object-after-bind.html" target="_blank" class="task__open-link"></a></div><div class="task__header-note"><span title="How important is the task, from 1 to 5" class="task__importance">importance: 5</span></div><div class="task__content"><p>What will be the output?</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function f() {
+  alert( this ); // ?
+}
+
+let user = {
+  g: f.bind(null)
+};
+
+user.g();</code></pre>
+        </div>
+      </div>
+      
+      </div><button type="button" class="task__solution">solution</button><div class="task__answer"><div class="task__answer-content"><p>The answer: <code>null</code>.</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function f() {
+  alert( this ); // null
+}
+
+let user = {
+  g: f.bind(null)
+};
+
+user.g();</code></pre>
+        </div>
+      </div>
+      
+      </div><p>The context of a bound function is hard-fixed. There’s just no way to further change it.</p>
+<p>So even while we run <code>user.g()</code>, the original function is called with <code>this=null</code>.</p>
+</div><button type="button" title="close" class="close-button task__answer-close"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a href="#second-bind" name="second-bind" class="main__anchor">Second bind</a></h3><a href="task/second-bind.html" target="_blank" class="task__open-link"></a></div><div class="task__header-note"><span title="How important is the task, from 1 to 5" class="task__importance">importance: 5</span></div><div class="task__content"><p>Can we change <code>this</code> by additional binding?</p>
+<p>What will be the output?</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function f() {
+  alert(this.name);
+}
+
+f = f.bind( {name: &quot;John&quot;} ).bind( {name: &quot;Ann&quot; } );
+
+f();</code></pre>
+        </div>
+      </div>
+      
+      </div><button type="button" class="task__solution">solution</button><div class="task__answer"><div class="task__answer-content"><p>The answer: <strong>John</strong>.</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function f() {
+  alert(this.name);
+}
+
+f = f.bind( {name: &quot;John&quot;} ).bind( {name: &quot;Pete&quot;} );
+
+f(); // John</code></pre>
+        </div>
+      </div>
+      
+      </div><p>The exotic <a href="https://tc39.github.io/ecma262/#sec-bound-function-exotic-objects">bound function</a> object returned by <code>f.bind(...)</code> remembers the context (and arguments if provided) only at creation time.</p>
+<p>A function cannot be re-bound.</p>
+</div><button type="button" title="close" class="close-button task__answer-close"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a href="#function-property-after-bind" name="function-property-after-bind" class="main__anchor">Function property after bind</a></h3><a href="task/function-property-after-bind.html" target="_blank" class="task__open-link"></a></div><div class="task__header-note"><span title="How important is the task, from 1 to 5" class="task__importance">importance: 5</span></div><div class="task__content"><p>There’s a value in the property of a function. Will it change after <code>bind</code>? Why, elaborate?</p>
+<div data-trusted="1" class="code-example" data-highlight-block="5-9">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function sayHi() {
+  alert( this.name );
+}
+sayHi.test = 5;
+
+let bound = sayHi.bind({
+  name: &quot;John&quot;
+});
+
+alert( bound.test ); // what will be the output? why?</code></pre>
+        </div>
+      </div>
+      
+      </div><button type="button" class="task__solution">solution</button><div class="task__answer"><div class="task__answer-content"><p>The answer: <code>undefined</code>.</p>
+<p>The result of <code>bind</code> is another object. It does not have the <code>test</code> property.</p>
+</div><button type="button" title="close" class="close-button task__answer-close"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a href="#ask-losing-this" name="ask-losing-this" class="main__anchor">Ask losing this</a></h3><a href="task/question-use-bind.html" target="_blank" class="task__open-link"></a></div><div class="task__header-note"><span title="How important is the task, from 1 to 5" class="task__importance">importance: 5</span></div><div class="task__content"><p>The call to <code>askPassword()</code> in the code below should check the password and then call <code>user.loginOk/loginFail</code> depending on the answer.</p>
+<p>But it leads to an error. Why?</p>
+<p>Fix the highlighted line for everything to start working right (other lines are not to be changed).</p>
+<div data-trusted="1" class="code-example" data-highlight-block="19-19">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function askPassword(ok, fail) {
+  let password = prompt(&quot;Password?&quot;, '');
+  if (password == &quot;rockstar&quot;) ok();
+  else fail();
+}
+
+let user = {
+  name: 'John',
+
+  loginOk() {
+    alert(`${this.name} logged in`);
+  },
+
+  loginFail() {
+    alert(`${this.name} failed to log in`);
+  },
+
+};
+
+askPassword(user.loginOk, user.loginFail);</code></pre>
+        </div>
+      </div>
+      
+      </div><button type="button" class="task__solution">solution</button><div class="task__answer"><div class="task__answer-content"><p>The error occurs because <code>ask</code> gets functions <code>loginOk/loginFail</code> without the object.</p>
+<p>When it calls them, they naturally assume <code>this=undefined</code>.</p>
+<p>Let’s <code>bind</code> the context:</p>
+<div data-trusted="1" class="code-example" data-highlight-block="19-19">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function askPassword(ok, fail) {
+  let password = prompt(&quot;Password?&quot;, '');
+  if (password == &quot;rockstar&quot;) ok();
+  else fail();
+}
+
+let user = {
+  name: 'John',
+
+  loginOk() {
+    alert(`${this.name} logged in`);
+  },
+
+  loginFail() {
+    alert(`${this.name} failed to log in`);
+  },
+
+};
+
+askPassword(user.loginOk.bind(user), user.loginFail.bind(user));</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Now it works.</p>
+<p>An alternative solution could be:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">//...
+askPassword(() =&gt; user.loginOk(), () =&gt; user.loginFail());</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Usually that also works, but may fail in more complex situations where <code>user</code> has a chance of being overwritten between the moments of asking and running <code>() =&gt; user.loginOk()</code>.</p>
+</div><button type="button" title="close" class="close-button task__answer-close"></button></div></div></div></div></div><!--  include /blocks/banner-bottom--><!--if lang == 'en'--><!--  include /blocks/banner-bottom.en--></div><div class="page__nav-wrap"><a href="call-apply-decorators.html" data-tooltip="Decorators and forwarding, call/apply" class="page__nav page__nav_prev"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Previous lesson</span></a><a href="currying-partials.html" data-tooltip="Currying and partials" class="page__nav page__nav_next"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Next lesson</span></a></div><div class="article-tablet-foot tablet-only"><div class="article-tablet-foot__layout"><div class="share-icons"><span class="share-icons__title">Share</span><a href="https://twitter.com/share?url=https%3A%2F%2Fjavascript.info%2Fbind" class="share share_tw"></a><a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fjavascript.info%2Fbind" class="share share_fb"></a><a href="https://plus.google.com/share?url=https%3A%2F%2Fjavascript.info%2Fbind" class="share share_gp"></a><a href="https://vkontakte.ru/share.php?url=https%3A%2F%2Fjavascript.info%2Fbind" class="share share_vk"></a></div><div class="article-tablet-foot__map"><a href="tutorial/map.html" data-action="tutorial-map" class="map"><span class="map__text">Tutorial map</span></a></div></div></div><div id="comments" class="comments"><div class="comments__header"><h2 class="comments__header-title"><a href="#comments" name="comments">Comments</a></h2><div class="comments__read-before"><span class="comments__read-before-link">read this before commenting…</span><div class="comments__read-before-popup"><div class="comments__read-before-popup-i"><ul><li>You're welcome to post additions, questions to the articles and answers to them.</li><li>To insert a few words of code, use the <code>&lt;code&gt;</code> tag, for several lines – use <code>&lt;pre&gt;</code>, for more than 10 lines – use a sandbox (<a href='http://plnkr.co/edit/?p=preview'>plnkr</a>, <a href='http://jsbin.com/'>JSBin</a>, <a href='http://codepen.io/'>codepen</a>…)</li><li>If you can't understand something in the article – please elaborate.</li></ul></div></div></div></div></div><div id="disqus_thread"></div><script>var disqus_config = function() { if (!this.page) this.page = {}; Object.assign(this.page, {"url":"https:\/\/javascript.info\/bind","identifier":"\/bind","title":"Function binding"}); };</script><script>var disqus_shortname = "javascriptinfo";</script><script>var disqus_enabled = true;</script></main></div><div class="page__sidebar sidebar sidebar_sticky-footer"><button data-sidebar-toggle class="sidebar__toggle"></button><a href="tutorial/map.html" data-action="tutorial-map" data-tooltip="Tutorial map" class="map"></a><div class="sidebar__inner"><div class="sidebar__content"><div class="sidebar__section"><h4 class="sidebar__section-title">Chapter</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a href="advanced-functions.html" class="sidebar__link">Advanced working with functions</a></li></ul></nav></div><div class="sidebar__section"><h4 class="sidebar__section-title">Lesson navigation</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a href="#losing-this" class="sidebar__link">Losing “this”</a></li><li class="sidebar__navigation-link"><a href="#solution-1-a-wrapper" class="sidebar__link">Solution 1: a wrapper</a></li><li class="sidebar__navigation-link"><a href="#solution-2-bind" class="sidebar__link">Solution 2: bind</a></li><li class="sidebar__navigation-link"><a href="#summary" class="sidebar__link">Summary</a></li></ul></nav></div><div class="sidebar__section"><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a href="#tasks" class="sidebar__link">Tasks (4)</a></li><li class="sidebar__navigation-link"><a href="#comments" class="sidebar__link">Comments</a></li></ul></nav></div><div class="sidebar__section"><div class="sidebar__section-title">Share</div><a href="https://twitter.com/share?url=https%3A%2F%2Fjavascript.info%2Fbind" class="share share_tw sidebar__share"></a><a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fjavascript.info%2Fbind" class="share share_fb sidebar__share"></a><a href="https://plus.google.com/share?url=https%3A%2F%2Fjavascript.info%2Fbind" class="share share_gp sidebar__share"></a></div><div class="sidebar__section"><a href="https://github.com/iliakan/javascript-tutorial-en/tree/master/1-js/06-advanced-functions/10-bind/article.md" class="sidebar__link">Edit on Github</a></div></div></div></div></div></div><div class="page-footer"><div class="page-footer__left"><ul class="page-footer__list"><li class="page-footer__item">©&nbsp;2007—2017&nbsp; Ilya Kantor</li><li class="page-footer__item"><a href="about.html#contact-us" class="page-footer__link">contact us</a></li><li class="page-footer__item"><a href="about.html" class="page-footer__link">about the project</a></li><li class="page-footer__item"><a href="https://learn.javascript.ru/" class="page-footer__link">RU</a> / EN</li></ul></div><div class="page-footer__right"><ul class="page-footer__list"><li class="page-footer__item">powered by <a rel="nofollow" href="http://nodejs.org/" class="page-footer__link">node.js</a>&nbsp;&amp;&nbsp;<a rel="nofollow" href="http://github.com/iliakan/javascript-tutorial-en" class="page-footer__link">open source</a></li></ul></div></div></body>
+<!-- Mirrored from javascript.info/bind by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 30 Nov 2017 15:28:28 GMT -->
+</html>

@@ -1,0 +1,730 @@
+<!DOCTYPE html><html lang="en">
+<!-- Mirrored from javascript.info/logical-operators by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 30 Nov 2017 15:27:24 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><script>window.currentUser = null;</script><title itemprop="name">Logical operators</title><meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, minimum-scale=1.0"><meta name="apple-mobile-web-app-capable" content="yes"><script>if (window.devicePixelRatio > 1) document.cookie = 'pixelRatio=' + window.devicePixelRatio + ';path=/;expires=Tue, 19 Jan 2038 03:14:07 GMT';</script><link href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700%7COpen+Sans+Condensed:700&amp;subset=latin,latin-ext,cyrillic,cyrillic-ext" rel="stylesheet"><link rel="apple-touch-icon-precomposed" href="img/favicon/apple-touch-icon-precomposed.png"><link rel="canonical" href="logical-operators.html"><meta name="msapplication-TileColor" content="#222A2C"><meta name="msapplication-TileImage" content="/img/favicon/tileicon.png"><!-- favicon the rest--><link rel="icon" href="img/favicon/favicon.png"><meta itemprop="image" content="https://javascript.info/img/site_preview_en_512x512.png"><meta property="og:title" content="Logical operators"><meta property="og:image" content="https://javascript.info/img/site_preview_en_1200x630.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="fb:admins" content="100001562528165"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Logical operators"><meta name="twitter:site" content="@iliakan"><meta name="twitter:creator" content="@iliakan"><meta name="twitter:image" content="https://javascript.info/img/site_preview_en_512x512.png"><link href="pack/styles.da59a89b28153875791083e4a8c5adb3.css" rel="stylesheet"><link rel="prev" href="ifelse.html"><link rel="next" href="while-for.html"><script>window.GA_ID = "UA-2056213-15";</script><script>window.YANDEX_METRIKA_ID = 32184394;</script><script>window.GoogleAnalyticsObject="ga",window.ga=function(){window.ga.q.push(arguments)},window.ga.q=[],window.ga.l=Date.now(),ga("create",GA_ID,"auto"),window.currentUser&&ga("set","&uid",currentUser.id),window.addEventListener("error",function(e){var r=(e.filename||e.errorUrl)+": "+(e.lineno||e.errorLine),n=e.stack||e.error&&e.error.stack;ga("send","exception",{exDescription:e.message+" "+r+" "+n,exFatal:!0})});</script><script src="https://www.google-analytics.com/analytics.js" async></script><script>ga('send', 'pageview');</script><script>window.metrika={reachGoal:function(){}},window.yandex_metrika_callbacks=[function(){try{window.metrika=new Ya.Metrika({id:YANDEX_METRIKA_ID,webvisor:!0,clickmap:!0,params:{user:window.currentUser&&window.currentUser.id}}),metrika.trackLinks({delay:150}),window.addEventListener("error",function(r){window.metrika.reachGoal("JSERROR",{src:(r.filename||r.errorUrl)+": "+(r.lineno||r.errorLine),stack:r.stack||r.error&&r.error.stack,message:r.message})})}catch(r){}}];</script><script src="http://mc.yandex.ru/metrika/watch.js" async></script><script>window.RECAPTCHA_ID = "6Lf9NyETAAAAACZlg-a9Us2SxvYbeVC1ROWaWv4O";</script><script src="initc4ca.js?1"></script><script src="pack/head.688d4fe7c4cf54e23737.js" defer></script><meta property="og:title" content="Logical operators"><meta property="og:type" content="article"><script src="pack/tutorial.688d4fe7c4cf54e23737.js" defer></script><script src="pack/footer.688d4fe7c4cf54e23737.js" defer></script></head><body class="no-icons"><script>window.fontTest();</script><div class="page-wrapper page-wrapper_sidebar_on"><!--[if lt IE 10]><div style="color:red;text-align:center">Sorry, IE&lt;10 is not supported, please use a newer browser.</div><![endif]--><div class="sitetoolbar sitetoolbar_tutorial"><!-- include ./notification-stripe--><div class="sitetoolbar__content"><div class="sitetoolbar__logo-wrap"><a href="index.html" class="sitetoolbar__link sitetoolbar__link_logo"><img src="img/sitetoolbar__logo_en.svg" width="200" class="sitetoolbar__logo sitetoolbar__logo_normal" alt=""><img src="img/sitetoolbar__logo_small_en.svg" width="70" class="sitetoolbar__logo sitetoolbar__logo_small" alt=""><script>Array.prototype.forEach.call(document.querySelectorAll("img.sitetoolbar__logo"),function(e){var t=document.createElement("object");t.type="image/svg+xml",t.className=e.className,t.style.cssText="left:0;top:0;position:absolute",t.onload=function(){t.onload=null,e.style.visibility="hidden"},t.data=e.src,e.parentNode.insertBefore(t,e)});</script></a></div><div class="sitetoolbar__nav-toggle-wrap"><button type="button" class="sitetoolbar__nav-toggle"></button></div><nav class="sitetoolbar__sections"><ul class="sitetoolbar__sections-list"></ul></nav><div class="sitetoolbar__book-wrap"><a href="ebook.html" class="buy-book-button"><span class="buy-book-button__extra-text">Buy</span>EPUB/PDF</a></div><div class="sitetoolbar__login-wrap"><button data-action-login class="sitetoolbar__login sitetoolbar__login_unready"></button></div><div class="sitetoolbar__search-wrap"><div class="sitetoolbar__search-content"><form method="GET" action="http://javascript.info/search" class="sitetoolbar__search"><button type="button" class="sitetoolbar__search-toggle"></button><div class="sitetoolbar__search-input"><div class="text-input"><input name="query" placeholder="Search on Javascript.info" class="text-input__control" type="text"></div><button type="submit" class="sitetoolbar__find">Search</button></div></form></div></div></div><!-- todo: en variant--><div class="tablet-menu"><div class="tablet-menu__line"><div class="tablet-menu__content"><form action="http://javascript.info/search/" class="tablet-menu-search"><input type="search" name="query" placeholder="Search in the tutorial" required class="tablet-menu-search__input"><button type="submit" name="type" value="articles" class="tablet-menu-search__button">Search</button></form></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><a href="tutorial/map.html" data-action="tutorial-map" class="map"><span class="map__text">Tutorial map</span></a></div></div><!--+e.line--><!--  +e.content--><!--    +b("a").tablet-ebook(href="/ebook")--><!--      +e("span").text Купить учебник--><!--      +e("span").note (EPUB + PDF)--><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="share-icons"><span class="share-icons__title">Share</span><a href="https://twitter.com/share?url=https%3A%2F%2Fjavascript.info%2Flogical-operators" class="share share_tw"></a><a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fjavascript.info%2Flogical-operators" class="share share_fb"></a><a href="https://plus.google.com/share?url=https%3A%2F%2Fjavascript.info%2Flogical-operators" class="share share_gp"></a><a href="https://vkontakte.ru/share.php?url=https%3A%2F%2Fjavascript.info%2Flogical-operators" class="share share_vk"></a></div></div></div></div><progress data-sticky value="14" max="67" data-tooltip="Lesson 14 of 67" class="tutorial-progress"></progress></div><div class="page page_sidebar_on"><script>if(localStorage.noSidebar){document.querySelector(".page").classList.remove("page_sidebar_on");var pageWrapper=document.querySelector(".page-wrapper");pageWrapper&&pageWrapper.classList.remove("page-wrapper_sidebar_on")}setTimeout(function(){document.querySelector(".page").classList.add("page_sidebar-animation-on")},0);</script><div class="page__inner"><main class="main main_width-limit"><header class="main__header"><ol class="breadcrumbs"><li itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemref="breadcrumb-1" class="breadcrumbs__item breadcrumbs__item_home"><a href="index.html" itemprop="url" class="breadcrumbs__link"><span itemprop="title" class="breadcrumbs__hidden-text">Учебник</span></a></li><li id="breadcrumb-1" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemref="breadcrumb-2" itemprop="child" class="breadcrumbs__item"><a href="js.html" itemprop="url" class="breadcrumbs__link"><span itemprop="title">The JavaScript language</span></a></li><li id="breadcrumb-2" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemprop="child" class="breadcrumbs__item"><a href="first-steps.html" itemprop="url" class="breadcrumbs__link"><span itemprop="title">JavaScript Fundamentals</span></a></li></ol><h1 class="main__header-title">Logical operators</h1></header><div class="content"><article itemscope itemtype="http://schema.org/TechArticle"><meta itemprop="name" content="Logical operators"><div itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="email" content="iliakan@gmail.com"><meta itemprop="name" content="Ilya Kantor"></div><div itemprop="articleBody"><p>There are three logical operators in JavaScript: <code>||</code> (OR), <code>&amp;&amp;</code> (AND), <code>!</code> (NOT).</p>
+<p>Although they are called “logical”, they can be applied to values of any type, not only boolean. The result can also be of any type.</p>
+<p>Let’s see the details.</p>
+<cut>
+<h2><a class="main__anchor" name="or" href="#or">|| (OR)</a></h2><p>The “OR” operator is represented with two vertical line symbols:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">result = a || b;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>In classical programming, logical OR is meant to manipulate boolean values only. If any of its arguments are <code>true</code>, then it returns <code>true</code>, otherwise it returns <code>false</code>.</p>
+<p>In JavaScript the operator is a little bit more tricky and powerful. But first let’s see what happens with boolean values.</p>
+<p>There are four possible logical combinations:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">alert( true || true );   // true
+alert( false || true );  // true
+alert( true || false );  // true
+alert( false || false ); // false</code></pre>
+        </div>
+      </div>
+      
+      </div><p>As we can see, the result is always <code>true</code> except for the case when both operands are <code>false</code>.</p>
+<p>If an operand is not boolean, then it’s converted to boolean for the evaluation.</p>
+<p>For instance, a number <code>1</code> is treated as <code>true</code>, a number <code>0</code> – as <code>false</code>:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">if (1 || 0) { // works just like if( true || false )
+  alert( 'truthy!' );
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Most of the time, OR <code>||</code> is used in an <code>if</code> statement to test if <em>any</em> of the given conditions is correct.</p>
+<p>For example:</p>
+<div data-trusted="1" class="code-example" data-highlight-block="2-2">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let hour = 9;
+
+if (hour &lt; 10 || hour &gt; 18) {
+  alert( 'The office is closed.' );
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>We can pass more conditions:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let hour = 12;
+let isWeekend = true;
+
+if (hour &lt; 10 || hour &gt; 18 || isWeekend) {
+  alert( 'The office is closed.' ); // it is the weekend
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><h2><a class="main__anchor" name="or-seeks-the-first-truthy-value" href="#or-seeks-the-first-truthy-value">OR seeks the first truthy value</a></h2><p>The logic described above is somewhat classical. Now let’s bring in the “extra” features of JavaScript.</p>
+<p>The extended algorithm works as follows.</p>
+<p>Given multiple OR’ed values:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">result = value1 || value2 || value3;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>The OR <code>&quot;||&quot;</code> operator does the following:</p>
+<ul>
+<li>Evaluate operands from left to right.</li>
+<li>For each operand, convert it to boolean. If the result is <code>true</code>, then stop and return the original value of that operand.</li>
+<li>If all other operands have been assessed (i.e. all were <code>falsy</code>), return the last operand.</li>
+</ul>
+<p>A value is returned in its original form, without the conversion.</p>
+<p>In other words, a chain of OR <code>&quot;||&quot;</code> returns the first truthy value or the last one if no such value is found.</p>
+<p>For instance:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">alert( 1 || 0 ); // 1 (1 is truthy)
+alert( true || 'no matter what' ); // (true is truthy)
+
+alert( null || 1 ); // 1 (1 is the first truthy value)
+alert( null || 0 || 1 ); // 1 (the first truthy value)
+alert( undefined || null || 0 ); // 0 (all falsy, returns the last value)</code></pre>
+        </div>
+      </div>
+      
+      </div><p>That leads to some interesting usages compared to a “pure, classical, boolean-only OR”.</p>
+<ol>
+<li>
+<p><strong>Getting the first truthy value from the list of variables or expressions.</strong></p>
+<p>Imagine we have several variables, which can either contain the data or be <code>null/undefined</code>. And we need to choose the first one with data.</p>
+<p>We can use OR <code>||</code> for that:</p>
+<div data-trusted="1" class="code-example" data-highlight-block="3-3">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let currentUser = null;
+let defaultUser = &quot;John&quot;;
+
+let name = currentUser || defaultUser || &quot;unnamed&quot;;
+
+alert( name ); // selects &quot;John&quot; – the first truthy value</code></pre>
+        </div>
+      </div>
+      
+      </div><p>If both <code>currentUser</code> and <code>defaultUser</code> were falsy then <code>&quot;unnamed&quot;</code> would be the result.</p>
+</li>
+<li>
+<p><strong>Short-circuit evaluation.</strong></p>
+<p>Operands can be not only values, but arbitrary expressions. OR evaluates and tests them from left to right. The evaluation stops when a truthy value is reached, and the value is returned. The process is called “a short-circuit evaluation”, because it goes as short as possible from left to right.</p>
+<p>This is clearly seen when the expression given as the second argument has a side effect. Like a variable assignment.</p>
+<p>If we run the example below, <code>x</code> would not get assigned:</p>
+<div data-trusted="1" class="code-example" data-highlight-inline="2:0-4">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let x;
+
+true || (x = 1);
+
+alert(x); // undefined, because (x = 1) not evaluated</code></pre>
+        </div>
+      </div>
+      
+      </div><p>…And if the first argument is <code>false</code>, then <code>OR</code> goes on and evaluates the second one thus running the assignment:</p>
+<div data-trusted="1" class="code-example" data-highlight-inline="2:0-5">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let x;
+
+false || (x = 1);
+
+alert(x); // 1</code></pre>
+        </div>
+      </div>
+      
+      </div><p>An assignment is a simple case, other side effects can be involved.</p>
+<p>As we can see, such a use case is a &quot;shorter way to do <code>if</code>&quot;. The first operand is converted to boolean and if it’s false then the second one is evaluated.</p>
+<p>Most of time it’s better to use a “regular” <code>if</code> to keep the code easy to understand, but sometimes that can be handy.</p>
+</li>
+</ol>
+<h2><a class="main__anchor" name="and" href="#and">&amp;&amp; (AND)</a></h2><p>The AND operator is represented with two ampersands <code>&amp;&amp;</code>:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">result = a &amp;&amp; b;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>In classical programming AND returns <code>true</code> if both operands are truthy and <code>false</code> otherwise:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">alert( true &amp;&amp; true );   // true
+alert( false &amp;&amp; true );  // false
+alert( true &amp;&amp; false );  // false
+alert( false &amp;&amp; false ); // false</code></pre>
+        </div>
+      </div>
+      
+      </div><p>An example with <code>if</code>:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let hour = 12;
+let minute = 30;
+
+if (hour == 12 &amp;&amp; minute == 30) {
+  alert( 'Time is 12:30' );
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Just as for OR, any value is allowed as an operand of AND:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">if (1 &amp;&amp; 0) { // evaluated as true &amp;&amp; false
+  alert( &quot;won't work, because the result is falsy&quot; );
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><h2><a class="main__anchor" name="and-seeks-the-first-falsy-value" href="#and-seeks-the-first-falsy-value">AND seeks the first falsy value</a></h2><p>Given multiple AND’ed values:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">result = value1 &amp;&amp; value2 &amp;&amp; value3;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>The AND <code>&quot;&amp;&amp;&quot;</code> operator does the following:</p>
+<ul>
+<li>Evaluate operands from left to right.</li>
+<li>For each operand, convert it to a boolean. If the result is <code>false</code>, stop and return the original value of that operand.</li>
+<li>If all other operands have been assessed (i.e. all were truthy), return the last operand.</li>
+</ul>
+<p>In other words, AND returns the first falsy value or the last value if none were found.</p>
+<p>The rules above are similar to OR. The difference is that AND returns the first <em>falsy</em> value while OR returns the first <em>truthy</em> one.</p>
+<p>Examples:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">// if the first operand is truthy,
+// AND returns the second operand:
+alert( 1 &amp;&amp; 0 ); // 0
+alert( 1 &amp;&amp; 5 ); // 5
+
+// if the first operand is falsy,
+// AND returns it. The second operand is ignored
+alert( null &amp;&amp; 5 ); // null
+alert( 0 &amp;&amp; &quot;no matter what&quot; ); // 0</code></pre>
+        </div>
+      </div>
+      
+      </div><p>We can also pass several values in a row. See how the first falsy one is returned:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">alert( 1 &amp;&amp; 2 &amp;&amp; null &amp;&amp; 3 ); // null</code></pre>
+        </div>
+      </div>
+      
+      </div><p>When all values are truthy, the last value is returned:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">alert( 1 &amp;&amp; 2 &amp;&amp; 3 ); // 3, the last one</code></pre>
+        </div>
+      </div>
+      
+      </div><div class="important important_smart">
+            <div class="important__header"><span class="important__type">AND <code>&amp;&amp;</code> executes before OR <code>||</code></span></div>
+            <div class="important__content"><p>The precedence of the AND <code>&amp;&amp;</code> operator is higher than OR <code>||</code>, so it executes before OR.</p>
+<p>In the code below <code>1 &amp;&amp; 0</code> is calculated first:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">alert( 5 || 1 &amp;&amp; 0 ); // 5</code></pre>
+        </div>
+      </div>
+      
+      </div></div></div>
+<p>Just like OR, the AND <code>&amp;&amp;</code> operator can sometimes replace <code>if</code>.</p>
+<p>For instance:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let x = 1;
+
+(x &gt; 0) &amp;&amp; alert( 'Greater than zero!' );</code></pre>
+        </div>
+      </div>
+      
+      </div><p>The action in the right part of <code>&amp;&amp;</code> would execute only if the evaluation reaches it. That is: only if <code>(x &gt; 0)</code> is true.</p>
+<p>So we basically have an analogue for:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let x = 1;
+
+if (x &gt; 0) {
+  alert( 'Greater than zero!' );
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>The variant with <code>&amp;&amp;</code> appears to be shorter. But <code>if</code> is more obvious and tends to be a little bit more readable.</p>
+<p>So it is recommended to use every construct for its purpose. Use <code>if</code> if we want if. And use <code>&amp;&amp;</code> if we want AND.</p>
+<h2><a class="main__anchor" name="not" href="#not">! (NOT)</a></h2><p>The boolean NOT operator is represented with an exclamation sign <code>&quot;!&quot;</code>.</p>
+<p>The syntax is pretty simple:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">result = !value;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>The operator accepts a single argument and does the following:</p>
+<ol>
+<li>Converts the operand to boolean type: <code>true/false</code>.</li>
+<li>Returns an inverse value.</li>
+</ol>
+<p>For instance:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">alert( !true ); // false
+alert( !0 ); // true</code></pre>
+        </div>
+      </div>
+      
+      </div><p>A double NOT <code>!!</code> is sometimes used for converting a value to boolean type:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">alert( !!&quot;non-empty string&quot; ); // true
+alert( !!null ); // false</code></pre>
+        </div>
+      </div>
+      
+      </div><p>That is, the first NOT converts the value to boolean and returns the inverse, and the second NOT inverses it again. At the end we have a plain value-to-boolean conversion.</p>
+<p>There’s a little more verbose way to do the same thing – a built-in <code>Boolean</code> function:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">alert( Boolean(&quot;non-empty string&quot;) ); // true
+alert( Boolean(null) ); // false</code></pre>
+        </div>
+      </div>
+      
+      </div></div></article><div class="tasks"><h2 id="tasks" class="tasks__title"><a href="#tasks" class="main__anchor main__anchor_noicon tasks__title-anchor">Tasks</a></h2><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a href="#what-s-the-result-of-or" name="what-s-the-result-of-or" class="main__anchor">What's the result of OR?</a></h3><a href="task/alert-null-2-undefined.html" target="_blank" class="task__open-link"></a></div><div class="task__header-note"><span title="How important is the task, from 1 to 5" class="task__importance">importance: 5</span></div><div class="task__content"><p>What the code below is going to output?</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">alert( null || 2 || undefined );</code></pre>
+        </div>
+      </div>
+      
+      </div><button type="button" class="task__solution">solution</button><div class="task__answer"><div class="task__answer-content"><p>The answer is <code>2</code>, that’s the first truthy value.</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">alert( null || 2 || undefined );</code></pre>
+        </div>
+      </div>
+      
+      </div></div><button type="button" title="close" class="close-button task__answer-close"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a href="#what-s-the-result-of-or-ed-alerts" name="what-s-the-result-of-or-ed-alerts" class="main__anchor">What's the result of OR'ed alerts?</a></h3><a href="task/alert-or.html" target="_blank" class="task__open-link"></a></div><div class="task__header-note"><span title="How important is the task, from 1 to 5" class="task__importance">importance: 3</span></div><div class="task__content"><p>What the code below will output?</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">alert( alert(1) || 2 || alert(3) );</code></pre>
+        </div>
+      </div>
+      
+      </div><button type="button" class="task__solution">solution</button><div class="task__answer"><div class="task__answer-content"><p>The answer: first <code>1</code>, then <code>2</code>.</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">alert( alert(1) || 2 || alert(3) );</code></pre>
+        </div>
+      </div>
+      
+      </div><p>The call to <code>alert</code> does not return a value. Or, in other words, it returns <code>undefined</code>.</p>
+<ol>
+<li>The first OR <code>||</code> evaluates it’s left operand <code>alert(1)</code>. That shows the first message with <code>1</code>.</li>
+<li>The <code>alert</code> returns <code>undefined</code>, so OR goes on to the second operand searching for a truthy value.</li>
+<li>The second operand <code>2</code> is truthy, so the execution is halted, <code>2</code> is returned and then shown by the outer alert.</li>
+</ol>
+<p>There will be no <code>3</code>, because the evaluation does not reach <code>alert(3)</code>.</p>
+</div><button type="button" title="close" class="close-button task__answer-close"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a href="#what-is-the-result-of-and" name="what-is-the-result-of-and" class="main__anchor">What is the result of AND?</a></h3><a href="task/alert-1-null-2.html" target="_blank" class="task__open-link"></a></div><div class="task__header-note"><span title="How important is the task, from 1 to 5" class="task__importance">importance: 5</span></div><div class="task__content"><p>What this code is going to show?</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">alert( 1 &amp;&amp; null &amp;&amp; 2 );</code></pre>
+        </div>
+      </div>
+      
+      </div><button type="button" class="task__solution">solution</button><div class="task__answer"><div class="task__answer-content"><p>The answer: <code>null</code>, because it’s the first falsy value from the list.</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">alert( 1 &amp;&amp; null &amp;&amp; 2 );</code></pre>
+        </div>
+      </div>
+      
+      </div></div><button type="button" title="close" class="close-button task__answer-close"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a href="#what-is-the-result-of-and-ed-alerts" name="what-is-the-result-of-and-ed-alerts" class="main__anchor">What is the result of AND'ed alerts?</a></h3><a href="task/alert-and.html" target="_blank" class="task__open-link"></a></div><div class="task__header-note"><span title="How important is the task, from 1 to 5" class="task__importance">importance: 3</span></div><div class="task__content"><p>What will this code show?</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">alert( alert(1) &amp;&amp; alert(2) );</code></pre>
+        </div>
+      </div>
+      
+      </div><button type="button" class="task__solution">solution</button><div class="task__answer"><div class="task__answer-content"><p>The answer: <code>1</code>, and then <code>undefined</code>.</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">alert( alert(1) &amp;&amp; alert(2) );</code></pre>
+        </div>
+      </div>
+      
+      </div><p>The call to <code>alert</code> returns <code>undefined</code> (it just shows a message, so there’s no meaningful return).</p>
+<p>Because of that, <code>&amp;&amp;</code> evaluates the left operand (outputs <code>1</code>), and immediately stops, because <code>undefined</code> is a falsy value. And <code>&amp;&amp;</code> looks for a falsy value and returns it, so it’s done.</p>
+</div><button type="button" title="close" class="close-button task__answer-close"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a href="#the-result-of-or-and-or" name="the-result-of-or-and-or" class="main__anchor">The result of OR AND OR</a></h3><a href="task/alert-and-or.html" target="_blank" class="task__open-link"></a></div><div class="task__header-note"><span title="How important is the task, from 1 to 5" class="task__importance">importance: 5</span></div><div class="task__content"><p>What will be the result?</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">alert( null || 2 &amp;&amp; 3 || 4 );</code></pre>
+        </div>
+      </div>
+      
+      </div><button type="button" class="task__solution">solution</button><div class="task__answer"><div class="task__answer-content"><p>The answer: <code>3</code>.</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">alert( null || 2 &amp;&amp; 3 || 4 );</code></pre>
+        </div>
+      </div>
+      
+      </div><p>The precedence of AND <code>&amp;&amp;</code> is higher than <code>||</code>, so it executes first.</p>
+<p>The result of <code>2 &amp;&amp; 3 = 3</code>, so the expression becomes:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-none"><code class="language-none">null || 3 || 4</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Now the result if the first truthy value: <code>3</code>.</p>
+</div><button type="button" title="close" class="close-button task__answer-close"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a href="#check-the-range-between" name="check-the-range-between" class="main__anchor">Check the range between</a></h3><a href="task/check-if-in-range.html" target="_blank" class="task__open-link"></a></div><div class="task__header-note"><span title="How important is the task, from 1 to 5" class="task__importance">importance: 3</span></div><div class="task__content"><p>Write an “if” condition to check that <code>age</code> is between <code>14</code> and <code>90</code> inclusively.</p>
+<p>“Inclusively” means that <code>age</code> can reach the edges <code>14</code> or <code>90</code>.</p>
+<button type="button" class="task__solution">solution</button><div class="task__answer"><div class="task__answer-content"><div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">if (age &gt;= 14 &amp;&amp; age &lt;= 90)</code></pre>
+        </div>
+      </div>
+      
+      </div></div><button type="button" title="close" class="close-button task__answer-close"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a href="#check-the-range-outside" name="check-the-range-outside" class="main__anchor">Check the range outside</a></h3><a href="task/check-if-out-range.html" target="_blank" class="task__open-link"></a></div><div class="task__header-note"><span title="How important is the task, from 1 to 5" class="task__importance">importance: 3</span></div><div class="task__content"><p>Write an <code>if</code> condition to check that <code>age</code> is NOT between 14 and 90 inclusively.</p>
+<p>Create two variants: the first one using NOT <code>!</code>, the second one – without it.</p>
+<button type="button" class="task__solution">solution</button><div class="task__answer"><div class="task__answer-content"><p>The first variant:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">if (!(age &gt;= 14 &amp;&amp; age &lt;= 90))</code></pre>
+        </div>
+      </div>
+      
+      </div><p>The second variant:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">if (age &lt; 14 || age &gt; 90)</code></pre>
+        </div>
+      </div>
+      
+      </div></div><button type="button" title="close" class="close-button task__answer-close"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a href="#a-question-about-if" name="a-question-about-if" class="main__anchor">A question about &quot;if&quot;</a></h3><a href="task/if-question.html" target="_blank" class="task__open-link"></a></div><div class="task__header-note"><span title="How important is the task, from 1 to 5" class="task__importance">importance: 5</span></div><div class="task__content"><p>Which of these <code>alert</code>s are going to execute?</p>
+<p>What will be the results of the expressions inside <code>if(...)</code>?</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">if (-1 || 0) alert( 'first' );
+if (-1 &amp;&amp; 0) alert( 'second' );
+if (null || -1 &amp;&amp; 1) alert( 'third' );</code></pre>
+        </div>
+      </div>
+      
+      </div><button type="button" class="task__solution">solution</button><div class="task__answer"><div class="task__answer-content"><p>The answer: the first and the third will execute.</p>
+<p>Details:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">// Runs.
+// The result of -1 || 0 = -1, truthy
+if (-1 || 0) alert( 'first' );
+
+// Doesn't run
+// -1 &amp;&amp; 0 = 0, falsy
+if (-1 &amp;&amp; 0) alert( 'second' );
+
+// Executes
+// Operator &amp;&amp; has a higher precedence than ||
+// so -1 &amp;&amp; 1 executes first, giving us the chain:
+// null || -1 &amp;&amp; 1  -&gt;  null || 1  -&gt;  1
+if (null || -1 &amp;&amp; 1) alert( 'third' );</code></pre>
+        </div>
+      </div>
+      
+      </div></div><button type="button" title="close" class="close-button task__answer-close"></button></div></div></div></div></div><!--  include /blocks/banner-bottom--><!--if lang == 'en'--><!--  include /blocks/banner-bottom.en--></div><div class="page__nav-wrap"><a href="ifelse.html" data-tooltip="Conditional operators: if, '?'" class="page__nav page__nav_prev"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Previous lesson</span></a><a href="while-for.html" data-tooltip="Loops: while and for" class="page__nav page__nav_next"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Next lesson</span></a></div><div class="article-tablet-foot tablet-only"><div class="article-tablet-foot__layout"><div class="share-icons"><span class="share-icons__title">Share</span><a href="https://twitter.com/share?url=https%3A%2F%2Fjavascript.info%2Flogical-operators" class="share share_tw"></a><a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fjavascript.info%2Flogical-operators" class="share share_fb"></a><a href="https://plus.google.com/share?url=https%3A%2F%2Fjavascript.info%2Flogical-operators" class="share share_gp"></a><a href="https://vkontakte.ru/share.php?url=https%3A%2F%2Fjavascript.info%2Flogical-operators" class="share share_vk"></a></div><div class="article-tablet-foot__map"><a href="tutorial/map.html" data-action="tutorial-map" class="map"><span class="map__text">Tutorial map</span></a></div></div></div><div id="comments" class="comments"><div class="comments__header"><h2 class="comments__header-title"><a href="#comments" name="comments">Comments</a></h2><div class="comments__read-before"><span class="comments__read-before-link">read this before commenting…</span><div class="comments__read-before-popup"><div class="comments__read-before-popup-i"><ul><li>You're welcome to post additions, questions to the articles and answers to them.</li><li>To insert a few words of code, use the <code>&lt;code&gt;</code> tag, for several lines – use <code>&lt;pre&gt;</code>, for more than 10 lines – use a sandbox (<a href='http://plnkr.co/edit/?p=preview'>plnkr</a>, <a href='http://jsbin.com/'>JSBin</a>, <a href='http://codepen.io/'>codepen</a>…)</li><li>If you can't understand something in the article – please elaborate.</li></ul></div></div></div></div></div><div id="disqus_thread"></div><script>var disqus_config = function() { if (!this.page) this.page = {}; Object.assign(this.page, {"url":"https:\/\/javascript.info\/logical-operators","identifier":"\/logical-operators","title":"Logical operators"}); };</script><script>var disqus_shortname = "javascriptinfo";</script><script>var disqus_enabled = true;</script></main></div><div class="page__sidebar sidebar sidebar_sticky-footer"><button data-sidebar-toggle class="sidebar__toggle"></button><a href="tutorial/map.html" data-action="tutorial-map" data-tooltip="Tutorial map" class="map"></a><div class="sidebar__inner"><div class="sidebar__content"><div class="sidebar__section"><h4 class="sidebar__section-title">Chapter</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a href="first-steps.html" class="sidebar__link">JavaScript Fundamentals</a></li></ul></nav></div><div class="sidebar__section"><h4 class="sidebar__section-title">Lesson navigation</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a href="#or" class="sidebar__link">|| (OR)</a></li><li class="sidebar__navigation-link"><a href="#or-seeks-the-first-truthy-value" class="sidebar__link">OR seeks the first truthy value</a></li><li class="sidebar__navigation-link"><a href="#and" class="sidebar__link">&amp;&amp; (AND)</a></li><li class="sidebar__navigation-link"><a href="#and-seeks-the-first-falsy-value" class="sidebar__link">AND seeks the first falsy value</a></li><li class="sidebar__navigation-link"><a href="#not" class="sidebar__link">! (NOT)</a></li></ul></nav></div><div class="sidebar__section"><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a href="#tasks" class="sidebar__link">Tasks (8)</a></li><li class="sidebar__navigation-link"><a href="#comments" class="sidebar__link">Comments</a></li></ul></nav></div><div class="sidebar__section"><div class="sidebar__section-title">Share</div><a href="https://twitter.com/share?url=https%3A%2F%2Fjavascript.info%2Flogical-operators" class="share share_tw sidebar__share"></a><a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fjavascript.info%2Flogical-operators" class="share share_fb sidebar__share"></a><a href="https://plus.google.com/share?url=https%3A%2F%2Fjavascript.info%2Flogical-operators" class="share share_gp sidebar__share"></a></div><div class="sidebar__section"><a href="https://github.com/iliakan/javascript-tutorial-en/tree/master/1-js/02-first-steps/11-logical-operators/article.md" class="sidebar__link">Edit on Github</a></div></div></div></div></div></div><div class="page-footer"><div class="page-footer__left"><ul class="page-footer__list"><li class="page-footer__item">©&nbsp;2007—2017&nbsp; Ilya Kantor</li><li class="page-footer__item"><a href="about.html#contact-us" class="page-footer__link">contact us</a></li><li class="page-footer__item"><a href="about.html" class="page-footer__link">about the project</a></li><li class="page-footer__item"><a href="https://learn.javascript.ru/" class="page-footer__link">RU</a> / EN</li></ul></div><div class="page-footer__right"><ul class="page-footer__list"><li class="page-footer__item">powered by <a rel="nofollow" href="http://nodejs.org/" class="page-footer__link">node.js</a>&nbsp;&amp;&nbsp;<a rel="nofollow" href="http://github.com/iliakan/javascript-tutorial-en" class="page-footer__link">open source</a></li></ul></div></div></body>
+<!-- Mirrored from javascript.info/logical-operators by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 30 Nov 2017 15:27:24 GMT -->
+</html>

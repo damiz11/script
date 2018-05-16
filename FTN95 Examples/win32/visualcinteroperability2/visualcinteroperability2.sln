@@ -1,0 +1,48 @@
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{9AE66E24-D2D9-4FF2-AB7F-CE79F20F2B8B}") = "FortranApplication1", "FortranApplication1\FortranApplication1.ftn95p", "{867CE035-22B4-48B4-B9F4-C5910FACFA0C}"
+	ProjectSection(ProjectDependencies) = postProject
+		{FE06D371-67F6-4725-8183-AF94EEFF5FE2} = {FE06D371-67F6-4725-8183-AF94EEFF5FE2}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "VCProject1", "VCProject1\VCProject1.vcproj", "{FE06D371-67F6-4725-8183-AF94EEFF5FE2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		CheckMate|.NET = CheckMate|.NET
+		CheckMate|Win32 = CheckMate|Win32
+		Debug|.NET = Debug|.NET
+		Debug|Win32 = Debug|Win32
+		Release|.NET = Release|.NET
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{867CE035-22B4-48B4-B9F4-C5910FACFA0C}.CheckMate|.NET.ActiveCfg = CheckMate|Win32
+		{867CE035-22B4-48B4-B9F4-C5910FACFA0C}.CheckMate|.NET.Build.0 = CheckMate|Win32
+		{867CE035-22B4-48B4-B9F4-C5910FACFA0C}.CheckMate|Win32.ActiveCfg = CheckMate|Win32
+		{867CE035-22B4-48B4-B9F4-C5910FACFA0C}.CheckMate|Win32.Build.0 = CheckMate|Win32
+		{867CE035-22B4-48B4-B9F4-C5910FACFA0C}.Debug|.NET.ActiveCfg = Debug|Win32
+		{867CE035-22B4-48B4-B9F4-C5910FACFA0C}.Debug|.NET.Build.0 = Debug|Win32
+		{867CE035-22B4-48B4-B9F4-C5910FACFA0C}.Debug|Win32.ActiveCfg = Debug|Win32
+		{867CE035-22B4-48B4-B9F4-C5910FACFA0C}.Debug|Win32.Build.0 = Debug|Win32
+		{867CE035-22B4-48B4-B9F4-C5910FACFA0C}.Release|.NET.ActiveCfg = Release|Win32
+		{867CE035-22B4-48B4-B9F4-C5910FACFA0C}.Release|.NET.Build.0 = Release|Win32
+		{867CE035-22B4-48B4-B9F4-C5910FACFA0C}.Release|Win32.ActiveCfg = Release|Win32
+		{867CE035-22B4-48B4-B9F4-C5910FACFA0C}.Release|Win32.Build.0 = Release|Win32
+		{FE06D371-67F6-4725-8183-AF94EEFF5FE2}.CheckMate|.NET.ActiveCfg = Release|Win32
+		{FE06D371-67F6-4725-8183-AF94EEFF5FE2}.CheckMate|.NET.Build.0 = Release|Win32
+		{FE06D371-67F6-4725-8183-AF94EEFF5FE2}.CheckMate|Win32.ActiveCfg = Release|Win32
+		{FE06D371-67F6-4725-8183-AF94EEFF5FE2}.CheckMate|Win32.Build.0 = Release|Win32
+		{FE06D371-67F6-4725-8183-AF94EEFF5FE2}.Debug|.NET.ActiveCfg = Debug|Win32
+		{FE06D371-67F6-4725-8183-AF94EEFF5FE2}.Debug|.NET.Build.0 = Debug|Win32
+		{FE06D371-67F6-4725-8183-AF94EEFF5FE2}.Debug|Win32.ActiveCfg = Debug|Win32
+		{FE06D371-67F6-4725-8183-AF94EEFF5FE2}.Debug|Win32.Build.0 = Debug|Win32
+		{FE06D371-67F6-4725-8183-AF94EEFF5FE2}.Release|.NET.ActiveCfg = Release|Win32
+		{FE06D371-67F6-4725-8183-AF94EEFF5FE2}.Release|.NET.Build.0 = Release|Win32
+		{FE06D371-67F6-4725-8183-AF94EEFF5FE2}.Release|Win32.ActiveCfg = Release|Win32
+		{FE06D371-67F6-4725-8183-AF94EEFF5FE2}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

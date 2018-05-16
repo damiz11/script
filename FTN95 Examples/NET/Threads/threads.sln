@@ -1,0 +1,31 @@
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{9AE66E24-D2D9-4FF2-AB7F-CE79F20F2B8B}") = "Threads", "Threads.ftn95p", "{6025DA35-1FE6-45F1-B0A4-889176813D25}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		CheckMate|.NET = CheckMate|.NET
+		CheckMate|Win32 = CheckMate|Win32
+		Debug|.NET = Debug|.NET
+		Debug|Win32 = Debug|Win32
+		Release|.NET = Release|.NET
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6025DA35-1FE6-45F1-B0A4-889176813D25}.CheckMate|.NET.ActiveCfg = CheckMate|Win32
+		{6025DA35-1FE6-45F1-B0A4-889176813D25}.CheckMate|.NET.Build.0 = CheckMate|Win32
+		{6025DA35-1FE6-45F1-B0A4-889176813D25}.CheckMate|Win32.ActiveCfg = CheckMate|Win32
+		{6025DA35-1FE6-45F1-B0A4-889176813D25}.CheckMate|Win32.Build.0 = CheckMate|Win32
+		{6025DA35-1FE6-45F1-B0A4-889176813D25}.Debug|.NET.ActiveCfg = Debug|.NET
+		{6025DA35-1FE6-45F1-B0A4-889176813D25}.Debug|.NET.Build.0 = Debug|.NET
+		{6025DA35-1FE6-45F1-B0A4-889176813D25}.Debug|Win32.ActiveCfg = Debug|Win32
+		{6025DA35-1FE6-45F1-B0A4-889176813D25}.Debug|Win32.Build.0 = Debug|Win32
+		{6025DA35-1FE6-45F1-B0A4-889176813D25}.Release|.NET.ActiveCfg = Release|Win32
+		{6025DA35-1FE6-45F1-B0A4-889176813D25}.Release|.NET.Build.0 = Release|Win32
+		{6025DA35-1FE6-45F1-B0A4-889176813D25}.Release|Win32.ActiveCfg = Release|Win32
+		{6025DA35-1FE6-45F1-B0A4-889176813D25}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

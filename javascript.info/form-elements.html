@@ -1,0 +1,392 @@
+<!DOCTYPE html><html lang="en">
+<!-- Mirrored from javascript.info/form-elements by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 30 Nov 2017 15:30:28 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><script>window.currentUser = null;</script><title itemprop="name">Form properties and methods</title><meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, minimum-scale=1.0"><meta name="apple-mobile-web-app-capable" content="yes"><script>if (window.devicePixelRatio > 1) document.cookie = 'pixelRatio=' + window.devicePixelRatio + ';path=/;expires=Tue, 19 Jan 2038 03:14:07 GMT';</script><link href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700%7COpen+Sans+Condensed:700&amp;subset=latin,latin-ext,cyrillic,cyrillic-ext" rel="stylesheet"><link rel="apple-touch-icon-precomposed" href="img/favicon/apple-touch-icon-precomposed.png"><link rel="canonical" href="form-elements.html"><meta name="msapplication-TileColor" content="#222A2C"><meta name="msapplication-TileImage" content="/img/favicon/tileicon.png"><!-- favicon the rest--><link rel="icon" href="img/favicon/favicon.png"><meta itemprop="image" content="https://javascript.info/img/site_preview_en_512x512.png"><meta property="og:title" content="Form properties and methods"><meta property="og:image" content="https://javascript.info/img/site_preview_en_1200x630.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="fb:admins" content="100001562528165"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Form properties and methods"><meta name="twitter:site" content="@iliakan"><meta name="twitter:creator" content="@iliakan"><meta name="twitter:image" content="https://javascript.info/img/site_preview_en_512x512.png"><link href="pack/styles.da59a89b28153875791083e4a8c5adb3.css" rel="stylesheet"><link rel="prev" href="forms-controls.html"><link rel="next" href="focus-blur.html"><script>window.GA_ID = "UA-2056213-15";</script><script>window.YANDEX_METRIKA_ID = 32184394;</script><script>window.GoogleAnalyticsObject="ga",window.ga=function(){window.ga.q.push(arguments)},window.ga.q=[],window.ga.l=Date.now(),ga("create",GA_ID,"auto"),window.currentUser&&ga("set","&uid",currentUser.id),window.addEventListener("error",function(e){var r=(e.filename||e.errorUrl)+": "+(e.lineno||e.errorLine),n=e.stack||e.error&&e.error.stack;ga("send","exception",{exDescription:e.message+" "+r+" "+n,exFatal:!0})});</script><script src="https://www.google-analytics.com/analytics.js" async></script><script>ga('send', 'pageview');</script><script>window.metrika={reachGoal:function(){}},window.yandex_metrika_callbacks=[function(){try{window.metrika=new Ya.Metrika({id:YANDEX_METRIKA_ID,webvisor:!0,clickmap:!0,params:{user:window.currentUser&&window.currentUser.id}}),metrika.trackLinks({delay:150}),window.addEventListener("error",function(r){window.metrika.reachGoal("JSERROR",{src:(r.filename||r.errorUrl)+": "+(r.lineno||r.errorLine),stack:r.stack||r.error&&r.error.stack,message:r.message})})}catch(r){}}];</script><script src="http://mc.yandex.ru/metrika/watch.js" async></script><script>window.RECAPTCHA_ID = "6Lf9NyETAAAAACZlg-a9Us2SxvYbeVC1ROWaWv4O";</script><script src="initc4ca.js?1"></script><script src="pack/head.688d4fe7c4cf54e23737.js" defer></script><meta property="og:title" content="Form properties and methods"><meta property="og:type" content="article"><script src="pack/tutorial.688d4fe7c4cf54e23737.js" defer></script><script src="pack/footer.688d4fe7c4cf54e23737.js" defer></script></head><body class="no-icons"><script>window.fontTest();</script><div class="page-wrapper page-wrapper_sidebar_on"><!--[if lt IE 10]><div style="color:red;text-align:center">Sorry, IE&lt;10 is not supported, please use a newer browser.</div><![endif]--><div class="sitetoolbar sitetoolbar_tutorial"><!-- include ./notification-stripe--><div class="sitetoolbar__content"><div class="sitetoolbar__logo-wrap"><a href="index.html" class="sitetoolbar__link sitetoolbar__link_logo"><img src="img/sitetoolbar__logo_en.svg" width="200" class="sitetoolbar__logo sitetoolbar__logo_normal" alt=""><img src="img/sitetoolbar__logo_small_en.svg" width="70" class="sitetoolbar__logo sitetoolbar__logo_small" alt=""><script>Array.prototype.forEach.call(document.querySelectorAll("img.sitetoolbar__logo"),function(e){var t=document.createElement("object");t.type="image/svg+xml",t.className=e.className,t.style.cssText="left:0;top:0;position:absolute",t.onload=function(){t.onload=null,e.style.visibility="hidden"},t.data=e.src,e.parentNode.insertBefore(t,e)});</script></a></div><div class="sitetoolbar__nav-toggle-wrap"><button type="button" class="sitetoolbar__nav-toggle"></button></div><nav class="sitetoolbar__sections"><ul class="sitetoolbar__sections-list"></ul></nav><div class="sitetoolbar__book-wrap"><a href="ebook.html" class="buy-book-button"><span class="buy-book-button__extra-text">Buy</span>EPUB/PDF</a></div><div class="sitetoolbar__login-wrap"><button data-action-login class="sitetoolbar__login sitetoolbar__login_unready"></button></div><div class="sitetoolbar__search-wrap"><div class="sitetoolbar__search-content"><form method="GET" action="http://javascript.info/search" class="sitetoolbar__search"><button type="button" class="sitetoolbar__search-toggle"></button><div class="sitetoolbar__search-input"><div class="text-input"><input name="query" placeholder="Search on Javascript.info" class="text-input__control" type="text"></div><button type="submit" class="sitetoolbar__find">Search</button></div></form></div></div></div><!-- todo: en variant--><div class="tablet-menu"><div class="tablet-menu__line"><div class="tablet-menu__content"><form action="http://javascript.info/search/" class="tablet-menu-search"><input type="search" name="query" placeholder="Search in the tutorial" required class="tablet-menu-search__input"><button type="submit" name="type" value="articles" class="tablet-menu-search__button">Search</button></form></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><a href="tutorial/map.html" data-action="tutorial-map" class="map"><span class="map__text">Tutorial map</span></a></div></div><!--+e.line--><!--  +e.content--><!--    +b("a").tablet-ebook(href="/ebook")--><!--      +e("span").text Купить учебник--><!--      +e("span").note (EPUB + PDF)--><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="share-icons"><span class="share-icons__title">Share</span><a href="https://twitter.com/share?url=https%3A%2F%2Fjavascript.info%2Fform-elements" class="share share_tw"></a><a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fjavascript.info%2Fform-elements" class="share share_fb"></a><a href="https://plus.google.com/share?url=https%3A%2F%2Fjavascript.info%2Fform-elements" class="share share_gp"></a><a href="https://vkontakte.ru/share.php?url=https%3A%2F%2Fjavascript.info%2Fform-elements" class="share share_vk"></a></div></div></div></div><progress data-sticky value="24" max="27" data-tooltip="Lesson 24 of 27" class="tutorial-progress"></progress></div><div class="page page_sidebar_on"><script>if(localStorage.noSidebar){document.querySelector(".page").classList.remove("page_sidebar_on");var pageWrapper=document.querySelector(".page-wrapper");pageWrapper&&pageWrapper.classList.remove("page-wrapper_sidebar_on")}setTimeout(function(){document.querySelector(".page").classList.add("page_sidebar-animation-on")},0);</script><div class="page__inner"><main class="main main_width-limit"><header class="main__header"><ol class="breadcrumbs"><li itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemref="breadcrumb-1" class="breadcrumbs__item breadcrumbs__item_home"><a href="index.html" itemprop="url" class="breadcrumbs__link"><span itemprop="title" class="breadcrumbs__hidden-text">Учебник</span></a></li><li id="breadcrumb-1" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemref="breadcrumb-2" itemprop="child" class="breadcrumbs__item"><a href="ui.html" itemprop="url" class="breadcrumbs__link"><span itemprop="title">Browser: Document, Events, Interfaces</span></a></li><li id="breadcrumb-2" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemprop="child" class="breadcrumbs__item"><a href="forms-controls.html" itemprop="url" class="breadcrumbs__link"><span itemprop="title">Forms, controls</span></a></li></ol><h1 class="main__header-title">Form properties and methods</h1></header><div class="content"><article itemscope itemtype="http://schema.org/TechArticle"><meta itemprop="name" content="Form properties and methods"><div itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="email" content="iliakan@gmail.com"><meta itemprop="name" content="Ilya Kantor"></div><div itemprop="articleBody"><p>Forms and control elements, such as <code>&lt;input&gt;</code> have a lot of special properties and events.</p>
+<p>Working with forms can be much more convenient if we know them.</p>
+<cut>
+<h2><a class="main__anchor" name="navigation-form-and-elements" href="#navigation-form-and-elements">Navigation: form and elements</a></h2><p>Document forms are members of the special collection <code>document.forms</code>.</p>
+<p>That’s a <em>named</em> collection: we can use both the name and the number to get the form.</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">document.forms.my - the form with name=&quot;my&quot;
+document.forms[0] - the first form in the document</code></pre>
+        </div>
+      </div>
+      
+      </div><p>When we have a form, then any element is available in the named collection <code>form.elements</code>.</p>
+<p>For instance:</p>
+<div data-trusted="1" class="code-example" data-demo-height="40">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="show" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;form name=&quot;my&quot;&gt;
+  &lt;input name=&quot;one&quot; value=&quot;1&quot;&gt;
+  &lt;input name=&quot;two&quot; value=&quot;2&quot;&gt;
+&lt;/form&gt;
+
+&lt;script&gt;
+  // get the form
+  let form = document.forms.my; // &lt;form name=&quot;my&quot;&gt; element
+
+  // get the element
+  let elem = form.elements.one; // &lt;input name=&quot;one&quot;&gt; element
+
+  alert(elem.value); // 1
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>There may be multiple elements with the same name, that’s often the case with radio buttons.</p>
+<p>In that case <code>form.elements[name]</code> is a collection, for instance:</p>
+<div data-trusted="1" class="code-example" data-demo-height="40" data-highlight-inline="1:22-32,2:22-32">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="show" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;form&gt;
+  &lt;input type=&quot;radio&quot; name=&quot;age&quot; value=&quot;10&quot;&gt;
+  &lt;input type=&quot;radio&quot; name=&quot;age&quot; value=&quot;20&quot;&gt;
+&lt;/form&gt;
+
+&lt;script&gt;
+let form = document.forms[0];
+
+let ageElems = form.elements.age;
+
+alert(ageElems[0].value); // 10, the first input value
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>These navigation properties do not depend on the tag structure. All elements, no matter how deep they are in the form, are available in <code>form.elements</code>.</p>
+<div class="important important_smart">
+            <div class="important__header"><span class="important__type">Fieldsets as “subforms”</span></div>
+            <div class="important__content"><p>A form may have one or many <code>&lt;fieldset&gt;</code> elements inside it. They also support the <code>elements</code> property.</p>
+<p>For instance:</p>
+<div data-trusted="1" class="code-example" data-demo-height="80" data-highlight-block="11-15">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="show" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;body&gt;
+  &lt;form id=&quot;form&quot;&gt;
+    &lt;fieldset name=&quot;userFields&quot;&gt;
+      &lt;legend&gt;info&lt;/legend&gt;
+      &lt;input name=&quot;login&quot; type=&quot;text&quot;&gt;
+    &lt;/fieldset&gt;
+  &lt;/form&gt;
+
+  &lt;script&gt;
+    alert(form.elements.login); // &lt;input name=&quot;login&quot;&gt;
+
+    let fieldset = form.elements.userFields;
+    alert(fieldset); // HTMLFieldSetElement
+
+    // we can get the input both from the form and from the fieldset
+    alert(fieldset.elements.login == form.elements.login); // true
+  &lt;/script&gt;
+&lt;/body&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div></div></div>
+<div class="important important_warn">
+            <div class="important__header"><span class="important__type">Shorter notation: <code>form.name</code></span></div>
+            <div class="important__content"><p>There’s a shorter notation: we can access the element as <code>form[index/name]</code>.</p>
+<p>Instead of <code>form.elements.login</code> we can write <code>form.login</code>.</p>
+<p>That also works, but there’s a minor issue: if we access an element, and then change its <code>name</code>, then it is still available under the old name (as well as under the new one).</p>
+<p>That’s easy to see in an example:</p>
+<div data-trusted="1" class="code-example" data-demo-height="40" data-highlight-block="13-14">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="show" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;form id=&quot;form&quot;&gt;
+  &lt;input name=&quot;login&quot;&gt;
+&lt;/form&gt;
+
+&lt;script&gt;
+  alert(form.elements.login == form.login); // true, the same &lt;input&gt;
+
+  form.login.name = &quot;username&quot;; // change the name of the input
+
+  // form.elements updated the name:
+  alert(form.elements.login); // undefined
+  alert(form.elements.username); // input
+
+  // the direct access now can use both names: the new one and the old one
+  alert(form.username == form.login); // true
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>That’s usually not a problem, because we rarely change names of form elements.</p>
+</div></div>
+<h2><a class="main__anchor" name="backreference-element-form" href="#backreference-element-form">Backreference: element.form</a></h2><p>For any element, the form is available as <code>element.form</code>. So a form references all elements, and elements
+reference the form.</p>
+<p>Here’s the picture:</p>
+<figure><div class="image" style="width:413px">
+      <div class="image__ratio" style="padding-top:30.26634382566586%"></div>
+      <img src="article/form-elements/form-navigation.png" alt="" width="413" height="125" class="image__image">
+      </div></figure><p>For instance:</p>
+<div data-trusted="1" class="code-example" data-demo-height="40" data-highlight-block="5-9">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="show" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;form id=&quot;form&quot;&gt;
+  &lt;input type=&quot;text&quot; name=&quot;login&quot;&gt;
+&lt;/form&gt;
+
+&lt;script&gt;
+  // form -&gt; element
+  let login = form.login;
+
+  // element -&gt; form
+  alert(login.form); // HTMLFormElement
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><h2><a class="main__anchor" name="form-elements" href="#form-elements">Form elements</a></h2><p>Let’s talk about form controls, pay attention to their specific features.</p>
+<h3><a class="main__anchor" name="input-and-textarea" href="#input-and-textarea">input and textarea</a></h3><p>Normally, we can access the value as <code>input.value</code> or <code>input.checked</code> for checkboxes.</p>
+<p>Like this:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">input.value = &quot;New value&quot;;
+textarea.value = &quot;New text&quot;;
+
+input.checked = true; // for a checkbox or radio button</code></pre>
+        </div>
+      </div>
+      
+      </div><div class="important important_warn">
+            <div class="important__header"><span class="important__type">Use <code>textarea.value</code>, not <code>textarea.innerHTML</code></span></div>
+            <div class="important__content"><p>Please note that we should never use <code>textarea.innerHTML</code>: it stores only the HTML that was initially on the page, not the current value.</p>
+</div></div>
+<h3><a class="main__anchor" name="select-and-option" href="#select-and-option">select and option</a></h3><p>A <code>&lt;select&gt;</code> element has 3 important properties:</p>
+<ol>
+<li><code>select.options</code> – the collection of <code>&lt;option&gt;</code> elements,</li>
+<li><code>select.value</code> – the value of the chosen option,</li>
+<li><code>select.selectedIndex</code> – the number of the selected option.</li>
+</ol>
+<p>So we have three ways to set the value of a <code>&lt;select&gt;</code>:</p>
+<ol>
+<li>Find the needed <code>&lt;option&gt;</code> and set <code>option.selected</code> to <code>true</code>.</li>
+<li>Set <code>select.value</code> to the value.</li>
+<li>Set <code>select.selectedIndex</code> to the number of the option.</li>
+</ol>
+<p>The first way is the most obvious, but <code>(2)</code> and <code>(3)</code> are usually more convenient.</p>
+<p>Here is an example:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="show" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;select id=&quot;select&quot;&gt;
+  &lt;option value=&quot;apple&quot;&gt;Apple&lt;/option&gt;
+  &lt;option value=&quot;pear&quot;&gt;Pear&lt;/option&gt;
+  &lt;option value=&quot;banana&quot;&gt;Banana&lt;/option&gt;
+&lt;/select&gt;
+
+&lt;script&gt;
+  // all three lines do the same thing
+  select.options[2].selected = true;
+  select.selectedIndex = 2;
+  select.value = 'banana';
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Unlike most other controls, <code>&lt;select multiple&gt;</code> allows multiple choice. In that case we need to walk over <code>select.options</code> to get all selected values.</p>
+<p>Like this:</p>
+<div data-trusted="1" class="code-example" data-highlight-inline="0:20-28">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="show" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;select id=&quot;select&quot; multiple&gt;
+  &lt;option value=&quot;blues&quot; selected&gt;Blues&lt;/option&gt;
+  &lt;option value=&quot;rock&quot; selected&gt;Rock&lt;/option&gt;
+  &lt;option value=&quot;classic&quot;&gt;Classic&lt;/option&gt;
+&lt;/select&gt;
+
+&lt;script&gt;
+  // get all selected values from multi-select
+  let selected = Array.from(select.options)
+    .filter(option =&gt; option.selected)
+    .map(option =&gt; option.value);
+
+  alert(selected); // blues,rock
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>The full specification of the <code>&lt;select&gt;</code> element is available at <a href="https://html.spec.whatwg.org/multipage/forms.html#the-select-element">https://html.spec.whatwg.org/multipage/forms.html#the-select-element</a>.</p>
+<h3><a class="main__anchor" name="new-option" href="#new-option">new Option</a></h3><p>In the specification of <a href="https://html.spec.whatwg.org/multipage/forms.html#the-option-element">the option element</a> there’s a nice short syntax to create <code>&lt;option&gt;</code> elements:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">option = new Option(text, value, defaultSelected, selected);</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Parameters:</p>
+<ul>
+<li><code>text</code> – the text inside the option,</li>
+<li><code>value</code> – the option value,</li>
+<li><code>defaultSelected</code> – if <code>true</code>, then <code>selected</code> attribute is created,</li>
+<li><code>selected</code> – if <code>true</code>, then the option is selected.</li>
+</ul>
+<p>For instance:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let option = new Option(&quot;Text&quot;, &quot;value&quot;);
+// creates &lt;option value=&quot;value&quot;&gt;Text&lt;/option&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>The same element selected:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let option = new Option(&quot;Text&quot;, &quot;value&quot;, true, true);</code></pre>
+        </div>
+      </div>
+      
+      </div><div class="important important_smart">
+            <div class="important__header"><span class="important__type">Additional properties of <code>&lt;option&gt;</code></span></div>
+            <div class="important__content"><p>Option elements have additional properties:</p>
+<dl>
+<dt><code>selected</code></dt>
+<dd>Is the option selected.</dd>
+<dt><code>index</code></dt>
+<dd>The number of the option among the others in its <code>&lt;select&gt;</code>.</dd>
+<dt><code>text</code></dt>
+<dd>Text content of the option (seen by what the visitor).</dd>
+</dl>
+</div></div>
+<h2><a class="main__anchor" name="summary" href="#summary">Summary</a></h2><p>Form navigation:</p>
+<dl>
+<dt><code>document.forms</code></dt>
+<dd>A form is available as <code>document.forms[name/index]</code>.</dd>
+<dt><code>form.elements</code></dt>
+<dd>Form elements are available as <code>form.elements[name/index]</code>, or can use just <code>form[name/index]</code>. The <code>elements</code> property also works for <code>&lt;fieldset&gt;</code>.</dd>
+<dt><code>element.form</code></dt>
+<dd>Elements reference their form in the <code>form</code> property.</dd>
+</dl>
+<p>Value is available as <code>input.value</code>, <code>textarea.value</code>, <code>select.value</code> etc, or <code>input.checked</code> for checkboxes and radio buttons.</p>
+<p>For <code>&lt;select&gt;</code> we can also get the value by the index <code>select.selectedIndex</code> or through the options collection <code>select.options</code>. The full specification of this and other elements is at <a href="https://html.spec.whatwg.org/multipage/forms.html">https://html.spec.whatwg.org/multipage/forms.html</a>.</p>
+<p>These are the basics to start working with forms. In the next chapter we’ll cover <code>focus</code> and <code>blur</code> events that may occur on any element, but are mostly handled on forms.</p>
+</div></article><div class="tasks"><h2 id="tasks" class="tasks__title"><a href="#tasks" class="main__anchor main__anchor_noicon tasks__title-anchor">Tasks</a></h2><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a href="#add-an-option-to-select" name="add-an-option-to-select" class="main__anchor">Add an option to select</a></h3><a href="task/add-select-option.html" target="_blank" class="task__open-link"></a></div><div class="task__header-note"><span title="How important is the task, from 1 to 5" class="task__importance">importance: 5</span></div><div class="task__content"><p>There’s a <code>&lt;select&gt;</code>:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;select id=&quot;genres&quot;&gt;
+  &lt;option value=&quot;rock&quot;&gt;Rock&lt;/option&gt;
+  &lt;option value=&quot;blues&quot; selected&gt;Blues&lt;/option&gt;
+&lt;/select&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Use JavaScript to:</p>
+<ol>
+<li>Show the value and the text of the selected option.</li>
+<li>Add an option: <code>&lt;option value=&quot;classic&quot;&gt;Classic&lt;/option&gt;</code>.</li>
+<li>Make it selected.</li>
+</ol>
+<button type="button" class="task__solution">solution</button><div class="task__answer"><div class="task__answer-content"><p>The solution, step by step:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="show" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;select id=&quot;genres&quot;&gt;
+  &lt;option value=&quot;rock&quot;&gt;Rock&lt;/option&gt;
+  &lt;option value=&quot;blues&quot; selected&gt;Blues&lt;/option&gt;
+&lt;/select&gt;
+
+&lt;script&gt;
+  // 1)
+  let selectedOption = genres.options[select.selectedIndex];
+  alert( selectedOption.value );
+
+  // 2)
+  let newOption = new Option(&quot;classic&quot;, &quot;Classic&quot;);
+  select.append(newOption);
+
+  // 3)
+  newOption.selected = true;
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div></div><button type="button" title="close" class="close-button task__answer-close"></button></div></div></div></div></div><!--  include /blocks/banner-bottom--><!--if lang == 'en'--><!--  include /blocks/banner-bottom.en--></div><div class="page__nav-wrap"><a href="forms-controls.html" data-tooltip="Forms, controls" class="page__nav page__nav_prev"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Previous lesson</span></a><a href="focus-blur.html" data-tooltip="Focusing: focus/blur" class="page__nav page__nav_next"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Next lesson</span></a></div><div class="article-tablet-foot tablet-only"><div class="article-tablet-foot__layout"><div class="share-icons"><span class="share-icons__title">Share</span><a href="https://twitter.com/share?url=https%3A%2F%2Fjavascript.info%2Fform-elements" class="share share_tw"></a><a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fjavascript.info%2Fform-elements" class="share share_fb"></a><a href="https://plus.google.com/share?url=https%3A%2F%2Fjavascript.info%2Fform-elements" class="share share_gp"></a><a href="https://vkontakte.ru/share.php?url=https%3A%2F%2Fjavascript.info%2Fform-elements" class="share share_vk"></a></div><div class="article-tablet-foot__map"><a href="tutorial/map.html" data-action="tutorial-map" class="map"><span class="map__text">Tutorial map</span></a></div></div></div><div id="comments" class="comments"><div class="comments__header"><h2 class="comments__header-title"><a href="#comments" name="comments">Comments</a></h2><div class="comments__read-before"><span class="comments__read-before-link">read this before commenting…</span><div class="comments__read-before-popup"><div class="comments__read-before-popup-i"><ul><li>You're welcome to post additions, questions to the articles and answers to them.</li><li>To insert a few words of code, use the <code>&lt;code&gt;</code> tag, for several lines – use <code>&lt;pre&gt;</code>, for more than 10 lines – use a sandbox (<a href='http://plnkr.co/edit/?p=preview'>plnkr</a>, <a href='http://jsbin.com/'>JSBin</a>, <a href='http://codepen.io/'>codepen</a>…)</li><li>If you can't understand something in the article – please elaborate.</li></ul></div></div></div></div></div><div id="disqus_thread"></div><script>var disqus_config = function() { if (!this.page) this.page = {}; Object.assign(this.page, {"url":"https:\/\/javascript.info\/form-elements","identifier":"\/form-elements","title":"Form properties and methods"}); };</script><script>var disqus_shortname = "javascriptinfo";</script><script>var disqus_enabled = true;</script></main></div><div class="page__sidebar sidebar sidebar_sticky-footer"><button data-sidebar-toggle class="sidebar__toggle"></button><a href="tutorial/map.html" data-action="tutorial-map" data-tooltip="Tutorial map" class="map"></a><div class="sidebar__inner"><div class="sidebar__content"><div class="sidebar__section"><h4 class="sidebar__section-title">Chapter</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a href="forms-controls.html" class="sidebar__link">Forms, controls</a></li></ul></nav></div><div class="sidebar__section"><h4 class="sidebar__section-title">Lesson navigation</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a href="#navigation-form-and-elements" class="sidebar__link">Navigation: form and elements</a></li><li class="sidebar__navigation-link"><a href="#backreference-element-form" class="sidebar__link">Backreference: element.form</a></li><li class="sidebar__navigation-link"><a href="#form-elements" class="sidebar__link">Form elements</a></li><li class="sidebar__navigation-link"><a href="#summary" class="sidebar__link">Summary</a></li></ul></nav></div><div class="sidebar__section"><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a href="#tasks" class="sidebar__link">Tasks (1)</a></li><li class="sidebar__navigation-link"><a href="#comments" class="sidebar__link">Comments</a></li></ul></nav></div><div class="sidebar__section"><div class="sidebar__section-title">Share</div><a href="https://twitter.com/share?url=https%3A%2F%2Fjavascript.info%2Fform-elements" class="share share_tw sidebar__share"></a><a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fjavascript.info%2Fform-elements" class="share share_fb sidebar__share"></a><a href="https://plus.google.com/share?url=https%3A%2F%2Fjavascript.info%2Fform-elements" class="share share_gp sidebar__share"></a></div><div class="sidebar__section"><a href="https://github.com/iliakan/javascript-tutorial-en/tree/master/2-ui/4-forms-controls/1-form-elements/article.md" class="sidebar__link">Edit on Github</a></div></div></div></div></div></div><div class="page-footer"><div class="page-footer__left"><ul class="page-footer__list"><li class="page-footer__item">©&nbsp;2007—2017&nbsp; Ilya Kantor</li><li class="page-footer__item"><a href="about.html#contact-us" class="page-footer__link">contact us</a></li><li class="page-footer__item"><a href="about.html" class="page-footer__link">about the project</a></li><li class="page-footer__item"><a href="https://learn.javascript.ru/" class="page-footer__link">RU</a> / EN</li></ul></div><div class="page-footer__right"><ul class="page-footer__list"><li class="page-footer__item">powered by <a rel="nofollow" href="http://nodejs.org/" class="page-footer__link">node.js</a>&nbsp;&amp;&nbsp;<a rel="nofollow" href="http://github.com/iliakan/javascript-tutorial-en" class="page-footer__link">open source</a></li></ul></div></div></body>
+<!-- Mirrored from javascript.info/form-elements by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 30 Nov 2017 15:30:28 GMT -->
+</html>

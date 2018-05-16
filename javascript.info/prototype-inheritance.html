@@ -1,0 +1,560 @@
+<!DOCTYPE html><html lang="en">
+<!-- Mirrored from javascript.info/prototype-inheritance by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 30 Nov 2017 15:28:28 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><script>window.currentUser = null;</script><title itemprop="name">Prototypal inheritance</title><meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, minimum-scale=1.0"><meta name="apple-mobile-web-app-capable" content="yes"><script>if (window.devicePixelRatio > 1) document.cookie = 'pixelRatio=' + window.devicePixelRatio + ';path=/;expires=Tue, 19 Jan 2038 03:14:07 GMT';</script><link href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700%7COpen+Sans+Condensed:700&amp;subset=latin,latin-ext,cyrillic,cyrillic-ext" rel="stylesheet"><link rel="apple-touch-icon-precomposed" href="img/favicon/apple-touch-icon-precomposed.png"><link rel="canonical" href="prototype-inheritance.html"><meta name="msapplication-TileColor" content="#222A2C"><meta name="msapplication-TileImage" content="/img/favicon/tileicon.png"><!-- favicon the rest--><link rel="icon" href="img/favicon/favicon.png"><meta itemprop="image" content="https://javascript.info/img/site_preview_en_512x512.png"><meta property="og:title" content="Prototypal inheritance"><meta property="og:image" content="https://javascript.info/img/site_preview_en_1200x630.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="fb:admins" content="100001562528165"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Prototypal inheritance"><meta name="twitter:site" content="@iliakan"><meta name="twitter:creator" content="@iliakan"><meta name="twitter:image" content="https://javascript.info/img/site_preview_en_512x512.png"><link href="pack/styles.da59a89b28153875791083e4a8c5adb3.css" rel="stylesheet"><link rel="prev" href="property-accessors.html"><link rel="next" href="function-prototype.html"><script>window.GA_ID = "UA-2056213-15";</script><script>window.YANDEX_METRIKA_ID = 32184394;</script><script>window.GoogleAnalyticsObject="ga",window.ga=function(){window.ga.q.push(arguments)},window.ga.q=[],window.ga.l=Date.now(),ga("create",GA_ID,"auto"),window.currentUser&&ga("set","&uid",currentUser.id),window.addEventListener("error",function(e){var r=(e.filename||e.errorUrl)+": "+(e.lineno||e.errorLine),n=e.stack||e.error&&e.error.stack;ga("send","exception",{exDescription:e.message+" "+r+" "+n,exFatal:!0})});</script><script src="https://www.google-analytics.com/analytics.js" async></script><script>ga('send', 'pageview');</script><script>window.metrika={reachGoal:function(){}},window.yandex_metrika_callbacks=[function(){try{window.metrika=new Ya.Metrika({id:YANDEX_METRIKA_ID,webvisor:!0,clickmap:!0,params:{user:window.currentUser&&window.currentUser.id}}),metrika.trackLinks({delay:150}),window.addEventListener("error",function(r){window.metrika.reachGoal("JSERROR",{src:(r.filename||r.errorUrl)+": "+(r.lineno||r.errorLine),stack:r.stack||r.error&&r.error.stack,message:r.message})})}catch(r){}}];</script><script src="http://mc.yandex.ru/metrika/watch.js" async></script><script>window.RECAPTCHA_ID = "6Lf9NyETAAAAACZlg-a9Us2SxvYbeVC1ROWaWv4O";</script><script src="initc4ca.js?1"></script><script src="pack/head.688d4fe7c4cf54e23737.js" defer></script><meta property="og:title" content="Prototypal inheritance"><meta property="og:type" content="article"><script src="pack/tutorial.688d4fe7c4cf54e23737.js" defer></script><script src="pack/footer.688d4fe7c4cf54e23737.js" defer></script></head><body class="no-icons"><script>window.fontTest();</script><div class="page-wrapper page-wrapper_sidebar_on"><!--[if lt IE 10]><div style="color:red;text-align:center">Sorry, IE&lt;10 is not supported, please use a newer browser.</div><![endif]--><div class="sitetoolbar sitetoolbar_tutorial"><!-- include ./notification-stripe--><div class="sitetoolbar__content"><div class="sitetoolbar__logo-wrap"><a href="index.html" class="sitetoolbar__link sitetoolbar__link_logo"><img src="img/sitetoolbar__logo_en.svg" width="200" class="sitetoolbar__logo sitetoolbar__logo_normal" alt=""><img src="img/sitetoolbar__logo_small_en.svg" width="70" class="sitetoolbar__logo sitetoolbar__logo_small" alt=""><script>Array.prototype.forEach.call(document.querySelectorAll("img.sitetoolbar__logo"),function(e){var t=document.createElement("object");t.type="image/svg+xml",t.className=e.className,t.style.cssText="left:0;top:0;position:absolute",t.onload=function(){t.onload=null,e.style.visibility="hidden"},t.data=e.src,e.parentNode.insertBefore(t,e)});</script></a></div><div class="sitetoolbar__nav-toggle-wrap"><button type="button" class="sitetoolbar__nav-toggle"></button></div><nav class="sitetoolbar__sections"><ul class="sitetoolbar__sections-list"></ul></nav><div class="sitetoolbar__book-wrap"><a href="ebook.html" class="buy-book-button"><span class="buy-book-button__extra-text">Buy</span>EPUB/PDF</a></div><div class="sitetoolbar__login-wrap"><button data-action-login class="sitetoolbar__login sitetoolbar__login_unready"></button></div><div class="sitetoolbar__search-wrap"><div class="sitetoolbar__search-content"><form method="GET" action="http://javascript.info/search" class="sitetoolbar__search"><button type="button" class="sitetoolbar__search-toggle"></button><div class="sitetoolbar__search-input"><div class="text-input"><input name="query" placeholder="Search on Javascript.info" class="text-input__control" type="text"></div><button type="submit" class="sitetoolbar__find">Search</button></div></form></div></div></div><!-- todo: en variant--><div class="tablet-menu"><div class="tablet-menu__line"><div class="tablet-menu__content"><form action="http://javascript.info/search/" class="tablet-menu-search"><input type="search" name="query" placeholder="Search in the tutorial" required class="tablet-menu-search__input"><button type="submit" name="type" value="articles" class="tablet-menu-search__button">Search</button></form></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><a href="tutorial/map.html" data-action="tutorial-map" class="map"><span class="map__text">Tutorial map</span></a></div></div><!--+e.line--><!--  +e.content--><!--    +b("a").tablet-ebook(href="/ebook")--><!--      +e("span").text Купить учебник--><!--      +e("span").note (EPUB + PDF)--><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="share-icons"><span class="share-icons__title">Share</span><a href="https://twitter.com/share?url=http%3A%2F%2Fjavascript.info%2Fprototype-inheritance" class="share share_tw"></a><a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=http%3A%2F%2Fjavascript.info%2Fprototype-inheritance" class="share share_fb"></a><a href="https://plus.google.com/share?url=http%3A%2F%2Fjavascript.info%2Fprototype-inheritance" class="share share_gp"></a><a href="https://vkontakte.ru/share.php?url=http%3A%2F%2Fjavascript.info%2Fprototype-inheritance" class="share share_vk"></a></div></div></div></div><progress data-sticky value="57" max="67" data-tooltip="Lesson 57 of 67" class="tutorial-progress"></progress></div><div class="page page_sidebar_on"><script>if(localStorage.noSidebar){document.querySelector(".page").classList.remove("page_sidebar_on");var pageWrapper=document.querySelector(".page-wrapper");pageWrapper&&pageWrapper.classList.remove("page-wrapper_sidebar_on")}setTimeout(function(){document.querySelector(".page").classList.add("page_sidebar-animation-on")},0);</script><div class="page__inner"><main class="main main_width-limit"><header class="main__header"><ol class="breadcrumbs"><li itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemref="breadcrumb-1" class="breadcrumbs__item breadcrumbs__item_home"><a href="index.html" itemprop="url" class="breadcrumbs__link"><span itemprop="title" class="breadcrumbs__hidden-text">Учебник</span></a></li><li id="breadcrumb-1" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemref="breadcrumb-2" itemprop="child" class="breadcrumbs__item"><a href="js.html" itemprop="url" class="breadcrumbs__link"><span itemprop="title">The JavaScript language</span></a></li><li id="breadcrumb-2" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemprop="child" class="breadcrumbs__item"><a href="object-oriented-programming.html" itemprop="url" class="breadcrumbs__link"><span itemprop="title">Objects, classes, inheritance</span></a></li></ol><h1 class="main__header-title">Prototypal inheritance</h1></header><div class="content"><article itemscope itemtype="http://schema.org/TechArticle"><meta itemprop="name" content="Prototypal inheritance"><div itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="email" content="iliakan@gmail.com"><meta itemprop="name" content="Ilya Kantor"></div><div itemprop="articleBody"><p>In programming, we often want to take something and extend it.</p>
+<p>For instance, we have a <code>user</code> object with its properties and methods, and want to make <code>admin</code> and <code>guest</code> as slightly modified variants of it. We’d like to reuse what we have in <code>user</code>, not copy/reimplement its methods, just build a new object on top of it.</p>
+<p><em>Prototypal inheritance</em> is a language feature that helps in that.</p>
+<cut>
+<h2><a class="main__anchor" name="prototype" href="#prototype">[[Prototype]]</a></h2><p>In JavaScript, objects have a special hidden property <code>[[Prototype]]</code> (as named in the specification), that is either <code>null</code> or references another object. That object is called “a prototype”:</p>
+<figure><div class="image" style="width:170px">
+      <div class="image__ratio" style="padding-top:79.41176470588235%"></div>
+      <img src="article/prototype-inheritance/object-prototype-empty.png" alt="" width="170" height="135" class="image__image">
+      </div></figure><p>That <code>[[Prototype]]</code> has a “magical” meaning. When we want to read a property from <code>object</code>, and it’s missing, JavaScript automatically takes it from the prototype. In programming, such thing is called “prototypal inheritance”. Many cool language features and programming techniques are based on it.</p>
+<p>The property <code>[[Prototype]]</code> is internal and hidden, but there are many ways to set it.</p>
+<p>One of them is to use <code>__proto__</code>, like this:</p>
+<div data-trusted="1" class="code-example" data-highlight-block="7-7">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let animal = {
+  eats: true
+};
+let rabbit = {
+  jumps: true
+};
+
+rabbit.__proto__ = animal;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Please note that <code>__proto__</code> is <em>not the same</em> as <code>[[Prototype]]</code>. That’s a getter/setter for it. We’ll talk about other ways of setting it later, but for now <code>__proto__</code> will do just fine.</p>
+<p>If we look for a property in <code>rabbit</code>, and it’s missing, JavaScript automatically takes it from <code>animal</code>.</p>
+<p>For instance:</p>
+<div data-trusted="1" class="code-example" data-highlight-block="7-7,10-10">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let animal = {
+  eats: true
+};
+let rabbit = {
+  jumps: true
+};
+
+rabbit.__proto__ = animal; // (*)
+
+// we can find both properties in rabbit now:
+alert( rabbit.eats ); // true (**)
+alert( rabbit.jumps ); // true</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Here the line <code>(*)</code> sets <code>animal</code> to be a prototype of <code>rabbit</code>.</p>
+<p>Then, when <code>alert</code> tries to read property <code>rabbit.eats</code> <code>(**)</code>, it’s not in <code>rabbit</code>, so JavaScript follows the <code>[[Prototype]]</code> reference and finds it in <code>animal</code> (look from the bottom up):</p>
+<figure><div class="image" style="width:168px">
+      <div class="image__ratio" style="padding-top:80.35714285714286%"></div>
+      <img src="article/prototype-inheritance/proto-animal-rabbit.png" alt="" width="168" height="135" class="image__image">
+      </div></figure><p>Here we can say that &quot;<code>animal</code> is the prototype of <code>rabbit</code>&quot; or &quot;<code>rabbit</code> prototypally inherits from <code>animal</code>&quot;.</p>
+<p>So if <code>animal</code> has a lot of useful properties and methods, then they become automatically available in <code>rabbit</code>. Such properties are called “inherited”.</p>
+<p>If we have a method in <code>animal</code>, it can be called on <code>rabbit</code>:</p>
+<div data-trusted="1" class="code-example" data-highlight-block="2-4,13-13">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let animal = {
+  eats: true,
+  walk() {
+    alert(&quot;Animal walk&quot;);
+  }
+};
+
+let rabbit = {
+  jumps: true,
+  __proto__: animal
+};
+
+// walk is taken from the prototype
+rabbit.walk(); // Animal walk</code></pre>
+        </div>
+      </div>
+      
+      </div><p>The method is automatically taken from the prototype, like this:</p>
+<figure><div class="image" style="width:173px">
+      <div class="image__ratio" style="padding-top:91.90751445086705%"></div>
+      <img src="article/prototype-inheritance/proto-animal-rabbit-walk.png" alt="" width="173" height="159" class="image__image">
+      </div></figure><p>The prototype chain can be longer:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let animal = {
+  eats: true,
+  walk() {
+    alert(&quot;Animal walk&quot;);
+  }
+};
+
+let rabbit = {
+  jumps: true,
+  __proto__: animal
+};
+
+let longEar = {
+  earLength: 10,
+  __proto__: rabbit
+}
+
+// walk is taken from the prototype chain
+longEar.walk(); // Animal walk
+alert(longEar.jumps); // true (from rabbit)</code></pre>
+        </div>
+      </div>
+      
+      </div><figure><div class="image" style="width:173px">
+      <div class="image__ratio" style="padding-top:145.08670520231215%"></div>
+      <img src="article/prototype-inheritance/proto-animal-rabbit-chain.png" alt="" width="173" height="251" class="image__image">
+      </div></figure><p>There are actually only two limitations:</p>
+<ol>
+<li>The references can’t go in circles. JavaScript will throw an error if we try to assign <code>__proto__</code> in a circle.</li>
+<li>The value of <code>__proto__</code> can be either an object or <code>null</code>. All other values (like primitives) are ignored.</li>
+</ol>
+<p>Also it may be obvious, but still: there can be only one <code>[[Prototype]]</code>. An object may not inherit from two others.</p>
+<h2><a class="main__anchor" name="read-write-rules" href="#read-write-rules">Read/write rules</a></h2><p>The prototype is only used for reading properties.</p>
+<p>For data properties (not getters/setters) write/delete operations work directly with the object.</p>
+<p>In the example below, we assign its own <code>walk</code> method to <code>rabbit</code>:</p>
+<div data-trusted="1" class="code-example" data-highlight-block="11-13">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let animal = {
+  eats: true,
+  walk() {
+    /* this method won't be used by rabbit */
+  }
+};
+
+let rabbit = {
+  __proto__: animal
+}
+
+rabbit.walk = function() {
+  alert(&quot;Rabbit! Bounce-bounce!&quot;);
+};
+
+rabbit.walk(); // Rabbit! Bounce-bounce!</code></pre>
+        </div>
+      </div>
+      
+      </div><p>From now on, <code>rabbit.walk()</code> call finds the method immediately in the object and executes it, without using the prototype:</p>
+<figure><div class="image" style="width:173px">
+      <div class="image__ratio" style="padding-top:91.32947976878613%"></div>
+      <img src="article/prototype-inheritance/proto-animal-rabbit-walk-2.png" alt="" width="173" height="158" class="image__image">
+      </div></figure><p>For getters/setters – if we read/write a property, they are looked up in the prototype and invoked.</p>
+<p>For instance, check out <code>admin.fullName</code> property in the code below:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let user = {
+  name: &quot;John&quot;,
+  surname: &quot;Smith&quot;,
+
+  set fullName(value) {
+    [this.name, this.surname] = value.split(&quot; &quot;);
+  },
+
+  get fullName() {
+    return `${this.name} ${this.surname}`;
+  }
+};
+
+let admin = {
+  __proto__: user,
+  isAdmin: true
+};
+
+alert(admin.fullName); // John Smith (*)
+
+// setter triggers!
+admin.fullName = &quot;Alice Cooper&quot;; // (**)</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Here in the line <code>(*)</code> the property <code>admin.fullName</code> has a getter in the prototype <code>user</code>, so it is called. And in the line <code>(**)</code> the property has a setter in the prototype, so it is called.</p>
+<h2><a class="main__anchor" name="the-value-of-this" href="#the-value-of-this">The value of “this”</a></h2><p>An interesting question may arise in the example above: what’s the value of <code>this</code> inside <code>set fullName(value)</code>? Where the properties <code>this.name</code> and <code>this.surname</code> are written: <code>user</code> or <code>admin</code>?</p>
+<p>The answer is simple: <code>this</code> is not affected by prototypes at all.</p>
+<p><strong>No matter where the method is found: in an object or its prototype. In a method call, <code>this</code> is always the object before the dot.</strong></p>
+<p>So, the setter actually uses <code>admin</code> as <code>this</code>, not <code>user</code>.</p>
+<p>That is actually a super-important thing, because we may have a big object with many methods and inherit from it. Then we can run its methods on inherited objects and they will modify the state of these objects, not the big one.</p>
+<p>For instance, here <code>animal</code> represents a “method storage”, and <code>rabbit</code> makes use of it.</p>
+<p>The call <code>rabbit.sleep()</code> sets <code>this.isSleeping</code> on the <code>rabbit</code> object:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">// animal has methods
+let animal = {
+  walk() {
+    if (!this.isSleeping) {
+      alert(`I walk`);
+    }
+  },
+  sleep() {
+    this.isSleeping = true;
+  }
+};
+
+let rabbit = {
+  name: &quot;White Rabbit&quot;,
+  __proto__: animal
+};
+
+// modifies rabbit.isSleeping
+rabbit.sleep();
+
+alert(rabbit.isSleeping); // true
+alert(animal.isSleeping); // undefined (no such property in the prototype)</code></pre>
+        </div>
+      </div>
+      
+      </div><p>The resulting picture:</p>
+<figure><div class="image" style="width:180px">
+      <div class="image__ratio" style="padding-top:101.11111111111111%"></div>
+      <img src="article/prototype-inheritance/proto-animal-rabbit-walk-3.png" alt="" width="180" height="182" class="image__image">
+      </div></figure><p>If we had other objects like <code>bird</code>, <code>snake</code> etc inheriting from <code>animal</code>, they would also gain access to methods of <code>animal</code>. But <code>this</code> in each method would be the corresponding object, evaluated at the call-time (before dot), not <code>animal</code>. So when we write data into <code>this</code>, it is stored into these objects.</p>
+<p>As a result, methods are shared, but the object state is not.</p>
+<h2><a class="main__anchor" name="summary" href="#summary">Summary</a></h2><ul>
+<li>In JavaScript, all objects have a hidden <code>[[Prototype]]</code> property that’s either another object or <code>null</code>.</li>
+<li>We can use <code>obj.__proto__</code> to access it (there are other ways too, to be covered soon).</li>
+<li>The object referenced by <code>[[Prototype]]</code> is called a “prototype”.</li>
+<li>If we want to read a property of <code>obj</code> or call a method, and it doesn’t exist, then JavaScript tries to find it in the prototype. Write/delete operations work directly on the object, they don’t use the prototype (unless the property is actually a setter).</li>
+<li>If we call <code>obj.method()</code>, and the <code>method</code> is taken from the prototype, <code>this</code> still references <code>obj</code>. So methods always work with the current object even if they are inherited.</li>
+</ul>
+</div></article><div class="tasks"><h2 id="tasks" class="tasks__title"><a href="#tasks" class="main__anchor main__anchor_noicon tasks__title-anchor">Tasks</a></h2><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a href="#working-with-prototype" name="working-with-prototype" class="main__anchor">Working with prototype</a></h3><a href="task/property-after-delete.html" target="_blank" class="task__open-link"></a></div><div class="task__header-note"><span title="How important is the task, from 1 to 5" class="task__importance">importance: 5</span></div><div class="task__content"><p>Here’s the code that creates a pair of objects, then modifies them.</p>
+<p>Which values are shown in the process?</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let animal = {
+  jumps: null
+};
+let rabbit = {
+  __proto__: animal,
+  jumps: true
+};
+
+alert( rabbit.jumps ); // ? (1)
+
+delete rabbit.jumps;
+
+alert( rabbit.jumps ); // ? (2)
+
+delete animal.jumps;
+
+alert( rabbit.jumps ); // ? (3)</code></pre>
+        </div>
+      </div>
+      
+      </div><p>There should be 3 answers.</p>
+<button type="button" class="task__solution">solution</button><div class="task__answer"><div class="task__answer-content"><ol>
+<li><code>true</code>, taken from <code>rabbit</code>.</li>
+<li><code>null</code>, taken from <code>animal</code>.</li>
+<li><code>undefined</code>, there’s no such property any more.</li>
+</ol>
+</div><button type="button" title="close" class="close-button task__answer-close"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a href="#searching-algorithm" name="searching-algorithm" class="main__anchor">Searching algorithm</a></h3><a href="task/search-algorithm.html" target="_blank" class="task__open-link"></a></div><div class="task__header-note"><span title="How important is the task, from 1 to 5" class="task__importance">importance: 5</span></div><div class="task__content"><p>The task has two parts.</p>
+<p>We have an object:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let head = {
+  glasses: 1
+};
+
+let table = {
+  pen: 3
+};
+
+let bed = {
+  sheet: 1,
+  pillow: 2
+};
+
+let pockets = {
+  money: 2000
+};</code></pre>
+        </div>
+      </div>
+      
+      </div><ol>
+<li>Use <code>__proto__</code> to assign prototypes in a way that any property lookup will follow the path: <code>pockets</code> → <code>bed</code> → <code>table</code> → <code>head</code>. For instance, <code>pockets.pen</code> should be <code>3</code> (found in <code>table</code>), and <code>bed.glasses</code> should be <code>1</code> (found in <code>head</code>).</li>
+<li>Answer the question: is it faster to get <code>glasses</code> as <code>pocket.glasses</code> or <code>head.glasses</code>? Benchmark if needed.</li>
+</ol>
+<button type="button" class="task__solution">solution</button><div class="task__answer"><div class="task__answer-content"><ol>
+<li>
+<p>Let’s add <code>__proto__</code>:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let head = {
+  glasses: 1
+};
+
+let table = {
+  pen: 3,
+  __proto__: head
+};
+
+let bed = {
+  sheet: 1,
+  pillow: 2,
+  __proto__: table
+};
+
+let pockets = {
+  money: 2000,
+  __proto__: bed
+};
+
+alert( pockets.pen ); // 3
+alert( bed.glasses ); // 1
+alert( table.money ); // undefined</code></pre>
+        </div>
+      </div>
+      
+      </div></li>
+<li>
+<p>In modern engines, performance-wise, there’s no difference whether we take a property from an object or its prototype. They remember where the property was found and reuse it in the next request.</p>
+<p>For instance, for <code>pockets.glasses</code> they remember where they found <code>glasses</code> (in <code>head</code>), and next time will search right there. They are also smart enough to update internal caches if something changes, so that optimization is safe.</p>
+</li>
+</ol>
+</div><button type="button" title="close" class="close-button task__answer-close"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a href="#where-it-writes" name="where-it-writes" class="main__anchor">Where it writes?</a></h3><a href="task/proto-and-this.html" target="_blank" class="task__open-link"></a></div><div class="task__header-note"><span title="How important is the task, from 1 to 5" class="task__importance">importance: 5</span></div><div class="task__content"><p>We have <code>rabbit</code> inheriting from <code>animal</code>.</p>
+<p>If we call <code>rabbit.eat()</code>, which object receives the <code>full</code> property: <code>animal</code> or <code>rabbit</code>?</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let animal = {
+  eat() {
+    this.full = true;
+  }
+};
+
+let rabbit = {
+  __proto__: animal
+};
+
+rabbit.eat();</code></pre>
+        </div>
+      </div>
+      
+      </div><button type="button" class="task__solution">solution</button><div class="task__answer"><div class="task__answer-content"><p><strong>The answer: <code>rabbit</code>.</strong></p>
+<p>That’s because <code>this</code> is an object before the dot, so <code>rabbit.eat()</code> modifies <code>rabbit</code>.</p>
+<p>Property lookup and execution are two different things.
+The method <code>rabbit.eat</code> is first found in the prototype, then executed with <code>this=rabbit</code></p>
+</div><button type="button" title="close" class="close-button task__answer-close"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a href="#why-two-hamsters-are-full" name="why-two-hamsters-are-full" class="main__anchor">Why two hamsters are full?</a></h3><a href="task/hamster-proto.html" target="_blank" class="task__open-link"></a></div><div class="task__header-note"><span title="How important is the task, from 1 to 5" class="task__importance">importance: 5</span></div><div class="task__content"><p>We have two hamsters: <code>speedy</code> and <code>lazy</code> inheriting from the general <code>hamster</code> object.</p>
+<p>When we feed one of them, the other one is also full. Why? How to fix it?</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let hamster = {
+  stomach: [],
+
+  eat(food) {
+    this.stomach.push(food);
+  }
+};
+
+let speedy = {
+  __proto__: hamster
+};
+
+let lazy = {
+  __proto__: hamster
+};
+
+// This one found the food
+speedy.eat(&quot;apple&quot;);
+alert( speedy.stomach ); // apple
+
+// This one also has it, why? fix please.
+alert( lazy.stomach ); // apple</code></pre>
+        </div>
+      </div>
+      
+      </div><button type="button" class="task__solution">solution</button><div class="task__answer"><div class="task__answer-content"><p>Let’s look carefully at what’s going on in the call <code>speedy.eat(&quot;apple&quot;)</code>.</p>
+<ol>
+<li>
+<p>The method <code>speedy.eat</code> is found in the prototype (<code>=hamster</code>), then executed with <code>this=speedy</code> (the object before the dot).</p>
+</li>
+<li>
+<p>Then <code>this.stomach.push()</code> needs to find <code>stomach</code> property and call <code>push</code> on it. It looks for <code>stomach</code> in <code>this</code> (<code>=speedy</code>), but nothing found.</p>
+</li>
+<li>
+<p>Then it follows the prototype chain and finds <code>stomach</code> in <code>hamster</code>.</p>
+</li>
+<li>
+<p>Then it calls <code>push</code> on it, adding the food into <em>the stomach of the prototype</em>.</p>
+</li>
+</ol>
+<p>So all hamsters share a single stomach!</p>
+<p>Every time the <code>stomach</code> is taken from the prototype, then <code>stomach.push</code> modifies it “at place”.</p>
+<p>Please note that such thing doesn’t happen in case of a simple assignment <code>this.stomach=</code>:</p>
+<div data-trusted="1" class="code-example" data-highlight-block="4-5">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let hamster = {
+  stomach: [],
+
+  eat(food) {
+    // assign to this.stomach instead of this.stomach.push
+    this.stomach = [food];
+  }
+};
+
+let speedy = {
+   __proto__: hamster
+};
+
+let lazy = {
+  __proto__: hamster
+};
+
+// Speedy one found the food
+speedy.eat(&quot;apple&quot;);
+alert( speedy.stomach ); // apple
+
+// Lazy one's stomach is empty
+alert( lazy.stomach ); // &lt;nothing&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Now all works fine, because <code>this.stomach=</code> does not perform a lookup of <code>stomach</code>. The value is written directly into <code>this</code> object.</p>
+<p>Also we can totally evade the problem by making sure that each hamster has his own stomach:</p>
+<div data-trusted="1" class="code-example" data-highlight-block="10-10,15-15">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let hamster = {
+  stomach: [],
+
+  eat(food) {
+    this.stomach.push(food);
+  }
+};
+
+let speedy = {
+  __proto__: hamster,
+  stomach: []
+};
+
+let lazy = {
+  __proto__: hamster,
+  stomach: []
+};
+
+// Speedy one found the food
+speedy.eat(&quot;apple&quot;);
+alert( speedy.stomach ); // apple
+
+// Lazy one's stomach is empty
+alert( lazy.stomach ); // &lt;nothing&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>As a common solution, all properties that describe the state of a particular object, like <code>stomach</code> above, are usually written into that object. That prevents such problems.</p>
+</div><button type="button" title="close" class="close-button task__answer-close"></button></div></div></div></div></div><!--  include /blocks/banner-bottom--><!--if lang == 'en'--><!--  include /blocks/banner-bottom.en--></div><div class="page__nav-wrap"><a href="property-accessors.html" data-tooltip="Property getters and setters" class="page__nav page__nav_prev"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Previous lesson</span></a><a href="function-prototype.html" data-tooltip="F.prototype" class="page__nav page__nav_next"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Next lesson</span></a></div><div class="article-tablet-foot tablet-only"><div class="article-tablet-foot__layout"><div class="share-icons"><span class="share-icons__title">Share</span><a href="https://twitter.com/share?url=http%3A%2F%2Fjavascript.info%2Fprototype-inheritance" class="share share_tw"></a><a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=http%3A%2F%2Fjavascript.info%2Fprototype-inheritance" class="share share_fb"></a><a href="https://plus.google.com/share?url=http%3A%2F%2Fjavascript.info%2Fprototype-inheritance" class="share share_gp"></a><a href="https://vkontakte.ru/share.php?url=http%3A%2F%2Fjavascript.info%2Fprototype-inheritance" class="share share_vk"></a></div><div class="article-tablet-foot__map"><a href="tutorial/map.html" data-action="tutorial-map" class="map"><span class="map__text">Tutorial map</span></a></div></div></div><div id="comments" class="comments"><div class="comments__header"><h2 class="comments__header-title"><a href="#comments" name="comments">Comments</a></h2><div class="comments__read-before"><span class="comments__read-before-link">read this before commenting…</span><div class="comments__read-before-popup"><div class="comments__read-before-popup-i"><ul><li>You're welcome to post additions, questions to the articles and answers to them.</li><li>To insert a few words of code, use the <code>&lt;code&gt;</code> tag, for several lines – use <code>&lt;pre&gt;</code>, for more than 10 lines – use a sandbox (<a href='http://plnkr.co/edit/?p=preview'>plnkr</a>, <a href='http://jsbin.com/'>JSBin</a>, <a href='http://codepen.io/'>codepen</a>…)</li><li>If you can't understand something in the article – please elaborate.</li></ul></div></div></div></div></div><div id="disqus_thread"></div><script>var disqus_config = function() { if (!this.page) this.page = {}; Object.assign(this.page, {"url":"https:\/\/javascript.info\/prototype-inheritance","identifier":"\/prototype-inheritance","title":"Prototypal inheritance"}); };</script><script>var disqus_shortname = "javascriptinfo";</script><script>var disqus_enabled = true;</script></main></div><div class="page__sidebar sidebar sidebar_sticky-footer"><button data-sidebar-toggle class="sidebar__toggle"></button><a href="tutorial/map.html" data-action="tutorial-map" data-tooltip="Tutorial map" class="map"></a><div class="sidebar__inner"><div class="sidebar__content"><div class="sidebar__section"><h4 class="sidebar__section-title">Chapter</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a href="object-oriented-programming.html" class="sidebar__link">Objects, classes, inheritance</a></li></ul></nav></div><div class="sidebar__section"><h4 class="sidebar__section-title">Lesson navigation</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a href="#prototype" class="sidebar__link">[[Prototype]]</a></li><li class="sidebar__navigation-link"><a href="#read-write-rules" class="sidebar__link">Read/write rules</a></li><li class="sidebar__navigation-link"><a href="#the-value-of-this" class="sidebar__link">The value of “this”</a></li><li class="sidebar__navigation-link"><a href="#summary" class="sidebar__link">Summary</a></li></ul></nav></div><div class="sidebar__section"><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a href="#tasks" class="sidebar__link">Tasks (4)</a></li><li class="sidebar__navigation-link"><a href="#comments" class="sidebar__link">Comments</a></li></ul></nav></div><div class="sidebar__section"><div class="sidebar__section-title">Share</div><a href="https://twitter.com/share?url=http%3A%2F%2Fjavascript.info%2Fprototype-inheritance" class="share share_tw sidebar__share"></a><a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=http%3A%2F%2Fjavascript.info%2Fprototype-inheritance" class="share share_fb sidebar__share"></a><a href="https://plus.google.com/share?url=http%3A%2F%2Fjavascript.info%2Fprototype-inheritance" class="share share_gp sidebar__share"></a></div><div class="sidebar__section"><a href="https://github.com/iliakan/javascript-tutorial-en/tree/master/1-js/07-object-oriented-programming/03-prototype-inheritance/article.md" class="sidebar__link">Edit on Github</a></div></div></div></div></div></div><div class="page-footer"><div class="page-footer__left"><ul class="page-footer__list"><li class="page-footer__item">©&nbsp;2007—2017&nbsp; Ilya Kantor</li><li class="page-footer__item"><a href="about.html#contact-us" class="page-footer__link">contact us</a></li><li class="page-footer__item"><a href="about.html" class="page-footer__link">about the project</a></li><li class="page-footer__item"><a href="https://learn.javascript.ru/" class="page-footer__link">RU</a> / EN</li></ul></div><div class="page-footer__right"><ul class="page-footer__list"><li class="page-footer__item">powered by <a rel="nofollow" href="http://nodejs.org/" class="page-footer__link">node.js</a>&nbsp;&amp;&nbsp;<a rel="nofollow" href="http://github.com/iliakan/javascript-tutorial-en" class="page-footer__link">open source</a></li></ul></div></div></body>
+<!-- Mirrored from javascript.info/prototype-inheritance by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 30 Nov 2017 15:28:31 GMT -->
+</html>

@@ -1,0 +1,852 @@
+<!DOCTYPE html><html lang="en">
+<!-- Mirrored from javascript.info/while-for by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 30 Nov 2017 15:27:24 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><script>window.currentUser = null;</script><title itemprop="name">Loops: while and for</title><meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, minimum-scale=1.0"><meta name="apple-mobile-web-app-capable" content="yes"><script>if (window.devicePixelRatio > 1) document.cookie = 'pixelRatio=' + window.devicePixelRatio + ';path=/;expires=Tue, 19 Jan 2038 03:14:07 GMT';</script><link href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700%7COpen+Sans+Condensed:700&amp;subset=latin,latin-ext,cyrillic,cyrillic-ext" rel="stylesheet"><link rel="apple-touch-icon-precomposed" href="img/favicon/apple-touch-icon-precomposed.png"><link rel="canonical" href="while-for.html"><meta name="msapplication-TileColor" content="#222A2C"><meta name="msapplication-TileImage" content="/img/favicon/tileicon.png"><!-- favicon the rest--><link rel="icon" href="img/favicon/favicon.png"><meta itemprop="image" content="https://javascript.info/img/site_preview_en_512x512.png"><meta property="og:title" content="Loops: while and for"><meta property="og:image" content="https://javascript.info/img/site_preview_en_1200x630.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="fb:admins" content="100001562528165"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Loops: while and for"><meta name="twitter:site" content="@iliakan"><meta name="twitter:creator" content="@iliakan"><meta name="twitter:image" content="https://javascript.info/img/site_preview_en_512x512.png"><link href="pack/styles.da59a89b28153875791083e4a8c5adb3.css" rel="stylesheet"><link rel="prev" href="logical-operators.html"><link rel="next" href="switch.html"><script>window.GA_ID = "UA-2056213-15";</script><script>window.YANDEX_METRIKA_ID = 32184394;</script><script>window.GoogleAnalyticsObject="ga",window.ga=function(){window.ga.q.push(arguments)},window.ga.q=[],window.ga.l=Date.now(),ga("create",GA_ID,"auto"),window.currentUser&&ga("set","&uid",currentUser.id),window.addEventListener("error",function(e){var r=(e.filename||e.errorUrl)+": "+(e.lineno||e.errorLine),n=e.stack||e.error&&e.error.stack;ga("send","exception",{exDescription:e.message+" "+r+" "+n,exFatal:!0})});</script><script src="https://www.google-analytics.com/analytics.js" async></script><script>ga('send', 'pageview');</script><script>window.metrika={reachGoal:function(){}},window.yandex_metrika_callbacks=[function(){try{window.metrika=new Ya.Metrika({id:YANDEX_METRIKA_ID,webvisor:!0,clickmap:!0,params:{user:window.currentUser&&window.currentUser.id}}),metrika.trackLinks({delay:150}),window.addEventListener("error",function(r){window.metrika.reachGoal("JSERROR",{src:(r.filename||r.errorUrl)+": "+(r.lineno||r.errorLine),stack:r.stack||r.error&&r.error.stack,message:r.message})})}catch(r){}}];</script><script src="http://mc.yandex.ru/metrika/watch.js" async></script><script>window.RECAPTCHA_ID = "6Lf9NyETAAAAACZlg-a9Us2SxvYbeVC1ROWaWv4O";</script><script src="initc4ca.js?1"></script><script src="pack/head.688d4fe7c4cf54e23737.js" defer></script><meta property="og:title" content="Loops: while and for"><meta property="og:type" content="article"><script src="pack/tutorial.688d4fe7c4cf54e23737.js" defer></script><script src="pack/footer.688d4fe7c4cf54e23737.js" defer></script></head><body class="no-icons"><script>window.fontTest();</script><div class="page-wrapper page-wrapper_sidebar_on"><!--[if lt IE 10]><div style="color:red;text-align:center">Sorry, IE&lt;10 is not supported, please use a newer browser.</div><![endif]--><div class="sitetoolbar sitetoolbar_tutorial"><!-- include ./notification-stripe--><div class="sitetoolbar__content"><div class="sitetoolbar__logo-wrap"><a href="index.html" class="sitetoolbar__link sitetoolbar__link_logo"><img src="img/sitetoolbar__logo_en.svg" width="200" class="sitetoolbar__logo sitetoolbar__logo_normal" alt=""><img src="img/sitetoolbar__logo_small_en.svg" width="70" class="sitetoolbar__logo sitetoolbar__logo_small" alt=""><script>Array.prototype.forEach.call(document.querySelectorAll("img.sitetoolbar__logo"),function(e){var t=document.createElement("object");t.type="image/svg+xml",t.className=e.className,t.style.cssText="left:0;top:0;position:absolute",t.onload=function(){t.onload=null,e.style.visibility="hidden"},t.data=e.src,e.parentNode.insertBefore(t,e)});</script></a></div><div class="sitetoolbar__nav-toggle-wrap"><button type="button" class="sitetoolbar__nav-toggle"></button></div><nav class="sitetoolbar__sections"><ul class="sitetoolbar__sections-list"></ul></nav><div class="sitetoolbar__book-wrap"><a href="ebook.html" class="buy-book-button"><span class="buy-book-button__extra-text">Buy</span>EPUB/PDF</a></div><div class="sitetoolbar__login-wrap"><button data-action-login class="sitetoolbar__login sitetoolbar__login_unready"></button></div><div class="sitetoolbar__search-wrap"><div class="sitetoolbar__search-content"><form method="GET" action="http://javascript.info/search" class="sitetoolbar__search"><button type="button" class="sitetoolbar__search-toggle"></button><div class="sitetoolbar__search-input"><div class="text-input"><input name="query" placeholder="Search on Javascript.info" class="text-input__control" type="text"></div><button type="submit" class="sitetoolbar__find">Search</button></div></form></div></div></div><!-- todo: en variant--><div class="tablet-menu"><div class="tablet-menu__line"><div class="tablet-menu__content"><form action="http://javascript.info/search/" class="tablet-menu-search"><input type="search" name="query" placeholder="Search in the tutorial" required class="tablet-menu-search__input"><button type="submit" name="type" value="articles" class="tablet-menu-search__button">Search</button></form></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><a href="tutorial/map.html" data-action="tutorial-map" class="map"><span class="map__text">Tutorial map</span></a></div></div><!--+e.line--><!--  +e.content--><!--    +b("a").tablet-ebook(href="/ebook")--><!--      +e("span").text Купить учебник--><!--      +e("span").note (EPUB + PDF)--><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="share-icons"><span class="share-icons__title">Share</span><a href="https://twitter.com/share?url=https%3A%2F%2Fjavascript.info%2Fwhile-for" class="share share_tw"></a><a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fjavascript.info%2Fwhile-for" class="share share_fb"></a><a href="https://plus.google.com/share?url=https%3A%2F%2Fjavascript.info%2Fwhile-for" class="share share_gp"></a><a href="https://vkontakte.ru/share.php?url=https%3A%2F%2Fjavascript.info%2Fwhile-for" class="share share_vk"></a></div></div></div></div><progress data-sticky value="15" max="67" data-tooltip="Lesson 15 of 67" class="tutorial-progress"></progress></div><div class="page page_sidebar_on"><script>if(localStorage.noSidebar){document.querySelector(".page").classList.remove("page_sidebar_on");var pageWrapper=document.querySelector(".page-wrapper");pageWrapper&&pageWrapper.classList.remove("page-wrapper_sidebar_on")}setTimeout(function(){document.querySelector(".page").classList.add("page_sidebar-animation-on")},0);</script><div class="page__inner"><main class="main main_width-limit"><header class="main__header"><ol class="breadcrumbs"><li itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemref="breadcrumb-1" class="breadcrumbs__item breadcrumbs__item_home"><a href="index.html" itemprop="url" class="breadcrumbs__link"><span itemprop="title" class="breadcrumbs__hidden-text">Учебник</span></a></li><li id="breadcrumb-1" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemref="breadcrumb-2" itemprop="child" class="breadcrumbs__item"><a href="js.html" itemprop="url" class="breadcrumbs__link"><span itemprop="title">The JavaScript language</span></a></li><li id="breadcrumb-2" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemprop="child" class="breadcrumbs__item"><a href="first-steps.html" itemprop="url" class="breadcrumbs__link"><span itemprop="title">JavaScript Fundamentals</span></a></li></ol><h1 class="main__header-title">Loops: while and for</h1></header><div class="content"><article itemscope itemtype="http://schema.org/TechArticle"><meta itemprop="name" content="Loops: while and for"><div itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="email" content="iliakan@gmail.com"><meta itemprop="name" content="Ilya Kantor"></div><div itemprop="articleBody"><p>We often have a need to perform similar actions many times in a row.</p>
+<p>For example, when we need to output goods from a list one after another. Or just run the same code for each number from 1 to 10.</p>
+<p><em>Loops</em> are a way to repeat the same part of code multiple times.</p>
+<cut>
+<h2><a class="main__anchor" name="the-while-loop" href="#the-while-loop">The “while” loop</a></h2><p>The <code>while</code> loop has the following syntax:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">while (condition) {
+  // code
+  // so-called &quot;loop body&quot;
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>While the <code>condition</code> is <code>true</code>, the <code>code</code> from the loop body is executed.</p>
+<p>For instance, the loop below outputs <code>i</code> while <code>i &lt; 3</code>:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let i = 0;
+while (i &lt; 3) { // shows 0, then 1, then 2
+  alert( i );
+  i++;
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>A single execution of the loop body is called <em>an iteration</em>. The loop in the example above makes three iterations.</p>
+<p>If there were no <code>i++</code> in the example above, the loop would repeat (in theory) forever. In practice, the browser provides ways to stop such loops, and for server-side JavaScript we can kill the process.</p>
+<p>Any expression or a variable can be a loop condition, not just a comparison. They are evaluated and converted to boolean by <code>while</code>.</p>
+<p>For instance, the shorter way to write <code>while (i != 0)</code> could be <code>while (i)</code>:</p>
+<div data-trusted="1" class="code-example" data-highlight-block="1-1">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let i = 3;
+while (i) { // when i becomes 0, the condition becomes falsy, and the loop stops
+  alert( i );
+  i--;
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><div class="important important_smart">
+            <div class="important__header"><span class="important__type">Brackets are not required for a single-line body</span></div>
+            <div class="important__content"><p>If the loop body has a single statement, we can omit the brackets <code>{…}</code>:</p>
+<div data-trusted="1" class="code-example" data-highlight-block="1-1">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let i = 3;
+while (i) alert(i--);</code></pre>
+        </div>
+      </div>
+      
+      </div></div></div>
+<h2><a class="main__anchor" name="the-do-while-loop" href="#the-do-while-loop">The “do…while” loop</a></h2><p>The condition check can be moved <em>below</em> the loop body using the <code>do..while</code> syntax:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">do {
+  // loop body
+} while (condition);</code></pre>
+        </div>
+      </div>
+      
+      </div><p>The loop will first execute the body, then check the condition and, while it’s truthy, execute it again and again.</p>
+<p>For example:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let i = 0;
+do {
+  alert( i );
+  i++;
+} while (i &lt; 3);</code></pre>
+        </div>
+      </div>
+      
+      </div><p>This form of syntax is rarely used except when you want the body of the loop to execute <strong>at least once</strong> regardless of the condition being truthy. Usually, the other form is preferred: <code>while(…) {…}</code>.</p>
+<h2><a class="main__anchor" name="the-for-loop" href="#the-for-loop">The “for” loop</a></h2><p>The <code>for</code> loop is the most often used one.</p>
+<p>It looks like this:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">for (begin; condition; step) {
+  // ... loop body ...
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Let’s learn the meaning of these parts by example. The loop below runs <code>alert(i)</code> for <code>i</code> from <code>0</code> up to (but not including) <code>3</code>:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">for (let i = 0; i &lt; 3; i++) { // shows 0, then 1, then 2
+  alert(i);
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Let’s examine the <code>for</code> statement part by part:</p>
+<table>
+<thead>
+<tr>
+<th>part</th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>begin</td>
+<td><code>i = 0</code></td>
+<td>Executes once upon entering the loop.</td>
+</tr>
+<tr>
+<td>condition</td>
+<td><code>i &lt; 3</code></td>
+<td>Checked before every loop iteration, if fails the loop stops.</td>
+</tr>
+<tr>
+<td>step</td>
+<td><code>i++</code></td>
+<td>Executes after the body on each iteration, but before the condition check.</td>
+</tr>
+<tr>
+<td>body</td>
+<td><code>alert(i)</code></td>
+<td>Runs again and again while the condition is truthy</td>
+</tr>
+</tbody>
+</table>
+<p>The general loop algorithm works like this:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-none"><code class="language-none">Run begin
+→ (if condition → run body and run step)
+→ (if condition → run body and run step)
+→ (if condition → run body and run step)
+→ ...</code></pre>
+        </div>
+      </div>
+      
+      </div><p>If you are new to loops, then maybe it would help if you go back to the example and reproduce how it runs step-by-step on a piece of paper.</p>
+<p>Here’s what exactly happens in our case:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">// for (let i = 0; i &lt; 3; i++) alert(i)
+
+// run begin
+let i = 0
+// if condition → run body and run step
+if (i &lt; 3) { alert(i); i++ }
+// if condition → run body and run step
+if (i &lt; 3) { alert(i); i++ }
+// if condition → run body and run step
+if (i &lt; 3) { alert(i); i++ }
+// ...finish, because now i == 3</code></pre>
+        </div>
+      </div>
+      
+      </div><div class="important important_smart">
+            <div class="important__header"><span class="important__type">Inline variable declaration</span></div>
+            <div class="important__content"><p>Here the “counter” variable <code>i</code> is declared right in the loop. That’s called an “inline” variable declaration. Such variables are visible only inside the loop.</p>
+<div data-trusted="1" class="code-example" data-highlight-inline="0:5-8">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">for (let i = 0; i &lt; 3; i++) {
+  alert(i); // 0, 1, 2
+}
+alert(i); // error, no such variable</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Instead of defining a variable, we can use an existing one:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let i = 0;
+
+for (i = 0; i &lt; 3; i++) { // use an existing variable
+  alert(i); // 0, 1, 2
+}
+
+alert(i); // 3, visible, because declared outside of the loop</code></pre>
+        </div>
+      </div>
+      
+      </div></div></div>
+<h3><a class="main__anchor" name="skipping-parts" href="#skipping-parts">Skipping parts</a></h3><p>Any part of <code>for</code> can be skipped.</p>
+<p>For example, we can omit <code>begin</code> if we don’t need to do anything at the loop start.</p>
+<p>Like here:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let i = 0; // we have i already declared and assigned
+
+for (; i &lt; 3; i++) { // no need for &quot;begin&quot;
+  alert( i ); // 0, 1, 2
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>We can also remove the <code>step</code> part:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let i = 0;
+
+for (; i &lt; 3;) {
+  alert( i++ );
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>The loop became identical to <code>while (i &lt; 3)</code>.</p>
+<p>We can actually remove everything, thus creating an infinite loop:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">for (;;) {
+  // repeats without limits
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Please note that the two <code>for</code> semicolons <code>;</code> must be present, otherwise it would be a syntax error.</p>
+<h2><a class="main__anchor" name="breaking-the-loop" href="#breaking-the-loop">Breaking the loop</a></h2><p>Normally the loop exits when the condition becomes falsy.</p>
+<p>But we can force the exit at any moment. There’s a special <code>break</code> directive for that.</p>
+<p>For example, the loop below asks the user for a series of numbers, but “breaks” when no number is entered:</p>
+<div data-trusted="1" class="code-example" data-highlight-block="6-6">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let sum = 0;
+
+while (true) {
+
+  let value = +prompt(&quot;Enter a number&quot;, '');
+
+  if (!value) break; // (*)
+
+  sum += value;
+
+}
+alert( 'Sum: ' + sum );</code></pre>
+        </div>
+      </div>
+      
+      </div><p>The <code>break</code> directive is activated in the line <code>(*)</code> if the user enters an empty line or cancels the input. It stops the loop immediately, passing the control to the first line after the loop. Namely, <code>alert</code>.</p>
+<p>The combination “infinite loop + <code>break</code> as needed” is great for situations when the condition must be checked not in the beginning/end of the loop, but in the middle, or even in several places of the body.</p>
+<h2><a class="main__anchor" name="continue" href="#continue">Continue to the next iteration</a></h2><p>The <code>continue</code> directive is a “lighter version” of <code>break</code>. It doesn’t stop the whole loop. Instead it stops the current iteration and forces the loop to start a new one (if the condition allows).</p>
+<p>We can use it if we’re done on the current iteration and would like to move on to the next.</p>
+<p>The loop below uses <code>continue</code> to output only odd values:</p>
+<div data-trusted="1" class="code-example" data-highlight-inline="3:2-27">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">for (let i = 0; i &lt; 10; i++) {
+
+  // if true, skip the remaining part of the body
+  if (i % 2 == 0) continue;
+
+  alert(i); // 1, then 3, 5, 7, 9
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>For even values of <code>i</code> the <code>continue</code> directive stops body execution, passing the control to the next iteration of <code>for</code> (with the next number). So the <code>alert</code> is only called for odd values.</p>
+<div class="important important_smart">
+            <div class="important__header"><span class="important__type">The directive <code>continue</code> helps to decrease nesting level</span></div>
+            <div class="important__content"><p>A loop that shows odd values could look like this:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">for (let i = 0; i &lt; 10; i++) {
+
+  if (i % 2) {
+    alert( i );
+  }
+
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>From a technical point of view it’s identical to the example above. Surely, we can just wrap the code in the <code>if</code> block instead of <code>continue</code>.</p>
+<p>But as a side-effect we got one more figure brackets nesting level. If the code inside <code>if</code> is longer than a few lines, that may decrease the overall readability.</p>
+</div></div>
+<div class="important important_warn">
+            <div class="important__header"><span class="important__type">No <code>break/continue</code> to the right side of ‘?’</span></div>
+            <div class="important__content"><p>Please note that syntax constructs that are not expressions cannot be used in <code>'?'</code>. In particular, directives <code>break/continue</code> are disallowed there.</p>
+<p>For example, if we take this code:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">if (i &gt; 5) {
+  alert(i);
+} else {
+  continue;
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>…And rewrite it using a question mark:</p>
+<div data-trusted="1" class="code-example" data-highlight-inline="0:21-29">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">(i &gt; 5) ? alert(i) : continue; // continue not allowed here</code></pre>
+        </div>
+      </div>
+      
+      </div><p>…Then it stops working. The code like this will give a syntax error:</p>
+<p>That’s just another reason not to use a question mark operator <code>'?'</code> instead of <code>if</code>.</p>
+</div></div>
+<h2><a class="main__anchor" name="labels-for-break-continue" href="#labels-for-break-continue">Labels for break/continue</a></h2><p>Sometimes we need to break out from multiple nested loops at once.</p>
+<p>For example, in the code below we loop over <code>i</code> and <code>j</code> prompting for coordinates <code>(i, j)</code> from <code>(0,0)</code> to <code>(3,3)</code>:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">for (let i = 0; i &lt; 3; i++) {
+
+  for (let j = 0; j &lt; 3; j++) {
+
+    let input = prompt(`Value at coords (${i},${j})`, '');
+
+    // what if I want to exit from here to Done (below)?
+
+  }
+}
+
+alert('Done!');</code></pre>
+        </div>
+      </div>
+      
+      </div><p>We need a way to stop the process if the user cancels the input.</p>
+<p>The ordinary <code>break</code> after <code>input</code> would only break the inner loop. That’s not sufficient. Labels come to the rescue.</p>
+<p>A <em>label</em> is an identifier with a colon before a loop:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">labelName: for (...) {
+  ...
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>The <code>break &lt;labelName&gt;</code> statement in the loop breaks out to the label.</p>
+<p>Like here:</p>
+<div data-trusted="1" class="code-example" data-highlight-inline="0:0-6,7:16-27">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">outer: for (let i = 0; i &lt; 3; i++) {
+
+  for (let j = 0; j &lt; 3; j++) {
+
+    let input = prompt(`Value at coords (${i},${j})`, '');
+
+    // if an empty string or canceled, then break out of both loops
+    if (!input) break outer; // (*)
+
+    // do something with the value...
+  }
+}
+alert('Done!');</code></pre>
+        </div>
+      </div>
+      
+      </div><p>In the code above <code>break outer</code> looks upwards for the label named <code>outer</code> and breaks out of that loop.</p>
+<p>So the control goes straight from <code>(*)</code> to <code>alert('Done!')</code>.</p>
+<p>We can also move the label onto a separate line:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">outer:
+for (let i = 0; i &lt; 3; i++) { ... }</code></pre>
+        </div>
+      </div>
+      
+      </div><p>The <code>continue</code> directive can also be used with a label. In this case the execution jumps to the next iteration of the labeled loop.</p>
+<div class="important important_warn">
+            <div class="important__header"><span class="important__type">Labels are not a “goto”</span></div>
+            <div class="important__content"><p>Labels do not allow us to jump into an arbitrary place of code.</p>
+<p>For example, it is impossible to do this:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">break label;  // jumps to label? No.
+
+label: for (...)</code></pre>
+        </div>
+      </div>
+      
+      </div><p>The call to a <code>break/continue</code> is only possible from inside the loop, and the label must be somewhere upwards from the directive.</p>
+</div></div>
+<h2><a class="main__anchor" name="summary" href="#summary">Summary</a></h2><p>We covered 3 types of loops:</p>
+<ul>
+<li><code>while</code> – The condition is checked before each iteration.</li>
+<li><code>do..while</code> – The condition is checked after each iteration.</li>
+<li><code>for (;;)</code> – The condition is checked before each iteration, additional settings available.</li>
+</ul>
+<p>To make an “infinite” loop, usually the <code>while(true)</code> construct is used. Such a loop, just like any other, can be stopped with the <code>break</code> directive.</p>
+<p>If we don’t want to do anything on the current iteration and would like to forward to the next one, the <code>continue</code> directive does it.</p>
+<p><code>Break/continue</code> support labels before the loop. A label is the only way for <code>break/continue</code> to escape the nesting and go to the outer loop.</p>
+</div></article><div class="tasks"><h2 id="tasks" class="tasks__title"><a href="#tasks" class="main__anchor main__anchor_noicon tasks__title-anchor">Tasks</a></h2><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a href="#last-loop-value" name="last-loop-value" class="main__anchor">Last loop value</a></h3><a href="task/loop-last-value.html" target="_blank" class="task__open-link"></a></div><div class="task__header-note"><span title="How important is the task, from 1 to 5" class="task__importance">importance: 3</span></div><div class="task__content"><p>What is the last value alerted by this code? Why?</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let i = 3;
+
+while (i) {
+  alert( i-- );
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><button type="button" class="task__solution">solution</button><div class="task__answer"><div class="task__answer-content"><p>The answer: <code>1</code>.</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let i = 3;
+
+while (i) {
+  alert( i-- );
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Every loop iteration decreases <code>i</code> by <code>1</code>. The check <code>while(i)</code> stops the loop when <code>i = 0</code>.</p>
+<p>Hence, the steps of the loop form the following sequence (“loop unrolled”):</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let i = 3;
+
+alert(i--); // shows 3, decreases i to 2
+
+alert(i--) // shows 2, decreases i to 1
+
+alert(i--) // shows 1, decreases i to 0
+
+// done, while(i) check stops the loop</code></pre>
+        </div>
+      </div>
+      
+      </div></div><button type="button" title="close" class="close-button task__answer-close"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a href="#which-values-shows-the-while" name="which-values-shows-the-while" class="main__anchor">Which values shows the while?</a></h3><a href="task/which-value-while.html" target="_blank" class="task__open-link"></a></div><div class="task__header-note"><span title="How important is the task, from 1 to 5" class="task__importance">importance: 4</span></div><div class="task__content"><p>For every loop, write down which values it shows, in your opinion. And then compare with the answer.</p>
+<p>Both loops <code>alert</code> same values or not?</p>
+<ol>
+<li>
+<p>The prefix form <code>++i</code>:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let i = 0;
+while (++i &lt; 5) alert( i );</code></pre>
+        </div>
+      </div>
+      
+      </div></li>
+<li>
+<p>The postfix form <code>i++</code></p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let i = 0;
+while (i++ &lt; 5) alert( i );</code></pre>
+        </div>
+      </div>
+      
+      </div></li>
+</ol>
+<button type="button" class="task__solution">solution</button><div class="task__answer"><div class="task__answer-content"><p>The task demonstrates how postfix/prefix forms can lead to different results when used in comparisons.</p>
+<ol>
+<li>
+<p><strong>From 1 to 4</strong></p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let i = 0;
+while (++i &lt; 5) alert( i );</code></pre>
+        </div>
+      </div>
+      
+      </div><p>The first value is <code>i=1</code>, because <code>++i</code> first increments <code>i</code> and then returns the new value. So the first comparison is <code>1 &lt; 5</code> and the <code>alert</code> shows <code>1</code>.</p>
+<p>Then follow <code>2,3,4…</code> – the values show up one after another. The comparison always uses the incremented value, because <code>++</code> is before the variable.</p>
+<p>Finally, <code>i=4</code> is incremented to <code>5</code>, the comparison <code>while(5 &lt; 5)</code> fails, and the loop stops. So <code>5</code> is not shown.</p>
+</li>
+<li>
+<p><strong>From 1 to 5</strong></p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let i = 0;
+while (i++ &lt; 5) alert( i );</code></pre>
+        </div>
+      </div>
+      
+      </div><p>The first value is again <code>i=1</code>. The postfix form of <code>i++</code> increments <code>i</code> and then returns the <em>old</em> value, so the comparison <code>i++ &lt; 5</code> will use <code>i=0</code> (contrary to <code>++i &lt; 5</code>).</p>
+<p>But the <code>alert</code> call is separate. It’s another statement which executes after the increment and the comparison. So it gets the current <code>i=1</code>.</p>
+<p>Then follow <code>2,3,4…</code></p>
+<p>Let’s stop on <code>i=4</code>. The prefix form <code>++i</code> would increment it and use <code>5</code> in the comparison. But here we have the postfix form <code>i++</code>. So it increments <code>i</code> to <code>5</code>, but returns the old value. Hence the comparison is actually <code>while(4 &lt; 5)</code> – true, and the control goes on to <code>alert</code>.</p>
+<p>The value <code>i=5</code> is the last one, because on the next step <code>while(5 &lt; 5)</code> is false.</p>
+</li>
+</ol>
+</div><button type="button" title="close" class="close-button task__answer-close"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a href="#which-values-get-shown-by-the-for-loop" name="which-values-get-shown-by-the-for-loop" class="main__anchor">Which values get shown by the &quot;for&quot; loop?</a></h3><a href="task/which-value-for.html" target="_blank" class="task__open-link"></a></div><div class="task__header-note"><span title="How important is the task, from 1 to 5" class="task__importance">importance: 4</span></div><div class="task__content"><p>For each loop write down which values it is going to show. Then compare with the answer.</p>
+<p>Both loops <code>alert</code> same values or not?</p>
+<ol>
+<li>
+<p>The postfix form:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">for (let i = 0; i &lt; 5; i++) alert( i );</code></pre>
+        </div>
+      </div>
+      
+      </div></li>
+<li>
+<p>The prefix form:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">for (let i = 0; i &lt; 5; ++i) alert( i );</code></pre>
+        </div>
+      </div>
+      
+      </div></li>
+</ol>
+<button type="button" class="task__solution">solution</button><div class="task__answer"><div class="task__answer-content"><p><strong>The answer: from <code>0</code> to <code>4</code> in both cases.</strong></p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">for (let i = 0; i &lt; 5; ++i) alert( i );
+
+for (let i = 0; i &lt; 5; i++) alert( i );</code></pre>
+        </div>
+      </div>
+      
+      </div><p>That can be easily deducted from the algorithm of <code>for</code>:</p>
+<ol>
+<li>Execute once <code>i = 0</code> before everything (begin).</li>
+<li>Check the condition <code>i &lt; 5</code></li>
+<li>If <code>true</code> – execute the loop body <code>alert(i)</code>, and then <code>i++</code></li>
+</ol>
+<p>The increment <code>i++</code> is separated from the condition check (2). That’s just another statement.</p>
+<p>The value returned by the increment is not used here, so there’s no difference between <code>i++</code> and <code>++i</code>.</p>
+</div><button type="button" title="close" class="close-button task__answer-close"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a href="#output-even-numbers-in-the-loop" name="output-even-numbers-in-the-loop" class="main__anchor">Output even numbers in the loop</a></h3><a href="task/for-even.html" target="_blank" class="task__open-link"></a></div><div class="task__header-note"><span title="How important is the task, from 1 to 5" class="task__importance">importance: 5</span></div><div class="task__content"><p>Use the <code>for</code> loop to output even numbers from <code>2</code> to <code>10</code>.</p>
+<p><a href="#" onclick="event.preventDefault(); runDemo(this)">Run the demo</a></p><button type="button" class="task__solution">solution</button><div class="task__answer"><div class="task__answer-content"><div data-trusted="1" class="code-example" data-demo="1">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">for (let i = 2; i &lt;= 10; i++) {
+  if (i % 2 == 0) {
+    alert( i );
+  }
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>We use the “modulo” operator <code>%</code> to get the remainder and check for the evenness here.</p>
+</div><button type="button" title="close" class="close-button task__answer-close"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a href="#replace-for-with-while" name="replace-for-with-while" class="main__anchor">Replace &quot;for&quot; with &quot;while&quot;</a></h3><a href="task/replace-for-while.html" target="_blank" class="task__open-link"></a></div><div class="task__header-note"><span title="How important is the task, from 1 to 5" class="task__importance">importance: 5</span></div><div class="task__content"><p>Rewrite the code changing the <code>for</code> loop to <code>while</code> without altering its behavior (the output should stay same).</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">for (let i = 0; i &lt; 3; i++) {
+  alert( `number ${i}!` );
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><button type="button" class="task__solution">solution</button><div class="task__answer"><div class="task__answer-content"><div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let i = 0;
+while (i &lt; 3) {
+  alert( `number ${i}!` );
+  i++;
+}</code></pre>
+        </div>
+      </div>
+      
+      </div></div><button type="button" title="close" class="close-button task__answer-close"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a href="#repeat-until-the-input-is-correct" name="repeat-until-the-input-is-correct" class="main__anchor">Repeat until the input is correct</a></h3><a href="task/repeat-until-correct.html" target="_blank" class="task__open-link"></a></div><div class="task__header-note"><span title="How important is the task, from 1 to 5" class="task__importance">importance: 5</span></div><div class="task__content"><p>Write a loop which prompts for a number greater than <code>100</code>. If the visitor enters another number – ask him to input again.</p>
+<p>The loop must ask for a number until either the visitor enters a number greater than <code>100</code> or cancels the input/enters an empty line.</p>
+<p>Here we can assume that the visitor only inputs numbers. There’s no need to implement a special handling for a non-numeric input in this task.</p>
+<p><a href="#" onclick="event.preventDefault(); runDemo(this)">Run the demo</a></p><button type="button" class="task__solution">solution</button><div class="task__answer"><div class="task__answer-content"><div data-trusted="1" class="code-example" data-demo="1">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let num;
+
+do {
+  num = prompt(&quot;Enter a number greater than 100?&quot;, 0);
+} while (num &lt;= 100 &amp;&amp; num);</code></pre>
+        </div>
+      </div>
+      
+      </div><p>The loop <code>do..while</code> repeats while both checks are truthy:</p>
+<ol>
+<li>The check for <code>num &lt;= 100</code> – that is, the entered value is still not greater than <code>100</code>.</li>
+<li>The check <code>&amp;&amp; num</code> is false when <code>num</code> is <code>null</code> or a empty strig. Then the <code>while</code> loop stops too.</li>
+</ol>
+<p>P.S. If <code>num</code> is <code>null</code> then <code>num &lt;= 100</code> is <code>true</code>, so without the 2nd check the loop wouldn’t stop if the user clicks CANCEL. Both checks are required.</p>
+</div><button type="button" title="close" class="close-button task__answer-close"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a href="#output-prime-numbers" name="output-prime-numbers" class="main__anchor">Output prime numbers</a></h3><a href="task/list-primes.html" target="_blank" class="task__open-link"></a></div><div class="task__header-note"><span title="How important is the task, from 1 to 5" class="task__importance">importance: 3</span></div><div class="task__content"><p>An integer number greater than <code>1</code> is called a <a href="https://en.wikipedia.org/wiki/Prime_number">prime</a> if it cannot be divided without a remainder by anything except <code>1</code> and itself.</p>
+<p>In other words, <code>n &gt; 1</code> is a prime if it can’t be evenly divided by anything except <code>1</code> and <code>n</code>.</p>
+<p>For example, <code>5</code> is a prime, because it cannot be divided without a remainder by <code>2</code>, <code>3</code> and <code>4</code>.</p>
+<p><strong>Write the code which outputs prime numbers in the interval from <code>2</code> to <code>n</code>.</strong></p>
+<p>For <code>n = 10</code> the result will be <code>2,3,5,7</code>.</p>
+<p>P.S. The code should work for any <code>n</code>, not be hard-tuned for any fixed value.</p>
+<button type="button" class="task__solution">solution</button><div class="task__answer"><div class="task__answer-content"><p>There are many algorithms for this task.</p>
+<p>Let’s use a nested loop:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">For each i in the interval {
+  check if i has a divisor from 1..i
+  if yes =&gt; the value is not a prime
+  if no =&gt; the value is a prime, show it
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>The code using a label:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let n = 10;
+
+nextPrime:
+for (let i = 2; i &lt;= n; i++) { // for each i...
+
+  for (let j = 2; j &lt; i; j++) { // look for a divisor..
+    if (i % j == 0) continue nextPrime; // not a prime, go next i
+  }
+
+  alert( i ); // a prime
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>There’s a lot of space to opimize it. For instance, we could look for the divisors from <code>2</code> to square root of <code>i</code>. But anyway, if we want to be really efficient for large intervals, we need change the approach and rely on advanced maths and complex algorithms like <a href="https://en.wikipedia.org/wiki/Quadratic_sieve">Quadratic sieve</a>, <a href="https://en.wikipedia.org/wiki/General_number_field_sieve">General number field sieve</a> etc.</p>
+</div><button type="button" title="close" class="close-button task__answer-close"></button></div></div></div></div></div><!--  include /blocks/banner-bottom--><!--if lang == 'en'--><!--  include /blocks/banner-bottom.en--></div><div class="page__nav-wrap"><a href="logical-operators.html" data-tooltip="Logical operators" class="page__nav page__nav_prev"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Previous lesson</span></a><a href="switch.html" data-tooltip="The &quot;switch&quot; statement" class="page__nav page__nav_next"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Next lesson</span></a></div><div class="article-tablet-foot tablet-only"><div class="article-tablet-foot__layout"><div class="share-icons"><span class="share-icons__title">Share</span><a href="https://twitter.com/share?url=https%3A%2F%2Fjavascript.info%2Fwhile-for" class="share share_tw"></a><a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fjavascript.info%2Fwhile-for" class="share share_fb"></a><a href="https://plus.google.com/share?url=https%3A%2F%2Fjavascript.info%2Fwhile-for" class="share share_gp"></a><a href="https://vkontakte.ru/share.php?url=https%3A%2F%2Fjavascript.info%2Fwhile-for" class="share share_vk"></a></div><div class="article-tablet-foot__map"><a href="tutorial/map.html" data-action="tutorial-map" class="map"><span class="map__text">Tutorial map</span></a></div></div></div><div id="comments" class="comments"><div class="comments__header"><h2 class="comments__header-title"><a href="#comments" name="comments">Comments</a></h2><div class="comments__read-before"><span class="comments__read-before-link">read this before commenting…</span><div class="comments__read-before-popup"><div class="comments__read-before-popup-i"><ul><li>You're welcome to post additions, questions to the articles and answers to them.</li><li>To insert a few words of code, use the <code>&lt;code&gt;</code> tag, for several lines – use <code>&lt;pre&gt;</code>, for more than 10 lines – use a sandbox (<a href='http://plnkr.co/edit/?p=preview'>plnkr</a>, <a href='http://jsbin.com/'>JSBin</a>, <a href='http://codepen.io/'>codepen</a>…)</li><li>If you can't understand something in the article – please elaborate.</li></ul></div></div></div></div></div><div id="disqus_thread"></div><script>var disqus_config = function() { if (!this.page) this.page = {}; Object.assign(this.page, {"url":"https:\/\/javascript.info\/while-for","identifier":"\/while-for","title":"Loops: while and for"}); };</script><script>var disqus_shortname = "javascriptinfo";</script><script>var disqus_enabled = true;</script></main></div><div class="page__sidebar sidebar sidebar_sticky-footer"><button data-sidebar-toggle class="sidebar__toggle"></button><a href="tutorial/map.html" data-action="tutorial-map" data-tooltip="Tutorial map" class="map"></a><div class="sidebar__inner"><div class="sidebar__content"><div class="sidebar__section"><h4 class="sidebar__section-title">Chapter</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a href="first-steps.html" class="sidebar__link">JavaScript Fundamentals</a></li></ul></nav></div><div class="sidebar__section"><h4 class="sidebar__section-title">Lesson navigation</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a href="#the-while-loop" class="sidebar__link">The “while” loop</a></li><li class="sidebar__navigation-link"><a href="#the-do-while-loop" class="sidebar__link">The “do…while” loop</a></li><li class="sidebar__navigation-link"><a href="#the-for-loop" class="sidebar__link">The “for” loop</a></li><li class="sidebar__navigation-link"><a href="#breaking-the-loop" class="sidebar__link">Breaking the loop</a></li><li class="sidebar__navigation-link"><a href="#continue" class="sidebar__link">Continue to the next iteration</a></li><li class="sidebar__navigation-link"><a href="#labels-for-break-continue" class="sidebar__link">Labels for break/continue</a></li><li class="sidebar__navigation-link"><a href="#summary" class="sidebar__link">Summary</a></li></ul></nav></div><div class="sidebar__section"><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a href="#tasks" class="sidebar__link">Tasks (7)</a></li><li class="sidebar__navigation-link"><a href="#comments" class="sidebar__link">Comments</a></li></ul></nav></div><div class="sidebar__section"><div class="sidebar__section-title">Share</div><a href="https://twitter.com/share?url=https%3A%2F%2Fjavascript.info%2Fwhile-for" class="share share_tw sidebar__share"></a><a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fjavascript.info%2Fwhile-for" class="share share_fb sidebar__share"></a><a href="https://plus.google.com/share?url=https%3A%2F%2Fjavascript.info%2Fwhile-for" class="share share_gp sidebar__share"></a></div><div class="sidebar__section"><a href="https://github.com/iliakan/javascript-tutorial-en/tree/master/1-js/02-first-steps/12-while-for/article.md" class="sidebar__link">Edit on Github</a></div></div></div></div></div></div><div class="page-footer"><div class="page-footer__left"><ul class="page-footer__list"><li class="page-footer__item">©&nbsp;2007—2017&nbsp; Ilya Kantor</li><li class="page-footer__item"><a href="about.html#contact-us" class="page-footer__link">contact us</a></li><li class="page-footer__item"><a href="about.html" class="page-footer__link">about the project</a></li><li class="page-footer__item"><a href="https://learn.javascript.ru/" class="page-footer__link">RU</a> / EN</li></ul></div><div class="page-footer__right"><ul class="page-footer__list"><li class="page-footer__item">powered by <a rel="nofollow" href="http://nodejs.org/" class="page-footer__link">node.js</a>&nbsp;&amp;&nbsp;<a rel="nofollow" href="http://github.com/iliakan/javascript-tutorial-en" class="page-footer__link">open source</a></li></ul></div></div></body>
+<!-- Mirrored from javascript.info/while-for by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 30 Nov 2017 15:27:24 GMT -->
+</html>

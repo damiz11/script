@@ -1,0 +1,773 @@
+<!DOCTYPE html><html lang="en">
+<!-- Mirrored from javascript.info/operators by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 30 Nov 2017 15:27:19 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><script>window.currentUser = null;</script><title itemprop="name">Operators</title><meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, minimum-scale=1.0"><meta name="apple-mobile-web-app-capable" content="yes"><script>if (window.devicePixelRatio > 1) document.cookie = 'pixelRatio=' + window.devicePixelRatio + ';path=/;expires=Tue, 19 Jan 2038 03:14:07 GMT';</script><link href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700%7COpen+Sans+Condensed:700&amp;subset=latin,latin-ext,cyrillic,cyrillic-ext" rel="stylesheet"><link rel="apple-touch-icon-precomposed" href="img/favicon/apple-touch-icon-precomposed.png"><link rel="canonical" href="operators.html"><meta name="msapplication-TileColor" content="#222A2C"><meta name="msapplication-TileImage" content="/img/favicon/tileicon.png"><!-- favicon the rest--><link rel="icon" href="img/favicon/favicon.png"><meta itemprop="image" content="https://javascript.info/img/site_preview_en_512x512.png"><meta property="og:title" content="Operators"><meta property="og:image" content="https://javascript.info/img/site_preview_en_1200x630.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="fb:admins" content="100001562528165"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Operators"><meta name="twitter:site" content="@iliakan"><meta name="twitter:creator" content="@iliakan"><meta name="twitter:image" content="https://javascript.info/img/site_preview_en_512x512.png"><link href="pack/styles.da59a89b28153875791083e4a8c5adb3.css" rel="stylesheet"><link rel="prev" href="type-conversions.html"><link rel="next" href="comparison.html"><script>window.GA_ID = "UA-2056213-15";</script><script>window.YANDEX_METRIKA_ID = 32184394;</script><script>window.GoogleAnalyticsObject="ga",window.ga=function(){window.ga.q.push(arguments)},window.ga.q=[],window.ga.l=Date.now(),ga("create",GA_ID,"auto"),window.currentUser&&ga("set","&uid",currentUser.id),window.addEventListener("error",function(e){var r=(e.filename||e.errorUrl)+": "+(e.lineno||e.errorLine),n=e.stack||e.error&&e.error.stack;ga("send","exception",{exDescription:e.message+" "+r+" "+n,exFatal:!0})});</script><script src="https://www.google-analytics.com/analytics.js" async></script><script>ga('send', 'pageview');</script><script>window.metrika={reachGoal:function(){}},window.yandex_metrika_callbacks=[function(){try{window.metrika=new Ya.Metrika({id:YANDEX_METRIKA_ID,webvisor:!0,clickmap:!0,params:{user:window.currentUser&&window.currentUser.id}}),metrika.trackLinks({delay:150}),window.addEventListener("error",function(r){window.metrika.reachGoal("JSERROR",{src:(r.filename||r.errorUrl)+": "+(r.lineno||r.errorLine),stack:r.stack||r.error&&r.error.stack,message:r.message})})}catch(r){}}];</script><script src="http://mc.yandex.ru/metrika/watch.js" async></script><script>window.RECAPTCHA_ID = "6Lf9NyETAAAAACZlg-a9Us2SxvYbeVC1ROWaWv4O";</script><script src="initc4ca.js?1"></script><script src="pack/head.688d4fe7c4cf54e23737.js" defer></script><meta property="og:title" content="Operators"><meta property="og:type" content="article"><script src="pack/tutorial.688d4fe7c4cf54e23737.js" defer></script><script src="pack/footer.688d4fe7c4cf54e23737.js" defer></script></head><body class="no-icons"><script>window.fontTest();</script><div class="page-wrapper page-wrapper_sidebar_on"><!--[if lt IE 10]><div style="color:red;text-align:center">Sorry, IE&lt;10 is not supported, please use a newer browser.</div><![endif]--><div class="sitetoolbar sitetoolbar_tutorial"><!-- include ./notification-stripe--><div class="sitetoolbar__content"><div class="sitetoolbar__logo-wrap"><a href="index.html" class="sitetoolbar__link sitetoolbar__link_logo"><img src="img/sitetoolbar__logo_en.svg" width="200" class="sitetoolbar__logo sitetoolbar__logo_normal" alt=""><img src="img/sitetoolbar__logo_small_en.svg" width="70" class="sitetoolbar__logo sitetoolbar__logo_small" alt=""><script>Array.prototype.forEach.call(document.querySelectorAll("img.sitetoolbar__logo"),function(e){var t=document.createElement("object");t.type="image/svg+xml",t.className=e.className,t.style.cssText="left:0;top:0;position:absolute",t.onload=function(){t.onload=null,e.style.visibility="hidden"},t.data=e.src,e.parentNode.insertBefore(t,e)});</script></a></div><div class="sitetoolbar__nav-toggle-wrap"><button type="button" class="sitetoolbar__nav-toggle"></button></div><nav class="sitetoolbar__sections"><ul class="sitetoolbar__sections-list"></ul></nav><div class="sitetoolbar__book-wrap"><a href="ebook.html" class="buy-book-button"><span class="buy-book-button__extra-text">Buy</span>EPUB/PDF</a></div><div class="sitetoolbar__login-wrap"><button data-action-login class="sitetoolbar__login sitetoolbar__login_unready"></button></div><div class="sitetoolbar__search-wrap"><div class="sitetoolbar__search-content"><form method="GET" action="http://javascript.info/search" class="sitetoolbar__search"><button type="button" class="sitetoolbar__search-toggle"></button><div class="sitetoolbar__search-input"><div class="text-input"><input name="query" placeholder="Search on Javascript.info" class="text-input__control" type="text"></div><button type="submit" class="sitetoolbar__find">Search</button></div></form></div></div></div><!-- todo: en variant--><div class="tablet-menu"><div class="tablet-menu__line"><div class="tablet-menu__content"><form action="http://javascript.info/search/" class="tablet-menu-search"><input type="search" name="query" placeholder="Search in the tutorial" required class="tablet-menu-search__input"><button type="submit" name="type" value="articles" class="tablet-menu-search__button">Search</button></form></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><a href="tutorial/map.html" data-action="tutorial-map" class="map"><span class="map__text">Tutorial map</span></a></div></div><!--+e.line--><!--  +e.content--><!--    +b("a").tablet-ebook(href="/ebook")--><!--      +e("span").text Купить учебник--><!--      +e("span").note (EPUB + PDF)--><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="share-icons"><span class="share-icons__title">Share</span><a href="https://twitter.com/share?url=https%3A%2F%2Fjavascript.info%2Foperators" class="share share_tw"></a><a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fjavascript.info%2Foperators" class="share share_fb"></a><a href="https://plus.google.com/share?url=https%3A%2F%2Fjavascript.info%2Foperators" class="share share_gp"></a><a href="https://vkontakte.ru/share.php?url=https%3A%2F%2Fjavascript.info%2Foperators" class="share share_vk"></a></div></div></div></div><progress data-sticky value="10" max="67" data-tooltip="Lesson 10 of 67" class="tutorial-progress"></progress></div><div class="page page_sidebar_on"><script>if(localStorage.noSidebar){document.querySelector(".page").classList.remove("page_sidebar_on");var pageWrapper=document.querySelector(".page-wrapper");pageWrapper&&pageWrapper.classList.remove("page-wrapper_sidebar_on")}setTimeout(function(){document.querySelector(".page").classList.add("page_sidebar-animation-on")},0);</script><div class="page__inner"><main class="main main_width-limit"><header class="main__header"><ol class="breadcrumbs"><li itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemref="breadcrumb-1" class="breadcrumbs__item breadcrumbs__item_home"><a href="index.html" itemprop="url" class="breadcrumbs__link"><span itemprop="title" class="breadcrumbs__hidden-text">Учебник</span></a></li><li id="breadcrumb-1" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemref="breadcrumb-2" itemprop="child" class="breadcrumbs__item"><a href="js.html" itemprop="url" class="breadcrumbs__link"><span itemprop="title">The JavaScript language</span></a></li><li id="breadcrumb-2" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemprop="child" class="breadcrumbs__item"><a href="first-steps.html" itemprop="url" class="breadcrumbs__link"><span itemprop="title">JavaScript Fundamentals</span></a></li></ol><h1 class="main__header-title">Operators</h1></header><div class="content"><article itemscope itemtype="http://schema.org/TechArticle"><meta itemprop="name" content="Operators"><div itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="email" content="iliakan@gmail.com"><meta itemprop="name" content="Ilya Kantor"></div><div itemprop="articleBody"><p>Many operators are known to us from school. They are addition <code>+</code>, a multiplication <code>*</code>, a subtraction <code>-</code> and so on.</p>
+<p>In this chapter we concentrate on aspects that are not covered by school arithmetic.</p>
+<cut>
+<h2><a class="main__anchor" name="terms-unary-binary-operand" href="#terms-unary-binary-operand">Terms: “unary”, “binary”, “operand”</a></h2><p>Before we move on, let’s grasp the common terminology.</p>
+<ul>
+<li>
+<p><em>An operand</em> – is what operators are applied to. For instance in multiplication <code>5 * 2</code> there are two operands: the left operand is <code>5</code>, and the right operand is <code>2</code>. Sometimes people say “arguments” instead of “operands”.</p>
+</li>
+<li>
+<p>An operator is <em>unary</em> if it has a single operand. For example, the unary negation <code>&quot;-&quot;</code> reverses the sign of the number:</p>
+<div data-trusted="1" class="code-example" data-highlight-block="2-2">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let x = 1;
+
+x = -x;
+alert( x ); // -1, unary negation was applied</code></pre>
+        </div>
+      </div>
+      
+      </div></li>
+<li>
+<p>An operator is <em>binary</em> if it has two operands. The same minus exists in the binary form as well:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let x = 1, y = 3;
+alert( y - x ); // 2, binary minus subtracts values</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Formally, we’re talking about two different operators here: the unary negation (single operand, reverses the sign) and the binary subtraction (two operands, subtracts).</p>
+</li>
+</ul>
+<h2><a class="main__anchor" name="strings-concatenation-binary" href="#strings-concatenation-binary">Strings concatenation, binary +</a></h2><p>Now let’s see special features of JavaScript operators that are beyond school arithmetics.</p>
+<p>Usually the plus operator <code>'+'</code> sums numbers.</p>
+<p>But if the binary <code>+</code> is applied to strings, it merges (concatenates) them:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let s = &quot;my&quot; + &quot;string&quot;;
+alert(s); // mystring</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Note that if any of operands is a string, then the other one is converted to a string too.</p>
+<p>For example:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">alert( '1' + 2 ); // &quot;12&quot;
+alert( 2 + '1' ); // &quot;21&quot;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>See, it doesn’t matter whether the first operand is a string or the second one. The rule is simple: if either operand is a string, then convert the other one into a string as well.</p>
+<p>String concatenation and conversion is a special feature of the binary plus <code>&quot;+&quot;</code>. Other arithmetic operators work only with numbers. They always convert their operands to numbers.</p>
+<p>For instance, subtraction and division:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">alert( 2 - '1' ); // 1
+alert( '6' / '2' ); // 3</code></pre>
+        </div>
+      </div>
+      
+      </div><h2><a class="main__anchor" name="numeric-conversion-unary" href="#numeric-conversion-unary">Numeric conversion, unary +</a></h2><p>The plus <code>+</code> exist in two forms. The binary form that we used above and the unary form.</p>
+<p>The unary plus or, in other words, the plus operator <code>+</code> applied to a single value, doesn’t do anything with numbers, but if the operand is not a number, then it is converted into it.</p>
+<p>For example:</p>
+<div data-trusted="1" class="code-example" data-highlight-block="7-9">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">// No effect on numbers
+let x = 1;
+alert( +x ); // 1
+
+let y = -2;
+alert( +y ); // -2
+
+// Converts non-numbers
+alert( +true ); // 1
+alert( +&quot;&quot; );   // 0</code></pre>
+        </div>
+      </div>
+      
+      </div><p>It actually does the same as <code>Number(...)</code>, but shorter.</p>
+<p>A need to convert string to number arises very often. For example, if we are getting values from HTML form fields, then they are usually strings.</p>
+<p>What if we want to sum them?</p>
+<p>The binary plus would add them as strings:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let apples = &quot;2&quot;;
+let oranges = &quot;3&quot;;
+
+alert( apples + oranges ); // &quot;23&quot;, the binary plus concatenates strings</code></pre>
+        </div>
+      </div>
+      
+      </div><p>If we want to treat them as numbers, then we can convert and then sum:</p>
+<div data-trusted="1" class="code-example" data-highlight-block="3-4">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let apples = &quot;2&quot;;
+let oranges = &quot;3&quot;;
+
+// both values converted to numbers before the binary plus
+alert( +apples + +oranges ); // 5
+
+// the longer variant
+// alert( Number(apples) + Number(oranges) ); // 5</code></pre>
+        </div>
+      </div>
+      
+      </div><p>From a mathematician’s standpoint the abundance of pluses may seem strange. But from a programmer’s standpoint, there’s nothing special: unary pluses are applied first, they convert strings to numbers, and then the binary plus sums them up.</p>
+<p>Why are unary pluses applied to values before the binary one? As we’re going to see, that’s because of their <em>higher precedence</em>.</p>
+<h2><a class="main__anchor" name="operators-precedence" href="#operators-precedence">Operators precedence</a></h2><p>If an expression has more than one operator, the execution order is defined by their <em>precedence</em>, or, in other words, there’s an implicit priority order among the operators.</p>
+<p>From school we all know that the multiplication in the expression <code>1 + 2 * 2</code> should be calculated before the addition. That’s exactly the precedence thing. The multiplication is said to have <em>a higher precedence</em> than the addition.</p>
+<p>Parentheses override any precedence, so if we’re not satisfied with the order, we can use them, like: <code>(1 + 2) * 2</code>.</p>
+<p>There are many operators in JavaScript. Every operator has a corresponding precedence number. The one with the bigger number executes first. If the precedence is the same, the execution order is from left to right.</p>
+<p>An extract from the <a href="https://developer.mozilla.org/en/JavaScript/Reference/operators/operator_precedence">precedence table</a> (you don’t need to remember this, but note that unary operators are higher than corresponding binary ones):</p>
+<table>
+<thead>
+<tr>
+<th>Precedence</th>
+<th>Name</th>
+<th>Sign</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+</tr>
+<tr>
+<td>16</td>
+<td>unary plus</td>
+<td><code>+</code></td>
+</tr>
+<tr>
+<td>16</td>
+<td>unary negation</td>
+<td><code>-</code></td>
+</tr>
+<tr>
+<td>14</td>
+<td>multiplication</td>
+<td><code>*</code></td>
+</tr>
+<tr>
+<td>14</td>
+<td>division</td>
+<td><code>/</code></td>
+</tr>
+<tr>
+<td>13</td>
+<td>addition</td>
+<td><code>+</code></td>
+</tr>
+<tr>
+<td>13</td>
+<td>subtraction</td>
+<td><code>-</code></td>
+</tr>
+<tr>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+</tr>
+<tr>
+<td>3</td>
+<td>assignment</td>
+<td><code>=</code></td>
+</tr>
+<tr>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+</tr>
+</tbody>
+</table>
+<p>As we can see, the “unary plus” has a priority of <code>16</code>, which is higher than <code>13</code> for the “addition” (binary plus). That’s why in the expression <code>&quot;+apples + +oranges&quot;</code> unary pluses work first, and then the addition.</p>
+<h2><a class="main__anchor" name="assignment" href="#assignment">Assignment</a></h2><p>Let’s note that an assignment <code>=</code> is also an operator. It is listed in the precedence table with the very low priority of <code>3</code>.</p>
+<p>That’s why when we assign a variable, like <code>x = 2 * 2 + 1</code>, then the calculations are done first, and afterwards the <code>=</code> is evaluated, storing the result in <code>x</code>.</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let x = 2 * 2 + 1;
+
+alert( x ); // 5</code></pre>
+        </div>
+      </div>
+      
+      </div><p>It is possible to chain assignments:</p>
+<div data-trusted="1" class="code-example" data-highlight-block="2-2">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let a, b, c;
+
+a = b = c = 2 + 2;
+
+alert( a ); // 4
+alert( b ); // 4
+alert( c ); // 4</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Chained assignments evaluate from right to left. First the rightmost expression <code>2 + 2</code> is evaluated then assigned to the variables on the left: <code>c</code>, <code>b</code> and <code>a</code>. At the end, all variables share a single value.</p>
+<div class="important important_smart">
+            <div class="important__header"><span class="important__type">The assignment operator <code>&quot;=&quot;</code> returns a value</span></div>
+            <div class="important__content"><p>An operator always returns a value. That’s obvious for most of them like an addition <code>+</code> or a multiplication <code>*</code>. But the assignment operator follows that rule too.</p>
+<p>The call <code>x = value</code> writes the <code>value</code> into <code>x</code> <em>and then returns it</em>.</p>
+<p>Here’s the demo that uses an assignment as part of a more complex expression:</p>
+<div data-trusted="1" class="code-example" data-highlight-block="3-3">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let a = 1;
+let b = 2;
+
+let c = 3 - (a = b + 1);
+
+alert( a ); // 3
+alert( c ); // 0</code></pre>
+        </div>
+      </div>
+      
+      </div><p>In the example above, the result of <code>(a = b + 1)</code> is the value which is assigned to <code>a</code> (that is <code>3</code>). It is then used to subtract from <code>3</code>.</p>
+<p>Funny code, isn’t it? We should understand how it works, because sometimes we can see it in 3rd-party libraries, but shouldn’t write anything like that ourselves. Such tricks definitely don’t make the code clearer and readable.</p>
+</div></div>
+<h2><a class="main__anchor" name="remainder" href="#remainder">Remainder %</a></h2><p>The remainder operator <code>%</code> despite its look does not have a relation to percents.</p>
+<p>The result of <code>a % b</code> is the remainder of the integer division of <code>a</code> by <code>b</code>.</p>
+<p>For instance:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">alert( 5 % 2 ); // 1 is a remainder of 5 divided by 2
+alert( 8 % 3 ); // 2 is a remainder of 8 divided by 3
+alert( 6 % 3 ); // 0 is a remainder of 6 divided by 3</code></pre>
+        </div>
+      </div>
+      
+      </div><h2><a class="main__anchor" name="exponentiation" href="#exponentiation">Exponentiation **</a></h2><p>The exponentiation operator <code>**</code> is a recent addition to the language.</p>
+<p>For a natural number <code>b</code>, the result of <code>a ** b</code> is <code>a</code> multiplied by itself <code>b</code> times.</p>
+<p>For instance:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">alert( 2 ** 2 ); // 4  (2 * 2)
+alert( 2 ** 3 ); // 8  (2 * 2 * 2)
+alert( 2 ** 4 ); // 16 (2 * 2 * 2 * 2)</code></pre>
+        </div>
+      </div>
+      
+      </div><p>The operator works for non-integer numbers of <code>a</code> and <code>b</code> as well, for instance:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">alert( 4 ** (1/2) ); // 2 (power of 1/2 is the same as a square root, that's maths)
+alert( 8 ** (1/3) ); // 2 (power of 1/3 is the same as a cubic root)</code></pre>
+        </div>
+      </div>
+      
+      </div><h2><a class="main__anchor" name="increment-decrement" href="#increment-decrement">Increment/decrement</a></h2><!-- Can't use -- in title, because built-in parse turns it into – -->
+<p>Increasing or decreasing a number by one is among the most common numerical operations.</p>
+<p>So, there are special operators for that:</p>
+<ul>
+<li>
+<p><strong>Increment</strong> <code>++</code> increases a variable by 1:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let counter = 2;
+counter++;      // works same as counter = counter + 1, but shorter
+alert( counter ); // 3</code></pre>
+        </div>
+      </div>
+      
+      </div></li>
+<li>
+<p><strong>Decrement</strong> <code>--</code> decreases a variable by 1:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let counter = 2;
+counter--;      // works same as counter = counter - 1, but shorter
+alert( counter ); // 1</code></pre>
+        </div>
+      </div>
+      
+      </div></li>
+</ul>
+<div class="important important_warn">
+            <div class="important__header"><span class="important__type">Important:</span></div>
+            <div class="important__content"><p>Increment/decrement can be applied only to a variable. An attempt to use it on a value like <code>5++</code> will give an error.</p>
+</div></div>
+<p>Operators <code>++</code> and <code>--</code> can be placed both after and before the variable.</p>
+<ul>
+<li>When the operator goes after the variable, it is called a “postfix form”: <code>counter++</code>.</li>
+<li>The “prefix form” is when the operator stands before the variable: <code>++counter</code>.</li>
+</ul>
+<p>Both of these records do the same: increase <code>counter</code> by <code>1</code>.</p>
+<p>Is there any difference? Yes, but we can only see it if we use the returned value of <code>++/--</code>.</p>
+<p>Let’s clarify. As we know, all operators return a value. Increment/decrement is not an exception here. The prefix form returns the new value, while the postfix form returns the old value (prior to increment/decrement).</p>
+<p>To see the difference, here’s the example:</p>
+<div data-trusted="1" class="code-example" data-highlight-inline="3:13-14">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let counter = 1;
+let a = ++counter; // (*)
+
+alert(a); // 2</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Here in the line <code>(*)</code> the prefix call <code>++counter</code> increments <code>counter</code> and returns the new value that is <code>2</code>. So the <code>alert</code> shows <code>2</code>.</p>
+<p>Now let’s use the postfix form:</p>
+<div data-trusted="1" class="code-example" data-highlight-inline="3:13-14">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let counter = 1;
+let a = counter++; // (*) changed ++counter to counter++
+
+alert(a); // 1</code></pre>
+        </div>
+      </div>
+      
+      </div><p>In the line <code>(*)</code> the <em>postfix</em> form <code>counter++</code> also increments <code>counter</code>, but returns the <em>old</em> value (prior to increment). So the <code>alert</code> shows <code>1</code>.</p>
+<p>To summarize:</p>
+<ul>
+<li>
+<p>If the result of increment/decrement is not used, then there is no difference in which form to use:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let counter = 0;
+counter++;
+++counter;
+alert( counter ); // 2, the lines above did the same</code></pre>
+        </div>
+      </div>
+      
+      </div></li>
+<li>
+<p>If we’d like to increase the value <em>and</em> use the result of the operator right now, then we need the prefix form:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let counter = 0;
+alert( ++counter ); // 1</code></pre>
+        </div>
+      </div>
+      
+      </div></li>
+<li>
+<p>If we’d like to increment, but use the previous value, then we need the postfix form:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let counter = 0;
+alert( counter++ ); // 0</code></pre>
+        </div>
+      </div>
+      
+      </div></li>
+</ul>
+<div class="important important_smart">
+            <div class="important__header"><span class="important__type">Increment/decrement among other operators</span></div>
+            <div class="important__content"><p>Operators <code>++/--</code> can be used inside an expression as well. Their precedence is higher than most other arithmetical operations.</p>
+<p>For instance:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let counter = 1;
+alert( 2 * ++counter ); // 4</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Compare with:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let counter = 1;
+alert( 2 * counter++ ); // 2, because counter++ returns the &quot;old&quot; value</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Though technically allowable, such notation usually makes the code less readable. One line does multiple things – not good.</p>
+<p>While reading the code, a fast “vertical” eye-scan can easily miss such <code>counter++</code>, and it won’t be obvious that the variable increases.</p>
+<p>The “one line – one action” style is advised:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let counter = 1;
+alert( 2 * counter );
+counter++;</code></pre>
+        </div>
+      </div>
+      
+      </div></div></div>
+<h2><a class="main__anchor" name="bitwise-operators" href="#bitwise-operators">Bitwise operators</a></h2><p>Bitwise operators treat arguments as 32-bit integer numbers and work on the level of their binary representation.</p>
+<p>These operators are not JavaScript-specific. They are supported in most programming languages.</p>
+<p>The list of operators:</p>
+<ul>
+<li>AND ( <code>&amp;</code> )</li>
+<li>OR ( <code>|</code> )</li>
+<li>XOR ( <code>^</code> )</li>
+<li>NOT ( <code>~</code> )</li>
+<li>LEFT SHIFT ( <code>&lt;&lt;</code> )</li>
+<li>RIGHT SHIFT ( <code>&gt;&gt;</code> )</li>
+<li>ZERO-FILL RIGHT SHIFT ( <code>&gt;&gt;&gt;</code> )</li>
+</ul>
+<p>These operators are used very rarely. To understand them, we should delve into low-level number representation, and it would not be optimal to do that right now. Especially because we won’t need them any time soon. If you’re curious, you can read the <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/Bitwise_Operators">Bitwise Operators</a> article in MDN. It would be more practical to do that when a real need arises.</p>
+<h2><a class="main__anchor" name="modify-in-place" href="#modify-in-place">Modify-in-place</a></h2><p>We often need to apply an operator to a variable and store the new result in it.</p>
+<p>For example:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let n = 2;
+n = n + 5;
+n = n * 2;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>This notation can be shortened using operators <code>+=</code> and <code>*=</code>:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let n = 2;
+n += 5; // now n = 7 (same as n = n + 5)
+n *= 2; // now n = 14 (same as n = n * 2)
+
+alert( n ); // 14</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Short “modify-and-assign” operators exist for all arithmetical and bitwise operators: <code>/=</code>, <code>-=</code> etc.</p>
+<p>Such operators have the same precedence as a normal assignment, so they run after most other calculations:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let n = 2;
+
+n *= 3 + 5;
+
+alert( n ); // 16  (right part evaluated first, same as n *= 8)</code></pre>
+        </div>
+      </div>
+      
+      </div><h2><a class="main__anchor" name="comma" href="#comma">Comma</a></h2><p>The comma operator <code>','</code> is one of most rare and unusual operators. Sometimes it’s used to write shorter code, so we need to know it in order to understand what’s going on.</p>
+<p>The comma operator allows us to evaluate several expressions, dividing them with a comma <code>','</code>. Each of them is evaluated, but the result of only the last one is returned.</p>
+<p>For example:</p>
+<div data-trusted="1" class="code-example" data-highlight-block="0-0">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let a = (1 + 2, 3 + 4);
+
+alert( a ); // 7 (the result of 3 + 4)</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Here, the first expression <code>1 + 2</code> is evaluated, and its result is thrown away, then <code>3 + 4</code> is evaluated and returned as the result.</p>
+<div class="important important_smart">
+            <div class="important__header"><span class="important__type">Comma has a very low precedence</span></div>
+            <div class="important__content"><p>Please note that the comma operator has very low precedence, lower than <code>=</code>, so parentheses are important in the example above.</p>
+<p>Without them: <code>a = 1 + 2, 3 + 4</code> evaluates <code>+</code> first, summing the numbers into <code>a = 3, 7</code>, then the assignment operator <code>=</code> assigns    <code>a = 3</code>, and then the number after the comma <code>7</code> is not processed anyhow, so it’s ignored.</p>
+</div></div>
+<p>Why do we need such an operator which throws away everything except the last part?</p>
+<p>Sometimes people use it in more complex constructs to put several actions in one line.</p>
+<p>For example:</p>
+<div data-trusted="1" class="code-example" data-highlight-inline="1:5-28">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">// three operations in one line
+for (a = 1, b = 3, c = a * b; a &lt; 10; a++) {
+ ...
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Such tricks are used in many JavaScript frameworks, that’s why we mention them. But usually they don’t improve the code readability, so we should think well before writing like that.</p>
+</div></article><div class="tasks"><h2 id="tasks" class="tasks__title"><a href="#tasks" class="main__anchor main__anchor_noicon tasks__title-anchor">Tasks</a></h2><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a href="#the-postfix-and-prefix-forms" name="the-postfix-and-prefix-forms" class="main__anchor">The postfix and prefix forms</a></h3><a href="task/increment-order.html" target="_blank" class="task__open-link"></a></div><div class="task__header-note"><span title="How important is the task, from 1 to 5" class="task__importance">importance: 5</span></div><div class="task__content"><p>What are the final values of all variables <code>a</code>, <code>b</code>, <code>c</code> and <code>d</code> after the code below?</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let a = 1, b = 1;
+
+let c = ++a; // ?
+let d = b++; // ?</code></pre>
+        </div>
+      </div>
+      
+      </div><button type="button" class="task__solution">solution</button><div class="task__answer"><div class="task__answer-content"><p>The answer is:</p>
+<ul>
+<li><code>a = 2</code></li>
+<li><code>b = 2</code></li>
+<li><code>c = 2</code></li>
+<li><code>d = 1</code></li>
+</ul>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let a = 1, b = 1;
+
+alert( ++a ); // 2, prefix form returns the new value
+alert( b++ ); // 1, postfix form returns the old value
+
+alert( a ); // 2, incremented once
+alert( b ); // 2, incremented once</code></pre>
+        </div>
+      </div>
+      
+      </div></div><button type="button" title="close" class="close-button task__answer-close"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a href="#assignment-result" name="assignment-result" class="main__anchor">Assignment result</a></h3><a href="task/assignment-result.html" target="_blank" class="task__open-link"></a></div><div class="task__header-note"><span title="How important is the task, from 1 to 5" class="task__importance">importance: 3</span></div><div class="task__content"><p>What are the values of <code>a</code> and <code>x</code> after the code below?</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let a = 2;
+
+let x = 1 + (a *= 2);</code></pre>
+        </div>
+      </div>
+      
+      </div><button type="button" class="task__solution">solution</button><div class="task__answer"><div class="task__answer-content"><p>The answer is:</p>
+<ul>
+<li><code>a = 4</code> (multiplied by 2)</li>
+<li><code>x = 5</code> (calculated as 1 + 4)</li>
+</ul>
+</div><button type="button" title="close" class="close-button task__answer-close"></button></div></div></div></div></div><!--  include /blocks/banner-bottom--><!--if lang == 'en'--><!--  include /blocks/banner-bottom.en--></div><div class="page__nav-wrap"><a href="type-conversions.html" data-tooltip="Type Conversions" class="page__nav page__nav_prev"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Previous lesson</span></a><a href="comparison.html" data-tooltip="Comparisons" class="page__nav page__nav_next"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Next lesson</span></a></div><div class="article-tablet-foot tablet-only"><div class="article-tablet-foot__layout"><div class="share-icons"><span class="share-icons__title">Share</span><a href="https://twitter.com/share?url=https%3A%2F%2Fjavascript.info%2Foperators" class="share share_tw"></a><a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fjavascript.info%2Foperators" class="share share_fb"></a><a href="https://plus.google.com/share?url=https%3A%2F%2Fjavascript.info%2Foperators" class="share share_gp"></a><a href="https://vkontakte.ru/share.php?url=https%3A%2F%2Fjavascript.info%2Foperators" class="share share_vk"></a></div><div class="article-tablet-foot__map"><a href="tutorial/map.html" data-action="tutorial-map" class="map"><span class="map__text">Tutorial map</span></a></div></div></div><div id="comments" class="comments"><div class="comments__header"><h2 class="comments__header-title"><a href="#comments" name="comments">Comments</a></h2><div class="comments__read-before"><span class="comments__read-before-link">read this before commenting…</span><div class="comments__read-before-popup"><div class="comments__read-before-popup-i"><ul><li>You're welcome to post additions, questions to the articles and answers to them.</li><li>To insert a few words of code, use the <code>&lt;code&gt;</code> tag, for several lines – use <code>&lt;pre&gt;</code>, for more than 10 lines – use a sandbox (<a href='http://plnkr.co/edit/?p=preview'>plnkr</a>, <a href='http://jsbin.com/'>JSBin</a>, <a href='http://codepen.io/'>codepen</a>…)</li><li>If you can't understand something in the article – please elaborate.</li></ul></div></div></div></div></div><div id="disqus_thread"></div><script>var disqus_config = function() { if (!this.page) this.page = {}; Object.assign(this.page, {"url":"https:\/\/javascript.info\/operators","identifier":"\/operators","title":"Operators"}); };</script><script>var disqus_shortname = "javascriptinfo";</script><script>var disqus_enabled = true;</script></main></div><div class="page__sidebar sidebar sidebar_sticky-footer"><button data-sidebar-toggle class="sidebar__toggle"></button><a href="tutorial/map.html" data-action="tutorial-map" data-tooltip="Tutorial map" class="map"></a><div class="sidebar__inner"><div class="sidebar__content"><div class="sidebar__section"><h4 class="sidebar__section-title">Chapter</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a href="first-steps.html" class="sidebar__link">JavaScript Fundamentals</a></li></ul></nav></div><div class="sidebar__section"><h4 class="sidebar__section-title">Lesson navigation</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a href="#terms-unary-binary-operand" class="sidebar__link">Terms: “unary”, “binary”, “operand”</a></li><li class="sidebar__navigation-link"><a href="#strings-concatenation-binary" class="sidebar__link">Strings concatenation, binary +</a></li><li class="sidebar__navigation-link"><a href="#numeric-conversion-unary" class="sidebar__link">Numeric conversion, unary +</a></li><li class="sidebar__navigation-link"><a href="#operators-precedence" class="sidebar__link">Operators precedence</a></li><li class="sidebar__navigation-link"><a href="#assignment" class="sidebar__link">Assignment</a></li><li class="sidebar__navigation-link"><a href="#remainder" class="sidebar__link">Remainder %</a></li><li class="sidebar__navigation-link"><a href="#exponentiation" class="sidebar__link">Exponentiation **</a></li><li class="sidebar__navigation-link"><a href="#increment-decrement" class="sidebar__link">Increment/decrement</a></li><li class="sidebar__navigation-link"><a href="#bitwise-operators" class="sidebar__link">Bitwise operators</a></li><li class="sidebar__navigation-link"><a href="#modify-in-place" class="sidebar__link">Modify-in-place</a></li><li class="sidebar__navigation-link"><a href="#comma" class="sidebar__link">Comma</a></li></ul></nav></div><div class="sidebar__section"><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a href="#tasks" class="sidebar__link">Tasks (2)</a></li><li class="sidebar__navigation-link"><a href="#comments" class="sidebar__link">Comments</a></li></ul></nav></div><div class="sidebar__section"><div class="sidebar__section-title">Share</div><a href="https://twitter.com/share?url=https%3A%2F%2Fjavascript.info%2Foperators" class="share share_tw sidebar__share"></a><a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fjavascript.info%2Foperators" class="share share_fb sidebar__share"></a><a href="https://plus.google.com/share?url=https%3A%2F%2Fjavascript.info%2Foperators" class="share share_gp sidebar__share"></a></div><div class="sidebar__section"><a href="https://github.com/iliakan/javascript-tutorial-en/tree/master/1-js/02-first-steps/07-operators/article.md" class="sidebar__link">Edit on Github</a></div></div></div></div></div></div><div class="page-footer"><div class="page-footer__left"><ul class="page-footer__list"><li class="page-footer__item">©&nbsp;2007—2017&nbsp; Ilya Kantor</li><li class="page-footer__item"><a href="about.html#contact-us" class="page-footer__link">contact us</a></li><li class="page-footer__item"><a href="about.html" class="page-footer__link">about the project</a></li><li class="page-footer__item"><a href="https://learn.javascript.ru/" class="page-footer__link">RU</a> / EN</li></ul></div><div class="page-footer__right"><ul class="page-footer__list"><li class="page-footer__item">powered by <a rel="nofollow" href="http://nodejs.org/" class="page-footer__link">node.js</a>&nbsp;&amp;&nbsp;<a rel="nofollow" href="http://github.com/iliakan/javascript-tutorial-en" class="page-footer__link">open source</a></li></ul></div></div></body>
+<!-- Mirrored from javascript.info/operators by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 30 Nov 2017 15:27:19 GMT -->
+</html>

@@ -1,0 +1,611 @@
+<!DOCTYPE html><html lang="en">
+<!-- Mirrored from javascript.info/async-await by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 30 Nov 2017 15:30:59 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><script>window.currentUser = null;</script><title itemprop="name">Async/await</title><meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, minimum-scale=1.0"><meta name="apple-mobile-web-app-capable" content="yes"><script>if (window.devicePixelRatio > 1) document.cookie = 'pixelRatio=' + window.devicePixelRatio + ';path=/;expires=Tue, 19 Jan 2038 03:14:07 GMT';</script><link href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700%7COpen+Sans+Condensed:700&amp;subset=latin,latin-ext,cyrillic,cyrillic-ext" rel="stylesheet"><link rel="apple-touch-icon-precomposed" href="img/favicon/apple-touch-icon-precomposed.png"><link rel="canonical" href="async-await.html"><meta name="msapplication-TileColor" content="#222A2C"><meta name="msapplication-TileImage" content="/img/favicon/tileicon.png"><!-- favicon the rest--><link rel="icon" href="img/favicon/favicon.png"><meta itemprop="image" content="https://javascript.info/img/site_preview_en_512x512.png"><meta property="og:title" content="Async/await"><meta property="og:image" content="https://javascript.info/img/site_preview_en_1200x630.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="fb:admins" content="100001562528165"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Async/await"><meta name="twitter:site" content="@iliakan"><meta name="twitter:creator" content="@iliakan"><meta name="twitter:image" content="https://javascript.info/img/site_preview_en_512x512.png"><link href="pack/styles.da59a89b28153875791083e4a8c5adb3.css" rel="stylesheet"><link rel="prev" href="promise-api.html"><script>window.GA_ID = "UA-2056213-15";</script><script>window.YANDEX_METRIKA_ID = 32184394;</script><script>window.GoogleAnalyticsObject="ga",window.ga=function(){window.ga.q.push(arguments)},window.ga.q=[],window.ga.l=Date.now(),ga("create",GA_ID,"auto"),window.currentUser&&ga("set","&uid",currentUser.id),window.addEventListener("error",function(e){var r=(e.filename||e.errorUrl)+": "+(e.lineno||e.errorLine),n=e.stack||e.error&&e.error.stack;ga("send","exception",{exDescription:e.message+" "+r+" "+n,exFatal:!0})});</script><script src="https://www.google-analytics.com/analytics.js" async></script><script>ga('send', 'pageview');</script><script>window.metrika={reachGoal:function(){}},window.yandex_metrika_callbacks=[function(){try{window.metrika=new Ya.Metrika({id:YANDEX_METRIKA_ID,webvisor:!0,clickmap:!0,params:{user:window.currentUser&&window.currentUser.id}}),metrika.trackLinks({delay:150}),window.addEventListener("error",function(r){window.metrika.reachGoal("JSERROR",{src:(r.filename||r.errorUrl)+": "+(r.lineno||r.errorLine),stack:r.stack||r.error&&r.error.stack,message:r.message})})}catch(r){}}];</script><script src="http://mc.yandex.ru/metrika/watch.js" async></script><script>window.RECAPTCHA_ID = "6Lf9NyETAAAAACZlg-a9Us2SxvYbeVC1ROWaWv4O";</script><script src="initc4ca.js?1"></script><script src="pack/head.688d4fe7c4cf54e23737.js" defer></script><style>
+.promise-avatar-example {
+  border-radius: 50%;
+  position: fixed;
+  left: 10px;
+  top: 10px;
+}
+</style>
+<meta property="og:title" content="Async/await"><meta property="og:type" content="article"><script src="pack/tutorial.688d4fe7c4cf54e23737.js" defer></script><script src="pack/footer.688d4fe7c4cf54e23737.js" defer></script></head><body class="no-icons"><script>window.fontTest();</script><div class="page-wrapper page-wrapper_sidebar_on"><!--[if lt IE 10]><div style="color:red;text-align:center">Sorry, IE&lt;10 is not supported, please use a newer browser.</div><![endif]--><div class="sitetoolbar sitetoolbar_tutorial"><!-- include ./notification-stripe--><div class="sitetoolbar__content"><div class="sitetoolbar__logo-wrap"><a href="index.html" class="sitetoolbar__link sitetoolbar__link_logo"><img src="img/sitetoolbar__logo_en.svg" width="200" class="sitetoolbar__logo sitetoolbar__logo_normal" alt=""><img src="img/sitetoolbar__logo_small_en.svg" width="70" class="sitetoolbar__logo sitetoolbar__logo_small" alt=""><script>Array.prototype.forEach.call(document.querySelectorAll("img.sitetoolbar__logo"),function(e){var t=document.createElement("object");t.type="image/svg+xml",t.className=e.className,t.style.cssText="left:0;top:0;position:absolute",t.onload=function(){t.onload=null,e.style.visibility="hidden"},t.data=e.src,e.parentNode.insertBefore(t,e)});</script></a></div><div class="sitetoolbar__nav-toggle-wrap"><button type="button" class="sitetoolbar__nav-toggle"></button></div><nav class="sitetoolbar__sections"><ul class="sitetoolbar__sections-list"></ul></nav><div class="sitetoolbar__book-wrap"><a href="ebook.html" class="buy-book-button"><span class="buy-book-button__extra-text">Buy</span>EPUB/PDF</a></div><div class="sitetoolbar__login-wrap"><button data-action-login class="sitetoolbar__login sitetoolbar__login_unready"></button></div><div class="sitetoolbar__search-wrap"><div class="sitetoolbar__search-content"><form method="GET" action="http://javascript.info/search" class="sitetoolbar__search"><button type="button" class="sitetoolbar__search-toggle"></button><div class="sitetoolbar__search-input"><div class="text-input"><input name="query" placeholder="Search on Javascript.info" class="text-input__control" type="text"></div><button type="submit" class="sitetoolbar__find">Search</button></div></form></div></div></div><!-- todo: en variant--><div class="tablet-menu"><div class="tablet-menu__line"><div class="tablet-menu__content"><form action="http://javascript.info/search/" class="tablet-menu-search"><input type="search" name="query" placeholder="Search in the tutorial" required class="tablet-menu-search__input"><button type="submit" name="type" value="articles" class="tablet-menu-search__button">Search</button></form></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><a href="tutorial/map.html" data-action="tutorial-map" class="map"><span class="map__text">Tutorial map</span></a></div></div><!--+e.line--><!--  +e.content--><!--    +b("a").tablet-ebook(href="/ebook")--><!--      +e("span").text Купить учебник--><!--      +e("span").note (EPUB + PDF)--><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="share-icons"><span class="share-icons__title">Share</span><a href="https://twitter.com/share?url=https%3A%2F%2Fjavascript.info%2Fasync-await" class="share share_tw"></a><a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fjavascript.info%2Fasync-await" class="share share_fb"></a><a href="https://plus.google.com/share?url=https%3A%2F%2Fjavascript.info%2Fasync-await" class="share share_gp"></a><a href="https://vkontakte.ru/share.php?url=https%3A%2F%2Fjavascript.info%2Fasync-await" class="share share_vk"></a></div></div></div></div><progress data-sticky value="5" max="5" data-tooltip="Lesson 5 of 5" class="tutorial-progress"></progress></div><div class="page page_sidebar_on"><script>if(localStorage.noSidebar){document.querySelector(".page").classList.remove("page_sidebar_on");var pageWrapper=document.querySelector(".page-wrapper");pageWrapper&&pageWrapper.classList.remove("page-wrapper_sidebar_on")}setTimeout(function(){document.querySelector(".page").classList.add("page_sidebar-animation-on")},0);</script><div class="page__inner"><main class="main main_width-limit"><header class="main__header"><ol class="breadcrumbs"><li itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemref="breadcrumb-1" class="breadcrumbs__item breadcrumbs__item_home"><a href="index.html" itemprop="url" class="breadcrumbs__link"><span itemprop="title" class="breadcrumbs__hidden-text">Учебник</span></a></li><li id="breadcrumb-1" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemprop="child" class="breadcrumbs__item"><a href="async.html" itemprop="url" class="breadcrumbs__link"><span itemprop="title">Promises, async/await</span></a></li></ol><h1 class="main__header-title">Async/await</h1></header><div class="content"><article itemscope itemtype="http://schema.org/TechArticle"><meta itemprop="name" content="Async/await"><div itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="email" content="iliakan@gmail.com"><meta itemprop="name" content="Ilya Kantor"></div><div itemprop="articleBody"><p>There’s a special syntax to work with promises in a more comfort fashion, called “async/await”. It’s surprisingly easy to understand and use.</p>
+<h2><a class="main__anchor" name="async-functions" href="#async-functions">Async functions</a></h2><p>Let’s start with the <code>async</code> keyword. It can be placed before function, like this:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">async function f() {
+  return 1;
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>The word “async” before a function means one simple thing: a function always returns a promise. If the code has <code>return &lt;non-promise&gt;</code> in it, then JavaScript automatically wraps it into a resolved promise with that value.</p>
+<p>For instance, the code above returns a resolved promise with the result of <code>1</code>, let’s test it:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">async function f() {
+  return 1;
+}
+
+f().then(alert); // 1</code></pre>
+        </div>
+      </div>
+      
+      </div><p>…We could explicitly return a promise, that would be the same:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">async function f() {
+  return Promise.resolve(1);
+}
+
+f().then(alert); // 1</code></pre>
+        </div>
+      </div>
+      
+      </div><p>So, <code>async</code> ensures that the function returns a promise, wraps non-promises in it. Simple enough, right? But not only that. There’s another keyword <code>await</code> that works only inside <code>async</code> functions, and it’s pretty cool.</p>
+<h2><a class="main__anchor" name="await" href="#await">Await</a></h2><p>The syntax:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">// works only inside async functions
+let value = await promise;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>The keyword <code>await</code> makes JavaScript wait until that promise settles and returns its result.</p>
+<p>Here’s example with a promise that resolves in 1 second:</p>
+<div data-trusted="1" class="code-example" data-highlight-block="6-6">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">async function f() {
+
+  let promise = new Promise((resolve, reject) =&gt; {
+    setTimeout(() =&gt; resolve(&quot;done!&quot;), 1000)
+  });
+
+  let result = await promise; // wait till the promise resolves (*)
+
+  alert(result); // &quot;done!&quot;
+}
+
+f();</code></pre>
+        </div>
+      </div>
+      
+      </div><p>The function execution “pauses” at the line <code>(*)</code> and resumes when the promise settles, with <code>result</code> becoming its result. So the code above shows “done!” in one second.</p>
+<p>Let’s emphasize: <code>await</code> literally makes JavaScript wait until the promise settles, and then go on with the result. That doesn’t cost any CPU resources, because the engine can do other jobs meanwhile: execute other scripts, handle events etc.</p>
+<p>It’s just a more elegant syntax of getting the promise result than <code>promise.then</code>, easier to read and write.</p>
+<div class="important important_warn">
+            <div class="important__header"><span class="important__type">Can’t use <code>await</code> in regular functions</span></div>
+            <div class="important__content"><p>If we try to use <code>await</code> in non-async function, that would be a syntax error:</p>
+<div data-trusted="1" class="code-example" data-highlight-block="2-2">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function f() {
+  let promise = Promise.resolve(1);
+  let result = await promise; // Syntax error
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>We can get such error in case if we forget to put <code>async</code> before a function. As said, <code>await</code> only works inside <code>async function</code>.</p>
+</div></div>
+<p>Let’s take <code>showAvatar()</code> example from the chapter <a href="promise-chaining.html">Promises chaining</a> and rewrite it using <code>async/await</code>:</p>
+<ol>
+<li>We’ll need to replace <code>.then</code> calls by <code>await</code>.</li>
+<li>Also we should make the function <code>async</code> for them to work.</li>
+</ol>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">async function showAvatar() {
+
+  // read our JSON
+  let response = await fetch('/article/promise-chaining/user.json');
+  let user = await response.json();
+
+  // read github user
+  let githubResponse = await fetch(`https://api.github.com/users/${user.name}`);
+  let githubUser = await githubResponse.json();
+
+  // show the avatar
+  let img = document.createElement('img');
+  img.src = githubUser.avatar_url;
+  img.className = &quot;promise-avatar-example&quot;;
+  document.body.append(img);
+
+  // wait 3 seconds
+  await new Promise((resolve, reject) =&gt; setTimeout(resolve, 3000));
+
+  img.remove();
+
+  return githubUser;
+}
+
+showAvatar();</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Pretty clean and easy to read, right? Much better than before.</p>
+<div class="important important_smart">
+            <div class="important__header"><span class="important__type"><code>await</code> won’t work in the top-level code</span></div>
+            <div class="important__content"><p>People who are just starting to use <code>await</code> tend to forget that, but we can’t write <code>await</code> in the top-level code. That wouldn’t work:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">// syntax error in top-level code
+let response = await fetch('/article/promise-chaining/user.json');
+let user = await response.json();</code></pre>
+        </div>
+      </div>
+      
+      </div><p>So we need to have a wrapping async function for the code that awaits. Just as in the example above.</p>
+</div></div>
+<div class="important important_smart">
+            <div class="important__header"><span class="important__type"><code>await</code> accepts thenables</span></div>
+            <div class="important__content"><p>Like <code>promise.then</code>, <code>await</code> allows to use thenable objects (those with a callable <code>then</code> method). Again, the idea is that a 3rd-party object may be not a promise, but promise-compatible: if it supports <code>.then</code>, that’s enough to use with <code>await</code>.</p>
+<p>For instance, here <code>await</code> accepts <code>new Thenable(1)</code>:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">class Thenable {
+  constructor(num) {
+    this.num = num;
+  }
+  then(resolve, reject) {
+    alert(resolve); // function() { native code }
+    // resolve with this.num*2 after 1000ms
+    setTimeout(() =&gt; resolve(this.num * 2), 1000); // (*)
+  }
+};
+
+async function f() {
+  // waits for 1 second, then result becomes 2
+  let result = await new Thenable(1);
+  alert(result);
+}
+
+f();</code></pre>
+        </div>
+      </div>
+      
+      </div><p>If <code>await</code> gets a non-promise object with <code>.then</code>, it calls that method providing native functions <code>resolve</code>, <code>reject</code> as arguments. Then <code>await</code> waits until one of them is called (in the example above it happens in the line <code>(*)</code>) and then proceeds with the result.</p>
+</div></div>
+<div class="important important_smart">
+            <div class="important__header"><span class="important__type">Async methods</span></div>
+            <div class="important__content"><p>A class method can also be async, just put <code>async</code> before it.</p>
+<p>Like here:</p>
+<div data-trusted="1" class="code-example" data-highlight-block="1-1">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">class Waiter {
+  async wait() {
+    return await Promise.resolve(1);
+  }
+}
+
+new Waiter()
+  .wait()
+  .then(alert); // 1</code></pre>
+        </div>
+      </div>
+      
+      </div><p>The meaning is the same: it ensures that the returned value is a promise and enables <code>await</code>.</p>
+</div></div>
+<h2><a class="main__anchor" name="error-handling" href="#error-handling">Error handling</a></h2><p>If a promise resolves normally, then <code>await promise</code> returns the result. But in case of a rejection it throws the error, just if there were a <code>throw</code> statement at that line.</p>
+<p>This code:</p>
+<div data-trusted="1" class="code-example" data-highlight-block="1-1">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">async function f() {
+  await Promise.reject(new Error(&quot;Whoops!&quot;));
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>…Is the same as this:</p>
+<div data-trusted="1" class="code-example" data-highlight-block="1-1">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">async function f() {
+  throw new Error(&quot;Whoops!&quot;);
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>In real situations the promise may take some time before it rejects. So <code>await</code> will wait, and then throw an error.</p>
+<p>We can catch that error using <code>try..catch</code>, the same way as a regular <code>throw</code>:</p>
+<div data-trusted="1" class="code-example" data-highlight-block="5-5">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">async function f() {
+
+  try {
+    let response = await fetch('http://no-such-url');
+  } catch(err) {
+    alert(err); // TypeError: failed to fetch
+  }
+}
+
+f();</code></pre>
+        </div>
+      </div>
+      
+      </div><p>In case of an error, the control jumps to the <code>catch</code> block. We can also wrap multiple lines:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">async function f() {
+
+  try {
+    let response = await fetch('/no-user-here');
+    let user = await response.json();
+  } catch(err) {
+    // catches errors both in fetch and response.json
+    alert(err);
+  }
+}
+
+f();</code></pre>
+        </div>
+      </div>
+      
+      </div><p>If we don’t have <code>try..catch</code>, then the promise generated by the call of the async function <code>f()</code> becomes rejected. We can append <code>.catch</code> to handle it:</p>
+<div data-trusted="1" class="code-example" data-highlight-block="5-5">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">async function f() {
+  let response = await fetch('http://no-such-url');
+}
+
+// f() becomes a rejected promise
+f().catch(alert); // TypeError: failed to fetch // (*)</code></pre>
+        </div>
+      </div>
+      
+      </div><p>If we forget to add <code>.catch</code> there, then we get an unhandled promise error (and can see it in the console). We can catch such errors using a global event handler as described in the chapter <a href="promise-chaining.html">Promises chaining</a>.</p>
+<div class="important important_smart">
+            <div class="important__header"><span class="important__type"><code>async/await</code> and <code>promise.then/catch</code></span></div>
+            <div class="important__content"><p>When we use <code>async/await</code>, we rarely need <code>.then</code>, because <code>await</code> handles the waiting for us. And we can use a regular <code>try..catch</code> instead of <code>.catch</code>. That’s usually (not always) more convenient.</p>
+<p>But at the top level of the code, when we’re outside of any <code>async</code> function, we’re syntactically unable to use <code>await</code>, so it’s a normal practice to add <code>.then/catch</code> to handle the final result or falling-through errors.</p>
+<p>Like in the line <code>(*)</code> of the example above.</p>
+</div></div>
+<div class="important important_smart">
+            <div class="important__header"><span class="important__type"><code>async/await</code> works well with <code>Promise.all</code></span></div>
+            <div class="important__content"><p>When we need to wait for multiple promises, we can wrap them in <code>Promise.all</code> and then <code>await</code>:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">// wait for the array of results
+let results = await Promise.all([
+  fetch(url1),
+  fetch(url2),
+  ...
+]);</code></pre>
+        </div>
+      </div>
+      
+      </div><p>In case of an error, it propagates as usual: from the failed promise to <code>Promise.all</code>, and then becomes an exception that we can catch using <code>try..catch</code> around the call.</p>
+</div></div>
+<h2><a class="main__anchor" name="summary" href="#summary">Summary</a></h2><p>The <code>async</code> keyword before a function has two effects:</p>
+<ol>
+<li>Makes it always return a promise.</li>
+<li>Allows to use <code>await</code> in it.</li>
+</ol>
+<p>The <code>await</code> keyword before a promise makes JavaScript wait until that promise settles, and then:</p>
+<ol>
+<li>If it’s an error, the exception is generated, same as if <code>throw error</code> were called at that very place.</li>
+<li>Otherwise, it returns the result, so we can assign it to a value.</li>
+</ol>
+<p>Together they provide a great framework to write asynchronous code that is easy both to read and write.</p>
+<p>With <code>async/await</code> we rarely need to write <code>promise.then/catch</code>, but we still shouldn’t forget that they are based on promises, because sometimes (e.g. in the outermost scope) we have to use these methods. Also <code>Promise.all</code> is a nice thing to wait for many tasks simultaneously.</p>
+</div></article><div class="tasks"><h2 id="tasks" class="tasks__title"><a href="#tasks" class="main__anchor main__anchor_noicon tasks__title-anchor">Tasks</a></h2><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a href="#rewrite-using-async-await" name="rewrite-using-async-await" class="main__anchor">Rewrite using async/await</a></h3><a href="task/rewrite-async.html" target="_blank" class="task__open-link"></a></div><div class="task__header-note"></div><div class="task__content"><p>Rewrite the one of examples from the chapter <a href="promise-chaining.html">Promises chaining</a> using <code>async/await</code> instead of <code>.then/catch</code>:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function loadJson(url) {
+  return fetch(url)
+    .then(response =&gt; {
+      if (response.status == 200) {
+        return response.json();
+      } else {
+        throw new Error(response.status);
+      }
+    })
+}
+
+loadJson('no-such-user.json') // (3)
+  .catch(alert); // Error: 404</code></pre>
+        </div>
+      </div>
+      
+      </div><button type="button" class="task__solution">solution</button><div class="task__answer"><div class="task__answer-content"><p>The notes are below the code:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">async function loadJson(url) { // (1)
+  let response = await fetch(url); // (2)
+
+  if (response.status == 200) {
+    let json = await response.json(); // (3)
+    return json;
+  }
+
+  throw new Error(response.status);
+}
+
+loadJson('no-such-user.json')
+  .catch(alert); // Error: 404 (4)</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Notes:</p>
+<ol>
+<li>
+<p>The function <code>loadUrl</code> becomes <code>async</code>.</p>
+</li>
+<li>
+<p>All <code>.then</code> inside are replaced with <code>await</code>.</p>
+</li>
+<li>
+<p>We can <code>return response.json()</code> instead of awaiting for it, like this:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">if (response.status == 200) {
+  return response.json(); // (3)
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Then the outer code would have to <code>await</code> for that promise to resolve. In our case it doesn’t matter.</p>
+</li>
+<li>
+<p>The error thrown from <code>loadJson</code> is handled by <code>.catch</code>. We can’t use <code>await loadJson(…)</code> there, because we’re not in an <code>async</code> function.</p>
+</li>
+</ol>
+</div><button type="button" title="close" class="close-button task__answer-close"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a href="#rewrite-rethrow-async-await" name="rewrite-rethrow-async-await" class="main__anchor">Rewrite &quot;rethrow&quot; async/await</a></h3><a href="task/rewrite-async-2.html" target="_blank" class="task__open-link"></a></div><div class="task__header-note"></div><div class="task__content"><p>Below you can find the “rethrow” example from the chapter <a href="promise-chaining.html">Promises chaining</a>. Rewrite it using <code>async/await</code> instead of <code>.then/catch</code>.</p>
+<p>And get rid of the recursion in favour of a loop in <code>demoGithubUser</code>: with <code>async/await</code> that becomes easy to do.</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">class HttpError extends Error {
+  constructor(response) {
+    super(`${response.status} for ${response.url}`);
+    this.name = 'HttpError';
+    this.response = response;
+  }
+}
+
+function loadJson(url) {
+  return fetch(url)
+    .then(response =&gt; {
+      if (response.status == 200) {
+        return response.json();
+      } else {
+        throw new HttpError(response);
+      }
+    })
+}
+
+// Ask for a user name until github returns a valid user
+function demoGithubUser() {
+  let name = prompt(&quot;Enter a name?&quot;, &quot;iliakan&quot;);
+
+  return loadJson(`https://api.github.com/users/${name}`)
+    .then(user =&gt; {
+      alert(`Full name: ${user.name}.`);
+      return user;
+    })
+    .catch(err =&gt; {
+      if (err instanceof HttpError &amp;&amp; err.response.status == 404) {
+        alert(&quot;No such user, please reenter.&quot;);
+        return demoGithubUser();
+      } else {
+        throw err;
+      }
+    });
+}
+
+demoGithubUser();</code></pre>
+        </div>
+      </div>
+      
+      </div><button type="button" class="task__solution">solution</button><div class="task__answer"><div class="task__answer-content"><p>There are no tricks here. Just replace <code>.catch</code> with <code>try...catch</code> inside <code>demoGithubUser</code> and add <code>async/await</code> where needed:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">class HttpError extends Error {
+  constructor(response) {
+    super(`${response.status} for ${response.url}`);
+    this.name = 'HttpError';
+    this.response = response;
+  }
+}
+
+async function loadJson(url) {
+  let response = await fetch(url);
+  if (response.status == 200) {
+    return response.json();
+  } else {
+    throw new HttpError(response);
+  }
+}
+
+// Ask for a user name until github returns a valid user
+async function demoGithubUser() {
+
+  let user;
+  while(true) {
+    let name = prompt(&quot;Enter a name?&quot;, &quot;iliakan&quot;);
+
+    try {
+      user = await loadJson(`https://api.github.com/users/${name}`);
+      break; // no error, exit loop
+    } catch(err) {
+      if (err instanceof HttpError &amp;&amp; err.response.status == 404) {
+        // loop continues after the alert
+        alert(&quot;No such user, please reenter.&quot;);
+      } else {
+        // unknown error, rethrow
+        throw err;
+      }
+    }
+  }
+
+
+  alert(`Full name: ${user.name}.`);
+  return user;
+}
+
+demoGithubUser();</code></pre>
+        </div>
+      </div>
+      
+      </div></div><button type="button" title="close" class="close-button task__answer-close"></button></div></div></div></div></div><!--  include /blocks/banner-bottom--><!--if lang == 'en'--><!--  include /blocks/banner-bottom.en--></div><div class="page__nav-wrap"><a href="promise-api.html" data-tooltip="Promise API" class="page__nav page__nav_prev"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Previous lesson</span></a></div><div class="article-tablet-foot tablet-only"><div class="article-tablet-foot__layout"><div class="share-icons"><span class="share-icons__title">Share</span><a href="https://twitter.com/share?url=https%3A%2F%2Fjavascript.info%2Fasync-await" class="share share_tw"></a><a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fjavascript.info%2Fasync-await" class="share share_fb"></a><a href="https://plus.google.com/share?url=https%3A%2F%2Fjavascript.info%2Fasync-await" class="share share_gp"></a><a href="https://vkontakte.ru/share.php?url=https%3A%2F%2Fjavascript.info%2Fasync-await" class="share share_vk"></a></div><div class="article-tablet-foot__map"><a href="tutorial/map.html" data-action="tutorial-map" class="map"><span class="map__text">Tutorial map</span></a></div></div></div><div id="comments" class="comments"><div class="comments__header"><h2 class="comments__header-title"><a href="#comments" name="comments">Comments</a></h2><div class="comments__read-before"><span class="comments__read-before-link">read this before commenting…</span><div class="comments__read-before-popup"><div class="comments__read-before-popup-i"><ul><li>You're welcome to post additions, questions to the articles and answers to them.</li><li>To insert a few words of code, use the <code>&lt;code&gt;</code> tag, for several lines – use <code>&lt;pre&gt;</code>, for more than 10 lines – use a sandbox (<a href='http://plnkr.co/edit/?p=preview'>plnkr</a>, <a href='http://jsbin.com/'>JSBin</a>, <a href='http://codepen.io/'>codepen</a>…)</li><li>If you can't understand something in the article – please elaborate.</li></ul></div></div></div></div></div><div id="disqus_thread"></div><script>var disqus_config = function() { if (!this.page) this.page = {}; Object.assign(this.page, {"url":"https:\/\/javascript.info\/async-await","identifier":"\/async-await","title":"Async\/await"}); };</script><script>var disqus_shortname = "javascriptinfo";</script><script>var disqus_enabled = true;</script></main></div><div class="page__sidebar sidebar sidebar_sticky-footer"><button data-sidebar-toggle class="sidebar__toggle"></button><a href="tutorial/map.html" data-action="tutorial-map" data-tooltip="Tutorial map" class="map"></a><div class="sidebar__inner"><div class="sidebar__content"><div class="sidebar__section"><h4 class="sidebar__section-title">Chapter</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a href="async.html" class="sidebar__link">Promises, async/await</a></li></ul></nav></div><div class="sidebar__section"><h4 class="sidebar__section-title">Lesson navigation</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a href="#async-functions" class="sidebar__link">Async functions</a></li><li class="sidebar__navigation-link"><a href="#await" class="sidebar__link">Await</a></li><li class="sidebar__navigation-link"><a href="#error-handling" class="sidebar__link">Error handling</a></li><li class="sidebar__navigation-link"><a href="#summary" class="sidebar__link">Summary</a></li></ul></nav></div><div class="sidebar__section"><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a href="#tasks" class="sidebar__link">Tasks (2)</a></li><li class="sidebar__navigation-link"><a href="#comments" class="sidebar__link">Comments</a></li></ul></nav></div><div class="sidebar__section"><div class="sidebar__section-title">Share</div><a href="https://twitter.com/share?url=https%3A%2F%2Fjavascript.info%2Fasync-await" class="share share_tw sidebar__share"></a><a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fjavascript.info%2Fasync-await" class="share share_fb sidebar__share"></a><a href="https://plus.google.com/share?url=https%3A%2F%2Fjavascript.info%2Fasync-await" class="share share_gp sidebar__share"></a></div><div class="sidebar__section"><a href="https://github.com/iliakan/javascript-tutorial-en/tree/master/6-async/05-async-await/article.md" class="sidebar__link">Edit on Github</a></div></div></div></div></div></div><div class="page-footer"><div class="page-footer__left"><ul class="page-footer__list"><li class="page-footer__item">©&nbsp;2007—2017&nbsp; Ilya Kantor</li><li class="page-footer__item"><a href="about.html#contact-us" class="page-footer__link">contact us</a></li><li class="page-footer__item"><a href="about.html" class="page-footer__link">about the project</a></li><li class="page-footer__item"><a href="https://learn.javascript.ru/" class="page-footer__link">RU</a> / EN</li></ul></div><div class="page-footer__right"><ul class="page-footer__list"><li class="page-footer__item">powered by <a rel="nofollow" href="http://nodejs.org/" class="page-footer__link">node.js</a>&nbsp;&amp;&nbsp;<a rel="nofollow" href="http://github.com/iliakan/javascript-tutorial-en" class="page-footer__link">open source</a></li></ul></div></div></body>
+<!-- Mirrored from javascript.info/async-await by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 30 Nov 2017 15:30:59 GMT -->
+</html>

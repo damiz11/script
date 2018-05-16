@@ -1,0 +1,176 @@
+<!DOCTYPE html><html lang="en">
+<!-- Mirrored from javascript.info/debugging-chrome by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 30 Nov 2017 15:27:26 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><script>window.currentUser = null;</script><title itemprop="name">Debugging in Chrome</title><meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, minimum-scale=1.0"><meta name="apple-mobile-web-app-capable" content="yes"><script>if (window.devicePixelRatio > 1) document.cookie = 'pixelRatio=' + window.devicePixelRatio + ';path=/;expires=Tue, 19 Jan 2038 03:14:07 GMT';</script><link href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700%7COpen+Sans+Condensed:700&amp;subset=latin,latin-ext,cyrillic,cyrillic-ext" rel="stylesheet"><link rel="apple-touch-icon-precomposed" href="img/favicon/apple-touch-icon-precomposed.png"><link rel="canonical" href="debugging-chrome.html"><meta name="msapplication-TileColor" content="#222A2C"><meta name="msapplication-TileImage" content="/img/favicon/tileicon.png"><!-- favicon the rest--><link rel="icon" href="img/favicon/favicon.png"><meta itemprop="image" content="https://javascript.info/img/site_preview_en_512x512.png"><meta property="og:title" content="Debugging in Chrome"><meta property="og:image" content="https://javascript.info/img/site_preview_en_1200x630.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="fb:admins" content="100001562528165"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Debugging in Chrome"><meta name="twitter:site" content="@iliakan"><meta name="twitter:creator" content="@iliakan"><meta name="twitter:image" content="https://javascript.info/img/site_preview_en_512x512.png"><link href="pack/styles.da59a89b28153875791083e4a8c5adb3.css" rel="stylesheet"><link rel="prev" href="code-quality.html"><link rel="next" href="coding-style.html"><script>window.GA_ID = "UA-2056213-15";</script><script>window.YANDEX_METRIKA_ID = 32184394;</script><script>window.GoogleAnalyticsObject="ga",window.ga=function(){window.ga.q.push(arguments)},window.ga.q=[],window.ga.l=Date.now(),ga("create",GA_ID,"auto"),window.currentUser&&ga("set","&uid",currentUser.id),window.addEventListener("error",function(e){var r=(e.filename||e.errorUrl)+": "+(e.lineno||e.errorLine),n=e.stack||e.error&&e.error.stack;ga("send","exception",{exDescription:e.message+" "+r+" "+n,exFatal:!0})});</script><script src="https://www.google-analytics.com/analytics.js" async></script><script>ga('send', 'pageview');</script><script>window.metrika={reachGoal:function(){}},window.yandex_metrika_callbacks=[function(){try{window.metrika=new Ya.Metrika({id:YANDEX_METRIKA_ID,webvisor:!0,clickmap:!0,params:{user:window.currentUser&&window.currentUser.id}}),metrika.trackLinks({delay:150}),window.addEventListener("error",function(r){window.metrika.reachGoal("JSERROR",{src:(r.filename||r.errorUrl)+": "+(r.lineno||r.errorLine),stack:r.stack||r.error&&r.error.stack,message:r.message})})}catch(r){}}];</script><script src="http://mc.yandex.ru/metrika/watch.js" async></script><script>window.RECAPTCHA_ID = "6Lf9NyETAAAAACZlg-a9Us2SxvYbeVC1ROWaWv4O";</script><script src="initc4ca.js?1"></script><script src="pack/head.688d4fe7c4cf54e23737.js" defer></script><style>
+span.devtools {
+  display: inline-block;
+  background-image: url(article/debugging-chrome/toolbarButtonGlyphs.svg);
+  height:16px;
+  width:16px;
+}
+</style>
+<meta property="og:title" content="Debugging in Chrome"><meta property="og:type" content="article"><script src="pack/tutorial.688d4fe7c4cf54e23737.js" defer></script><script src="pack/footer.688d4fe7c4cf54e23737.js" defer></script></head><body class="no-icons"><script>window.fontTest();</script><div class="page-wrapper page-wrapper_sidebar_on"><!--[if lt IE 10]><div style="color:red;text-align:center">Sorry, IE&lt;10 is not supported, please use a newer browser.</div><![endif]--><div class="sitetoolbar sitetoolbar_tutorial"><!-- include ./notification-stripe--><div class="sitetoolbar__content"><div class="sitetoolbar__logo-wrap"><a href="index.html" class="sitetoolbar__link sitetoolbar__link_logo"><img src="img/sitetoolbar__logo_en.svg" width="200" class="sitetoolbar__logo sitetoolbar__logo_normal" alt=""><img src="img/sitetoolbar__logo_small_en.svg" width="70" class="sitetoolbar__logo sitetoolbar__logo_small" alt=""><script>Array.prototype.forEach.call(document.querySelectorAll("img.sitetoolbar__logo"),function(e){var t=document.createElement("object");t.type="image/svg+xml",t.className=e.className,t.style.cssText="left:0;top:0;position:absolute",t.onload=function(){t.onload=null,e.style.visibility="hidden"},t.data=e.src,e.parentNode.insertBefore(t,e)});</script></a></div><div class="sitetoolbar__nav-toggle-wrap"><button type="button" class="sitetoolbar__nav-toggle"></button></div><nav class="sitetoolbar__sections"><ul class="sitetoolbar__sections-list"></ul></nav><div class="sitetoolbar__book-wrap"><a href="ebook.html" class="buy-book-button"><span class="buy-book-button__extra-text">Buy</span>EPUB/PDF</a></div><div class="sitetoolbar__login-wrap"><button data-action-login class="sitetoolbar__login sitetoolbar__login_unready"></button></div><div class="sitetoolbar__search-wrap"><div class="sitetoolbar__search-content"><form method="GET" action="http://javascript.info/search" class="sitetoolbar__search"><button type="button" class="sitetoolbar__search-toggle"></button><div class="sitetoolbar__search-input"><div class="text-input"><input name="query" placeholder="Search on Javascript.info" class="text-input__control" type="text"></div><button type="submit" class="sitetoolbar__find">Search</button></div></form></div></div></div><!-- todo: en variant--><div class="tablet-menu"><div class="tablet-menu__line"><div class="tablet-menu__content"><form action="http://javascript.info/search/" class="tablet-menu-search"><input type="search" name="query" placeholder="Search in the tutorial" required class="tablet-menu-search__input"><button type="submit" name="type" value="articles" class="tablet-menu-search__button">Search</button></form></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><a href="tutorial/map.html" data-action="tutorial-map" class="map"><span class="map__text">Tutorial map</span></a></div></div><!--+e.line--><!--  +e.content--><!--    +b("a").tablet-ebook(href="/ebook")--><!--      +e("span").text Купить учебник--><!--      +e("span").note (EPUB + PDF)--><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="share-icons"><span class="share-icons__title">Share</span><a href="https://twitter.com/share?url=https%3A%2F%2Fjavascript.info%2Fdebugging-chrome" class="share share_tw"></a><a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fjavascript.info%2Fdebugging-chrome" class="share share_fb"></a><a href="https://plus.google.com/share?url=https%3A%2F%2Fjavascript.info%2Fdebugging-chrome" class="share share_gp"></a><a href="https://vkontakte.ru/share.php?url=https%3A%2F%2Fjavascript.info%2Fdebugging-chrome" class="share share_vk"></a></div></div></div></div><progress data-sticky value="20" max="67" data-tooltip="Lesson 20 of 67" class="tutorial-progress"></progress></div><div class="page page_sidebar_on"><script>if(localStorage.noSidebar){document.querySelector(".page").classList.remove("page_sidebar_on");var pageWrapper=document.querySelector(".page-wrapper");pageWrapper&&pageWrapper.classList.remove("page-wrapper_sidebar_on")}setTimeout(function(){document.querySelector(".page").classList.add("page_sidebar-animation-on")},0);</script><div class="page__inner"><main class="main main_width-limit"><header class="main__header"><ol class="breadcrumbs"><li itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemref="breadcrumb-1" class="breadcrumbs__item breadcrumbs__item_home"><a href="index.html" itemprop="url" class="breadcrumbs__link"><span itemprop="title" class="breadcrumbs__hidden-text">Учебник</span></a></li><li id="breadcrumb-1" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemref="breadcrumb-2" itemprop="child" class="breadcrumbs__item"><a href="js.html" itemprop="url" class="breadcrumbs__link"><span itemprop="title">The JavaScript language</span></a></li><li id="breadcrumb-2" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemprop="child" class="breadcrumbs__item"><a href="code-quality.html" itemprop="url" class="breadcrumbs__link"><span itemprop="title">Code quality</span></a></li></ol><h1 class="main__header-title">Debugging in Chrome</h1></header><div class="content"><article itemscope itemtype="http://schema.org/TechArticle"><meta itemprop="name" content="Debugging in Chrome"><div itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="email" content="iliakan@gmail.com"><meta itemprop="name" content="Ilya Kantor"></div><div itemprop="articleBody"><p>Before writing more complex code, let’s talk about debugging.</p>
+<p>All modern browsers and most other environments support “debugging” – a special UI in developer tools that makes finding and fixing errors much easier.</p>
+<p>We’ll be using Chrome here, because it’s probably the most feature-rich in this aspect.</p>
+<cut>
+<h2><a class="main__anchor" name="the-sources-pane" href="#the-sources-pane">The “sources” pane</a></h2><p>Your Chrome version may look a little bit different, but it still should be obvious what’s there.</p>
+<ul>
+<li>Open the <a href="article/debugging-chrome/debugging/index.html">example page</a> in Chrome.</li>
+<li>Turn on developer tools with <kbd class="shortcut">F12</kbd> (Mac: <kbd class="shortcut">Cmd<span class="shortcut__plus">+</span>Opt<span class="shortcut__plus">+</span>I</kbd>).</li>
+<li>Select the <code>sources</code> pane.</li>
+</ul>
+<p>Here’s what you should see if you are doing it for the first time:</p>
+<figure><div class="image" style="width:695px">
+      <div class="image__ratio" style="padding-top:42.302158273381295%"></div>
+      <img src="article/debugging-chrome/chrome-open-sources.png" alt="" width="695" height="294" class="image__image">
+      </div></figure><p>The toggler button <span class="devtools" style="background-position:-168px -76px"></span> opens the tab with files.</p>
+<p>Let’s click it and select <code>index.html</code> and then <code>hello.js</code> in the tree view. Here’s what should show up:</p>
+<figure><div class="image" style="width:697px">
+      <div class="image__ratio" style="padding-top:39.88522238163558%"></div>
+      <img src="article/debugging-chrome/chrome-tabs.png" alt="" width="697" height="278" class="image__image">
+      </div></figure><p>Here we can see three zones:</p>
+<ol>
+<li><strong>Resources zone</strong> lists html, javascript, css and other files including images that are attached to the page. Chrome extensions may appear here too.</li>
+<li><strong>Source zone</strong> shows the source code.</li>
+<li><strong>Information and control zone</strong> is for debugging, we’ll explore it soon.</li>
+</ol>
+<p>Now you could click the same toggler <span class="devtools" style="background-position:-200px -76px"></span> again to hide the resources list and give the code some space.</p>
+<h2><a class="main__anchor" name="console" href="#console">Console</a></h2><p>If we press <code>Esc</code>, then a console opens below. We can type commands there and press <kbd class="shortcut">Enter</kbd> to execute.</p>
+<p>After a statement is executed, its result is shown below.</p>
+<p>For example, here <code>1+2</code> results in <code>3</code>, and <code>hello(&quot;debugger&quot;)</code> returns nothing, so the result is <code>undefined</code>:</p>
+<figure><div class="image" style="width:695px">
+      <div class="image__ratio" style="padding-top:33.669064748201436%"></div>
+      <img src="article/debugging-chrome/chrome-sources-console.png" alt="" width="695" height="234" class="image__image">
+      </div></figure><h2><a class="main__anchor" name="breakpoints" href="#breakpoints">Breakpoints</a></h2><p>Let’s examine what’s going on within the code of the <a href="article/debugging-chrome/debugging/index.html">example page</a>. In <code>hello.js</code>, click at the line number <code>4</code>. Yes, right on the <code>&quot;4&quot;</code> digit, not on the code.</p>
+<p>Congratulations! You’ve set a breakpoint. Please also click on the number for line <code>8</code>.</p>
+<p>It should look like this (blue is where you should click):</p>
+<figure><div class="image" style="width:695px">
+      <div class="image__ratio" style="padding-top:35.10791366906475%"></div>
+      <img src="article/debugging-chrome/chrome-sources-breakpoint.png" alt="" width="695" height="244" class="image__image">
+      </div></figure><p>A <em>breakpoint</em> is a point of code where the debugger will automatically pause the JavaScript execution.</p>
+<p>While the code is paused, we can examine current variables, execute commands in the console etc. In other words, we can debug it.</p>
+<p>We can always find a list of breakpoints in the right pane. That’s useful when we have many breakpoints in various files. It allows to:</p>
+<ul>
+<li>Quickly jump to the breakpoint in the code (by clicking on it in the right pane).</li>
+<li>Temporarily disable the breakpoint by unchecking it.</li>
+<li>Remove the breakpoint by right-clicking and selecting Remove.</li>
+<li>…And so on.</li>
+</ul>
+<div class="important important_smart">
+            <div class="important__header"><span class="important__type">Conditional breakpoints</span></div>
+            <div class="important__content"><p><em>Right click</em> on the line number allows to create a <em>conditional</em> breakpoint. It only triggers when the given expression is truthy.</p>
+<p>That’s handy when we need to stop only for a certain variable value or for certain function parameters.</p>
+</div></div>
+<h2><a class="main__anchor" name="debugger-command" href="#debugger-command">Debugger command</a></h2><p>We can also pause the code by using the <code>debugger</code> command, like this:</p>
+<div data-trusted="1" class="code-example" data-highlight-block="3-3">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function hello(name) {
+  let phrase = `Hello, ${name}!`;
+
+  debugger;  // &lt;-- the debugger stops here
+
+  say(phrase);
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>That’s very convenient when we are in a code editor and don’t want to switch to the browser and look up the script in developer tools to set the breakpoint.</p>
+<h2><a class="main__anchor" name="pause-and-look-around" href="#pause-and-look-around">Pause and look around</a></h2><p>In our example, <code>hello()</code> is called during the page load, so the easiest way to activate the debugger is to reload the page. So let’s press <kbd class="shortcut">F5</kbd> (Windows, Linux) or <kbd class="shortcut">Cmd<span class="shortcut__plus">+</span>R</kbd> (Mac).</p>
+<p>As the breakpoint is set, the execution pauses at the 4th line:</p>
+<figure><div class="image" style="width:696px">
+      <div class="image__ratio" style="padding-top:46.40804597701149%"></div>
+      <img src="article/debugging-chrome/chrome-sources-debugger-pause.png" alt="" width="696" height="323" class="image__image">
+      </div></figure><p>Please open the informational dropdowns to the right (labeled with arrows). They allow you to examine the current code state:</p>
+<ol>
+<li>
+<p><strong><code>Watch</code> – shows current values for any expressions.</strong></p>
+<p>You can click the plus <code>+</code> and input an expression. The debugger will show its value at any moment, automatically recalculating it in the process of execution.</p>
+</li>
+<li>
+<p><strong><code>Call Stack</code> – shows the nested calls chain.</strong></p>
+<p>At the current moment the debugger is inside <code>hello()</code> call, called by a script in <code>index.html</code> (no function there, so it’s called “anonymous”).</p>
+<p>If you click on a stack item, the debugger jumps to the corresponding code, and all its variables can be examined as well.</p>
+</li>
+<li>
+<p><strong><code>Scope</code> – current variables.</strong></p>
+<p><code>Local</code> shows local function variables. You can also see their values highlighted right over the source.</p>
+<p><code>Global</code> has global variables (out of any functions).</p>
+<p>There’s also <code>this</code> keyword there that we didn’t study yet, but we’ll do that soon.</p>
+</li>
+</ol>
+<h2><a class="main__anchor" name="tracing-the-execution" href="#tracing-the-execution">Tracing the execution</a></h2><p>Now it’s time to <em>trace</em> the script.</p>
+<p>There are buttons for it at the top of the right pane. Let’s engage them.</p>
+<dl>
+<dt><span class="devtools" style="background-position:-7px -76px"></span> – continue the execution, hotkey <kbd class="shortcut">F8</kbd>.</dt>
+<dd>
+<p>Resumes the execution. If there are no additional breakpoints, then the execution just continues and the debugger looses the control.</p>
+<p>Here’s what we can see after a click on it:</p>
+<figure><div class="image" style="width:695px">
+      <div class="image__ratio" style="padding-top:27.913669064748202%"></div>
+      <img src="article/debugging-chrome/chrome-sources-debugger-trace-1.png" alt="" width="695" height="194" class="image__image">
+      </div></figure><p>The execution has resumed, reached another breakpoint inside <code>say()</code> and paused there. Take a look at the “Call stack” at the right. It has increased by one more call. We’re inside <code>say()</code> now.</p>
+</dd>
+<dt><span class="devtools" style="background-position:-137px -76px"></span> – make a step (run the next command), but <em>don’t go into the function</em>, hotkey <kbd class="shortcut">F10</kbd>.</dt>
+<dd>
+<p>If we click it now, <code>alert</code> will be shown. The important thing is that <code>alert</code> can be any function, the execution “steps over it”, skipping the function internals.</p>
+</dd>
+<dt><span class="devtools" style="background-position:-72px -76px"></span> – make a step, hotkey <kbd class="shortcut">F11</kbd>.</dt>
+<dd>
+<p>The same as the previous one, but “steps into” nested functions. Clicking this will step through all script actions one by one.</p>
+</dd>
+<dt><span class="devtools" style="background-position:-104px -76px"></span> – continue the execution till the end of the current function, hotkey <kbd class="shortcut">Shift<span class="shortcut__plus">+</span>F11</kbd>.</dt>
+<dd>
+<p>The execution would stop at the very last line of the current function. That’s handy when we accidentally entered a nested call using <span class="devtools" style="background-position:-72px -76px"></span>, but it does not interest us, and we want to continue to its end as soon as possible.</p>
+</dd>
+<dt><span class="devtools" style="background-position:-7px -28px"></span> – enable/disable all breakpoints.</dt>
+<dd>
+<p>That button does not move the execution. Just a mass on/off for breakpoints.</p>
+</dd>
+<dt><span class="devtools" style="background-position:-264px -4px"></span> – enable/disable automatic pause in case of an error.</dt>
+<dd>
+<p>When enabled, and the developer tools is open, a script error automatically pauses the execution. Then we can analyze variables to see what went wrong. So if our script dies with an error, we can open debugger, enable this option and reload the page to see where it dies and what’s the context at that moment.</p>
+</dd>
+</dl>
+<div class="important important_smart">
+            <div class="important__header"><span class="important__type">Continue to here</span></div>
+            <div class="important__content"><p>Right click on a line of code opens the context menu with a great option called “Continue to here”.</p>
+<p>That’s handy when we want to move multiple steps forward, but we’re too lazy to set a breakpoint.</p>
+</div></div>
+<h2><a class="main__anchor" name="logging" href="#logging">Logging</a></h2><p>To output something to console, there’s <code>console.log</code> function.</p>
+<p>For instance, this outputs values from <code>0</code> to <code>4</code> to console:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">// open console to see
+for (let i = 0; i &lt; 5; i++) {
+  console.log(&quot;value&quot;, i);
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Regular users don’t see that output, it is in the console. To see it, either open the Console tab of developer tools or press <kbd class="shortcut">Esc</kbd> while in another tab: that opens the console at the bottom.</p>
+<p>If we have enough logging in our code, then we can see what’s going on from the records, without the debugger.</p>
+<h2><a class="main__anchor" name="summary" href="#summary">Summary</a></h2><p>As we can see, there are three main ways to pause a script:</p>
+<ol>
+<li>A breakpoint.</li>
+<li>The <code>debugger</code> statements.</li>
+<li>An error (if dev tools are open and the button <span class="devtools" style="background-position:-264px -4px"></span> is “on”)</li>
+</ol>
+<p>Then we can examine variables and step on to see where the execution goes wrong.</p>
+<p>There are many more options in developer tools than covered here. The full manual is at <a href="https://developers.google.com/web/tools/chrome-devtools">https://developers.google.com/web/tools/chrome-devtools</a></p>
+<p>The information from this chapter is enough to begin debugging, but later, especially if you do a lot of browser stuff, please go there and look through more advanced capabilities of developer tools.</p>
+<p>Oh, and also you can click at various places of dev tools and just see what’s showing up. That’s probably the fastest route to learn dev tools. Don’t forget about the right click as well!</p>
+</div></article><!--  include /blocks/banner-bottom--><!--if lang == 'en'--><!--  include /blocks/banner-bottom.en--></div><div class="page__nav-wrap"><a href="code-quality.html" data-tooltip="Code quality" class="page__nav page__nav_prev"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Previous lesson</span></a><a href="coding-style.html" data-tooltip="Coding style" class="page__nav page__nav_next"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Next lesson</span></a></div><div class="article-tablet-foot tablet-only"><div class="article-tablet-foot__layout"><div class="share-icons"><span class="share-icons__title">Share</span><a href="https://twitter.com/share?url=https%3A%2F%2Fjavascript.info%2Fdebugging-chrome" class="share share_tw"></a><a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fjavascript.info%2Fdebugging-chrome" class="share share_fb"></a><a href="https://plus.google.com/share?url=https%3A%2F%2Fjavascript.info%2Fdebugging-chrome" class="share share_gp"></a><a href="https://vkontakte.ru/share.php?url=https%3A%2F%2Fjavascript.info%2Fdebugging-chrome" class="share share_vk"></a></div><div class="article-tablet-foot__map"><a href="tutorial/map.html" data-action="tutorial-map" class="map"><span class="map__text">Tutorial map</span></a></div></div></div><div id="comments" class="comments"><div class="comments__header"><h2 class="comments__header-title"><a href="#comments" name="comments">Comments</a></h2><div class="comments__read-before"><span class="comments__read-before-link">read this before commenting…</span><div class="comments__read-before-popup"><div class="comments__read-before-popup-i"><ul><li>You're welcome to post additions, questions to the articles and answers to them.</li><li>To insert a few words of code, use the <code>&lt;code&gt;</code> tag, for several lines – use <code>&lt;pre&gt;</code>, for more than 10 lines – use a sandbox (<a href='http://plnkr.co/edit/?p=preview'>plnkr</a>, <a href='http://jsbin.com/'>JSBin</a>, <a href='http://codepen.io/'>codepen</a>…)</li><li>If you can't understand something in the article – please elaborate.</li></ul></div></div></div></div></div><div id="disqus_thread"></div><script>var disqus_config = function() { if (!this.page) this.page = {}; Object.assign(this.page, {"url":"https:\/\/javascript.info\/debugging-chrome","identifier":"\/debugging-chrome","title":"Debugging in Chrome"}); };</script><script>var disqus_shortname = "javascriptinfo";</script><script>var disqus_enabled = true;</script></main></div><div class="page__sidebar sidebar sidebar_sticky-footer"><button data-sidebar-toggle class="sidebar__toggle"></button><a href="tutorial/map.html" data-action="tutorial-map" data-tooltip="Tutorial map" class="map"></a><div class="sidebar__inner"><div class="sidebar__content"><div class="sidebar__section"><h4 class="sidebar__section-title">Chapter</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a href="code-quality.html" class="sidebar__link">Code quality</a></li></ul></nav></div><div class="sidebar__section"><h4 class="sidebar__section-title">Lesson navigation</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a href="#the-sources-pane" class="sidebar__link">The “sources” pane</a></li><li class="sidebar__navigation-link"><a href="#console" class="sidebar__link">Console</a></li><li class="sidebar__navigation-link"><a href="#breakpoints" class="sidebar__link">Breakpoints</a></li><li class="sidebar__navigation-link"><a href="#debugger-command" class="sidebar__link">Debugger command</a></li><li class="sidebar__navigation-link"><a href="#pause-and-look-around" class="sidebar__link">Pause and look around</a></li><li class="sidebar__navigation-link"><a href="#tracing-the-execution" class="sidebar__link">Tracing the execution</a></li><li class="sidebar__navigation-link"><a href="#logging" class="sidebar__link">Logging</a></li><li class="sidebar__navigation-link"><a href="#summary" class="sidebar__link">Summary</a></li></ul></nav></div><div class="sidebar__section"><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a href="#comments" class="sidebar__link">Comments</a></li></ul></nav></div><div class="sidebar__section"><div class="sidebar__section-title">Share</div><a href="https://twitter.com/share?url=https%3A%2F%2Fjavascript.info%2Fdebugging-chrome" class="share share_tw sidebar__share"></a><a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fjavascript.info%2Fdebugging-chrome" class="share share_fb sidebar__share"></a><a href="https://plus.google.com/share?url=https%3A%2F%2Fjavascript.info%2Fdebugging-chrome" class="share share_gp sidebar__share"></a></div><div class="sidebar__section"><a href="https://github.com/iliakan/javascript-tutorial-en/tree/master/1-js/03-code-quality/01-debugging-chrome/article.md" class="sidebar__link">Edit on Github</a></div></div></div></div></div></div><div class="page-footer"><div class="page-footer__left"><ul class="page-footer__list"><li class="page-footer__item">©&nbsp;2007—2017&nbsp; Ilya Kantor</li><li class="page-footer__item"><a href="about.html#contact-us" class="page-footer__link">contact us</a></li><li class="page-footer__item"><a href="about.html" class="page-footer__link">about the project</a></li><li class="page-footer__item"><a href="https://learn.javascript.ru/" class="page-footer__link">RU</a> / EN</li></ul></div><div class="page-footer__right"><ul class="page-footer__list"><li class="page-footer__item">powered by <a rel="nofollow" href="http://nodejs.org/" class="page-footer__link">node.js</a>&nbsp;&amp;&nbsp;<a rel="nofollow" href="http://github.com/iliakan/javascript-tutorial-en" class="page-footer__link">open source</a></li></ul></div></div></body>
+<!-- Mirrored from javascript.info/debugging-chrome by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 30 Nov 2017 15:27:40 GMT -->
+</html>

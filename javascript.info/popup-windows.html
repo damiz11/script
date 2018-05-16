@@ -1,0 +1,235 @@
+<!DOCTYPE html><html lang="en">
+<!-- Mirrored from javascript.info/popup-windows by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 30 Nov 2017 15:30:43 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><script>window.currentUser = null;</script><title itemprop="name">Popups and window methods</title><meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, minimum-scale=1.0"><meta name="apple-mobile-web-app-capable" content="yes"><script>if (window.devicePixelRatio > 1) document.cookie = 'pixelRatio=' + window.devicePixelRatio + ';path=/;expires=Tue, 19 Jan 2038 03:14:07 GMT';</script><link href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700%7COpen+Sans+Condensed:700&amp;subset=latin,latin-ext,cyrillic,cyrillic-ext" rel="stylesheet"><link rel="apple-touch-icon-precomposed" href="img/favicon/apple-touch-icon-precomposed.png"><link rel="canonical" href="popup-windows.html"><meta name="msapplication-TileColor" content="#222A2C"><meta name="msapplication-TileImage" content="/img/favicon/tileicon.png"><!-- favicon the rest--><link rel="icon" href="img/favicon/favicon.png"><meta itemprop="image" content="https://javascript.info/img/site_preview_en_512x512.png"><meta property="og:title" content="Popups and window methods"><meta property="og:image" content="https://javascript.info/img/site_preview_en_1200x630.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="fb:admins" content="100001562528165"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Popups and window methods"><meta name="twitter:site" content="@iliakan"><meta name="twitter:creator" content="@iliakan"><meta name="twitter:image" content="https://javascript.info/img/site_preview_en_512x512.png"><link href="pack/styles.da59a89b28153875791083e4a8c5adb3.css" rel="stylesheet"><link rel="prev" href="frames-and-windows.html"><link rel="next" href="cross-window-communication.html"><script>window.GA_ID = "UA-2056213-15";</script><script>window.YANDEX_METRIKA_ID = 32184394;</script><script>window.GoogleAnalyticsObject="ga",window.ga=function(){window.ga.q.push(arguments)},window.ga.q=[],window.ga.l=Date.now(),ga("create",GA_ID,"auto"),window.currentUser&&ga("set","&uid",currentUser.id),window.addEventListener("error",function(e){var r=(e.filename||e.errorUrl)+": "+(e.lineno||e.errorLine),n=e.stack||e.error&&e.error.stack;ga("send","exception",{exDescription:e.message+" "+r+" "+n,exFatal:!0})});</script><script src="https://www.google-analytics.com/analytics.js" async></script><script>ga('send', 'pageview');</script><script>window.metrika={reachGoal:function(){}},window.yandex_metrika_callbacks=[function(){try{window.metrika=new Ya.Metrika({id:YANDEX_METRIKA_ID,webvisor:!0,clickmap:!0,params:{user:window.currentUser&&window.currentUser.id}}),metrika.trackLinks({delay:150}),window.addEventListener("error",function(r){window.metrika.reachGoal("JSERROR",{src:(r.filename||r.errorUrl)+": "+(r.lineno||r.errorLine),stack:r.stack||r.error&&r.error.stack,message:r.message})})}catch(r){}}];</script><script src="http://mc.yandex.ru/metrika/watch.js" async></script><script>window.RECAPTCHA_ID = "6Lf9NyETAAAAACZlg-a9Us2SxvYbeVC1ROWaWv4O";</script><script src="initc4ca.js?1"></script><script src="pack/head.688d4fe7c4cf54e23737.js" defer></script><meta property="og:title" content="Popups and window methods"><meta property="og:type" content="article"><script src="pack/tutorial.688d4fe7c4cf54e23737.js" defer></script><script src="pack/footer.688d4fe7c4cf54e23737.js" defer></script></head><body class="no-icons"><script>window.fontTest();</script><div class="page-wrapper page-wrapper_sidebar_on"><!--[if lt IE 10]><div style="color:red;text-align:center">Sorry, IE&lt;10 is not supported, please use a newer browser.</div><![endif]--><div class="sitetoolbar sitetoolbar_tutorial"><!-- include ./notification-stripe--><div class="sitetoolbar__content"><div class="sitetoolbar__logo-wrap"><a href="index.html" class="sitetoolbar__link sitetoolbar__link_logo"><img src="img/sitetoolbar__logo_en.svg" width="200" class="sitetoolbar__logo sitetoolbar__logo_normal" alt=""><img src="img/sitetoolbar__logo_small_en.svg" width="70" class="sitetoolbar__logo sitetoolbar__logo_small" alt=""><script>Array.prototype.forEach.call(document.querySelectorAll("img.sitetoolbar__logo"),function(e){var t=document.createElement("object");t.type="image/svg+xml",t.className=e.className,t.style.cssText="left:0;top:0;position:absolute",t.onload=function(){t.onload=null,e.style.visibility="hidden"},t.data=e.src,e.parentNode.insertBefore(t,e)});</script></a></div><div class="sitetoolbar__nav-toggle-wrap"><button type="button" class="sitetoolbar__nav-toggle"></button></div><nav class="sitetoolbar__sections"><ul class="sitetoolbar__sections-list"></ul></nav><div class="sitetoolbar__book-wrap"><a href="ebook.html" class="buy-book-button"><span class="buy-book-button__extra-text">Buy</span>EPUB/PDF</a></div><div class="sitetoolbar__login-wrap"><button data-action-login class="sitetoolbar__login sitetoolbar__login_unready"></button></div><div class="sitetoolbar__search-wrap"><div class="sitetoolbar__search-content"><form method="GET" action="http://javascript.info/search" class="sitetoolbar__search"><button type="button" class="sitetoolbar__search-toggle"></button><div class="sitetoolbar__search-input"><div class="text-input"><input name="query" placeholder="Search on Javascript.info" class="text-input__control" type="text"></div><button type="submit" class="sitetoolbar__find">Search</button></div></form></div></div></div><!-- todo: en variant--><div class="tablet-menu"><div class="tablet-menu__line"><div class="tablet-menu__content"><form action="http://javascript.info/search/" class="tablet-menu-search"><input type="search" name="query" placeholder="Search in the tutorial" required class="tablet-menu-search__input"><button type="submit" name="type" value="articles" class="tablet-menu-search__button">Search</button></form></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><a href="tutorial/map.html" data-action="tutorial-map" class="map"><span class="map__text">Tutorial map</span></a></div></div><!--+e.line--><!--  +e.content--><!--    +b("a").tablet-ebook(href="/ebook")--><!--      +e("span").text Купить учебник--><!--      +e("span").note (EPUB + PDF)--><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="share-icons"><span class="share-icons__title">Share</span><a href="https://twitter.com/share?url=https%3A%2F%2Fjavascript.info%2Fpopup-windows" class="share share_tw"></a><a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fjavascript.info%2Fpopup-windows" class="share share_fb"></a><a href="https://plus.google.com/share?url=https%3A%2F%2Fjavascript.info%2Fpopup-windows" class="share share_gp"></a><a href="https://vkontakte.ru/share.php?url=https%3A%2F%2Fjavascript.info%2Fpopup-windows" class="share share_vk"></a></div></div></div></div><progress data-sticky value="1" max="3" data-tooltip="Lesson 1 of 3" class="tutorial-progress"></progress></div><div class="page page_sidebar_on"><script>if(localStorage.noSidebar){document.querySelector(".page").classList.remove("page_sidebar_on");var pageWrapper=document.querySelector(".page-wrapper");pageWrapper&&pageWrapper.classList.remove("page-wrapper_sidebar_on")}setTimeout(function(){document.querySelector(".page").classList.add("page_sidebar-animation-on")},0);</script><div class="page__inner"><main class="main main_width-limit"><header class="main__header"><ol class="breadcrumbs"><li itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemref="breadcrumb-1" class="breadcrumbs__item breadcrumbs__item_home"><a href="index.html" itemprop="url" class="breadcrumbs__link"><span itemprop="title" class="breadcrumbs__hidden-text">Учебник</span></a></li><li id="breadcrumb-1" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemprop="child" class="breadcrumbs__item"><a href="frames-and-windows.html" itemprop="url" class="breadcrumbs__link"><span itemprop="title">Frames and windows</span></a></li></ol><h1 class="main__header-title">Popups and window methods</h1></header><div class="content"><article itemscope itemtype="http://schema.org/TechArticle"><meta itemprop="name" content="Popups and window methods"><div itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="email" content="iliakan@gmail.com"><meta itemprop="name" content="Ilya Kantor"></div><div itemprop="articleBody"><p>A popup window is one of the oldest methods to show additional document to user.</p>
+<p>Basically, you just run:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">window.open('http://javascript.info/')</code></pre>
+        </div>
+      </div>
+      
+      </div><p>… And it will open a new window with given URL. Most modern browsers are configured to open new tabs instead of separate windows.</p>
+<cut>
+<h2><a class="main__anchor" name="popup-blocking" href="#popup-blocking">Popup blocking</a></h2><p>Popups exist from really ancient times. The initial idea was to show another content without closing the main window. As of now, there are other ways to do that: JavaScript is able to send requests for server, so popups are rarely used. But sometimes they are still handy.</p>
+<p>In the past evil sites abused popups a lot. A bad page could open tons of popup windows with ads. So now most browsers try to block popups and protect the user.</p>
+<p><strong>Most browsers block popups if they are called outside of user-triggered event handlers like <code>onclick</code>.</strong></p>
+<p>If you think about it, that’s a bit tricky. If the code is directly in an <code>onclick</code> handler, then that’s easy. But what is the popup opens in <code>setTimeout</code>?</p>
+<p>Try this code:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">// open after 3 seconds
+setTimeout(() =&gt; window.open('http://google.com'), 3000);</code></pre>
+        </div>
+      </div>
+      
+      </div><p>The popup opens in Chrome, but gets blocked in Firefox.</p>
+<p>…And this works in Firefox too:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">// open after 1 seconds
+setTimeout(() =&gt; window.open('http://google.com'), 1000);</code></pre>
+        </div>
+      </div>
+      
+      </div><p>The difference is that Firefox treats a timeout of 2000ms or less are acceptable, but after it – removes the “trust”, assuming that now it’s “outside of the user action”. So the first one is blocked, and the second one is not.</p>
+<h2><a class="main__anchor" name="modern-usage" href="#modern-usage">Modern usage</a></h2><p>As of now, we have many methods to load and show data on-page with JavaScript. But there are still situations when a popup works best.</p>
+<p>For instance, many shops use online chats for consulting people. A visitor clicks on the button, it runs <code>window.open</code> and opens the popup with the chat.</p>
+<p>Why a popup is good here, why not in-page?</p>
+<ol>
+<li>A popup is a separate window with its own independent JavaScript environment. So a chat service doesn’t need to integrate with scripts of the main shop site.</li>
+<li>A popup is very simple to attach to a site, little to no overhead. It’s only a small button, without additional scripts.</li>
+<li>A popup may persist even if the user left the page. For example, a consult advices the user to visit the page of a new “Super-Cooler” goodie. The user goes there in the main window without leaving the chat.</li>
+</ol>
+<h2><a class="main__anchor" name="window-open" href="#window-open">window.open</a></h2><p>The syntax to open a popup is: <code>window.open(url, name, params)</code>:</p>
+<dl>
+<dt>url</dt>
+<dd>An URL to load into the new window.</dd>
+<dt>name</dt>
+<dd>A name of the new window. Each window has a <code>window.name</code>, and here we can specify which window to use for the popup. If there’s already a window with such name – the given URL opens in it, otherwise a new window is opened.</dd>
+<dt>params</dt>
+<dd>The configuration string for the new window. It contains settings, delimited by a comma. There must be no spaces in params, for instance: <code>width:200,height=100</code>.</dd>
+</dl>
+<p>Settings for <code>params</code>:</p>
+<ul>
+<li>Position:
+<ul>
+<li><code>left/top</code> (numeric) – coordinates of the window top-left corner on the screen. There is a limitation: a new window cannot be positioned offscreen.</li>
+<li><code>width/height</code> (numeric) – width and height of a new window. There is a limit on minimal width/height, so it’s impossible to create an invisible window.</li>
+</ul>
+</li>
+<li>Window features:
+<ul>
+<li><code>menubar</code> (yes/no) – shows or hides the browser menu on the new window.</li>
+<li><code>toolbar</code> (yes/no) – shows or hides the browser navigation bar (back, forward, reload etc) on the new window.</li>
+<li><code>location</code> (yes/no) – shows or hides the URL field in the new window. FF and IE don’t allow to hide it by default.</li>
+<li><code>status</code> (yes/no) – shows or hides the status bar. Again, most browsers force it to show.</li>
+<li><code>resizable</code> (yes/no) – allows to disable the resize for the new window. Not recommended.</li>
+<li><code>scrollbars</code> (yes/no) – allows to disable the scrollbars for the new window. Not recommended.</li>
+</ul>
+</li>
+</ul>
+<p>There is also a number of less supported browser-specific features, which are usually not used. Check <a href="https://developer.mozilla.org/en/DOM/window.open">window.open in MDN</a> for examples.</p>
+<h2><a class="main__anchor" name="example-a-minimalistic-window" href="#example-a-minimalistic-window">Example: a minimalistic window</a></h2><p>Let’s open a window with minimal set of features just to see which of them browser allows to disable:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let params = `scrollbars=no,resizable=no,status=no,location=no,toolbar=no,menubar=no,
+width=0,height=0,left=-1000,top=-1000`;
+
+open('/', 'test', params);</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Here most “window features” are disabled and window is positioned offscreen. Run it and see what really happens. Most browsers “fix” odd things like zero <code>width/height</code> and offscreen <code>left/top</code>. For instance, Chrome open such a window with full width/height, so that it occupies the full screen.</p>
+<p>Let’s add normal positioning options and reasonable <code>width</code>, <code>height</code>, <code>left</code>, <code>top</code> coordinates:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let params = `scrollbars=no,resizable=no,status=no,location=no,toolbar=no,menubar=no,
+width=600,height=300,left=100,top=100`;
+
+open('/', 'test', params);</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Most browsers show the example above as required.</p>
+<p>Rules for omitted settings:</p>
+<ul>
+<li>If there is no 3rd argument in the <code>open</code> call, or it is empty, then the default window parameters are used.</li>
+<li>If there is a string of params, but some yes/no features are omitted, then the omitted features are disabled, if the browser allows that. So if you specify params, make sure you explicitly set all required features to yes.</li>
+<li>If there is no <code>left/top</code> in params, then the browser tries to open a new window near the last opened window.</li>
+<li>If there is no <code>width/height</code>, then the new window will be the same size as the last opened.</li>
+</ul>
+<h2><a class="main__anchor" name="accessing-a-popup" href="#accessing-a-popup">Accessing a popup</a></h2><p>The <code>open</code> call returns a reference to the new window. It can be used to manipulate it’s properties, change location and even more.</p>
+<p>In the example below, the contents of the new window is modified after loading.</p>
+<div data-trusted="1" class="code-example" data-highlight-block="5-5">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let newWindow = open('/', 'example', 'width=300,height=300')
+newWindow.focus();
+
+newWindow.onload = function() {
+  let html = `&lt;div style=&quot;font-size:30px&quot;&gt;Welcome!&lt;/div&gt;`;
+  newWindow.document.body.insertAdjacentHTML('afterbegin', html);
+};</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Please note that external <code>document</code> content is only accessible for windows from the same origin (the same protocol://domain:port).</p>
+<p>For windows with URLs from another sites, we are able to change the location by assigning <code>newWindow.location=...</code>, but we can’t read the location or access the content. That’s for user safety, so that an evil page can’t open a popup with <code>http://gmail.com</code> and read the data. We’ll talk more about it later.</p>
+<h2><a class="main__anchor" name="accessing-the-opener-window" href="#accessing-the-opener-window">Accessing the opener window</a></h2><p>A popup may access the “opener” window as well. A JavaScript in it may use <code>window.opener</code> to access the window that opened it. It is <code>null</code> for all windows except popups.</p>
+<p>So both the main window and the popup have a reference to each other. They may modify each other freely assuming that they come from the same origin. If that’s not so, then there are still means to communicate, to be covered in the next chapter <a href="cross-window-communication.html">Cross-window communication</a>.</p>
+<h2><a class="main__anchor" name="closing-a-popup" href="#closing-a-popup">Closing a popup</a></h2><p>If we don’t need a popup any more, we can call <code>newWindow.close()</code> on it.</p>
+<p>Technically, the <code>close()</code> method is available for any <code>window</code>, but <code>window.close()</code> is ignored by most browsers if <code>window</code> is not created with <code>window.open()</code>.</p>
+<p>The <code>newWindow.closed</code> is <code>true</code> if the window is closed. That’s useful to check if the popup (or the main window) is still open or not. A user could close it, and our code should take that possibility into account.</p>
+<p>This code loads and then closes the window:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let newWindow = open('/', 'example', 'width=300,height=300')
+newWindow.onload = function() {
+  newWindow.close();
+  alert(newWindow.closed); // true
+};</code></pre>
+        </div>
+      </div>
+      
+      </div><h2><a class="main__anchor" name="focus-blur-on-a-popup" href="#focus-blur-on-a-popup">Focus/blur on a popup</a></h2><p>Theoretically, there are <code>window.focus()</code> and <code>window.blur()</code> methods to focus/unfocus on a window.  Also there are <code>focus/blur</code> events that allow to focus a window and catch the moment when the visitor switches elsewhere.</p>
+<p>In the past evil pages abused those. For instance, look at this code:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">window.onblur = () =&gt; window.focus();</code></pre>
+        </div>
+      </div>
+      
+      </div><p>When a user attempts to switch out of the window (<code>blur</code>), it brings it back to focus. The intention is to “lock” the user within the <code>window</code>.</p>
+<p>So, there are limitations that forbid the code like that. There are many limitations to protect the user from ads and evils pages. They depend on the browser.</p>
+<p>For instance, a mobile browser usually ignores that call completely. Also focusing doesn’t work when a popup opens in a separate tab rather than a new window.</p>
+<p>Still, there are some things that can be done.</p>
+<p>For instance:</p>
+<ul>
+<li>When we open a popup, it’s might be a good idea to run a <code>newWindow.focus()</code> on it. Just in case, for some OS/browser combinations it ensures that the user is in the new window now.</li>
+<li>If we want to track when a visitor actually uses our web-app, we can track <code>window.onfocus/onblur</code>. That allows us to suspend/resume in-page activities, animations etc. But please note that the <code>blur</code> event means that the visitor switched out from the window, but he still may observe it. The window is in the background, but still may be visible.</li>
+</ul>
+<h2><a class="main__anchor" name="summary" href="#summary">Summary</a></h2><ul>
+<li>A popup can be opened by the <code>open(url, name, params)</code> call. It returns the reference to the newly opened window.</li>
+<li>By default, browsers block <code>open</code> calls from the code outside of user actions. Usually a notification appears, so that a user may allow them.</li>
+<li>The popup may access the opener window using the <code>window.opener</code> property, so the two are connected.</li>
+<li>If the main window and the popup come from the same origin, they can freely read and modify each other. Otherwise, they can change location of each other and communicate using messages (to be covered).</li>
+<li>To close the popup: use <code>close()</code> call. Also the user may close them (just like any other windows). The <code>window.closed</code> is <code>true</code> after that.</li>
+<li>Methods <code>focus()</code> and <code>blur()</code> allow to focus/unfocus a window. Sometimes.</li>
+<li>Events <code>focus</code> and <code>blur</code> allow to track switching in and out of the window. But please note that a  window may still be visible even in the background state, after <code>blur</code>.</li>
+</ul>
+<p>Also if we open a popup, a good practice is to notify the user about it. An icon with the opening window can help the visitor to survive the focus shift and keep both windows in mind.</p>
+</div></article><!--  include /blocks/banner-bottom--><!--if lang == 'en'--><!--  include /blocks/banner-bottom.en--></div><div class="page__nav-wrap"><a href="frames-and-windows.html" data-tooltip="Frames and windows" class="page__nav page__nav_prev"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Previous lesson</span></a><a href="cross-window-communication.html" data-tooltip="Cross-window communication" class="page__nav page__nav_next"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Next lesson</span></a></div><div class="article-tablet-foot tablet-only"><div class="article-tablet-foot__layout"><div class="share-icons"><span class="share-icons__title">Share</span><a href="https://twitter.com/share?url=https%3A%2F%2Fjavascript.info%2Fpopup-windows" class="share share_tw"></a><a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fjavascript.info%2Fpopup-windows" class="share share_fb"></a><a href="https://plus.google.com/share?url=https%3A%2F%2Fjavascript.info%2Fpopup-windows" class="share share_gp"></a><a href="https://vkontakte.ru/share.php?url=https%3A%2F%2Fjavascript.info%2Fpopup-windows" class="share share_vk"></a></div><div class="article-tablet-foot__map"><a href="tutorial/map.html" data-action="tutorial-map" class="map"><span class="map__text">Tutorial map</span></a></div></div></div><div id="comments" class="comments"><div class="comments__header"><h2 class="comments__header-title"><a href="#comments" name="comments">Comments</a></h2><div class="comments__read-before"><span class="comments__read-before-link">read this before commenting…</span><div class="comments__read-before-popup"><div class="comments__read-before-popup-i"><ul><li>You're welcome to post additions, questions to the articles and answers to them.</li><li>To insert a few words of code, use the <code>&lt;code&gt;</code> tag, for several lines – use <code>&lt;pre&gt;</code>, for more than 10 lines – use a sandbox (<a href='http://plnkr.co/edit/?p=preview'>plnkr</a>, <a href='http://jsbin.com/'>JSBin</a>, <a href='http://codepen.io/'>codepen</a>…)</li><li>If you can't understand something in the article – please elaborate.</li></ul></div></div></div></div></div><div id="disqus_thread"></div><script>var disqus_config = function() { if (!this.page) this.page = {}; Object.assign(this.page, {"url":"https:\/\/javascript.info\/popup-windows","identifier":"\/popup-windows","title":"Popups and window methods"}); };</script><script>var disqus_shortname = "javascriptinfo";</script><script>var disqus_enabled = true;</script></main></div><div class="page__sidebar sidebar sidebar_sticky-footer"><button data-sidebar-toggle class="sidebar__toggle"></button><a href="tutorial/map.html" data-action="tutorial-map" data-tooltip="Tutorial map" class="map"></a><div class="sidebar__inner"><div class="sidebar__content"><div class="sidebar__section"><h4 class="sidebar__section-title">Chapter</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a href="frames-and-windows.html" class="sidebar__link">Frames and windows</a></li></ul></nav></div><div class="sidebar__section"><h4 class="sidebar__section-title">Lesson navigation</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a href="#popup-blocking" class="sidebar__link">Popup blocking</a></li><li class="sidebar__navigation-link"><a href="#modern-usage" class="sidebar__link">Modern usage</a></li><li class="sidebar__navigation-link"><a href="#window-open" class="sidebar__link">window.open</a></li><li class="sidebar__navigation-link"><a href="#example-a-minimalistic-window" class="sidebar__link">Example: a minimalistic window</a></li><li class="sidebar__navigation-link"><a href="#accessing-a-popup" class="sidebar__link">Accessing a popup</a></li><li class="sidebar__navigation-link"><a href="#accessing-the-opener-window" class="sidebar__link">Accessing the opener window</a></li><li class="sidebar__navigation-link"><a href="#closing-a-popup" class="sidebar__link">Closing a popup</a></li><li class="sidebar__navigation-link"><a href="#focus-blur-on-a-popup" class="sidebar__link">Focus/blur on a popup</a></li><li class="sidebar__navigation-link"><a href="#summary" class="sidebar__link">Summary</a></li></ul></nav></div><div class="sidebar__section"><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a href="#comments" class="sidebar__link">Comments</a></li></ul></nav></div><div class="sidebar__section"><div class="sidebar__section-title">Share</div><a href="https://twitter.com/share?url=https%3A%2F%2Fjavascript.info%2Fpopup-windows" class="share share_tw sidebar__share"></a><a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fjavascript.info%2Fpopup-windows" class="share share_fb sidebar__share"></a><a href="https://plus.google.com/share?url=https%3A%2F%2Fjavascript.info%2Fpopup-windows" class="share share_gp sidebar__share"></a></div><div class="sidebar__section"><a href="https://github.com/iliakan/javascript-tutorial-en/tree/master/4-frames-and-windows/01-popup-windows/article.md" class="sidebar__link">Edit on Github</a></div></div></div></div></div></div><div class="page-footer"><div class="page-footer__left"><ul class="page-footer__list"><li class="page-footer__item">©&nbsp;2007—2017&nbsp; Ilya Kantor</li><li class="page-footer__item"><a href="about.html#contact-us" class="page-footer__link">contact us</a></li><li class="page-footer__item"><a href="about.html" class="page-footer__link">about the project</a></li><li class="page-footer__item"><a href="https://learn.javascript.ru/" class="page-footer__link">RU</a> / EN</li></ul></div><div class="page-footer__right"><ul class="page-footer__list"><li class="page-footer__item">powered by <a rel="nofollow" href="http://nodejs.org/" class="page-footer__link">node.js</a>&nbsp;&amp;&nbsp;<a rel="nofollow" href="http://github.com/iliakan/javascript-tutorial-en" class="page-footer__link">open source</a></li></ul></div></div></body>
+<!-- Mirrored from javascript.info/popup-windows by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 30 Nov 2017 15:30:43 GMT -->
+</html>

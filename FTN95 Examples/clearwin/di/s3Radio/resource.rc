@@ -1,0 +1,143 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "windows.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""windows.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_DIALOG1 DIALOG DISCARDABLE  0, 0, 169, 129
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Radio button and Check boxes"
+FONT 8, "MS Sans Serif"
+BEGIN
+    CONTROL         "Check1",IDC_CHECK1,"Button",BS_AUTOCHECKBOX | WS_GROUP | 
+                    WS_TABSTOP,20,27,43,13
+    CONTROL         "Check2",IDC_CHECK2,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,20,42,43,13
+    CONTROL         "Check3",IDC_CHECK3,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,20,57,43,13
+    CONTROL         "Radio1",IDC_RADIO1,"Button",BS_AUTORADIOBUTTON | 
+                    WS_GROUP,99,27,41,13
+    CONTROL         "Radio2",IDC_RADIO2,"Button",BS_AUTORADIOBUTTON,99,42,41,
+                    13
+    CONTROL         "Radio3",IDC_RADIO3,"Button",BS_AUTORADIOBUTTON,100,57,
+                    41,13
+    PUSHBUTTON      "Cancel",IDCANCEL,43,92,50,14,WS_GROUP
+    DEFPUSHBUTTON   "OK",IDOK,104,92,50,14
+    GROUPBOX        "Group 1",IDC_STATIC,11,13,62,63
+    GROUPBOX        "Group 2",IDC_STATIC,91,13,63,63
+    LTEXT           "%he",IDC_STATIC,11,110,143,13,SS_CENTERIMAGE | 
+                    SS_SUNKEN
+END
+
+IDD_DIALOG2 DIALOGEX 0, 0, 139, 58
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_CLIENTEDGE
+CAPTION "Message"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,71,37,50,14
+    ICON            32516,IDC_STATIC,12,12,20,20
+    LTEXT           "Callback for OK button",IDC_STATIC1,47,13,84,17
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    IDD_DIALOG1, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 162
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 122
+    END
+
+    IDD_DIALOG2, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 132
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 51
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDC_STATIC1             "MS Sans Serif,8,(190,0,0),(0),bold"
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

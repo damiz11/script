@@ -1,0 +1,529 @@
+<!DOCTYPE html><html lang="en">
+<!-- Mirrored from javascript.info/searching-elements-dom by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 30 Nov 2017 15:29:12 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><script>window.currentUser = null;</script><title itemprop="name">Searching: getElement* and querySelector*</title><meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, minimum-scale=1.0"><meta name="apple-mobile-web-app-capable" content="yes"><script>if (window.devicePixelRatio > 1) document.cookie = 'pixelRatio=' + window.devicePixelRatio + ';path=/;expires=Tue, 19 Jan 2038 03:14:07 GMT';</script><link href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700%7COpen+Sans+Condensed:700&amp;subset=latin,latin-ext,cyrillic,cyrillic-ext" rel="stylesheet"><link rel="apple-touch-icon-precomposed" href="img/favicon/apple-touch-icon-precomposed.png"><link rel="canonical" href="searching-elements-dom.html"><meta name="msapplication-TileColor" content="#222A2C"><meta name="msapplication-TileImage" content="/img/favicon/tileicon.png"><!-- favicon the rest--><link rel="icon" href="img/favicon/favicon.png"><meta itemprop="image" content="https://javascript.info/img/site_preview_en_512x512.png"><meta property="og:title" content="Searching: getElement* and querySelector*"><meta property="og:image" content="https://javascript.info/img/site_preview_en_1200x630.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="fb:admins" content="100001562528165"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Searching: getElement* and querySelector*"><meta name="twitter:site" content="@iliakan"><meta name="twitter:creator" content="@iliakan"><meta name="twitter:image" content="https://javascript.info/img/site_preview_en_512x512.png"><link href="pack/styles.da59a89b28153875791083e4a8c5adb3.css" rel="stylesheet"><link rel="prev" href="dom-navigation.html"><link rel="next" href="basic-dom-node-properties.html"><script>window.GA_ID = "UA-2056213-15";</script><script>window.YANDEX_METRIKA_ID = 32184394;</script><script>window.GoogleAnalyticsObject="ga",window.ga=function(){window.ga.q.push(arguments)},window.ga.q=[],window.ga.l=Date.now(),ga("create",GA_ID,"auto"),window.currentUser&&ga("set","&uid",currentUser.id),window.addEventListener("error",function(e){var r=(e.filename||e.errorUrl)+": "+(e.lineno||e.errorLine),n=e.stack||e.error&&e.error.stack;ga("send","exception",{exDescription:e.message+" "+r+" "+n,exFatal:!0})});</script><script src="https://www.google-analytics.com/analytics.js" async></script><script>ga('send', 'pageview');</script><script>window.metrika={reachGoal:function(){}},window.yandex_metrika_callbacks=[function(){try{window.metrika=new Ya.Metrika({id:YANDEX_METRIKA_ID,webvisor:!0,clickmap:!0,params:{user:window.currentUser&&window.currentUser.id}}),metrika.trackLinks({delay:150}),window.addEventListener("error",function(r){window.metrika.reachGoal("JSERROR",{src:(r.filename||r.errorUrl)+": "+(r.lineno||r.errorLine),stack:r.stack||r.error&&r.error.stack,message:r.message})})}catch(r){}}];</script><script src="http://mc.yandex.ru/metrika/watch.js" async></script><script>window.RECAPTCHA_ID = "6Lf9NyETAAAAACZlg-a9Us2SxvYbeVC1ROWaWv4O";</script><script src="initc4ca.js?1"></script><script src="pack/head.688d4fe7c4cf54e23737.js" defer></script><meta property="og:title" content="Searching: getElement* and querySelector*"><meta property="og:type" content="article"><script src="pack/tutorial.688d4fe7c4cf54e23737.js" defer></script><script src="pack/footer.688d4fe7c4cf54e23737.js" defer></script></head><body class="no-icons"><script>window.fontTest();</script><div class="page-wrapper page-wrapper_sidebar_on"><!--[if lt IE 10]><div style="color:red;text-align:center">Sorry, IE&lt;10 is not supported, please use a newer browser.</div><![endif]--><div class="sitetoolbar sitetoolbar_tutorial"><!-- include ./notification-stripe--><div class="sitetoolbar__content"><div class="sitetoolbar__logo-wrap"><a href="index.html" class="sitetoolbar__link sitetoolbar__link_logo"><img src="img/sitetoolbar__logo_en.svg" width="200" class="sitetoolbar__logo sitetoolbar__logo_normal" alt=""><img src="img/sitetoolbar__logo_small_en.svg" width="70" class="sitetoolbar__logo sitetoolbar__logo_small" alt=""><script>Array.prototype.forEach.call(document.querySelectorAll("img.sitetoolbar__logo"),function(e){var t=document.createElement("object");t.type="image/svg+xml",t.className=e.className,t.style.cssText="left:0;top:0;position:absolute",t.onload=function(){t.onload=null,e.style.visibility="hidden"},t.data=e.src,e.parentNode.insertBefore(t,e)});</script></a></div><div class="sitetoolbar__nav-toggle-wrap"><button type="button" class="sitetoolbar__nav-toggle"></button></div><nav class="sitetoolbar__sections"><ul class="sitetoolbar__sections-list"></ul></nav><div class="sitetoolbar__book-wrap"><a href="ebook.html" class="buy-book-button"><span class="buy-book-button__extra-text">Buy</span>EPUB/PDF</a></div><div class="sitetoolbar__login-wrap"><button data-action-login class="sitetoolbar__login sitetoolbar__login_unready"></button></div><div class="sitetoolbar__search-wrap"><div class="sitetoolbar__search-content"><form method="GET" action="http://javascript.info/search" class="sitetoolbar__search"><button type="button" class="sitetoolbar__search-toggle"></button><div class="sitetoolbar__search-input"><div class="text-input"><input name="query" placeholder="Search on Javascript.info" class="text-input__control" type="text"></div><button type="submit" class="sitetoolbar__find">Search</button></div></form></div></div></div><!-- todo: en variant--><div class="tablet-menu"><div class="tablet-menu__line"><div class="tablet-menu__content"><form action="http://javascript.info/search/" class="tablet-menu-search"><input type="search" name="query" placeholder="Search in the tutorial" required class="tablet-menu-search__input"><button type="submit" name="type" value="articles" class="tablet-menu-search__button">Search</button></form></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><a href="tutorial/map.html" data-action="tutorial-map" class="map"><span class="map__text">Tutorial map</span></a></div></div><!--+e.line--><!--  +e.content--><!--    +b("a").tablet-ebook(href="/ebook")--><!--      +e("span").text Купить учебник--><!--      +e("span").note (EPUB + PDF)--><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="share-icons"><span class="share-icons__title">Share</span><a href="https://twitter.com/share?url=https%3A%2F%2Fjavascript.info%2Fsearching-elements-dom" class="share share_tw"></a><a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fjavascript.info%2Fsearching-elements-dom" class="share share_fb"></a><a href="https://plus.google.com/share?url=https%3A%2F%2Fjavascript.info%2Fsearching-elements-dom" class="share share_gp"></a><a href="https://vkontakte.ru/share.php?url=https%3A%2F%2Fjavascript.info%2Fsearching-elements-dom" class="share share_vk"></a></div></div></div></div><progress data-sticky value="4" max="27" data-tooltip="Lesson 4 of 27" class="tutorial-progress"></progress></div><div class="page page_sidebar_on"><script>if(localStorage.noSidebar){document.querySelector(".page").classList.remove("page_sidebar_on");var pageWrapper=document.querySelector(".page-wrapper");pageWrapper&&pageWrapper.classList.remove("page-wrapper_sidebar_on")}setTimeout(function(){document.querySelector(".page").classList.add("page_sidebar-animation-on")},0);</script><div class="page__inner"><main class="main main_width-limit"><header class="main__header"><ol class="breadcrumbs"><li itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemref="breadcrumb-1" class="breadcrumbs__item breadcrumbs__item_home"><a href="index.html" itemprop="url" class="breadcrumbs__link"><span itemprop="title" class="breadcrumbs__hidden-text">Учебник</span></a></li><li id="breadcrumb-1" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemref="breadcrumb-2" itemprop="child" class="breadcrumbs__item"><a href="ui.html" itemprop="url" class="breadcrumbs__link"><span itemprop="title">Browser: Document, Events, Interfaces</span></a></li><li id="breadcrumb-2" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemprop="child" class="breadcrumbs__item"><a href="document.html" itemprop="url" class="breadcrumbs__link"><span itemprop="title">Document</span></a></li></ol><h1 class="main__header-title">Searching: getElement* and querySelector*</h1></header><div class="content"><article itemscope itemtype="http://schema.org/TechArticle"><meta itemprop="name" content="Searching: getElement* and querySelector*"><div itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="email" content="iliakan@gmail.com"><meta itemprop="name" content="Ilya Kantor"></div><div itemprop="articleBody"><p>DOM navigation properties are great when elements are close to each other. What if they are not? How to get an arbitrary element of the page?</p>
+<p>There are additional searching methods for that.
+</p>
+<h2><a class="main__anchor" name="document-getelementbyid-or-just-id" href="#document-getelementbyid-or-just-id">document.getElementById or just id</a></h2><p>If an element has the <code>id</code> attribute, then there’s a global variable by the name from that <code>id</code>.</p>
+<p>We can use it to access the element, like this:</p>
+<div data-trusted="1" class="code-example" data-highlight-inline="0:9-13,1:11-23">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="show" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;div id=&quot;elem&quot;&gt;
+  &lt;div id=&quot;elem-content&quot;&gt;Element&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+  alert(elem); // DOM-element with id=&quot;elem&quot;
+  alert(window.elem); // accessing global variable like this also works
+
+  // for elem-content things are a bit more complex
+  // that has a dash inside, so it can't be a variable name
+  alert(window['elem-content']); // ...but accessible using square brackets [...]
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>That’s unless we declare the same-named variable by our own:</p>
+<div data-trusted="0" class="code-example" data-demo-height="0">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="show" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;div id=&quot;elem&quot;&gt;&lt;/div&gt;
+
+&lt;script&gt;
+  let elem = 5;
+
+  alert(elem); // the variable overrides the element
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>The behavior is described <a href="http://www.whatwg.org/specs/web-apps/current-work/#dom-window-nameditem">in the specification</a>, but it is supported mainly for compatibility. The browser tries to help us by mixing namespaces of JS and DOM. Good for very simple scripts, but there may be name conflicts. Also, when we look in JS and don’t have HTML in view, it’s not obvious where the variable comes from.</p>
+<p>The better alternative is to use a special method <code>document.getElementById(id)</code>.</p>
+<p>For instance:</p>
+<div data-trusted="1" class="code-example" data-highlight-block="5-5">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="show" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;div id=&quot;elem&quot;&gt;
+  &lt;div id=&quot;elem-content&quot;&gt;Element&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+  let elem = document.getElementById('elem');
+
+  elem.style.background = 'red';
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Here in the tutorial we’ll often use <code>id</code> to directly reference an element, but that’s only to keep things short. In real life <code>document.getElementById</code> is the preferred method.</p>
+<div class="important important_smart">
+            <div class="important__header"><span class="important__type">There can be only one</span></div>
+            <div class="important__content"><p>The <code>id</code> must be unique. There can be only one element in the document with the given <code>id</code>.</p>
+<p>If there are multiple elements with the same <code>id</code>, then the behavior of corresponding methods is unpredictable. The browser may return any of them at random. So please stick to the rule and keep <code>id</code> unique.</p>
+</div></div>
+<div class="important important_warn">
+            <div class="important__header"><span class="important__type">Only <code>document.getElementById</code>, not <code>anyNode.getElementById</code></span></div>
+            <div class="important__content"><p>The method <code>getElementById</code> that can be called only on <code>document</code> object. It looks for the given <code>id</code> in the whole document.</p>
+</div></div>
+<h2><a class="main__anchor" name="getelementsby" href="#getelementsby">getElementsBy*</a></h2><p>There are also other methods to look for nodes:</p>
+<ul>
+<li><code>elem.getElementsByTagName(tag)</code> looks for elements with the given tag and returns the collection of them. The <code>tag</code> parameter can also be a star <code>&quot;*&quot;</code> for “any tags”.</li>
+</ul>
+<p>For instance:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">// get all divs in the document
+let divs = document.getElementsByTagName('div');</code></pre>
+        </div>
+      </div>
+      
+      </div><p>This method is callable in the context of any DOM element.</p>
+<p>Let’s find all <code>input</code> inside the table:</p>
+<div data-trusted="1" class="code-example" data-demo-height="50" data-highlight-block="19-19">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="show" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;table id=&quot;table&quot;&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Your age:&lt;/td&gt;
+
+    &lt;td&gt;
+      &lt;label&gt;
+        &lt;input type=&quot;radio&quot; name=&quot;age&quot; value=&quot;young&quot; checked&gt; less than 18
+      &lt;/label&gt;
+      &lt;label&gt;
+        &lt;input type=&quot;radio&quot; name=&quot;age&quot; value=&quot;mature&quot;&gt; from 18 to 50
+      &lt;/label&gt;
+      &lt;label&gt;
+        &lt;input type=&quot;radio&quot; name=&quot;age&quot; value=&quot;senior&quot;&gt; more than 60
+      &lt;/label&gt;
+    &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+
+&lt;script&gt;
+  let inputs = table.getElementsByTagName('input');
+
+  for (let input of inputs) {
+    alert( input.value + ': ' + input.checked );
+  }
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><div class="important important_warn">
+            <div class="important__header"><span class="important__type">Don’t forget the <code>&quot;s&quot;</code> letter!</span></div>
+            <div class="important__content"><p>Novice developers sometimes forget the letter <code>&quot;s&quot;</code>. That is, they try to call <code>getElementByTagName</code> instead of <code>getElement<b>s</b>ByTagName</code>.</p>
+<p>The <code>&quot;s&quot;</code> letter is absent in <code>getElementById</code>, because it returns a single element. But <code>getElementsByTagName</code> returns a collection of elements, so there’s <code>&quot;s&quot;</code> inside.</p>
+</div></div>
+<div class="important important_warn">
+            <div class="important__header"><span class="important__type">It returns a collection, not an element!</span></div>
+            <div class="important__content"><p>Another widespread novice mistake is to write like:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">// doesn't work
+document.getElementsByTagName('input').value = 5;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>That won’t work, because it takes a <em>collection</em> of inputs and assigns the value to it, rather to elements inside it.</p>
+<p>We should either iterate over the collection or get an element by the number, and then assign, like this:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">// should work (if there's an input)
+document.getElementsByTagName('input')[0].value = 5;</code></pre>
+        </div>
+      </div>
+      
+      </div></div></div>
+<p>There are also other rarely used methods of this kind:</p>
+<ul>
+<li><code>elem.getElementsByClassName(className)</code> returns elements that have the given CSS class. Elements may have other classes too.</li>
+<li><code>document.getElementsByName(name)</code> returns elements with the given <code>name</code> attribute, document-wide. Exists for historical reasons, very rarely used, we mention it here only for completeness.</li>
+</ul>
+<p>For instance:</p>
+<div data-trusted="1" class="code-example" data-demo-height="50">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="show" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;form name=&quot;my-form&quot;&gt;
+  &lt;div class=&quot;article&quot;&gt;Article&lt;/div&gt;
+  &lt;div class=&quot;long article&quot;&gt;Long article&lt;/div&gt;
+&lt;/form&gt;
+
+&lt;script&gt;
+  // find by name attribute
+  let form = document.getElementsByName('my-form')[0];
+
+  // find by class inside the form
+  let articles = form.getElementsByClassName('article');
+  alert(articles.length); // 2, found two elements with class &quot;article&quot;
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><h2><a class="main__anchor" name="querySelectorAll" href="#querySelectorAll">querySelectorAll</a></h2><p>Now goes the heavy artillery.</p>
+<p>The call to <code>elem.querySelectorAll(css)</code> returns all elements inside <code>elem</code> matching the given CSS selector. That’s the most often used and powerful method.</p>
+<p>Here we look for all <code>&lt;li&gt;</code> elements that are last children:</p>
+<div data-trusted="1" class="code-example" data-highlight-block="9-9">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="show" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;ul&gt;
+  &lt;li&gt;The&lt;/li&gt;
+  &lt;li&gt;test&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ul&gt;
+  &lt;li&gt;has&lt;/li&gt;
+  &lt;li&gt;passed&lt;/li&gt;
+&lt;/ul&gt;
+&lt;script&gt;
+  let elements = document.querySelectorAll('ul &gt; li:last-child');
+
+  for (let elem of elements) {
+    alert(elem.innerHTML); // &quot;test&quot;, &quot;passed&quot;
+  }
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>This method is indeed powerful, because any CSS selector can be used.</p>
+<div class="important important_smart">
+            <div class="important__header"><span class="important__type">Can use pseudo-classes as well</span></div>
+            <div class="important__content"><p>Pseudo-classes in the CSS selector like <code>:hover</code> and <code>:active</code> are also supported. For instance, <code>document.querySelectorAll(':hover')</code> will return the collection with elements that the pointer is  over now (in nesting order: from the outermost <code>&lt;html&gt;</code> to the most nested one).</p>
+</div></div>
+<h2><a class="main__anchor" name="querySelector" href="#querySelector">querySelector</a></h2><p>The call to <code>elem.querySelector(css)</code> returns the first element for the given CSS selector.</p>
+<p>In other words, the result is the same as <code>elem.querySelectorAll(css)[0]</code>, but the latter is looking for <em>all</em> elements and picking one, while <code>elem.querySelector</code> just looks for one. So it’s faster and shorter to write.</p>
+<h2><a class="main__anchor" name="matches" href="#matches">matches</a></h2><p>Previous methods were searching the DOM.</p>
+<p>The <a href="http://dom.spec.whatwg.org/#dom-element-matches">elem.matches(css)</a> does not look for anything, it merely checks if <code>elem</code> matches the given CSS-selector. It returns <code>true</code> or <code>false</code>.</p>
+<p>The method comes handy when we are iterating over elements (like in array or something) and trying to filter those that interest us.</p>
+<p>For instance:</p>
+<div data-trusted="1" class="code-example" data-highlight-block="6-6">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="show" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;a href=&quot;http://example.com/file.zip&quot;&gt;...&lt;/a&gt;
+&lt;a href=&quot;http://ya.ru&quot;&gt;...&lt;/a&gt;
+
+&lt;script&gt;
+  // can be any collection instead of document.body.children
+  for (let elem of document.body.children) {
+    if (elem.matches('a[href$=&quot;zip&quot;]')) {
+      alert(&quot;The archive reference: &quot; + elem.href );
+    }
+  }
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><h2><a class="main__anchor" name="closest" href="#closest">closest</a></h2><p>All elements that are directly above the given one are called its <em>ancestors</em>.</p>
+<p>In other words, ancestors are: parent, the parent of parent, its parent and so on. The ancestors together form the chain of parents from the element to the top.</p>
+<p>The method <code>elem.closest(css)</code> looks the nearest ancestor that matches the CSS-selector. The <code>elem</code> itself is also included in the search.</p>
+<p>In other words, the method <code>closest</code> goes up from the element and checks each of parents. If it matches the selector, then the search stops, and the ancestor is returned.</p>
+<p>For instance:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="show" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;h1&gt;Contents&lt;/h1&gt;
+
+&lt;div class=&quot;contents&quot;&gt;
+  &lt;ul class=&quot;book&quot;&gt;
+    &lt;li class=&quot;chapter&quot;&gt;Chapter 1&lt;/li&gt;
+    &lt;li class=&quot;chapter&quot;&gt;Chapter 1&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+  let chapter = document.querySelector('.chapter'); // LI
+
+  alert(chapter.closest('.book')); // UL
+  alert(chapter.closest('.contents')); // DIV
+
+  alert(chapter.closest('h1')); // null (because h1 is not an ancestor)
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><h2><a class="main__anchor" name="live-collections" href="#live-collections">Live collections</a></h2><p>All methods <code>&quot;getElementsBy*&quot;</code> return a <em>live</em> collection. Such collections always reflect the current state of the document and “auto-update” when it changes.</p>
+<p>In the example below, there are two scripts.</p>
+<ol>
+<li>The first one creates a reference to the collection of <code>&lt;div&gt;</code>. As of now, it’s length is <code>1</code>.</li>
+<li>The second scripts runs after the browser meets one more <code>&lt;div&gt;</code>, so it’s length is <code>2</code>.</li>
+</ol>
+<div data-trusted="1" class="code-example" data-highlight-block="10-10">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="show" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;div&gt;First div&lt;/div&gt;
+
+&lt;script&gt;
+  let divs = document.getElementsByTagName('div');
+  alert(divs.length); // 1
+&lt;/script&gt;
+
+&lt;div&gt;Second div&lt;/div&gt;
+
+&lt;script&gt;
+  alert(divs.length); // 2
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>In contrast, <code>querySelectorAll</code> returns a <em>static</em> collection. It’s like a fixed array of elements.</p>
+<p>If we use it instead, then both scripts output <code>1</code>:</p>
+<div data-trusted="1" class="code-example" data-highlight-block="10-10">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="show" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;div&gt;First div&lt;/div&gt;
+
+&lt;script&gt;
+  let divs = document.querySelectorAll('div');
+  alert(divs.length); // 1
+&lt;/script&gt;
+
+&lt;div&gt;Second div&lt;/div&gt;
+
+&lt;script&gt;
+  alert(divs.length); // 1
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Now we can easily see the difference. The static collection did not increase after the appearance of a new <code>div</code> in the document.</p>
+<p>Here we used separate scripts to illustrate how the element addition affects the collection, but any DOM manipulations affect them. Soon we’ll see more of them.</p>
+<h2><a class="main__anchor" name="summary" href="#summary">Summary</a></h2><p>There are 6 main methods to search for nodes in DOM:</p>
+<table>
+<thead>
+<tr>
+<td>Method</td>
+<td>Searches by...</td>
+<td>Can call on an element?</td>
+<td>Live?</td>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>getElementById</code></td>
+<td><code>id</code></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td><code>getElementsByName</code></td>
+<td><code>name</code></td>
+<td>-</td>
+<td>✔</td>
+</tr>
+<tr>
+<td><code>getElementsByTagName</code></td>
+<td>tag or <code>'*'</code></td>
+<td>✔</td>
+<td>✔</td>
+</tr>
+<tr>
+<td><code>getElementsByClassName</code></td>
+<td>class</td>
+<td>✔</td>
+<td>✔</td>
+</tr>
+<tr>
+<td><code>querySelector</code></td>
+<td>CSS-selector</td>
+<td>✔</td>
+<td>-</td>
+</tr>
+<tr>
+<td><code>querySelectorAll</code></td>
+<td>CSS-selector</td>
+<td>✔</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<p>Please note that methods <code>getElementById</code> and <code>getElementsByName</code> can only be called in the context of the document: <code>document.getElementById(...)</code>. But not on an element: <code>elem.getElementById(...)</code> would cause an error.</p>
+<p>Other methods can be called on elements too. For instance <code>elem.querySelectorAll(...)</code> will search inside <code>elem</code> (in the DOM subtree).</p>
+<p>Besides that:</p>
+<ul>
+<li>There is <code>elem.matches(css)</code> to check if <code>elem</code> matches the given CSS selector.</li>
+<li>There is <code>elem.closest(css)</code> to look for a nearest ancestor that matches the given CSS-selector. The <code>elem</code> itself is also checked.</li>
+</ul>
+<p>And let’s mention one more method here to check for the child-parent relationship:</p>
+<ul>
+<li><code>elemA.contains(elemB)</code> returns true if <code>elemB</code> is inside <code>elemA</code> (a descendant of <code>elemA</code>) or when <code>elemA==elemB</code>.</li>
+</ul>
+</div></article><div class="tasks"><h2 id="tasks" class="tasks__title"><a href="#tasks" class="main__anchor main__anchor_noicon tasks__title-anchor">Tasks</a></h2><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a href="#search-for-elements" name="search-for-elements" class="main__anchor">Search for elements</a></h3><a href="task/find-elements.html" target="_blank" class="task__open-link"></a></div><div class="task__header-note"><span title="How important is the task, from 1 to 5" class="task__importance">importance: 4</span></div><div class="task__content"><p>Here’s the document with the table and form.</p>
+<p>How to find?</p>
+<ol>
+<li>The table with <code>id=&quot;age-table&quot;</code>.</li>
+<li>All <code>label</code> elements inside that table (there should be 3 of them).</li>
+<li>The first <code>td</code> in that table (with the word “Age”).</li>
+<li>The <code>form</code> with the name <code>search</code>.</li>
+<li>The first <code>input</code> in that form.</li>
+<li>The last <code>input</code> in that form.</li>
+</ol>
+<p>Open the page <a href="task/find-elements/table.html">table.html</a> in a separate window and make use of browser tools for that.</p>
+<button type="button" class="task__solution">solution</button><div class="task__answer"><div class="task__answer-content"><p>There are many ways to do it.</p>
+<p>Here are some of them:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">// 1. The table with `id=&quot;age-table&quot;`.
+let table = document.getElementById('age-table')
+
+// 2. All label elements inside that table
+table.getElementsByTagName('label')
+// or
+document.querySelectorAll('#age-table label')
+
+// 3. The first td in that table (with the word &quot;Age&quot;).
+table.rows[0].cells[0]
+// or
+table.getElementsByTagName('td')[0]
+// or
+table.querySelector('td')
+
+// 4. The form with the name &quot;search&quot;.
+// assuming there's only one element with name=&quot;search&quot;
+let form = document.getElementsByName('search')[0]
+// or, form specifically
+document.querySelector('form[name=&quot;search&quot;]')
+
+// 5. The first input in that form.
+form.getElementsByTagName('input')
+// or
+form.querySelector('input')
+
+// 6. The last input in that form.
+// there's no direct query for that
+let inputs = form.querySelectorAll('input') // search all
+inputs[inputs.length-1] // take last</code></pre>
+        </div>
+      </div>
+      
+      </div></div><button type="button" title="close" class="close-button task__answer-close"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a href="#count-descendants" name="count-descendants" class="main__anchor">Count descendants</a></h3><a href="task/tree-info.html" target="_blank" class="task__open-link"></a></div><div class="task__header-note"><span title="How important is the task, from 1 to 5" class="task__importance">importance: 5</span></div><div class="task__content"><p>There’s a tree structured as nested <code>ul/li</code>.</p>
+<p>Write the code that for each <code>&lt;li&gt;</code> shows:</p>
+<ol>
+<li>What’s the text inside it (without the subtree)</li>
+<li>The number of nested <code>&lt;li&gt;</code> – all descendants, including the deeply nested ones.</li>
+</ol>
+<p><a href="https://en.js.cx/task/tree-info/solution/" target="blank">Demo in new window</a></p><p><a href="http://plnkr.co/edit/e102zJMEEkV4e6LnCy2D?p=preview" target="_blank" data-plunk-id="e102zJMEEkV4e6LnCy2D">Open the sandbox for the task.</a></p><button type="button" class="task__solution">solution</button><div class="task__answer"><div class="task__answer-content"><p>Let’s make a loop over <code>&lt;li&gt;</code>:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">for (let li of document.querySelector('li')) {
+  ...
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>In the loop we need to get the text inside every <code>li</code>. We can read it directly from the first child node, that is the text node:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">for (let li of document.querySelector('li')) {
+  let title = li.firstChild.data;
+
+  // title is the text in &lt;li&gt; before any other nodes
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Then we can get the number of descendants <code>li.getElementsByTagName('li')</code>.</p>
+<p><a href="http://plnkr.co/edit/qtLIEjp259SCjpMqS5ZU?p=preview" target="_blank" data-plunk-id="qtLIEjp259SCjpMqS5ZU">Open the solution in the sandbox.</a></p></div><button type="button" title="close" class="close-button task__answer-close"></button></div></div></div></div></div><!--  include /blocks/banner-bottom--><!--if lang == 'en'--><!--  include /blocks/banner-bottom.en--></div><div class="page__nav-wrap"><a href="dom-navigation.html" data-tooltip="Walking the DOM" class="page__nav page__nav_prev"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Previous lesson</span></a><a href="basic-dom-node-properties.html" data-tooltip="Node properties: type, tag and contents" class="page__nav page__nav_next"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Next lesson</span></a></div><div class="article-tablet-foot tablet-only"><div class="article-tablet-foot__layout"><div class="share-icons"><span class="share-icons__title">Share</span><a href="https://twitter.com/share?url=https%3A%2F%2Fjavascript.info%2Fsearching-elements-dom" class="share share_tw"></a><a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fjavascript.info%2Fsearching-elements-dom" class="share share_fb"></a><a href="https://plus.google.com/share?url=https%3A%2F%2Fjavascript.info%2Fsearching-elements-dom" class="share share_gp"></a><a href="https://vkontakte.ru/share.php?url=https%3A%2F%2Fjavascript.info%2Fsearching-elements-dom" class="share share_vk"></a></div><div class="article-tablet-foot__map"><a href="tutorial/map.html" data-action="tutorial-map" class="map"><span class="map__text">Tutorial map</span></a></div></div></div><div id="comments" class="comments"><div class="comments__header"><h2 class="comments__header-title"><a href="#comments" name="comments">Comments</a></h2><div class="comments__read-before"><span class="comments__read-before-link">read this before commenting…</span><div class="comments__read-before-popup"><div class="comments__read-before-popup-i"><ul><li>You're welcome to post additions, questions to the articles and answers to them.</li><li>To insert a few words of code, use the <code>&lt;code&gt;</code> tag, for several lines – use <code>&lt;pre&gt;</code>, for more than 10 lines – use a sandbox (<a href='http://plnkr.co/edit/?p=preview'>plnkr</a>, <a href='http://jsbin.com/'>JSBin</a>, <a href='http://codepen.io/'>codepen</a>…)</li><li>If you can't understand something in the article – please elaborate.</li></ul></div></div></div></div></div><div id="disqus_thread"></div><script>var disqus_config = function() { if (!this.page) this.page = {}; Object.assign(this.page, {"url":"https:\/\/javascript.info\/searching-elements-dom","identifier":"\/searching-elements-dom","title":"Searching: getElement* and querySelector*"}); };</script><script>var disqus_shortname = "javascriptinfo";</script><script>var disqus_enabled = true;</script></main></div><div class="page__sidebar sidebar sidebar_sticky-footer"><button data-sidebar-toggle class="sidebar__toggle"></button><a href="tutorial/map.html" data-action="tutorial-map" data-tooltip="Tutorial map" class="map"></a><div class="sidebar__inner"><div class="sidebar__content"><div class="sidebar__section"><h4 class="sidebar__section-title">Chapter</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a href="document.html" class="sidebar__link">Document</a></li></ul></nav></div><div class="sidebar__section"><h4 class="sidebar__section-title">Lesson navigation</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a href="#document-getelementbyid-or-just-id" class="sidebar__link">document.getElementById or just id</a></li><li class="sidebar__navigation-link"><a href="#getelementsby" class="sidebar__link">getElementsBy*</a></li><li class="sidebar__navigation-link"><a href="#querySelectorAll" class="sidebar__link">querySelectorAll</a></li><li class="sidebar__navigation-link"><a href="#querySelector" class="sidebar__link">querySelector</a></li><li class="sidebar__navigation-link"><a href="#matches" class="sidebar__link">matches</a></li><li class="sidebar__navigation-link"><a href="#closest" class="sidebar__link">closest</a></li><li class="sidebar__navigation-link"><a href="#live-collections" class="sidebar__link">Live collections</a></li><li class="sidebar__navigation-link"><a href="#summary" class="sidebar__link">Summary</a></li></ul></nav></div><div class="sidebar__section"><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a href="#tasks" class="sidebar__link">Tasks (2)</a></li><li class="sidebar__navigation-link"><a href="#comments" class="sidebar__link">Comments</a></li></ul></nav></div><div class="sidebar__section"><div class="sidebar__section-title">Share</div><a href="https://twitter.com/share?url=https%3A%2F%2Fjavascript.info%2Fsearching-elements-dom" class="share share_tw sidebar__share"></a><a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fjavascript.info%2Fsearching-elements-dom" class="share share_fb sidebar__share"></a><a href="https://plus.google.com/share?url=https%3A%2F%2Fjavascript.info%2Fsearching-elements-dom" class="share share_gp sidebar__share"></a></div><div class="sidebar__section"><a href="https://github.com/iliakan/javascript-tutorial-en/tree/master/2-ui/1-document/04-searching-elements-dom/article.md" class="sidebar__link">Edit on Github</a></div></div></div></div></div></div><div class="page-footer"><div class="page-footer__left"><ul class="page-footer__list"><li class="page-footer__item">©&nbsp;2007—2017&nbsp; Ilya Kantor</li><li class="page-footer__item"><a href="about.html#contact-us" class="page-footer__link">contact us</a></li><li class="page-footer__item"><a href="about.html" class="page-footer__link">about the project</a></li><li class="page-footer__item"><a href="https://learn.javascript.ru/" class="page-footer__link">RU</a> / EN</li></ul></div><div class="page-footer__right"><ul class="page-footer__list"><li class="page-footer__item">powered by <a rel="nofollow" href="http://nodejs.org/" class="page-footer__link">node.js</a>&nbsp;&amp;&nbsp;<a rel="nofollow" href="http://github.com/iliakan/javascript-tutorial-en" class="page-footer__link">open source</a></li></ul></div></div></body>
+<!-- Mirrored from javascript.info/searching-elements-dom by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 30 Nov 2017 15:29:13 GMT -->
+</html>

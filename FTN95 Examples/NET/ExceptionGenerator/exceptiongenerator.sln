@@ -1,0 +1,31 @@
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{9AE66E24-D2D9-4FF2-AB7F-CE79F20F2B8B}") = "ExceptionGenerator", "ExceptionGenerator.ftn95p", "{74B56DC0-C0D0-47F9-93FF-7ACC68CE217E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		CheckMate|.NET = CheckMate|.NET
+		CheckMate|Win32 = CheckMate|Win32
+		Debug|.NET = Debug|.NET
+		Debug|Win32 = Debug|Win32
+		Release|.NET = Release|.NET
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{74B56DC0-C0D0-47F9-93FF-7ACC68CE217E}.CheckMate|.NET.ActiveCfg = CheckMate|Win32
+		{74B56DC0-C0D0-47F9-93FF-7ACC68CE217E}.CheckMate|.NET.Build.0 = CheckMate|Win32
+		{74B56DC0-C0D0-47F9-93FF-7ACC68CE217E}.CheckMate|Win32.ActiveCfg = CheckMate|Win32
+		{74B56DC0-C0D0-47F9-93FF-7ACC68CE217E}.CheckMate|Win32.Build.0 = CheckMate|Win32
+		{74B56DC0-C0D0-47F9-93FF-7ACC68CE217E}.Debug|.NET.ActiveCfg = Debug|.NET
+		{74B56DC0-C0D0-47F9-93FF-7ACC68CE217E}.Debug|.NET.Build.0 = Debug|.NET
+		{74B56DC0-C0D0-47F9-93FF-7ACC68CE217E}.Debug|Win32.ActiveCfg = Debug|Win32
+		{74B56DC0-C0D0-47F9-93FF-7ACC68CE217E}.Debug|Win32.Build.0 = Debug|Win32
+		{74B56DC0-C0D0-47F9-93FF-7ACC68CE217E}.Release|.NET.ActiveCfg = Release|Win32
+		{74B56DC0-C0D0-47F9-93FF-7ACC68CE217E}.Release|.NET.Build.0 = Release|Win32
+		{74B56DC0-C0D0-47F9-93FF-7ACC68CE217E}.Release|Win32.ActiveCfg = Release|Win32
+		{74B56DC0-C0D0-47F9-93FF-7ACC68CE217E}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

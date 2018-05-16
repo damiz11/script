@@ -1,0 +1,59 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{FDDF9C0B-7F1F-454F-BCAE-4B4E5ACCE74A}") = "Mandelbrot", "Mandelbrot.ftn95p", "{DE95733F-4FD9-4C53-BC83-3EC11690185C}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "VBresources1", "..\VBresources1\VBresources1.vbproj", "{DA30B06E-C7E8-42E9-8ED2-1DD49C693693}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		CheckMate .NET = CheckMate .NET
+		CheckMate Win32 = CheckMate Win32
+		Debug = Debug
+		Debug .NET = Debug .NET
+		Debug Win32 = Debug Win32
+		Release = Release
+		Release .NET = Release .NET
+		Release Win32 = Release Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{DE95733F-4FD9-4C53-BC83-3EC11690185C}.CheckMate .NET.ActiveCfg = CheckMate|.NET
+		{DE95733F-4FD9-4C53-BC83-3EC11690185C}.CheckMate .NET.Build.0 = CheckMate|.NET
+		{DE95733F-4FD9-4C53-BC83-3EC11690185C}.CheckMate Win32.ActiveCfg = CheckMate|Win32
+		{DE95733F-4FD9-4C53-BC83-3EC11690185C}.CheckMate Win32.Build.0 = CheckMate|Win32
+		{DE95733F-4FD9-4C53-BC83-3EC11690185C}.Debug.ActiveCfg = Debug|Win32
+		{DE95733F-4FD9-4C53-BC83-3EC11690185C}.Debug.Build.0 = Debug|Win32
+		{DE95733F-4FD9-4C53-BC83-3EC11690185C}.Debug .NET.ActiveCfg = Debug|.NET
+		{DE95733F-4FD9-4C53-BC83-3EC11690185C}.Debug .NET.Build.0 = Debug|.NET
+		{DE95733F-4FD9-4C53-BC83-3EC11690185C}.Debug Win32.ActiveCfg = Debug|Win32
+		{DE95733F-4FD9-4C53-BC83-3EC11690185C}.Debug Win32.Build.0 = Debug|Win32
+		{DE95733F-4FD9-4C53-BC83-3EC11690185C}.Release.ActiveCfg = Release|Win32
+		{DE95733F-4FD9-4C53-BC83-3EC11690185C}.Release.Build.0 = Release|Win32
+		{DE95733F-4FD9-4C53-BC83-3EC11690185C}.Release .NET.ActiveCfg = Release|.NET
+		{DE95733F-4FD9-4C53-BC83-3EC11690185C}.Release .NET.Build.0 = Release|.NET
+		{DE95733F-4FD9-4C53-BC83-3EC11690185C}.Release Win32.ActiveCfg = Release|Win32
+		{DE95733F-4FD9-4C53-BC83-3EC11690185C}.Release Win32.Build.0 = Release|Win32
+		{DA30B06E-C7E8-42E9-8ED2-1DD49C693693}.CheckMate .NET.ActiveCfg = Release|.NET
+		{DA30B06E-C7E8-42E9-8ED2-1DD49C693693}.CheckMate .NET.Build.0 = Release|.NET
+		{DA30B06E-C7E8-42E9-8ED2-1DD49C693693}.CheckMate Win32.ActiveCfg = Release|.NET
+		{DA30B06E-C7E8-42E9-8ED2-1DD49C693693}.CheckMate Win32.Build.0 = Release|.NET
+		{DA30B06E-C7E8-42E9-8ED2-1DD49C693693}.Debug.ActiveCfg = Debug|.NET
+		{DA30B06E-C7E8-42E9-8ED2-1DD49C693693}.Debug.Build.0 = Debug|.NET
+		{DA30B06E-C7E8-42E9-8ED2-1DD49C693693}.Debug .NET.ActiveCfg = Debug|.NET
+		{DA30B06E-C7E8-42E9-8ED2-1DD49C693693}.Debug .NET.Build.0 = Debug|.NET
+		{DA30B06E-C7E8-42E9-8ED2-1DD49C693693}.Debug Win32.ActiveCfg = Debug|.NET
+		{DA30B06E-C7E8-42E9-8ED2-1DD49C693693}.Debug Win32.Build.0 = Debug|.NET
+		{DA30B06E-C7E8-42E9-8ED2-1DD49C693693}.Release.ActiveCfg = Release|.NET
+		{DA30B06E-C7E8-42E9-8ED2-1DD49C693693}.Release.Build.0 = Release|.NET
+		{DA30B06E-C7E8-42E9-8ED2-1DD49C693693}.Release .NET.ActiveCfg = Release|.NET
+		{DA30B06E-C7E8-42E9-8ED2-1DD49C693693}.Release .NET.Build.0 = Release|.NET
+		{DA30B06E-C7E8-42E9-8ED2-1DD49C693693}.Release Win32.ActiveCfg = Release|.NET
+		{DA30B06E-C7E8-42E9-8ED2-1DD49C693693}.Release Win32.Build.0 = Release|.NET
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

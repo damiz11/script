@@ -1,0 +1,347 @@
+<!DOCTYPE html><html lang="en">
+<!-- Mirrored from javascript.info/class-patterns by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 30 Nov 2017 15:28:40 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><script>window.currentUser = null;</script><title itemprop="name">Class patterns</title><meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, minimum-scale=1.0"><meta name="apple-mobile-web-app-capable" content="yes"><script>if (window.devicePixelRatio > 1) document.cookie = 'pixelRatio=' + window.devicePixelRatio + ';path=/;expires=Tue, 19 Jan 2038 03:14:07 GMT';</script><link href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700%7COpen+Sans+Condensed:700&amp;subset=latin,latin-ext,cyrillic,cyrillic-ext" rel="stylesheet"><link rel="apple-touch-icon-precomposed" href="img/favicon/apple-touch-icon-precomposed.png"><link rel="canonical" href="class-patterns.html"><meta name="msapplication-TileColor" content="#222A2C"><meta name="msapplication-TileImage" content="/img/favicon/tileicon.png"><!-- favicon the rest--><link rel="icon" href="img/favicon/favicon.png"><meta itemprop="image" content="https://javascript.info/img/site_preview_en_512x512.png"><meta property="og:title" content="Class patterns"><meta property="og:image" content="https://javascript.info/img/site_preview_en_1200x630.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="fb:admins" content="100001562528165"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Class patterns"><meta name="twitter:site" content="@iliakan"><meta name="twitter:creator" content="@iliakan"><meta name="twitter:image" content="https://javascript.info/img/site_preview_en_512x512.png"><link href="pack/styles.da59a89b28153875791083e4a8c5adb3.css" rel="stylesheet"><link rel="prev" href="prototype-methods.html"><link rel="next" href="class.html"><script>window.GA_ID = "UA-2056213-15";</script><script>window.YANDEX_METRIKA_ID = 32184394;</script><script>window.GoogleAnalyticsObject="ga",window.ga=function(){window.ga.q.push(arguments)},window.ga.q=[],window.ga.l=Date.now(),ga("create",GA_ID,"auto"),window.currentUser&&ga("set","&uid",currentUser.id),window.addEventListener("error",function(e){var r=(e.filename||e.errorUrl)+": "+(e.lineno||e.errorLine),n=e.stack||e.error&&e.error.stack;ga("send","exception",{exDescription:e.message+" "+r+" "+n,exFatal:!0})});</script><script src="https://www.google-analytics.com/analytics.js" async></script><script>ga('send', 'pageview');</script><script>window.metrika={reachGoal:function(){}},window.yandex_metrika_callbacks=[function(){try{window.metrika=new Ya.Metrika({id:YANDEX_METRIKA_ID,webvisor:!0,clickmap:!0,params:{user:window.currentUser&&window.currentUser.id}}),metrika.trackLinks({delay:150}),window.addEventListener("error",function(r){window.metrika.reachGoal("JSERROR",{src:(r.filename||r.errorUrl)+": "+(r.lineno||r.errorLine),stack:r.stack||r.error&&r.error.stack,message:r.message})})}catch(r){}}];</script><script src="http://mc.yandex.ru/metrika/watch.js" async></script><script>window.RECAPTCHA_ID = "6Lf9NyETAAAAACZlg-a9Us2SxvYbeVC1ROWaWv4O";</script><script src="initc4ca.js?1"></script><script src="pack/head.688d4fe7c4cf54e23737.js" defer></script><meta property="og:title" content="Class patterns"><meta property="og:type" content="article"><script src="pack/tutorial.688d4fe7c4cf54e23737.js" defer></script><script src="pack/footer.688d4fe7c4cf54e23737.js" defer></script></head><body class="no-icons"><script>window.fontTest();</script><div class="page-wrapper page-wrapper_sidebar_on"><!--[if lt IE 10]><div style="color:red;text-align:center">Sorry, IE&lt;10 is not supported, please use a newer browser.</div><![endif]--><div class="sitetoolbar sitetoolbar_tutorial"><!-- include ./notification-stripe--><div class="sitetoolbar__content"><div class="sitetoolbar__logo-wrap"><a href="index.html" class="sitetoolbar__link sitetoolbar__link_logo"><img src="img/sitetoolbar__logo_en.svg" width="200" class="sitetoolbar__logo sitetoolbar__logo_normal" alt=""><img src="img/sitetoolbar__logo_small_en.svg" width="70" class="sitetoolbar__logo sitetoolbar__logo_small" alt=""><script>Array.prototype.forEach.call(document.querySelectorAll("img.sitetoolbar__logo"),function(e){var t=document.createElement("object");t.type="image/svg+xml",t.className=e.className,t.style.cssText="left:0;top:0;position:absolute",t.onload=function(){t.onload=null,e.style.visibility="hidden"},t.data=e.src,e.parentNode.insertBefore(t,e)});</script></a></div><div class="sitetoolbar__nav-toggle-wrap"><button type="button" class="sitetoolbar__nav-toggle"></button></div><nav class="sitetoolbar__sections"><ul class="sitetoolbar__sections-list"></ul></nav><div class="sitetoolbar__book-wrap"><a href="ebook.html" class="buy-book-button"><span class="buy-book-button__extra-text">Buy</span>EPUB/PDF</a></div><div class="sitetoolbar__login-wrap"><button data-action-login class="sitetoolbar__login sitetoolbar__login_unready"></button></div><div class="sitetoolbar__search-wrap"><div class="sitetoolbar__search-content"><form method="GET" action="http://javascript.info/search" class="sitetoolbar__search"><button type="button" class="sitetoolbar__search-toggle"></button><div class="sitetoolbar__search-input"><div class="text-input"><input name="query" placeholder="Search on Javascript.info" class="text-input__control" type="text"></div><button type="submit" class="sitetoolbar__find">Search</button></div></form></div></div></div><!-- todo: en variant--><div class="tablet-menu"><div class="tablet-menu__line"><div class="tablet-menu__content"><form action="http://javascript.info/search/" class="tablet-menu-search"><input type="search" name="query" placeholder="Search in the tutorial" required class="tablet-menu-search__input"><button type="submit" name="type" value="articles" class="tablet-menu-search__button">Search</button></form></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><a href="tutorial/map.html" data-action="tutorial-map" class="map"><span class="map__text">Tutorial map</span></a></div></div><!--+e.line--><!--  +e.content--><!--    +b("a").tablet-ebook(href="/ebook")--><!--      +e("span").text Купить учебник--><!--      +e("span").note (EPUB + PDF)--><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="share-icons"><span class="share-icons__title">Share</span><a href="https://twitter.com/share?url=https%3A%2F%2Fjavascript.info%2Fclass-patterns" class="share share_tw"></a><a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fjavascript.info%2Fclass-patterns" class="share share_fb"></a><a href="https://plus.google.com/share?url=https%3A%2F%2Fjavascript.info%2Fclass-patterns" class="share share_gp"></a><a href="https://vkontakte.ru/share.php?url=https%3A%2F%2Fjavascript.info%2Fclass-patterns" class="share share_vk"></a></div></div></div></div><progress data-sticky value="61" max="67" data-tooltip="Lesson 61 of 67" class="tutorial-progress"></progress></div><div class="page page_sidebar_on"><script>if(localStorage.noSidebar){document.querySelector(".page").classList.remove("page_sidebar_on");var pageWrapper=document.querySelector(".page-wrapper");pageWrapper&&pageWrapper.classList.remove("page-wrapper_sidebar_on")}setTimeout(function(){document.querySelector(".page").classList.add("page_sidebar-animation-on")},0);</script><div class="page__inner"><main class="main main_width-limit"><header class="main__header"><ol class="breadcrumbs"><li itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemref="breadcrumb-1" class="breadcrumbs__item breadcrumbs__item_home"><a href="index.html" itemprop="url" class="breadcrumbs__link"><span itemprop="title" class="breadcrumbs__hidden-text">Учебник</span></a></li><li id="breadcrumb-1" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemref="breadcrumb-2" itemprop="child" class="breadcrumbs__item"><a href="js.html" itemprop="url" class="breadcrumbs__link"><span itemprop="title">The JavaScript language</span></a></li><li id="breadcrumb-2" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemprop="child" class="breadcrumbs__item"><a href="object-oriented-programming.html" itemprop="url" class="breadcrumbs__link"><span itemprop="title">Objects, classes, inheritance</span></a></li></ol><h1 class="main__header-title">Class patterns</h1></header><div class="content"><article itemscope itemtype="http://schema.org/TechArticle"><meta itemprop="name" content="Class patterns"><div itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="email" content="iliakan@gmail.com"><meta itemprop="name" content="Ilya Kantor"></div><div itemprop="articleBody"><blockquote class="quote"><div class="quote__i"><div class="quote__text"><p>In object-oriented programming, a <em>class</em> is an extensible program-code-template for creating objects, providing initial values for state (member variables) and implementations of behavior (member functions or methods).</p>
+</div></div><footer class="quote__footer">
+        <cite class="quote__author">Wikipedia</cite>
+       </footer></blockquote><p>There’s a special syntax construct and a keyword <code>class</code> in JavaScript. But before studying it, we should consider that the term “class” comes from the theory of object-oriented programming. The definition is cited above, and it’s language-independent.</p>
+<p>In JavaScript there are several well-known programming patterns to make classes even without using the <code>class</code> keyword. And here we’ll talk about them first.</p>
+<p>The <code>class</code> construct will be described in the next chapter, but in JavaScript it’s a “syntax sugar” and an extension of one of the patterns that we’ll study here.</p>
+<cut>
+<h2><a class="main__anchor" name="functional-class-pattern" href="#functional-class-pattern">Functional class pattern</a></h2><p>The constructor function below can be considered a “class” according to the definition:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function User(name) {
+  this.sayHi = function() {
+    alert(name);
+  };
+}
+
+let user = new User(&quot;John&quot;);
+user.sayHi(); // John</code></pre>
+        </div>
+      </div>
+      
+      </div><p>It follows all parts of the definition:</p>
+<ol>
+<li>It is a “program-code-template” for creating objects (callable with <code>new</code>).</li>
+<li>It provides initial values for the state (<code>name</code> from parameters).</li>
+<li>It provides methods (<code>sayHi</code>).</li>
+</ol>
+<p>This is called <em>functional class pattern</em>.</p>
+<p>In the functional class pattern, local variables and nested functions inside <code>User</code>, that are not assigned to <code>this</code>, are visible from inside, but not accessible by the outer code.</p>
+<p>So we can easily add internal functions and variables, like <code>calcAge()</code> here:</p>
+<div data-trusted="1" class="code-example" data-highlight-block="1-4">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function User(name, birthday) {
+  // only visible from other methods inside User
+  function calcAge() {
+    return new Date().getFullYear() - birthday.getFullYear();
+  }
+
+  this.sayHi = function() {
+    alert(`${name}, age:${calcAge()}`);
+  };
+}
+
+let user = new User(&quot;John&quot;, new Date(2000, 0, 1));
+user.sayHi(); // John, age:17</code></pre>
+        </div>
+      </div>
+      
+      </div><p>In this code variables <code>name</code>, <code>birthday</code> and the function <code>calcAge()</code> are internal, <em>private</em> to the object. They are only visible from inside of it.</p>
+<p>On the other hand, <code>sayHi</code> is the external, <em>public</em> method. The external code that creates <code>user</code> can access it.</p>
+<p>This way we can hide internal implementation details and helper methods from the outer code. Only what’s assigned to <code>this</code> becomes visible outside.</p>
+<h2><a class="main__anchor" name="factory-class-pattern" href="#factory-class-pattern">Factory class pattern</a></h2><p>We can create a class without using <code>new</code> at all.</p>
+<p>Like this:</p>
+<div data-trusted="1" class="code-example" data-highlight-block="13-13">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function User(name, birthday) {
+  // only visible from other methods inside User
+  function calcAge() {
+    return new Date().getFullYear() - birthday.getFullYear();
+  }
+
+  return {
+    sayHi() {
+      alert(`${name}, age:${calcAge()}`);
+    }
+  };
+}
+
+let user = User(&quot;John&quot;, new Date(2000, 0, 1));
+user.sayHi(); // John, age:17</code></pre>
+        </div>
+      </div>
+      
+      </div><p>As we can see, the function <code>User</code> returns an object with public properties and methods. The only benefit of this method is that we can omit <code>new</code>: write <code>let user = User(...)</code> instead of <code>let user = new User(...)</code>. In other aspects it’s almost the same as the functional pattern.</p>
+<h2><a class="main__anchor" name="prototype-based-classes" href="#prototype-based-classes">Prototype-based classes</a></h2><p>Prototype-based classes are the most important and generally the best. Functional and factory class patterns are rarely used in practice.</p>
+<p>Soon you’ll see why.</p>
+<p>Here’s the same class rewritten using prototypes:</p>
+<div data-trusted="1" class="code-example" data-highlight-block="1-2,5-5">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function User(name, birthday) {
+  this._name = name;
+  this._birthday = birthday;
+}
+
+User.prototype._calcAge = function() {
+  return new Date().getFullYear() - this._birthday.getFullYear();
+};
+
+User.prototype.sayHi = function() {
+  alert(`${this._name}, age:${this._calcAge()}`);
+};
+
+let user = new User(&quot;John&quot;, new Date(2000, 0, 1));
+user.sayHi(); // John, age:17</code></pre>
+        </div>
+      </div>
+      
+      </div><p>The code structure:</p>
+<ul>
+<li>The constructor <code>User</code> only initializes the current object state.</li>
+<li>Methods are added to <code>User.prototype</code>.</li>
+</ul>
+<p>As we can see, methods are lexically not inside <code>function User</code>, they do not share a common lexical environment. If we declare variables inside <code>function User</code>, then they won’t be visible to methods.</p>
+<p>So, there is a widely known agreement that internal properties and methods are prepended with an underscore <code>&quot;_&quot;</code>. Like <code>_name</code> or <code>_calcAge()</code>. Technically, that’s just an agreement, the outer code still can access them. But most developers recognize the meaning of <code>&quot;_&quot;</code> and try not to touch prefixed properties and methods in the external code.</p>
+<p>Here are the advantages over the functional pattern:</p>
+<ul>
+<li>In the functional pattern, each object has its own copy of every method. We assign a separate copy of <code>this.sayHi = function() {...}</code> and other methods in the constructor.</li>
+<li>In the prototypal pattern, all methods are in <code>User.prototype</code> that is shared between all user objects. An object itself only stores the data.</li>
+</ul>
+<p>So the prototypal pattern is more memory-efficient.</p>
+<p>…But not only that. Prototypes allow us to setup the inheritance in a really efficient way. Built-in JavaScript objects all use prototypes. Also there’s a special syntax construct: “class” that provides nice-looking syntax for them. And there’s more, so let’s go on with them.</p>
+<h2><a class="main__anchor" name="prototype-based-inheritance-for-classes" href="#prototype-based-inheritance-for-classes">Prototype-based inheritance for classes</a></h2><p>Let’s say we have two prototype-based classes.</p>
+<p><code>Rabbit</code>:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function Rabbit(name) {
+  this.name = name;
+}
+
+Rabbit.prototype.jump = function() {
+  alert(`${this.name} jumps!`);
+};
+
+let rabbit = new Rabbit(&quot;My rabbit&quot;);</code></pre>
+        </div>
+      </div>
+      
+      </div><figure><div class="image" style="width:424px">
+      <div class="image__ratio" style="padding-top:37.735849056603776%"></div>
+      <img src="article/class-patterns/rabbit-animal-independent-1.png" alt="" width="424" height="160" class="image__image">
+      </div></figure><p>…And <code>Animal</code>:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function Animal(name) {
+  this.name = name;
+}
+
+Animal.prototype.eat = function() {
+  alert(`${this.name} eats.`);
+};
+
+let animal = new Animal(&quot;My animal&quot;);</code></pre>
+        </div>
+      </div>
+      
+      </div><figure><div class="image" style="width:425px">
+      <div class="image__ratio" style="padding-top:37.64705882352941%"></div>
+      <img src="article/class-patterns/rabbit-animal-independent-2.png" alt="" width="425" height="160" class="image__image">
+      </div></figure><p>Right now they are fully independent.</p>
+<p>But we’d want <code>Rabbit</code> to extend <code>Animal</code>. In other words, rabbits should be based on animals, have access to methods of <code>Animal</code> and extend them with its own methods.</p>
+<p>What does it mean in the language of prototypes?</p>
+<p>Right now methods for <code>rabbit</code> objects are in <code>Rabbit.prototype</code>. We’d like <code>rabbit</code> to use <code>Animal.prototype</code> as a “fallback”, if the method is not found in <code>Rabbit.prototype</code>.</p>
+<p>So the prototype chain should be <code>rabbit</code> → <code>Rabbit.prototype</code> → <code>Animal.prototype</code>.</p>
+<p>Like this:</p>
+<figure><div class="image" style="width:171px">
+      <div class="image__ratio" style="padding-top:145.02923976608187%"></div>
+      <img src="article/class-patterns/class-inheritance-rabbit-animal.png" alt="" width="171" height="248" class="image__image">
+      </div></figure><p>The code to implement that:</p>
+<div data-trusted="1" class="code-example" data-highlight-block="19-20,23-23">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">// Same Animal as before
+function Animal(name) {
+  this.name = name;
+}
+
+// All animals can eat, right?
+Animal.prototype.eat = function() {
+  alert(`${this.name} eats.`);
+};
+
+// Same Rabbit as before
+function Rabbit(name) {
+  this.name = name;
+}
+
+Rabbit.prototype.jump = function() {
+  alert(`${this.name} jumps!`);
+};
+
+// setup the inheritance chain
+Rabbit.prototype.__proto__ = Animal.prototype; // (*)
+
+let rabbit = new Rabbit(&quot;White Rabbit&quot;);
+rabbit.eat(); // rabbits can eat too
+rabbit.jump();</code></pre>
+        </div>
+      </div>
+      
+      </div><p>The line <code>(*)</code> sets up the prototype chain. So that <code>rabbit</code> first searches methods in <code>Rabbit.prototype</code>, then <code>Animal.prototype</code>. And then, just for completeness, let’s mention that if the method is not found in <code>Animal.prototype</code>, then the search continues in <code>Object.prototype</code>, because <code>Animal.prototype</code> is a regular plain object, so it inherits from it.</p>
+<p>So here’s the full picture:</p>
+<figure><div class="image" style="width:497px">
+      <div class="image__ratio" style="padding-top:91.34808853118712%"></div>
+      <img src="article/class-patterns/class-inheritance-rabbit-animal-2.png" alt="" width="497" height="454" class="image__image">
+      </div></figure><h2><a class="main__anchor" name="summary" href="#summary">Summary</a></h2><p>The term “class” comes from the object-oriented programming. In JavaScript it usually means the functional class pattern or the prototypal pattern. The prototypal pattern is more powerful and memory-efficient, so it’s recommended to stick to it.</p>
+<p>According to the prototypal pattern:</p>
+<ol>
+<li>Methods are stored in <code>Class.prototype</code>.</li>
+<li>Prototypes inherit from each other.</li>
+</ol>
+<p>In the next chapter we’ll study <code>class</code> keyword and construct. It allows to write prototypal classes shorter and provides some additional benefits.</p>
+</div></article><div class="tasks"><h2 id="tasks" class="tasks__title"><a href="#tasks" class="main__anchor main__anchor_noicon tasks__title-anchor">Tasks</a></h2><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a href="#an-error-in-the-inheritance" name="an-error-in-the-inheritance" class="main__anchor">An error in the inheritance</a></h3><a href="task/inheritance-error-assign.html" target="_blank" class="task__open-link"></a></div><div class="task__header-note"><span title="How important is the task, from 1 to 5" class="task__importance">importance: 5</span></div><div class="task__content"><p>Find an error in the prototypal inheritance below.</p>
+<p>What’s wrong? What are consequences going to be?</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function Animal(name) {
+  this.name = name;
+}
+
+Animal.prototype.walk = function() {
+  alert(this.name + ' walks');
+};
+
+function Rabbit(name) {
+  this.name = name;
+}
+
+Rabbit.prototype = Animal.prototype;
+
+Rabbit.prototype.walk = function() {
+  alert(this.name + &quot; bounces!&quot;);
+};</code></pre>
+        </div>
+      </div>
+      
+      </div><button type="button" class="task__solution">solution</button><div class="task__answer"><div class="task__answer-content"><p>Here’s the line with the error:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">Rabbit.prototype = Animal.prototype;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Here <code>Rabbit.prototype</code> and <code>Animal.prototype</code> become the same object. So methods of both classes become mixed in that object.</p>
+<p>As a result, <code>Rabbit.prototype.walk</code> overwrites <code>Animal.prototype.walk</code>, so all animals start to bounce:</p>
+<div data-trusted="1" class="code-example" data-highlight-block="12-12,18-19">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function Animal(name) {
+  this.name = name;
+}
+
+Animal.prototype.walk = function() {
+  alert(this.name + ' walks');
+};
+
+function Rabbit(name) {
+  this.name = name;
+}
+
+Rabbit.prototype = Animal.prototype;
+
+Rabbit.prototype.walk = function() {
+  alert(this.name + &quot; bounces!&quot;);
+};
+
+let animal = new Animal(&quot;pig&quot;);
+animal.walk(); // pig bounces!</code></pre>
+        </div>
+      </div>
+      
+      </div><p>The correct variant would be:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">Rabbit.prototype.__proto__ = Animal.prototype;
+// or like this:
+Rabbit.prototype = Object.create(Animal.prototype);</code></pre>
+        </div>
+      </div>
+      
+      </div><p>That makes prototypes separate, each of them stores methods of the corresponding class, but <code>Rabbit.prototype</code> inherits from <code>Animal.prototype</code>.</p>
+</div><button type="button" title="close" class="close-button task__answer-close"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a href="#rewrite-to-prototypes" name="rewrite-to-prototypes" class="main__anchor">Rewrite to prototypes</a></h3><a href="task/rewrite-to-prototypes.html" target="_blank" class="task__open-link"></a></div><div class="task__header-note"><span title="How important is the task, from 1 to 5" class="task__importance">importance: 5</span></div><div class="task__content"><p>The <code>Clock</code> class is written in functional style. Rewrite it using prototypes.</p>
+<p>P.S. The clock ticks in the console, open it to see.</p>
+<p><a href="http://plnkr.co/edit/KLE8bfUHtRmuGHdZiqC1?p=preview" target="_blank" data-plunk-id="KLE8bfUHtRmuGHdZiqC1">Open the sandbox for the task.</a></p><button type="button" class="task__solution">solution</button><div class="task__answer"><div class="task__answer-content"><p>Please note that properties that were internal in functional style (<code>template</code>, <code>timer</code>) and the internal method <code>render</code> are marked private with the underscore <code>_</code>.</p>
+<p><a href="http://plnkr.co/edit/Fq5uDZuNFFJGIpkcA41A?p=preview" target="_blank" data-plunk-id="Fq5uDZuNFFJGIpkcA41A">Open the solution in the sandbox.</a></p></div><button type="button" title="close" class="close-button task__answer-close"></button></div></div></div></div></div><!--  include /blocks/banner-bottom--><!--if lang == 'en'--><!--  include /blocks/banner-bottom.en--></div><div class="page__nav-wrap"><a href="prototype-methods.html" data-tooltip="Methods for prototypes" class="page__nav page__nav_prev"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Previous lesson</span></a><a href="class.html" data-tooltip="Classes" class="page__nav page__nav_next"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Next lesson</span></a></div><div class="article-tablet-foot tablet-only"><div class="article-tablet-foot__layout"><div class="share-icons"><span class="share-icons__title">Share</span><a href="https://twitter.com/share?url=https%3A%2F%2Fjavascript.info%2Fclass-patterns" class="share share_tw"></a><a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fjavascript.info%2Fclass-patterns" class="share share_fb"></a><a href="https://plus.google.com/share?url=https%3A%2F%2Fjavascript.info%2Fclass-patterns" class="share share_gp"></a><a href="https://vkontakte.ru/share.php?url=https%3A%2F%2Fjavascript.info%2Fclass-patterns" class="share share_vk"></a></div><div class="article-tablet-foot__map"><a href="tutorial/map.html" data-action="tutorial-map" class="map"><span class="map__text">Tutorial map</span></a></div></div></div><div id="comments" class="comments"><div class="comments__header"><h2 class="comments__header-title"><a href="#comments" name="comments">Comments</a></h2><div class="comments__read-before"><span class="comments__read-before-link">read this before commenting…</span><div class="comments__read-before-popup"><div class="comments__read-before-popup-i"><ul><li>You're welcome to post additions, questions to the articles and answers to them.</li><li>To insert a few words of code, use the <code>&lt;code&gt;</code> tag, for several lines – use <code>&lt;pre&gt;</code>, for more than 10 lines – use a sandbox (<a href='http://plnkr.co/edit/?p=preview'>plnkr</a>, <a href='http://jsbin.com/'>JSBin</a>, <a href='http://codepen.io/'>codepen</a>…)</li><li>If you can't understand something in the article – please elaborate.</li></ul></div></div></div></div></div><div id="disqus_thread"></div><script>var disqus_config = function() { if (!this.page) this.page = {}; Object.assign(this.page, {"url":"https:\/\/javascript.info\/class-patterns","identifier":"\/class-patterns","title":"Class patterns"}); };</script><script>var disqus_shortname = "javascriptinfo";</script><script>var disqus_enabled = true;</script></main></div><div class="page__sidebar sidebar sidebar_sticky-footer"><button data-sidebar-toggle class="sidebar__toggle"></button><a href="tutorial/map.html" data-action="tutorial-map" data-tooltip="Tutorial map" class="map"></a><div class="sidebar__inner"><div class="sidebar__content"><div class="sidebar__section"><h4 class="sidebar__section-title">Chapter</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a href="object-oriented-programming.html" class="sidebar__link">Objects, classes, inheritance</a></li></ul></nav></div><div class="sidebar__section"><h4 class="sidebar__section-title">Lesson navigation</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a href="#functional-class-pattern" class="sidebar__link">Functional class pattern</a></li><li class="sidebar__navigation-link"><a href="#factory-class-pattern" class="sidebar__link">Factory class pattern</a></li><li class="sidebar__navigation-link"><a href="#prototype-based-classes" class="sidebar__link">Prototype-based classes</a></li><li class="sidebar__navigation-link"><a href="#prototype-based-inheritance-for-classes" class="sidebar__link">Prototype-based inheritance for classes</a></li><li class="sidebar__navigation-link"><a href="#summary" class="sidebar__link">Summary</a></li></ul></nav></div><div class="sidebar__section"><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a href="#tasks" class="sidebar__link">Tasks (2)</a></li><li class="sidebar__navigation-link"><a href="#comments" class="sidebar__link">Comments</a></li></ul></nav></div><div class="sidebar__section"><div class="sidebar__section-title">Share</div><a href="https://twitter.com/share?url=https%3A%2F%2Fjavascript.info%2Fclass-patterns" class="share share_tw sidebar__share"></a><a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fjavascript.info%2Fclass-patterns" class="share share_fb sidebar__share"></a><a href="https://plus.google.com/share?url=https%3A%2F%2Fjavascript.info%2Fclass-patterns" class="share share_gp sidebar__share"></a></div><div class="sidebar__section"><a href="https://github.com/iliakan/javascript-tutorial-en/tree/master/1-js/07-object-oriented-programming/08-class-patterns/article.md" class="sidebar__link">Edit on Github</a></div></div></div></div></div></div><div class="page-footer"><div class="page-footer__left"><ul class="page-footer__list"><li class="page-footer__item">©&nbsp;2007—2017&nbsp; Ilya Kantor</li><li class="page-footer__item"><a href="about.html#contact-us" class="page-footer__link">contact us</a></li><li class="page-footer__item"><a href="about.html" class="page-footer__link">about the project</a></li><li class="page-footer__item"><a href="https://learn.javascript.ru/" class="page-footer__link">RU</a> / EN</li></ul></div><div class="page-footer__right"><ul class="page-footer__list"><li class="page-footer__item">powered by <a rel="nofollow" href="http://nodejs.org/" class="page-footer__link">node.js</a>&nbsp;&amp;&nbsp;<a rel="nofollow" href="http://github.com/iliakan/javascript-tutorial-en" class="page-footer__link">open source</a></li></ul></div></div></body>
+<!-- Mirrored from javascript.info/class-patterns by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 30 Nov 2017 15:28:42 GMT -->
+</html>

@@ -1,0 +1,376 @@
+<!DOCTYPE html><html lang="en">
+<!-- Mirrored from javascript.info/regexp-character-classes by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 30 Nov 2017 15:30:47 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><script>window.currentUser = null;</script><title itemprop="name">Character classes</title><meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, minimum-scale=1.0"><meta name="apple-mobile-web-app-capable" content="yes"><script>if (window.devicePixelRatio > 1) document.cookie = 'pixelRatio=' + window.devicePixelRatio + ';path=/;expires=Tue, 19 Jan 2038 03:14:07 GMT';</script><link href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700%7COpen+Sans+Condensed:700&amp;subset=latin,latin-ext,cyrillic,cyrillic-ext" rel="stylesheet"><link rel="apple-touch-icon-precomposed" href="img/favicon/apple-touch-icon-precomposed.png"><link rel="canonical" href="regexp-character-classes.html"><meta name="msapplication-TileColor" content="#222A2C"><meta name="msapplication-TileImage" content="/img/favicon/tileicon.png"><!-- favicon the rest--><link rel="icon" href="img/favicon/favicon.png"><meta itemprop="image" content="https://javascript.info/img/site_preview_en_512x512.png"><meta property="og:title" content="Character classes"><meta property="og:image" content="https://javascript.info/img/site_preview_en_1200x630.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="fb:admins" content="100001562528165"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Character classes"><meta name="twitter:site" content="@iliakan"><meta name="twitter:creator" content="@iliakan"><meta name="twitter:image" content="https://javascript.info/img/site_preview_en_512x512.png"><link href="pack/styles.da59a89b28153875791083e4a8c5adb3.css" rel="stylesheet"><link rel="prev" href="regexp-methods.html"><link rel="next" href="regexp-escaping.html"><script>window.GA_ID = "UA-2056213-15";</script><script>window.YANDEX_METRIKA_ID = 32184394;</script><script>window.GoogleAnalyticsObject="ga",window.ga=function(){window.ga.q.push(arguments)},window.ga.q=[],window.ga.l=Date.now(),ga("create",GA_ID,"auto"),window.currentUser&&ga("set","&uid",currentUser.id),window.addEventListener("error",function(e){var r=(e.filename||e.errorUrl)+": "+(e.lineno||e.errorLine),n=e.stack||e.error&&e.error.stack;ga("send","exception",{exDescription:e.message+" "+r+" "+n,exFatal:!0})});</script><script src="https://www.google-analytics.com/analytics.js" async></script><script>ga('send', 'pageview');</script><script>window.metrika={reachGoal:function(){}},window.yandex_metrika_callbacks=[function(){try{window.metrika=new Ya.Metrika({id:YANDEX_METRIKA_ID,webvisor:!0,clickmap:!0,params:{user:window.currentUser&&window.currentUser.id}}),metrika.trackLinks({delay:150}),window.addEventListener("error",function(r){window.metrika.reachGoal("JSERROR",{src:(r.filename||r.errorUrl)+": "+(r.lineno||r.errorLine),stack:r.stack||r.error&&r.error.stack,message:r.message})})}catch(r){}}];</script><script src="http://mc.yandex.ru/metrika/watch.js" async></script><script>window.RECAPTCHA_ID = "6Lf9NyETAAAAACZlg-a9Us2SxvYbeVC1ROWaWv4O";</script><script src="initc4ca.js?1"></script><script src="pack/head.688d4fe7c4cf54e23737.js" defer></script><meta property="og:title" content="Character classes"><meta property="og:type" content="article"><script src="pack/tutorial.688d4fe7c4cf54e23737.js" defer></script><script src="pack/footer.688d4fe7c4cf54e23737.js" defer></script></head><body class="no-icons"><script>window.fontTest();</script><div class="page-wrapper page-wrapper_sidebar_on"><!--[if lt IE 10]><div style="color:red;text-align:center">Sorry, IE&lt;10 is not supported, please use a newer browser.</div><![endif]--><div class="sitetoolbar sitetoolbar_tutorial"><!-- include ./notification-stripe--><div class="sitetoolbar__content"><div class="sitetoolbar__logo-wrap"><a href="index.html" class="sitetoolbar__link sitetoolbar__link_logo"><img src="img/sitetoolbar__logo_en.svg" width="200" class="sitetoolbar__logo sitetoolbar__logo_normal" alt=""><img src="img/sitetoolbar__logo_small_en.svg" width="70" class="sitetoolbar__logo sitetoolbar__logo_small" alt=""><script>Array.prototype.forEach.call(document.querySelectorAll("img.sitetoolbar__logo"),function(e){var t=document.createElement("object");t.type="image/svg+xml",t.className=e.className,t.style.cssText="left:0;top:0;position:absolute",t.onload=function(){t.onload=null,e.style.visibility="hidden"},t.data=e.src,e.parentNode.insertBefore(t,e)});</script></a></div><div class="sitetoolbar__nav-toggle-wrap"><button type="button" class="sitetoolbar__nav-toggle"></button></div><nav class="sitetoolbar__sections"><ul class="sitetoolbar__sections-list"></ul></nav><div class="sitetoolbar__book-wrap"><a href="ebook.html" class="buy-book-button"><span class="buy-book-button__extra-text">Buy</span>EPUB/PDF</a></div><div class="sitetoolbar__login-wrap"><button data-action-login class="sitetoolbar__login sitetoolbar__login_unready"></button></div><div class="sitetoolbar__search-wrap"><div class="sitetoolbar__search-content"><form method="GET" action="http://javascript.info/search" class="sitetoolbar__search"><button type="button" class="sitetoolbar__search-toggle"></button><div class="sitetoolbar__search-input"><div class="text-input"><input name="query" placeholder="Search on Javascript.info" class="text-input__control" type="text"></div><button type="submit" class="sitetoolbar__find">Search</button></div></form></div></div></div><!-- todo: en variant--><div class="tablet-menu"><div class="tablet-menu__line"><div class="tablet-menu__content"><form action="http://javascript.info/search/" class="tablet-menu-search"><input type="search" name="query" placeholder="Search in the tutorial" required class="tablet-menu-search__input"><button type="submit" name="type" value="articles" class="tablet-menu-search__button">Search</button></form></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><a href="tutorial/map.html" data-action="tutorial-map" class="map"><span class="map__text">Tutorial map</span></a></div></div><!--+e.line--><!--  +e.content--><!--    +b("a").tablet-ebook(href="/ebook")--><!--      +e("span").text Купить учебник--><!--      +e("span").note (EPUB + PDF)--><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="share-icons"><span class="share-icons__title">Share</span><a href="https://twitter.com/share?url=https%3A%2F%2Fjavascript.info%2Fregexp-character-classes" class="share share_tw"></a><a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fjavascript.info%2Fregexp-character-classes" class="share share_fb"></a><a href="https://plus.google.com/share?url=https%3A%2F%2Fjavascript.info%2Fregexp-character-classes" class="share share_gp"></a><a href="https://vkontakte.ru/share.php?url=https%3A%2F%2Fjavascript.info%2Fregexp-character-classes" class="share share_vk"></a></div></div></div></div><progress data-sticky value="3" max="15" data-tooltip="Lesson 3 of 15" class="tutorial-progress"></progress></div><div class="page page_sidebar_on"><script>if(localStorage.noSidebar){document.querySelector(".page").classList.remove("page_sidebar_on");var pageWrapper=document.querySelector(".page-wrapper");pageWrapper&&pageWrapper.classList.remove("page-wrapper_sidebar_on")}setTimeout(function(){document.querySelector(".page").classList.add("page_sidebar-animation-on")},0);</script><div class="page__inner"><main class="main main_width-limit"><header class="main__header"><ol class="breadcrumbs"><li itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemref="breadcrumb-1" class="breadcrumbs__item breadcrumbs__item_home"><a href="index.html" itemprop="url" class="breadcrumbs__link"><span itemprop="title" class="breadcrumbs__hidden-text">Учебник</span></a></li><li id="breadcrumb-1" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemprop="child" class="breadcrumbs__item"><a href="regular-expressions.html" itemprop="url" class="breadcrumbs__link"><span itemprop="title">Regular expressions</span></a></li></ol><h1 class="main__header-title">Character classes</h1></header><div class="content"><article itemscope itemtype="http://schema.org/TechArticle"><meta itemprop="name" content="Character classes"><div itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="email" content="iliakan@gmail.com"><meta itemprop="name" content="Ilya Kantor"></div><div itemprop="articleBody"><p>Consider a practical task – we have a phone number <code>&quot;+7(903)-123-45-67&quot;</code>, and we need to find all digits in that string. Other characters do not interest us.</p>
+<p>A character class is a special notation that matches any symbol from the set.</p>
+<cut>
+<p>For instance, there’s a “digit” class. It’s written as <code>\d</code>. We put it in the pattern, and during the search any digit matches it.</p>
+<p>For instance, the regexp <code class="pattern">/\d/</code> looks for a single digit:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let str = &quot;+7(903)-123-45-67&quot;;
+
+let reg = /\d/;
+
+alert( str.match(reg) ); // 7</code></pre>
+        </div>
+      </div>
+      
+      </div><p>The regexp is not global in the example above, so it only looks for the first match.</p>
+<p>Let’s add the <code>g</code> flag to look for all digits:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let str = &quot;+7(903)-123-45-67&quot;;
+
+let reg = /\d/g;
+
+alert( str.match(reg) ); // array of matches: 7,9,0,3,1,2,3,4,5,6,7</code></pre>
+        </div>
+      </div>
+      
+      </div><h2><a class="main__anchor" name="most-used-classes-d-s-w" href="#most-used-classes-d-s-w">Most used classes: \d \s \w</a></h2><p>That was a character class for digits. There are other character classes as well.</p>
+<p>Most used are:</p>
+<dl>
+<dt><code>\d</code> (“d” is from “digit”)</dt>
+<dd>A digit: a character from <code>0</code> to <code>9</code>.</dd>
+<dt><code>\s</code> (“s” is from “space”)</dt>
+<dd>A space symbol: that includes spaces, tabs, newlines.</dd>
+<dt><code>\w</code> (“w” is from “word”)</dt>
+<dd>A “wordly” character: either a letter of English alphabet or a digit or an underscore. Non-english letters (like cyrillic or hindi) do not belong to <code>\w</code>.</dd>
+</dl>
+<p>For instance, <code class="pattern">\d\s\w</code> means a digit followed by a space character followed by a wordly character, like <code>&quot;1 Z&quot;</code>.</p>
+<p>A regexp may contain both regular symbols and character classes.</p>
+<p>For instance, <code class="pattern">CSS\d</code> matches a string <code class="match">CSS</code> with a digit after it:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let str = &quot;CSS4 is cool&quot;;
+let reg = /CSS\d/
+
+alert( str.match(reg) ); // CSS4</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Also we can use many character classes:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">alert( &quot;I love HTML5!&quot;.match(/\s\w\w\w\w\d/) ); // 'HTML5'</code></pre>
+        </div>
+      </div>
+      
+      </div><p>The match (each character class corresponds to one result character):</p>
+<figure><div class="image" style="width:211px">
+      <div class="image__ratio" style="padding-top:16.113744075829384%"></div>
+      <img src="article/regexp-character-classes/love-html5-classes.png" alt="" width="211" height="34" class="image__image">
+      </div></figure><h2><a class="main__anchor" name="word-boundary-b" href="#word-boundary-b">Word boundary: \b</a></h2><p>The word boundary <code class="pattern">\b</code> – is a special character class.</p>
+<p>It does not denote a character, but rather a boundary between characters.</p>
+<p>For instance, <code class="pattern">\bJava\b</code> matches <code class="match">Java</code> in the string <code class="subject">Hello, Java!</code>, but not in the script <code class="subject">Hello, JavaScript!</code>.</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">alert( &quot;Hello, Java!&quot;.match(/\bJava\b/) ); // Java
+alert( &quot;Hello, JavaScript!&quot;.match(/\bJava\b/) ); // null</code></pre>
+        </div>
+      </div>
+      
+      </div><p>The boundary has “zero width” in a sense that usually a character class means a character in the result (like a wordly or a digit), but not in this case.</p>
+<p>The boundary is a test.</p>
+<p>When regular expression engine is doing the search, it’s moving along the string in an attempt to find the match. At each string position it tries to find the pattern.</p>
+<p>When the pattern contains <code class="pattern">\b</code>, it tests that the position in string fits one of the conditions:</p>
+<ul>
+<li>String start, and the first string character is <code>\w</code>.</li>
+<li>String end, and the last string character is <code>\w</code>.</li>
+<li>Inside the string: from one side is <code>\w</code>, from the other side – not <code>\w</code>.</li>
+</ul>
+<p>For instance, in the string <code class="subject">Hello, Java!</code> the following positions match <code>\b</code>:</p>
+<figure><div class="image" style="width:218px">
+      <div class="image__ratio" style="padding-top:26.146788990825687%"></div>
+      <img src="article/regexp-character-classes/hello-java-boundaries.png" alt="" width="218" height="57" class="image__image">
+      </div></figure><p>So it matches <code class="pattern">\bHello\b</code> and <code class="pattern">\bJava\b</code>, but not <code class="pattern">\bHell\b</code> (because there’s no word boundary after <code>l</code>) and not <code>Java!\b</code> (because the exclamation sign is not a wordly character, so there’s no word boundary after it).</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">alert( &quot;Hello, Java!&quot;.match(/\bHello\b/) ); // Hello
+alert( &quot;Hello, Java!&quot;.match(/\bJava\b/) );  // Java
+alert( &quot;Hello, Java!&quot;.match(/\bHell\b/) );  // null
+alert( &quot;Hello, Java!&quot;.match(/\bJava!\b/) ); // null</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Once again let’s note that <code class="pattern">\b</code> makes the searching engine to test for the boundary, so that <code class="pattern">Java\b</code> finds <code class="match">Java</code> only when followed by a word boundary, but it does not add a letter to the result.</p>
+<p>Usually we use <code>\b</code> to find standalone English words. So that if we want <code>&quot;Java&quot;</code> language then <code class="pattern">\bJava\b</code> finds exactly a standalone word and ignores it when it’s a part of <code>&quot;JavaScript&quot;</code>.</p>
+<p>Another example: a regexp <code class="pattern">\b\d\d\b</code> looks for standalone two-digit numbers. In other words, it requires that before and after <code class="pattern">\d\d</code> must be a symbol different from <code>\w</code> (or beginning/end of the string).</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">alert( &quot;1 23 456 78&quot;.match(/\b\d\d\b/g) ); // 23,78</code></pre>
+        </div>
+      </div>
+      
+      </div><div class="important important_warn">
+            <div class="important__header"><span class="important__type">Word boundary doesn’t work for non-English alphabets</span></div>
+            <div class="important__content"><p>The word boundary check <code>\b</code> tests for a boundary between <code>\w</code> and something else. But <code>\w</code> means an English letter (or a digit or an underscore), so the test won’t work for other characters (like cyrillic or hieroglyphs).</p>
+</div></div>
+<h2><a class="main__anchor" name="reverse-classes" href="#reverse-classes">Reverse classes</a></h2><p>For every character class there exists a “reverse class”, denoted with the same letter, but uppercased.</p>
+<p>The “reverse” means that it matches all other characters, for instance:</p>
+<dl>
+<dt><code>\D</code></dt>
+<dd>Non-digit: any character except <code>\d</code>, for instance a letter.</dd>
+<dt><code>\S</code></dt>
+<dd>Non-space: any character except <code>\s</code>, for instance a letter.</dd>
+<dt><code>\W</code></dt>
+<dd>Non-wordly character: anything but <code>\w</code>.</dd>
+<dt><code>\B</code></dt>
+<dd>Non-boundary: a test reverse to <code>\b</code>.</dd>
+</dl>
+<p>In the beginning of the chapter we saw how to get all digits from the phone <code class="subject">+7(903)-123-45-67</code>. Let’s get a “pure” phone number from the string:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let str = &quot;+7(903)-123-45-67&quot;;
+
+alert( str.match(/\d/g).join('') ); // 79031234567</code></pre>
+        </div>
+      </div>
+      
+      </div><p>An alternative way would be to find non-digits and remove them from the string:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let str = &quot;+7(903)-123-45-67&quot;;
+
+alert( str.replace(/\D/g, &quot;&quot;) ); // 79031234567</code></pre>
+        </div>
+      </div>
+      
+      </div><h2><a class="main__anchor" name="spaces-are-regular-characters" href="#spaces-are-regular-characters">Spaces are regular characters</a></h2><p>Please note that regular expressions may include spaces. They are treated like regular characters.</p>
+<p>Usually we pay little attention to spaces. For us strings <code class="subject">1-5</code> and <code class="subject">1 - 5</code> are nearly identical.</p>
+<p>But if a regexp does not take spaces into account, it won’ work.</p>
+<p>Let’s try to find digits separated by a dash:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">alert( &quot;1 - 5&quot;.match(/\d-\d/) ); // null, no match!</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Here we fix it by adding spaces into the regexp:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">alert( &quot;1 - 5&quot;.match(/\d - \d/) ); // 1 - 5, now it works</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Of course, spaces are needed only if we look for them. Extra spaces (just like any other extra characters) may prevent a match:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">alert( &quot;1-5&quot;.match(/\d - \d/) ); // null, because the string 1-5 has no spaces</code></pre>
+        </div>
+      </div>
+      
+      </div><p>In other words, in a regular expression all characters matter. Spaces too.</p>
+<h2><a class="main__anchor" name="a-dot-is-any-character" href="#a-dot-is-any-character">A dot is any character</a></h2><p>The dot <code>&quot;.&quot;</code> is a special character class that matches <em>any character except a newline</em>.</p>
+<p>For instance:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">alert( &quot;Z&quot;.match(/./) ); // Z</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Or in the middle of a regexp:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let reg = /CS.4/;
+
+alert( &quot;CSS4&quot;.match(reg) ); // CSS4
+alert( &quot;CS-4&quot;.match(reg) ); // CS-4
+alert( &quot;CS 4&quot;.match(reg) ); // CS 4 (space is also a character)</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Please note that the dot means “any character”, but not the “absense of a character”. There must be a character to match it:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">alert( &quot;CS4&quot;.match(/CS.4/) ); // null, no match because there's no character for the dot</code></pre>
+        </div>
+      </div>
+      
+      </div><h2><a class="main__anchor" name="summary" href="#summary">Summary</a></h2><p>We covered character classes:</p>
+<ul>
+<li><code>\d</code> – digits.</li>
+<li><code>\D</code> – non-digits.</li>
+<li><code>\s</code> – space symbols, tabs, newlines.</li>
+<li><code>\S</code> – all but <code>\s</code>.</li>
+<li><code>\w</code> – English letters, digits, underscore <code>'_'</code>.</li>
+<li><code>\W</code> – all but <code>\w</code>.</li>
+<li><code>'.'</code> – any character except a newline.</li>
+</ul>
+<p>If we want to search for a character that has a special meaning like a backslash or a dot, then we should escape it with a backslash: <code class="pattern">\.</code></p>
+<p>Please note that a regexp may also contain string special characters such as a newline <code>\n</code>. There’s no conflict with character classes, because other letters are used for them.</p>
+</div></article><div class="tasks"><h2 id="tasks" class="tasks__title"><a href="#tasks" class="main__anchor main__anchor_noicon tasks__title-anchor">Tasks</a></h2><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a href="#find-the-time" name="find-the-time" class="main__anchor">Find the time</a></h3><a href="task/find-time-hh-mm.html" target="_blank" class="task__open-link"></a></div><div class="task__header-note"></div><div class="task__content"><p>The time has a format: <code>hours:minutes</code>. Both hours and minutes has two digits, like <code>09:00</code>.</p>
+<p>Make a regexp to find time in the string: <code class="subject">Breakfast at 09:00 in the room 123:456.</code></p>
+<p>P.S. In this task there’s no need to check time correctness yet, so <code>25:99</code> can also be a valid result.
+P.P.S. The regexp shouldn’t match <code>123:456</code>.</p>
+<button type="button" class="task__solution">solution</button><div class="task__answer"><div class="task__answer-content"><p>The answer: <code class="pattern">\b\d\d:\d\d\b</code>.</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">alert( &quot;Breakfast at 09:00 in the room 123:456.&quot;.match( /\b\d\d:\d\d\b/ ) ); // 09:00</code></pre>
+        </div>
+      </div>
+      
+      </div></div><button type="button" title="close" class="close-button task__answer-close"></button></div></div></div></div></div><!--  include /blocks/banner-bottom--><!--if lang == 'en'--><!--  include /blocks/banner-bottom.en--></div><div class="page__nav-wrap"><a href="regexp-methods.html" data-tooltip="Methods of RegExp and String" class="page__nav page__nav_prev"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Previous lesson</span></a><a href="regexp-escaping.html" data-tooltip="Escaping, special characters" class="page__nav page__nav_next"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Next lesson</span></a></div><div class="article-tablet-foot tablet-only"><div class="article-tablet-foot__layout"><div class="share-icons"><span class="share-icons__title">Share</span><a href="https://twitter.com/share?url=https%3A%2F%2Fjavascript.info%2Fregexp-character-classes" class="share share_tw"></a><a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fjavascript.info%2Fregexp-character-classes" class="share share_fb"></a><a href="https://plus.google.com/share?url=https%3A%2F%2Fjavascript.info%2Fregexp-character-classes" class="share share_gp"></a><a href="https://vkontakte.ru/share.php?url=https%3A%2F%2Fjavascript.info%2Fregexp-character-classes" class="share share_vk"></a></div><div class="article-tablet-foot__map"><a href="tutorial/map.html" data-action="tutorial-map" class="map"><span class="map__text">Tutorial map</span></a></div></div></div><div id="comments" class="comments"><div class="comments__header"><h2 class="comments__header-title"><a href="#comments" name="comments">Comments</a></h2><div class="comments__read-before"><span class="comments__read-before-link">read this before commenting…</span><div class="comments__read-before-popup"><div class="comments__read-before-popup-i"><ul><li>You're welcome to post additions, questions to the articles and answers to them.</li><li>To insert a few words of code, use the <code>&lt;code&gt;</code> tag, for several lines – use <code>&lt;pre&gt;</code>, for more than 10 lines – use a sandbox (<a href='http://plnkr.co/edit/?p=preview'>plnkr</a>, <a href='http://jsbin.com/'>JSBin</a>, <a href='http://codepen.io/'>codepen</a>…)</li><li>If you can't understand something in the article – please elaborate.</li></ul></div></div></div></div></div><div id="disqus_thread"></div><script>var disqus_config = function() { if (!this.page) this.page = {}; Object.assign(this.page, {"url":"https:\/\/javascript.info\/regexp-character-classes","identifier":"\/regexp-character-classes","title":"Character classes"}); };</script><script>var disqus_shortname = "javascriptinfo";</script><script>var disqus_enabled = true;</script></main></div><div class="page__sidebar sidebar sidebar_sticky-footer"><button data-sidebar-toggle class="sidebar__toggle"></button><a href="tutorial/map.html" data-action="tutorial-map" data-tooltip="Tutorial map" class="map"></a><div class="sidebar__inner"><div class="sidebar__content"><div class="sidebar__section"><h4 class="sidebar__section-title">Chapter</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a href="regular-expressions.html" class="sidebar__link">Regular expressions</a></li></ul></nav></div><div class="sidebar__section"><h4 class="sidebar__section-title">Lesson navigation</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a href="#most-used-classes-d-s-w" class="sidebar__link">Most used classes: \d \s \w</a></li><li class="sidebar__navigation-link"><a href="#word-boundary-b" class="sidebar__link">Word boundary: \b</a></li><li class="sidebar__navigation-link"><a href="#reverse-classes" class="sidebar__link">Reverse classes</a></li><li class="sidebar__navigation-link"><a href="#spaces-are-regular-characters" class="sidebar__link">Spaces are regular characters</a></li><li class="sidebar__navigation-link"><a href="#a-dot-is-any-character" class="sidebar__link">A dot is any character</a></li><li class="sidebar__navigation-link"><a href="#summary" class="sidebar__link">Summary</a></li></ul></nav></div><div class="sidebar__section"><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a href="#tasks" class="sidebar__link">Tasks (1)</a></li><li class="sidebar__navigation-link"><a href="#comments" class="sidebar__link">Comments</a></li></ul></nav></div><div class="sidebar__section"><div class="sidebar__section-title">Share</div><a href="https://twitter.com/share?url=https%3A%2F%2Fjavascript.info%2Fregexp-character-classes" class="share share_tw sidebar__share"></a><a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fjavascript.info%2Fregexp-character-classes" class="share share_fb sidebar__share"></a><a href="https://plus.google.com/share?url=https%3A%2F%2Fjavascript.info%2Fregexp-character-classes" class="share share_gp sidebar__share"></a></div><div class="sidebar__section"><a href="https://github.com/iliakan/javascript-tutorial-en/tree/master/5-regular-expressions/03-regexp-character-classes/article.md" class="sidebar__link">Edit on Github</a></div></div></div></div></div></div><div class="page-footer"><div class="page-footer__left"><ul class="page-footer__list"><li class="page-footer__item">©&nbsp;2007—2017&nbsp; Ilya Kantor</li><li class="page-footer__item"><a href="about.html#contact-us" class="page-footer__link">contact us</a></li><li class="page-footer__item"><a href="about.html" class="page-footer__link">about the project</a></li><li class="page-footer__item"><a href="https://learn.javascript.ru/" class="page-footer__link">RU</a> / EN</li></ul></div><div class="page-footer__right"><ul class="page-footer__list"><li class="page-footer__item">powered by <a rel="nofollow" href="http://nodejs.org/" class="page-footer__link">node.js</a>&nbsp;&amp;&nbsp;<a rel="nofollow" href="http://github.com/iliakan/javascript-tutorial-en" class="page-footer__link">open source</a></li></ul></div></div></body>
+<!-- Mirrored from javascript.info/regexp-character-classes by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 30 Nov 2017 15:30:47 GMT -->
+</html>

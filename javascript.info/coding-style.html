@@ -1,0 +1,401 @@
+<!DOCTYPE html><html lang="en">
+<!-- Mirrored from javascript.info/coding-style by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 30 Nov 2017 15:27:40 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><script>window.currentUser = null;</script><title itemprop="name">Coding style</title><meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, minimum-scale=1.0"><meta name="apple-mobile-web-app-capable" content="yes"><script>if (window.devicePixelRatio > 1) document.cookie = 'pixelRatio=' + window.devicePixelRatio + ';path=/;expires=Tue, 19 Jan 2038 03:14:07 GMT';</script><link href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700%7COpen+Sans+Condensed:700&amp;subset=latin,latin-ext,cyrillic,cyrillic-ext" rel="stylesheet"><link rel="apple-touch-icon-precomposed" href="img/favicon/apple-touch-icon-precomposed.png"><link rel="canonical" href="coding-style.html"><meta name="msapplication-TileColor" content="#222A2C"><meta name="msapplication-TileImage" content="/img/favicon/tileicon.png"><!-- favicon the rest--><link rel="icon" href="img/favicon/favicon.png"><meta itemprop="image" content="https://javascript.info/img/site_preview_en_512x512.png"><meta property="og:title" content="Coding style"><meta property="og:image" content="https://javascript.info/img/site_preview_en_1200x630.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="fb:admins" content="100001562528165"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Coding style"><meta name="twitter:site" content="@iliakan"><meta name="twitter:creator" content="@iliakan"><meta name="twitter:image" content="https://javascript.info/img/site_preview_en_512x512.png"><link href="pack/styles.da59a89b28153875791083e4a8c5adb3.css" rel="stylesheet"><link rel="prev" href="debugging-chrome.html"><link rel="next" href="comments.html"><script>window.GA_ID = "UA-2056213-15";</script><script>window.YANDEX_METRIKA_ID = 32184394;</script><script>window.GoogleAnalyticsObject="ga",window.ga=function(){window.ga.q.push(arguments)},window.ga.q=[],window.ga.l=Date.now(),ga("create",GA_ID,"auto"),window.currentUser&&ga("set","&uid",currentUser.id),window.addEventListener("error",function(e){var r=(e.filename||e.errorUrl)+": "+(e.lineno||e.errorLine),n=e.stack||e.error&&e.error.stack;ga("send","exception",{exDescription:e.message+" "+r+" "+n,exFatal:!0})});</script><script src="https://www.google-analytics.com/analytics.js" async></script><script>ga('send', 'pageview');</script><script>window.metrika={reachGoal:function(){}},window.yandex_metrika_callbacks=[function(){try{window.metrika=new Ya.Metrika({id:YANDEX_METRIKA_ID,webvisor:!0,clickmap:!0,params:{user:window.currentUser&&window.currentUser.id}}),metrika.trackLinks({delay:150}),window.addEventListener("error",function(r){window.metrika.reachGoal("JSERROR",{src:(r.filename||r.errorUrl)+": "+(r.lineno||r.errorLine),stack:r.stack||r.error&&r.error.stack,message:r.message})})}catch(r){}}];</script><script src="http://mc.yandex.ru/metrika/watch.js" async></script><script>window.RECAPTCHA_ID = "6Lf9NyETAAAAACZlg-a9Us2SxvYbeVC1ROWaWv4O";</script><script src="initc4ca.js?1"></script><script src="pack/head.688d4fe7c4cf54e23737.js" defer></script><meta property="og:title" content="Coding style"><meta property="og:type" content="article"><script src="pack/tutorial.688d4fe7c4cf54e23737.js" defer></script><script src="pack/footer.688d4fe7c4cf54e23737.js" defer></script></head><body class="no-icons"><script>window.fontTest();</script><div class="page-wrapper page-wrapper_sidebar_on"><!--[if lt IE 10]><div style="color:red;text-align:center">Sorry, IE&lt;10 is not supported, please use a newer browser.</div><![endif]--><div class="sitetoolbar sitetoolbar_tutorial"><!-- include ./notification-stripe--><div class="sitetoolbar__content"><div class="sitetoolbar__logo-wrap"><a href="index.html" class="sitetoolbar__link sitetoolbar__link_logo"><img src="img/sitetoolbar__logo_en.svg" width="200" class="sitetoolbar__logo sitetoolbar__logo_normal" alt=""><img src="img/sitetoolbar__logo_small_en.svg" width="70" class="sitetoolbar__logo sitetoolbar__logo_small" alt=""><script>Array.prototype.forEach.call(document.querySelectorAll("img.sitetoolbar__logo"),function(e){var t=document.createElement("object");t.type="image/svg+xml",t.className=e.className,t.style.cssText="left:0;top:0;position:absolute",t.onload=function(){t.onload=null,e.style.visibility="hidden"},t.data=e.src,e.parentNode.insertBefore(t,e)});</script></a></div><div class="sitetoolbar__nav-toggle-wrap"><button type="button" class="sitetoolbar__nav-toggle"></button></div><nav class="sitetoolbar__sections"><ul class="sitetoolbar__sections-list"></ul></nav><div class="sitetoolbar__book-wrap"><a href="ebook.html" class="buy-book-button"><span class="buy-book-button__extra-text">Buy</span>EPUB/PDF</a></div><div class="sitetoolbar__login-wrap"><button data-action-login class="sitetoolbar__login sitetoolbar__login_unready"></button></div><div class="sitetoolbar__search-wrap"><div class="sitetoolbar__search-content"><form method="GET" action="http://javascript.info/search" class="sitetoolbar__search"><button type="button" class="sitetoolbar__search-toggle"></button><div class="sitetoolbar__search-input"><div class="text-input"><input name="query" placeholder="Search on Javascript.info" class="text-input__control" type="text"></div><button type="submit" class="sitetoolbar__find">Search</button></div></form></div></div></div><!-- todo: en variant--><div class="tablet-menu"><div class="tablet-menu__line"><div class="tablet-menu__content"><form action="http://javascript.info/search/" class="tablet-menu-search"><input type="search" name="query" placeholder="Search in the tutorial" required class="tablet-menu-search__input"><button type="submit" name="type" value="articles" class="tablet-menu-search__button">Search</button></form></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><a href="tutorial/map.html" data-action="tutorial-map" class="map"><span class="map__text">Tutorial map</span></a></div></div><!--+e.line--><!--  +e.content--><!--    +b("a").tablet-ebook(href="/ebook")--><!--      +e("span").text Купить учебник--><!--      +e("span").note (EPUB + PDF)--><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="share-icons"><span class="share-icons__title">Share</span><a href="https://twitter.com/share?url=https%3A%2F%2Fjavascript.info%2Fcoding-style" class="share share_tw"></a><a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fjavascript.info%2Fcoding-style" class="share share_fb"></a><a href="https://plus.google.com/share?url=https%3A%2F%2Fjavascript.info%2Fcoding-style" class="share share_gp"></a><a href="https://vkontakte.ru/share.php?url=https%3A%2F%2Fjavascript.info%2Fcoding-style" class="share share_vk"></a></div></div></div></div><progress data-sticky value="21" max="67" data-tooltip="Lesson 21 of 67" class="tutorial-progress"></progress></div><div class="page page_sidebar_on"><script>if(localStorage.noSidebar){document.querySelector(".page").classList.remove("page_sidebar_on");var pageWrapper=document.querySelector(".page-wrapper");pageWrapper&&pageWrapper.classList.remove("page-wrapper_sidebar_on")}setTimeout(function(){document.querySelector(".page").classList.add("page_sidebar-animation-on")},0);</script><div class="page__inner"><main class="main main_width-limit"><header class="main__header"><ol class="breadcrumbs"><li itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemref="breadcrumb-1" class="breadcrumbs__item breadcrumbs__item_home"><a href="index.html" itemprop="url" class="breadcrumbs__link"><span itemprop="title" class="breadcrumbs__hidden-text">Учебник</span></a></li><li id="breadcrumb-1" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemref="breadcrumb-2" itemprop="child" class="breadcrumbs__item"><a href="js.html" itemprop="url" class="breadcrumbs__link"><span itemprop="title">The JavaScript language</span></a></li><li id="breadcrumb-2" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemprop="child" class="breadcrumbs__item"><a href="code-quality.html" itemprop="url" class="breadcrumbs__link"><span itemprop="title">Code quality</span></a></li></ol><h1 class="main__header-title">Coding style</h1></header><div class="content"><article itemscope itemtype="http://schema.org/TechArticle"><meta itemprop="name" content="Coding style"><div itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="email" content="iliakan@gmail.com"><meta itemprop="name" content="Ilya Kantor"></div><div itemprop="articleBody"><p>Our code must be as clean and easy to read as possible.</p>
+<p>That is actually an art of programming – to take a complex task and code it in a way that is both correct and human-readable.</p>
+<p>One thing to help is the good code style.</p>
+<cut>
+<h2><a class="main__anchor" name="syntax" href="#syntax">Syntax</a></h2><p>A cheatsheet with the rules (more details below):</p>
+<figure><div class="image" style="width:692px">
+      <div class="image__ratio" style="padding-top:76.30057803468208%"></div>
+      <img src="article/coding-style/code-style.png" alt="" width="692" height="528" class="image__image">
+      </div></figure><!--
+```js
+function pow(x, n) {
+  let result = 1;
+
+  for (let i = 0; i < n; i++) {
+    result *= x;
+  }
+
+  return result;
+}
+
+let x = prompt("x?", "");
+let n = prompt("n?", "");
+
+if (n < 0) {
+  alert(`Power ${n} is not supported,
+    please enter an integer number, greater than 0`);
+} else {
+  alert( pow(x, n) );
+}
+```
+
+-->
+<p>Now let’s discuss the rules and reasons for them in detail.</p>
+<p>Nothing is “carved in stone” here. Everything is optional and can be changed: these are coding rules, not religious dogmas.</p>
+<h3><a class="main__anchor" name="figure-brackets" href="#figure-brackets">Figure brackets</a></h3><p>In most JavaScript projects figure brackets are written on the same line, not on the new line. A so-called “egyptian” style. There’s also a space before an opening bracket.</p>
+<p>Like this:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">if (condition) {
+  // do this
+  // ...and that
+  // ...and that
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>A single-line construct is an important edge case. Should we use brackets at all? If yes, then where?</p>
+<p>Here are the annotated variants, so you can judge about their readability on your own:</p>
+<!--
+```js no-beautify
+if (n < 0) {alert(`Power ${n} is not supported`);}
+
+if (n < 0) alert(`Power ${n} is not supported`);
+
+if (n < 0)
+  alert(`Power ${n} is not supported`);
+
+if (n < 0) {
+  alert(`Power ${n} is not supported`);
+}
+```
+-->
+<figure><div class="image" style="width:438px">
+      <div class="image__ratio" style="padding-top:102.96803652968036%"></div>
+      <img src="article/coding-style/figure-bracket-style.png" alt="" width="438" height="451" class="image__image">
+      </div></figure><p>As a summary:</p>
+<ul>
+<li>For a really short code, one line is acceptable: like <code>if (cond) return null</code>.</li>
+<li>But a separate line for each statement in brackets is usually better.</li>
+</ul>
+<h3><a class="main__anchor" name="line-length" href="#line-length">Line length</a></h3><p>The maximal line length should be limited. No one likes to eye-follow a long horizontal line. It’s better to split it.</p>
+<p>The maximal line length is agreed on the team-level. It’s usually 80 or 120 characters.</p>
+<h3><a class="main__anchor" name="indents" href="#indents">Indents</a></h3><p>There are two types of indents:</p>
+<ul>
+<li>
+<p><strong>A horizontal indent: 2(4) spaces.</strong></p>
+<p>A horizontal indentation is made using either 2 or 4 spaces or the “Tab” symbol. Which one to choose is an old holy war. Spaces are more common nowadays.</p>
+<p>One advantage of spaces over tabs is that spaces allow more flexible configurations of indents than the “Tab” symbol.</p>
+<p>For instance, we can align the arguments with the opening bracket, like this:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">show(parameters,
+     aligned, // 5 spaces padding at the left
+     one,
+     after,
+     another
+  ) {
+  // ...
+}</code></pre>
+        </div>
+      </div>
+      
+      </div></li>
+<li>
+<p><strong>A vertical indent: empty lines for splitting code into logical blocks.</strong></p>
+<p>Even a single function can often be divided in logical blocks. In the example below, the initialization of variables, the main loop and returning the result are split vertically:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function pow(x, n) {
+  let result = 1;
+  //              &lt;--
+  for (let i = 0; i &lt; n; i++) {
+    result *= x;
+  }
+  //              &lt;--
+  return result;
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Insert an extra newline where it helps to make the code more readable. There should not be more than nine lines of code without a vertical indentation.</p>
+</li>
+</ul>
+<h3><a class="main__anchor" name="a-semicolon" href="#a-semicolon">A semicolon</a></h3><p>A semicolon should be present after each statement. Even if it could possibly be skipped.</p>
+<p>There are languages where a semicolon is truly optional. It’s rarely used there. But in JavaScript there are few cases when a line break is sometimes not interpreted as a semicolon. That leaves a place for programming errors.</p>
+<p>As you become more mature as a programmer, you may choose a no-semicolon style, like <a href="https://standardjs.com/">StandardJS</a>, but that’s only when you know JavaScript well and understand possible pitfalls.</p>
+<h3><a class="main__anchor" name="nesting-levels" href="#nesting-levels">Nesting levels</a></h3><p>There should not be too many nesting levels.</p>
+<p>Sometimes it’s a good idea to use the <a href="while-for.html#continue">“continue”</a> directive in the loop to evade extra nesting in <code>if(..) { ... }</code>:</p>
+<p>Instead of:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">for (let i = 0; i &lt; 10; i++) {
+  if (cond) {
+    ... // &lt;- one more nesting level
+  }
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>We can write:</p>
+<div data-trusted="1" class="code-example" data-highlight-inline="1:13-21">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">for (let i = 0; i &lt; 10; i++) {
+  if (!cond) continue;
+  ...  // &lt;- no extra nesting level
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>A similar thing can be done with <code>if/else</code> and <code>return</code>.</p>
+<p>For example, two constructs below are identical.</p>
+<p>The first one:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function pow(x, n) {
+  if (n &lt; 0) {
+    alert(&quot;Negative 'n' not supported&quot;);
+  } else {
+    let result = 1;
+
+    for (let i = 0; i &lt; n; i++) {
+      result *= x;
+    }
+
+    return result;
+  }
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>And this:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function pow(x, n) {
+  if (n &lt; 0) {
+    alert(&quot;Negative 'n' not supported&quot;);
+    return;
+  }
+
+  let result = 1;
+
+  for (let i = 0; i &lt; n; i++) {
+    result *= x;
+  }
+
+  return result;
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>…But the second one is more readable, because the “edge case” of <code>n &lt; 0</code> is handled early on, and then we have the “main” code flow, without an additional nesting.</p>
+<h2><a class="main__anchor" name="functions-below-the-code" href="#functions-below-the-code">Functions below the code</a></h2><p>If you are writing several “helper” functions and the code to use them, then there are three ways to place them.</p>
+<ol>
+<li>
+<p>Functions above the code that uses them:</p>
+<div data-trusted="1" class="code-example" data-highlight-inline="0:3-24,13:3-27">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">// function declarations
+function createElement() {
+  ...
+}
+
+function setHandler(elem) {
+  ...
+}
+
+function walkAround() {
+  ...
+}
+
+// the code which uses them
+let elem = createElement();
+setHandler(elem);
+walkAround();</code></pre>
+        </div>
+      </div>
+      
+      </div></li>
+<li>
+<p>Code first, then functions</p>
+<div data-trusted="1" class="code-example" data-highlight-inline="0:3-36,5:7-23">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">// the code which uses the functions
+let elem = createElement();
+setHandler(elem);
+walkAround();
+
+// --- helper functions ---
+
+function createElement() {
+  ...
+}
+
+function setHandler(elem) {
+  ...
+}
+
+function walkAround() {
+  ...
+}</code></pre>
+        </div>
+      </div>
+      
+      </div></li>
+<li>
+<p>Mixed: a function is described where it’s first used.</p>
+</li>
+</ol>
+<p>Most of time, the second variant is preferred.</p>
+<p>That’s because when reading a code, we first want to know “what it does”. If the code goes first, then it provides that information. And then maybe we won’t need to read functions at all, especially if their names are adequate to what they’re doing.</p>
+<h2><a class="main__anchor" name="style-guides" href="#style-guides">Style guides</a></h2><p>A style guide contains general rules about “how to write”: which quotes to use, how many spaces to indent, where to put line breaks, etc. A lot of minor things.</p>
+<p>In total, when all members of a team use the same style guide, the code looks uniform. No matter who of the team wrote it, it’s still the same style.</p>
+<p>Surely, a team may think out a style guide themselves. But as of now, there’s no need to. There are many tried, worked-out style guides, which are easy to adopt.</p>
+<p>For instance:</p>
+<ul>
+<li><a href="https://google.github.io/styleguide/javascriptguide.xml">Google JavaScript Style Guide</a></li>
+<li><a href="https://github.com/airbnb/javascript">Airbnb JavaScript Style Guide</a></li>
+<li><a href="https://github.com/rwaldron/idiomatic.js">Idiomatic.JS</a></li>
+<li><a href="https://standardjs.com/">StandardJS</a></li>
+<li>(there are more)</li>
+</ul>
+<p>If you’re a novice developer, then you could start with the cheatsheet above in the chapter, and later browse the style guides to pick up the common principles and maybe choose one.</p>
+<h2><a class="main__anchor" name="automated-linters" href="#automated-linters">Automated linters</a></h2><p>There are tools that can check the code style automatically. They are called “linters”.</p>
+<p>The great thing about them is that style-checking also finds some bugs, like a typo in a variable or function name.</p>
+<p>So it’s recommended to install one, even if you don’t want to stick to a “code style”. They help to find typos – and that’s already good enough.</p>
+<p>Most well-known tools are:</p>
+<ul>
+<li><a href="http://www.jslint.com/">JSLint</a> – one of the first linters.</li>
+<li><a href="http://www.jshint.com/">JSHint</a> – more settings than JSLint.</li>
+<li><a href="http://eslint.org/">ESLint</a> – probably the newest one.</li>
+</ul>
+<p>All of them can do the job. The author uses <a href="http://eslint.org/">ESLint</a>.</p>
+<p>Most linters are integrated with editors: just enable the plugin in the editor and configure the style.</p>
+<p>For instance, for ESLint you should do the following:</p>
+<ol>
+<li>Install <a href="https://nodejs.org/">Node.JS</a>.</li>
+<li>Install ESLint with the command <code>npm install -g eslint</code> (npm is Node.JS package installer).</li>
+<li>Create a config file named <code>.eslintrc</code> in the root of your JavaScript project (in the folder that contains all your files).</li>
+</ol>
+<p>Here’s an example of <code>.eslintrc</code>:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">{
+  &quot;extends&quot;: &quot;eslint:recommended&quot;,
+  &quot;env&quot;: {
+    &quot;browser&quot;: true,
+    &quot;node&quot;: true,
+    &quot;es6&quot;: true
+  },
+  &quot;rules&quot;: {
+    &quot;no-console&quot;: 0,
+  },
+  &quot;indent&quot;: 2
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Here the directive <code>&quot;extends&quot;</code> denotes that we base on the “eslint:recommended” set of settings, and then we specify our own.</p>
+<p>Then install/enable the plugin for your editor that integrates with ESLint. The majority of editors have it.</p>
+<p>It is possible to download style rule sets from the web and extend them instead. See <a href="http://eslint.org/docs/user-guide/getting-started">http://eslint.org/docs/user-guide/getting-started</a> for more details about installation.</p>
+<p>Using a linter has a great side-effect: linters catch typos. For instance, when an undefined variable is accessed, a linter detects it and (if integrated with an editor) highlights it. In most cases that’s a mistype. So we can fix it right ahead.</p>
+<p>For that reason even if you’re not concerned about styles, using a linter is highly recommended.</p>
+<p>Also certain IDEs support built-in linting, that also may be good, but not so tunable as ESLint.</p>
+<h2><a class="main__anchor" name="summary" href="#summary">Summary</a></h2><p>All syntax rules from this chapter and the style guides aim to increase readability, so all of them are debatable.</p>
+<p>When we think about “how to write better?”, the sole criterion is “what makes the code more readable and easier to understand? what helps to evade errors?” That’s the main thing to keep in mind when choosing the style or discussing which one is better.</p>
+<p>Read style guides to see the latest ideas about that and follow those that you find the best.</p>
+</div></article><div class="tasks"><h2 id="tasks" class="tasks__title"><a href="#tasks" class="main__anchor main__anchor_noicon tasks__title-anchor">Tasks</a></h2><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a href="#bad-style" name="bad-style" class="main__anchor">Bad style</a></h3><a href="task/style-errors.html" target="_blank" class="task__open-link"></a></div><div class="task__header-note"><span title="How important is the task, from 1 to 5" class="task__importance">importance: 4</span></div><div class="task__content"><p>What’s wrong with the code style below?</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function pow(x,n)
+{
+  let result=1;
+  for(let i=0;i&lt;n;i++) {result*=x;}
+  return result;
+}
+
+let x=prompt(&quot;x?&quot;,''), n=prompt(&quot;n?&quot;,'')
+if (n&lt;=0)
+{
+  alert(`Power ${n} is not supported, please enter an integer number greater than zero`);
+}
+else
+{
+  alert(pow(x,n))
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Fix it.</p>
+<button type="button" class="task__solution">solution</button><div class="task__answer"><div class="task__answer-content"><p>You could note the following:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function pow(x,n)  // &lt;- no space between arguments
+{  // &lt;- figure bracket on a separate line
+  let result=1;   // &lt;- no spaces to the both sides of =
+  for(let i=0;i&lt;n;i++) {result*=x;}   // &lt;- no spaces
+  // the contents of { ... } should be on a new line
+  return result;
+}
+
+let x=prompt(&quot;x?&quot;,''), n=prompt(&quot;n?&quot;,'') // &lt;-- technically possible,
+// but better make it 2 lines, also there's no spaces and ;
+if (n&lt;0)  // &lt;- no spaces inside (n &lt; 0), and should be extra line above it
+{   // &lt;- figure bracket on a separate line
+  // below - a long line, may be worth to split into 2 lines
+  alert(`Power ${n} is not supported, please enter an integer number greater than zero`);
+}
+else // &lt;- could write it on a single line like &quot;} else {&quot;
+{
+  alert(pow(x,n))  // no spaces and ;
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>The fixed variant:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function pow(x, n) {
+  let result = 1;
+
+  for (let i = 0; i &lt; n; i++) {
+    result *= x;
+  }
+
+  return result;
+}
+
+let x = prompt(&quot;x?&quot;, &quot;&quot;);
+let n = prompt(&quot;n?&quot;, &quot;&quot;);
+
+if (n &lt; 0) {
+  alert(`Power ${n} is not supported,
+    please enter an integer number greater than zero`);
+} else {
+  alert( pow(x, n) );
+}</code></pre>
+        </div>
+      </div>
+      
+      </div></div><button type="button" title="close" class="close-button task__answer-close"></button></div></div></div></div></div><!--  include /blocks/banner-bottom--><!--if lang == 'en'--><!--  include /blocks/banner-bottom.en--></div><div class="page__nav-wrap"><a href="debugging-chrome.html" data-tooltip="Debugging in Chrome" class="page__nav page__nav_prev"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Previous lesson</span></a><a href="comments.html" data-tooltip="Comments" class="page__nav page__nav_next"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Next lesson</span></a></div><div class="article-tablet-foot tablet-only"><div class="article-tablet-foot__layout"><div class="share-icons"><span class="share-icons__title">Share</span><a href="https://twitter.com/share?url=https%3A%2F%2Fjavascript.info%2Fcoding-style" class="share share_tw"></a><a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fjavascript.info%2Fcoding-style" class="share share_fb"></a><a href="https://plus.google.com/share?url=https%3A%2F%2Fjavascript.info%2Fcoding-style" class="share share_gp"></a><a href="https://vkontakte.ru/share.php?url=https%3A%2F%2Fjavascript.info%2Fcoding-style" class="share share_vk"></a></div><div class="article-tablet-foot__map"><a href="tutorial/map.html" data-action="tutorial-map" class="map"><span class="map__text">Tutorial map</span></a></div></div></div><div id="comments" class="comments"><div class="comments__header"><h2 class="comments__header-title"><a href="#comments" name="comments">Comments</a></h2><div class="comments__read-before"><span class="comments__read-before-link">read this before commenting…</span><div class="comments__read-before-popup"><div class="comments__read-before-popup-i"><ul><li>You're welcome to post additions, questions to the articles and answers to them.</li><li>To insert a few words of code, use the <code>&lt;code&gt;</code> tag, for several lines – use <code>&lt;pre&gt;</code>, for more than 10 lines – use a sandbox (<a href='http://plnkr.co/edit/?p=preview'>plnkr</a>, <a href='http://jsbin.com/'>JSBin</a>, <a href='http://codepen.io/'>codepen</a>…)</li><li>If you can't understand something in the article – please elaborate.</li></ul></div></div></div></div></div><div id="disqus_thread"></div><script>var disqus_config = function() { if (!this.page) this.page = {}; Object.assign(this.page, {"url":"https:\/\/javascript.info\/coding-style","identifier":"\/coding-style","title":"Coding style"}); };</script><script>var disqus_shortname = "javascriptinfo";</script><script>var disqus_enabled = true;</script></main></div><div class="page__sidebar sidebar sidebar_sticky-footer"><button data-sidebar-toggle class="sidebar__toggle"></button><a href="tutorial/map.html" data-action="tutorial-map" data-tooltip="Tutorial map" class="map"></a><div class="sidebar__inner"><div class="sidebar__content"><div class="sidebar__section"><h4 class="sidebar__section-title">Chapter</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a href="code-quality.html" class="sidebar__link">Code quality</a></li></ul></nav></div><div class="sidebar__section"><h4 class="sidebar__section-title">Lesson navigation</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a href="#syntax" class="sidebar__link">Syntax</a></li><li class="sidebar__navigation-link"><a href="#functions-below-the-code" class="sidebar__link">Functions below the code</a></li><li class="sidebar__navigation-link"><a href="#style-guides" class="sidebar__link">Style guides</a></li><li class="sidebar__navigation-link"><a href="#automated-linters" class="sidebar__link">Automated linters</a></li><li class="sidebar__navigation-link"><a href="#summary" class="sidebar__link">Summary</a></li></ul></nav></div><div class="sidebar__section"><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a href="#tasks" class="sidebar__link">Tasks (1)</a></li><li class="sidebar__navigation-link"><a href="#comments" class="sidebar__link">Comments</a></li></ul></nav></div><div class="sidebar__section"><div class="sidebar__section-title">Share</div><a href="https://twitter.com/share?url=https%3A%2F%2Fjavascript.info%2Fcoding-style" class="share share_tw sidebar__share"></a><a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fjavascript.info%2Fcoding-style" class="share share_fb sidebar__share"></a><a href="https://plus.google.com/share?url=https%3A%2F%2Fjavascript.info%2Fcoding-style" class="share share_gp sidebar__share"></a></div><div class="sidebar__section"><a href="https://github.com/iliakan/javascript-tutorial-en/tree/master/1-js/03-code-quality/02-coding-style/article.md" class="sidebar__link">Edit on Github</a></div></div></div></div></div></div><div class="page-footer"><div class="page-footer__left"><ul class="page-footer__list"><li class="page-footer__item">©&nbsp;2007—2017&nbsp; Ilya Kantor</li><li class="page-footer__item"><a href="about.html#contact-us" class="page-footer__link">contact us</a></li><li class="page-footer__item"><a href="about.html" class="page-footer__link">about the project</a></li><li class="page-footer__item"><a href="https://learn.javascript.ru/" class="page-footer__link">RU</a> / EN</li></ul></div><div class="page-footer__right"><ul class="page-footer__list"><li class="page-footer__item">powered by <a rel="nofollow" href="http://nodejs.org/" class="page-footer__link">node.js</a>&nbsp;&amp;&nbsp;<a rel="nofollow" href="http://github.com/iliakan/javascript-tutorial-en" class="page-footer__link">open source</a></li></ul></div></div></body>
+<!-- Mirrored from javascript.info/coding-style by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 30 Nov 2017 15:27:41 GMT -->
+</html>

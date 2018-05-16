@@ -1,0 +1,1188 @@
+<!DOCTYPE html><html lang="en">
+<!-- Mirrored from javascript.info/closure by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 30 Nov 2017 15:28:13 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><script>window.currentUser = null;</script><title itemprop="name">Closure</title><meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, minimum-scale=1.0"><meta name="apple-mobile-web-app-capable" content="yes"><script>if (window.devicePixelRatio > 1) document.cookie = 'pixelRatio=' + window.devicePixelRatio + ';path=/;expires=Tue, 19 Jan 2038 03:14:07 GMT';</script><link href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700%7COpen+Sans+Condensed:700&amp;subset=latin,latin-ext,cyrillic,cyrillic-ext" rel="stylesheet"><link rel="apple-touch-icon-precomposed" href="img/favicon/apple-touch-icon-precomposed.png"><link rel="canonical" href="closure.html"><meta name="msapplication-TileColor" content="#222A2C"><meta name="msapplication-TileImage" content="/img/favicon/tileicon.png"><!-- favicon the rest--><link rel="icon" href="img/favicon/favicon.png"><meta itemprop="image" content="https://javascript.info/img/site_preview_en_512x512.png"><meta property="og:title" content="Closure"><meta property="og:image" content="https://javascript.info/img/site_preview_en_1200x630.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="fb:admins" content="100001562528165"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Closure"><meta name="twitter:site" content="@iliakan"><meta name="twitter:creator" content="@iliakan"><meta name="twitter:image" content="https://javascript.info/img/site_preview_en_512x512.png"><link href="pack/styles.da59a89b28153875791083e4a8c5adb3.css" rel="stylesheet"><link rel="prev" href="rest-parameters-spread-operator.html"><link rel="next" href="var.html"><script>window.GA_ID = "UA-2056213-15";</script><script>window.YANDEX_METRIKA_ID = 32184394;</script><script>window.GoogleAnalyticsObject="ga",window.ga=function(){window.ga.q.push(arguments)},window.ga.q=[],window.ga.l=Date.now(),ga("create",GA_ID,"auto"),window.currentUser&&ga("set","&uid",currentUser.id),window.addEventListener("error",function(e){var r=(e.filename||e.errorUrl)+": "+(e.lineno||e.errorLine),n=e.stack||e.error&&e.error.stack;ga("send","exception",{exDescription:e.message+" "+r+" "+n,exFatal:!0})});</script><script src="https://www.google-analytics.com/analytics.js" async></script><script>ga('send', 'pageview');</script><script>window.metrika={reachGoal:function(){}},window.yandex_metrika_callbacks=[function(){try{window.metrika=new Ya.Metrika({id:YANDEX_METRIKA_ID,webvisor:!0,clickmap:!0,params:{user:window.currentUser&&window.currentUser.id}}),metrika.trackLinks({delay:150}),window.addEventListener("error",function(r){window.metrika.reachGoal("JSERROR",{src:(r.filename||r.errorUrl)+": "+(r.lineno||r.errorLine),stack:r.stack||r.error&&r.error.stack,message:r.message})})}catch(r){}}];</script><script src="http://mc.yandex.ru/metrika/watch.js" async></script><script>window.RECAPTCHA_ID = "6Lf9NyETAAAAACZlg-a9Us2SxvYbeVC1ROWaWv4O";</script><script src="initc4ca.js?1"></script><script src="pack/head.688d4fe7c4cf54e23737.js" defer></script><meta property="og:title" content="Closure"><meta property="og:type" content="article"><script src="pack/tutorial.688d4fe7c4cf54e23737.js" defer></script><script src="pack/footer.688d4fe7c4cf54e23737.js" defer></script></head><body class="no-icons"><script>window.fontTest();</script><div class="page-wrapper page-wrapper_sidebar_on"><!--[if lt IE 10]><div style="color:red;text-align:center">Sorry, IE&lt;10 is not supported, please use a newer browser.</div><![endif]--><div class="sitetoolbar sitetoolbar_tutorial"><!-- include ./notification-stripe--><div class="sitetoolbar__content"><div class="sitetoolbar__logo-wrap"><a href="index.html" class="sitetoolbar__link sitetoolbar__link_logo"><img src="img/sitetoolbar__logo_en.svg" width="200" class="sitetoolbar__logo sitetoolbar__logo_normal" alt=""><img src="img/sitetoolbar__logo_small_en.svg" width="70" class="sitetoolbar__logo sitetoolbar__logo_small" alt=""><script>Array.prototype.forEach.call(document.querySelectorAll("img.sitetoolbar__logo"),function(e){var t=document.createElement("object");t.type="image/svg+xml",t.className=e.className,t.style.cssText="left:0;top:0;position:absolute",t.onload=function(){t.onload=null,e.style.visibility="hidden"},t.data=e.src,e.parentNode.insertBefore(t,e)});</script></a></div><div class="sitetoolbar__nav-toggle-wrap"><button type="button" class="sitetoolbar__nav-toggle"></button></div><nav class="sitetoolbar__sections"><ul class="sitetoolbar__sections-list"></ul></nav><div class="sitetoolbar__book-wrap"><a href="ebook.html" class="buy-book-button"><span class="buy-book-button__extra-text">Buy</span>EPUB/PDF</a></div><div class="sitetoolbar__login-wrap"><button data-action-login class="sitetoolbar__login sitetoolbar__login_unready"></button></div><div class="sitetoolbar__search-wrap"><div class="sitetoolbar__search-content"><form method="GET" action="http://javascript.info/search" class="sitetoolbar__search"><button type="button" class="sitetoolbar__search-toggle"></button><div class="sitetoolbar__search-input"><div class="text-input"><input name="query" placeholder="Search on Javascript.info" class="text-input__control" type="text"></div><button type="submit" class="sitetoolbar__find">Search</button></div></form></div></div></div><!-- todo: en variant--><div class="tablet-menu"><div class="tablet-menu__line"><div class="tablet-menu__content"><form action="http://javascript.info/search/" class="tablet-menu-search"><input type="search" name="query" placeholder="Search in the tutorial" required class="tablet-menu-search__input"><button type="submit" name="type" value="articles" class="tablet-menu-search__button">Search</button></form></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><a href="tutorial/map.html" data-action="tutorial-map" class="map"><span class="map__text">Tutorial map</span></a></div></div><!--+e.line--><!--  +e.content--><!--    +b("a").tablet-ebook(href="/ebook")--><!--      +e("span").text Купить учебник--><!--      +e("span").note (EPUB + PDF)--><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="share-icons"><span class="share-icons__title">Share</span><a href="https://twitter.com/share?url=http%3A%2F%2Fjavascript.info%2Fclosure" class="share share_tw"></a><a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=http%3A%2F%2Fjavascript.info%2Fclosure" class="share share_fb"></a><a href="https://plus.google.com/share?url=http%3A%2F%2Fjavascript.info%2Fclosure" class="share share_gp"></a><a href="https://vkontakte.ru/share.php?url=http%3A%2F%2Fjavascript.info%2Fclosure" class="share share_vk"></a></div></div></div></div><progress data-sticky value="45" max="67" data-tooltip="Lesson 45 of 67" class="tutorial-progress"></progress></div><div class="page page_sidebar_on"><script>if(localStorage.noSidebar){document.querySelector(".page").classList.remove("page_sidebar_on");var pageWrapper=document.querySelector(".page-wrapper");pageWrapper&&pageWrapper.classList.remove("page-wrapper_sidebar_on")}setTimeout(function(){document.querySelector(".page").classList.add("page_sidebar-animation-on")},0);</script><div class="page__inner"><main class="main main_width-limit"><header class="main__header"><ol class="breadcrumbs"><li itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemref="breadcrumb-1" class="breadcrumbs__item breadcrumbs__item_home"><a href="index.html" itemprop="url" class="breadcrumbs__link"><span itemprop="title" class="breadcrumbs__hidden-text">Учебник</span></a></li><li id="breadcrumb-1" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemref="breadcrumb-2" itemprop="child" class="breadcrumbs__item"><a href="js.html" itemprop="url" class="breadcrumbs__link"><span itemprop="title">The JavaScript language</span></a></li><li id="breadcrumb-2" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemprop="child" class="breadcrumbs__item"><a href="advanced-functions.html" itemprop="url" class="breadcrumbs__link"><span itemprop="title">Advanced working with functions</span></a></li></ol><h1 class="main__header-title">Closure</h1></header><div class="content"><article itemscope itemtype="http://schema.org/TechArticle"><meta itemprop="name" content="Closure"><div itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="email" content="iliakan@gmail.com"><meta itemprop="name" content="Ilya Kantor"></div><div itemprop="articleBody"><p>JavaScript is a very function-oriented language. It gives a lot of freedom. A function can be created at one moment, then copied to another variable or passed as an argument to another function and called from a totally different place later.</p>
+<p>We know that a function can access variables outside of it. And this feature is used quite often.</p>
+<p>But what happens when an outer variables changes? Does a function get a most recent value or the one that existed when the function was created?</p>
+<p>Also, what happens when a function travels to another place of the code and is called from there – does it get access to outer variables in the new place?</p>
+<p>Different languages behave differently here, in this chapter we cover JavaScript.</p>
+<cut>
+<h2><a class="main__anchor" name="a-couple-of-questions" href="#a-couple-of-questions">A couple of questions</a></h2><p>Let’s formulate two questions for the seed, and then study the internal mechanics piece-by-piece, so that you’ll be able to answer these questions and more complex ones in the future.</p>
+<ol>
+<li>
+<p>The function <code>sayHi</code> uses an external variable <code>name</code>. When the function runs, which value of these two it’s going to use?</p>
+<div data-trusted="1" class="code-example" data-highlight-block="8-8">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let name = &quot;John&quot;;
+
+function sayHi() {
+  alert(&quot;Hi, &quot; + name);
+}
+
+name = &quot;Pete&quot;;
+
+sayHi(); // what will it show: &quot;John&quot; or &quot;Pete&quot;?</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Such situations are common in both browser and server-side development. A function may be scheduled to execute later than it is created, for instance after a user action or a network request.</p>
+<p>So, the question is: does it pick up latest changes?</p>
+</li>
+<li>
+<p>The function <code>makeWorker</code> makes another function and returns it. That new function can be called from somewhere else. Will it have access to outer variables from its creation place or the invocation place or maybe both?</p>
+<div data-trusted="1" class="code-example" data-highlight-block="14-14">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function makeWorker() {
+  let name = &quot;Pete&quot;;
+
+  return function() {
+    alert(name);
+  };
+}
+
+let name = &quot;John&quot;;
+
+// create a function
+let work = makeWorker();
+
+// call it
+work(); // what will it show? &quot;Pete&quot; (name where created) or &quot;John&quot; (name where called)?</code></pre>
+        </div>
+      </div>
+      
+      </div></li>
+</ol>
+<h2><a class="main__anchor" name="lexical-environment" href="#lexical-environment">Lexical Environment</a></h2><p>To understand what’s going on, let’s first discuss what a “variable” technically is.</p>
+<p>In JavaScript, every running function, code block and the script as a whole have an associated object named <em>Lexical Environment</em>.</p>
+<p>The Lexical Environment object consists of two parts:</p>
+<ol>
+<li><em>Environment Record</em> – an object that has all local variables as its properties (and some other information like the value of <code>this</code>).</li>
+<li>A reference to the <em>outer lexical environment</em>, usually the one associated with the code lexically right outside of it (outside of the current figure brackets).</li>
+</ol>
+<p>So, a “variable” is just a property of the special internal object, Environment Record. “To get or change a variable” means “to get or change the property of that object”.</p>
+<p>For instance, in this simple code, there is only one Lexical Environment:</p>
+<figure><div class="image" style="width:448px">
+      <div class="image__ratio" style="padding-top:16.517857142857142%"></div>
+      <img src="article/closure/lexical-environment-global.png" alt="" width="448" height="74" class="image__image">
+      </div></figure><p>This is a so-called global Lexical Environment, associated with the whole script. For browsers, all <code>&lt;script&gt;</code> tags share the same global environment.</p>
+<p>On the picture above, the rectangle means Environment Record (variable store) and the arrow means the outer reference. The global Lexical Environment has no outer one, so that’s <code>null</code>.</p>
+<p>Here’s the bigger picture of how <code>let</code> variables work:</p>
+<figure><div class="image" style="width:445px">
+      <div class="image__ratio" style="padding-top:30.337078651685395%"></div>
+      <img src="article/closure/lexical-environment-global-2.png" alt="" width="445" height="135" class="image__image">
+      </div></figure><p>Rectangles on the right-hand side demonstrate how the global Lexical Environment changes during the execution:</p>
+<ol>
+<li>When the script starts, the Lexical Environment is empty.</li>
+<li>The <code>let phrase</code> definition appears. Now it initially has no value, so <code>undefined</code> is stored.</li>
+<li><code>phrase</code> is assigned.</li>
+<li><code>phrase</code> refers to a new value.</li>
+</ol>
+<p>Everything looks simple for now, right?</p>
+<p>To summarize:</p>
+<ul>
+<li>A variable is a property of a special internal object, associated with the currently executing block/function/script.</li>
+<li>Working with variables is actually working with the properties of that object.</li>
+</ul>
+<h3><a class="main__anchor" name="function-declaration" href="#function-declaration">Function Declaration</a></h3><p>Function Declarations are special. Unlike <code>let</code> variables, they are processed not when the execution reaches them, but when a Lexical Environment is created. For the global Lexical Environment, it means the moment when the script is started.</p>
+<p>…And that is why we can call a function declaration before it is defined.</p>
+<p>The code below demonstrates that the Lexical Environment is non-empty from the beginning. It has <code>say</code>, because that’s a Function Declaration. And later it gets <code>phrase</code>, declared with <code>let</code>:</p>
+<figure><div class="image" style="width:506px">
+      <div class="image__ratio" style="padding-top:26.08695652173913%"></div>
+      <img src="article/closure/lexical-environment-global-3.png" alt="" width="506" height="132" class="image__image">
+      </div></figure><h3><a class="main__anchor" name="inner-and-outer-lexical-environment" href="#inner-and-outer-lexical-environment">Inner and outer Lexical Environment</a></h3><p>During the call <code>say()</code> uses an outer variable, so let’s see the details of what’s going on.</p>
+<p>First, when a function runs, a new function Lexical Environment is created automatically. That’s a general rule for all functions. That Lexical Environment is used to store local variables and parameters of the call.</p>
+<!--
+```js
+let phrase = "Hello";
+
+function say(name) {
+  alert( `${phrase}, ${name}` );
+}
+
+say("John"); // Hello, John
+```
+-->
+<p>Here’s the picture of Lexical Environments when the execution is inside <code>say(&quot;John&quot;)</code>, at the line labelled with an arrow:</p>
+<figure><div class="image" style="width:709px">
+      <div class="image__ratio" style="padding-top:17.912552891396334%"></div>
+      <img src="article/closure/lexical-environment-simple.png" alt="" width="709" height="127" class="image__image">
+      </div></figure><p>During the function call we have two Lexical Environments: the inner one (for the function call) and the outer one (global):</p>
+<ul>
+<li>The inner Lexical Environment corresponds to the current execution of  <code>say</code>. It has a single variable: <code>name</code>, the function argument. We called <code>say(&quot;John&quot;)</code>, so the value of <code>name</code> is <code>&quot;John&quot;</code>.</li>
+<li>The outer Lexical Environment is the global Lexical Environment.</li>
+</ul>
+<p>The inner Lexical Environment has the <code>outer</code> reference to the outer one.</p>
+<p><strong>When a code wants to access a variable – it is first searched in the inner Lexical Environment, then in the outer one, then the more outer one and so on until the end of the chain.</strong></p>
+<p>If a variable is not found anywhere, that’s an error in strict mode. Without <code>use strict</code>, an assignment to an undefined variable creates a new global variable, for backwards compatibility.</p>
+<p>Let’s see how the search proceeds in our example:</p>
+<ul>
+<li>When the <code>alert</code> inside <code>say</code> wants to access <code>name</code>, it finds it immediately in the function Lexical Environment.</li>
+<li>When it wants to access <code>phrase</code>, then there is no <code>phrase</code> locally, so it follows the <code>outer</code> reference and finds it globally.</li>
+</ul>
+<figure><div class="image" style="width:680px">
+      <div class="image__ratio" style="padding-top:19.264705882352942%"></div>
+      <img src="article/closure/lexical-environment-simple-lookup.png" alt="" width="680" height="131" class="image__image">
+      </div></figure><p>Now we can give the answer to the first seed question from the beginning of the chapter.</p>
+<p><strong>A function gets outer variables as they are now, the most recent values.</strong></p>
+<p>That’s because of the described mechanism. Old variable values are not saved anywhere. When a function wants them, it takes the current values from its own or an outer Lexical Environment.</p>
+<p>So the answer to the first question is <code>Pete</code>:</p>
+<div data-trusted="1" class="code-example" data-highlight-block="8-8">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let name = &quot;John&quot;;
+
+function sayHi() {
+  alert(&quot;Hi, &quot; + name);
+}
+
+name = &quot;Pete&quot;; // (*)
+
+sayHi(); // Pete</code></pre>
+        </div>
+      </div>
+      
+      </div><p>The execution flow of the code above:</p>
+<ol>
+<li>The global Lexical Environment has <code>name: &quot;John&quot;</code>.</li>
+<li>At the line <code>(*)</code> the global variable is changed, now it has <code>name: &quot;Pete&quot;</code>.</li>
+<li>When the function <code>say()</code>, is executed and takes <code>name</code> from outside. Here that’s from the global Lexical Environment where it’s already <code>&quot;Pete&quot;</code>.</li>
+</ol>
+<div class="important important_smart">
+            <div class="important__header"><span class="important__type">One call – one Lexical Environment</span></div>
+            <div class="important__content"><p>Please note that a new function Lexical Environment is created each time a function runs.</p>
+<p>And if a function is called multiple times, then each invocation will have its own Lexical Environment, with local variables and parameters specific for that very run.</p>
+</div></div>
+<div class="important important_smart">
+            <div class="important__header"><span class="important__type">Lexical Environment is a specification object</span></div>
+            <div class="important__content"><p>“Lexical Environment” is a specification object. We can’t get this object in our code and manipulate it directly. JavaScript engines also may optimize it, discard variables that are unused to save memory and perform other internal tricks, but the visible behavior should be as described.</p>
+</div></div>
+<h2><a class="main__anchor" name="nested-functions" href="#nested-functions">Nested functions</a></h2><p>A function is called “nested” when it is created inside another function.</p>
+<p>Technically, that is easily possible.</p>
+<p>We can use it to organize the code, like this:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function sayHiBye(firstName, lastName) {
+
+  // helper nested function to use below
+  function getFullName() {
+    return firstName + &quot; &quot; + lastName;
+  }
+
+  alert( &quot;Hello, &quot; + getFullName() );
+  alert( &quot;Bye, &quot; + getFullName() );
+
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Here the <em>nested</em> function <code>getFullName()</code> is made for convenience. It can access the outer variables and so can return the full name.</p>
+<p>What’s more interesting, a nested function can be returned: as a property of a new object (if the outer function creates an object with methods) or as a result by itself. And then used somewhere else. No matter where, it still keeps the access to the same outer variables.</p>
+<p>An example with the constructor function (see the chapter <a href="constructor-new.html">Constructor, operator &quot;new&quot;</a>):</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">// constructor function returns a new object
+function User(name) {
+
+  // the object method is created as a nested function
+  this.sayHi = function() {
+    alert(name);
+  };
+}
+
+let user = new User(&quot;John&quot;);
+user.sayHi(); // the method code has access to the outer &quot;name&quot;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>An example with returning a function:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function makeCounter() {
+  let count = 0;
+
+  return function() {
+    return count++; // has access to the outer counter
+  };
+}
+
+let counter = makeCounter();
+
+alert( counter() ); // 0
+alert( counter() ); // 1
+alert( counter() ); // 2</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Let’s go on with the <code>makeCounter</code> example. It creates the “counter” function that returns the next number on each invocation. Despite being simple, slightly modified variants of that code have practical uses, for instance, as a <a href="https://en.wikipedia.org/wiki/Pseudorandom_number_generator">pseudorandom number generator</a>, and more. So the example is not quite artificial.</p>
+<p>How does the counter work internally?</p>
+<p>When the inner function runs, the variable in <code>count++</code> is searched from inside out. For the example above, the order will be:</p>
+<figure><div class="image" style="width:306px">
+      <div class="image__ratio" style="padding-top:47.385620915032675%"></div>
+      <img src="article/closure/lexical-search-order.png" alt="" width="306" height="145" class="image__image">
+      </div></figure><ol>
+<li>The locals of the nested function.</li>
+<li>The variables of the outer function.</li>
+<li>…And further until it reaches globals.</li>
+</ol>
+<p>In that example <code>count</code> is found on the step <code>2</code>. When an outer variable is modified, it’s changed where it’s found. So <code>count++</code> finds the outer variable and increases it in the Lexical Environment where it belongs. Like if we had <code>let count = 1</code>.</p>
+<p>Here are two questions for you:</p>
+<ol>
+<li>Can we somehow reset the <code>counter</code> from the code that doesn’t belong to <code>makeCounter</code>? E.g. after <code>alert</code> calls in the example above.</li>
+<li>If we call <code>makeCounter()</code> multiple times – it returns many <code>counter</code> functions. Are they independent or do they share the same <code>count</code>?</li>
+</ol>
+<p>Try to answer them before going on reading.</p>
+<p>…Are you done?</p>
+<p>Okay, here we go with the answers.</p>
+<ol>
+<li>There is no way. The <code>counter</code> is a local function variable, we can’t access it from the outside.</li>
+<li>For every call to <code>makeCounter()</code> a new function Lexical Environment is created, with its own <code>counter</code>. So the resulting <code>counter</code> functions are independent.</li>
+</ol>
+<p>Here’s the demo:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function makeCounter() {
+  let count = 0;
+  return function() {
+    return count++;
+  };
+}
+
+let counter1 = makeCounter();
+let counter2 = makeCounter();
+
+alert( counter1() ); // 0
+alert( counter1() ); // 1
+
+alert( counter2() ); // 0 (independent)</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Probably, the situation with outer variables is quite clear for you as of now. But in more complex situations a deeper understanding of internals may be required. So let’s go ahead.</p>
+<h2><a class="main__anchor" name="environments-in-detail" href="#environments-in-detail">Environments in detail</a></h2><p>Now as you understand how closures work generally, we may finally descend to the very nuts and bolts.</p>
+<p>Here’s what’s going on in the <code>makeCounter</code> example step-by-step, follow it to make sure that you understand everything. Please note the additional <code>[[Environment]]</code> property that we didn’t cover yet.</p>
+<ol>
+<li>
+<p>When the script has just started, there is only global Lexical Environment:</p>
+<figure><div class="image" style="width:646px">
+      <div class="image__ratio" style="padding-top:21.671826625387%"></div>
+      <img src="article/closure/lexenv-nested-makecounter-1.png" alt="" width="646" height="140" class="image__image">
+      </div></figure><p>At that starting moment there is only <code>makeCounter</code> function, because it’s a Function Declaration. It did not run yet.</p>
+<p>All functions “on birth” receive a hidden property <code>[[Environment]]</code> with the reference to the Lexical Environment of their creation. We didn’t talk about it yet, but technically that’s a way how the function knows where it was made.</p>
+<p>Here, <code>makeCounter</code> is created in the global Lexical Environment, so <code>[[Environment]]</code> keeps the reference to it.</p>
+<p>In other words, a function is “imprinted” with a reference to the Lexical Environment where it was born. And <code>[[Environment]]</code> is the hidden function property that has that reference.</p>
+</li>
+<li>
+<p>Then the code runs on, and the call to <code>makeCounter()</code> is performed. Here’s the picture for the moment when the execution is on the first line inside <code>makeCounter()</code>:</p>
+<figure><div class="image" style="width:696px">
+      <div class="image__ratio" style="padding-top:22.270114942528735%"></div>
+      <img src="article/closure/lexenv-nested-makecounter-2.png" alt="" width="696" height="155" class="image__image">
+      </div></figure><p>At the moment of the call of <code>makeCounter()</code>, the Lexical Environment is created, to hold its variables and arguments.</p>
+<p>As all Lexical Environments, it stores two things:</p>
+<ol>
+<li>An Environment Record with local variables. In our case <code>count</code> is the only local variable (appears in it when the line with <code>let count</code> is executed).</li>
+<li>The outer lexical reference, which is set to <code>[[Environment]]</code> of the function. Here <code>[[Environment]]</code> of <code>makeCounter</code> references the global Lexical Environment.</li>
+</ol>
+<p>So, now we have two Lexical Environments: the first one is global, the second one is for the current <code>makeCounter</code> call, with the outer reference to global.</p>
+</li>
+<li>
+<p>During the execution of <code>makeCounter()</code>, a tiny nested function is created.</p>
+<p>It doesn’t matter whether the function is created using Function Declaration or Function Expression. All functions get the <code>[[Environment]]</code> property that references the Lexical Environment where they were made. So that new tiny nested function gets it as well.</p>
+<p>For our new nested function the value of <code>[[Environment]]</code> is the current Lexical Environment of <code>makeCounter()</code> (where it was born):</p>
+<figure><div class="image" style="width:736px">
+      <div class="image__ratio" style="padding-top:20.78804347826087%"></div>
+      <img src="article/closure/lexenv-nested-makecounter-3.png" alt="" width="736" height="153" class="image__image">
+      </div></figure><p>Please note that on this step the inner function was created, but not yet called. The code inside <code>function() { return count++; }</code> is not running, we’re going to return it.</p>
+</li>
+<li>
+<p>As the execution goes on, the call to <code>makeCounter()</code> finishes, and the result (the tiny nested function) is assigned to the global variable <code>counter</code>:</p>
+<figure><div class="image" style="width:671px">
+      <div class="image__ratio" style="padding-top:27.421758569299552%"></div>
+      <img src="article/closure/lexenv-nested-makecounter-4.png" alt="" width="671" height="184" class="image__image">
+      </div></figure><p>That function has only one line: <code>return count++</code>, that will be executed when we run it.</p>
+</li>
+<li>
+<p>When the <code>counter()</code> is called, an “empty” Lexical Environment is created for it. It has no local variables by itself. But the <code>[[Environment]]</code> of <code>counter</code> is used as the outer reference for it, so it has access to the variables of the former <code>makeCounter()</code> call, where it was created:</p>
+<figure><div class="image" style="width:734px">
+      <div class="image__ratio" style="padding-top:25.068119891008173%"></div>
+      <img src="article/closure/lexenv-nested-makecounter-5.png" alt="" width="734" height="184" class="image__image">
+      </div></figure><p>Now if it accesses a variable, it first searches its own Lexical Environment (empty), then the Lexical Environment of the former <code>makeCounter()</code> call, then the global one.</p>
+<p>When it looks for <code>count</code>, it finds it among the variables <code>makeCounter</code>, in the nearest outer Lexical Environment.</p>
+<p>Please note how memory management works here. When <code>makeCounter()</code> call finished some time ago, its Lexical Environment was retained in memory, because there’s a nested function with <code>[[Environment]]</code> referencing it.</p>
+<p>Generally, a Lexical Environment object lives as long as there is a function which may use it. And when there are none, it is cleared.</p>
+</li>
+<li>
+<p>The call to <code>counter()</code> not only returns the value of <code>count</code>, but also increases it. Note that the modification is done “in place”. The value of <code>count</code> is modified exactly in the environment where it was found.</p>
+<figure><div class="image" style="width:734px">
+      <div class="image__ratio" style="padding-top:27.384196185286104%"></div>
+      <img src="article/closure/lexenv-nested-makecounter-6.png" alt="" width="734" height="201" class="image__image">
+      </div></figure><p>So we return to the previous step with the only change – the new value of <code>count</code>. The following calls all do the same.</p>
+</li>
+<li>
+<p>Next <code>counter()</code> invocations do the same.</p>
+</li>
+</ol>
+<p>The answer to the second seed question from the beginning of the chapter should now be obvious.</p>
+<p>The <code>work()</code> function in the code below uses the <code>name</code> from the place of its origin through the outer lexical environment reference:</p>
+<figure><div class="image" style="width:754px">
+      <div class="image__ratio" style="padding-top:27.586206896551722%"></div>
+      <img src="article/closure/lexenv-nested-work.png" alt="" width="754" height="208" class="image__image">
+      </div></figure><p>So, the result is <code>&quot;Pete&quot;</code> here.</p>
+<p>…But if there were no <code>let name</code> in <code>makeWorker()</code>, then the search would go outside and take the global variable as we can see from the chain above. In that case it would be <code>&quot;John&quot;</code>.</p>
+<div class="important important_smart">
+            <div class="important__header"><span class="important__type">Closures</span></div>
+            <div class="important__content"><p>There is a general programming term “closure”, that developers generally should know.</p>
+<p>A <a href="https://en.wikipedia.org/wiki/Closure_(computer_programming)">closure</a> is a function that remembers its outer variables and can access them. In some languages, that’s not possible, or a function should be written in a special way to make it happen. But as explained above, in JavaScript all functions are naturally closures (there is only one exclusion, to be covered in <a href="new-function.html">The &quot;new Function&quot; syntax</a>).</p>
+<p>That is: they automatically remember where they are created using a hidden <code>[[Environment]]</code> property, and all of them can access outer variables.</p>
+<p>When on an interview a frontend developer gets a question about “what’s a closure?”, a valid answer would be a definition of the closure and an explanation that all functions in JavaScript are closures, and maybe few more words about technical details: the <code>[[Environment]]</code> property and how Lexical Environments work.</p>
+</div></div>
+<h2><a class="main__anchor" name="code-blocks-and-loops-iife" href="#code-blocks-and-loops-iife">Code blocks and loops, IIFE</a></h2><p>The examples above concentrated on functions. But Lexical Environments also exist for code blocks <code>{...}</code>.</p>
+<p>They are created when a code block runs and contain block-local variables. Here’s a couple of examples.</p>
+<h2><a class="main__anchor" name="if" href="#if">If</a></h2><p>In the example below, when the execution goes into <code>if</code> block, the new “if-only” Lexical Environment is created for it:</p>
+<!--
+```js run
+let phrase = "Hello";
+
+if (true) {
+  let user = "John";
+
+  alert(`${phrase}, ${user}`); // Hello, John
+}
+
+alert(user); // Error, can't see such variable!
+```
+-->
+<figure><div class="image" style="width:689px">
+      <div class="image__ratio" style="padding-top:24.383164005805515%"></div>
+      <img src="article/closure/lexenv-if.png" alt="" width="689" height="168" class="image__image">
+      </div></figure><p>The new Lexical Environment gets the enclosing one as the outer reference, so <code>phrase</code> can be found. But all variables and Function Expressions declared inside <code>if</code> reside in that Lexical Environment and can’t be seen from the outside.</p>
+<p>For instance, after <code>if</code> finishes, the <code>alert</code> below won’t see the <code>user</code>, hence the error.</p>
+<h2><a class="main__anchor" name="for-while" href="#for-while">For, while</a></h2><p>For a loop, every run has a separate Lexical Environment. If the variable is declared in <code>for</code>, then it’s also local to that Lexical Environment:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">for (let i = 0; i &lt; 10; i++) {
+  // Each loop has its own Lexical Environment
+  // {i: value}
+}
+
+alert(i); // Error, no such variable</code></pre>
+        </div>
+      </div>
+      
+      </div><p>That’s actually an exception, because <code>let i</code> is visually outside of <code>{...}</code>. But in fact each run of the loop has its own Lexical Environment with the current <code>i</code> in it.</p>
+<p>After the loop, <code>i</code> is not visible.</p>
+<h3><a class="main__anchor" name="code-blocks" href="#code-blocks">Code blocks</a></h3><p>We also can use a “bare” code block <code>{…}</code> to isolate variables into a “local scope”.</p>
+<p>For instance, in a web browser all scripts share the same global area. So if we create a global variable in one script, it becomes available to others. But that becomes a source of conflicts if two scripts use the same variable name and overwrite each other.</p>
+<p>That may happen if the variable name is a widespread word, and script authors are unaware of each other.</p>
+<p>If we’d like to evade that, we can use a code block to isolate the whole script or an area in it:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">{
+  // do some job with local variables that should not be seen outside
+
+  let message = &quot;Hello&quot;;
+
+  alert(message); // Hello
+}
+
+alert(message); // Error: message is not defined</code></pre>
+        </div>
+      </div>
+      
+      </div><p>The code outside of the block (or inside another script) doesn’t see variables in it, because a code block has its own Lexical Environment.</p>
+<h3><a class="main__anchor" name="iife" href="#iife">IIFE</a></h3><p>In old scripts, one can find so-called “immediately-invoked function expressions” (abbreviated as IIFE) used for this purpose.</p>
+<p>They look like this:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">(function() {
+
+  let message = &quot;Hello&quot;;
+
+  alert(message); // Hello
+
+})();</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Here a Function Expression is created and immediately called. So the code executes right now and has its own private variables.</p>
+<p>The Function Expression is wrapped with brackets <code>(function {...})</code>, because when JavaScript meets <code>&quot;function&quot;</code> in the main code flow, it understands it as a start of Function Declaration. But a Function Declaration must have a name, so there will be an error:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">// Error: Unexpected token (
+function() { // &lt;-- JavaScript cannot find function name, meets ( and gives error
+
+  let message = &quot;Hello&quot;;
+
+  alert(message); // Hello
+
+}();</code></pre>
+        </div>
+      </div>
+      
+      </div><p>We can say “okay, let it be Function Declaration, let’s add a name”, but it won’t work. JavaScript does not allow Function Declarations to be called immediately:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">// syntax error because of brackets below
+function go() {
+
+}(); // &lt;-- can't call Function Declaration immediately</code></pre>
+        </div>
+      </div>
+      
+      </div><p>…So the brackets are needed to show JavaScript that the function is created in the context of another expression, and hence it’s a Function Expression. Needs no name and can be called immediately.</p>
+<p>There are other ways to tell JavaScript that we mean Function Expression:</p>
+<div data-trusted="1" class="code-example" data-highlight-inline="4:1-2,8:3-4,10:0-1,14:0-1">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">// Ways to create IIFE
+
+(function() {
+  alert(&quot;Brackets around the function&quot;);
+})();
+
+(function() {
+  alert(&quot;Brackets around the whole thing&quot;);
+}());
+
+!function() {
+  alert(&quot;Bitwise NOT operator starts the expression&quot;);
+}();
+
++function() {
+  alert(&quot;Unary plus starts the expression&quot;);
+}();</code></pre>
+        </div>
+      </div>
+      
+      </div><p>In all cases above we declare a Function Expression and run it immediately.</p>
+<h2><a class="main__anchor" name="garbage-collection" href="#garbage-collection">Garbage collection</a></h2><p>Lexical Environment objects that we’ve been talking about are subjects to same memory management rules as regular values.</p>
+<ul>
+<li>
+<p>Usually, Lexical Environment is cleaned up after the function run. For instance:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function f() {
+  let value1 = 123;
+  let value2 = 456;
+}
+
+f();</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Here two values are technically the properties of the Lexical Environment. But after <code>f()</code> finishes that Lexical Environment becomes unreachable, so it’s deleted from the memory.</p>
+</li>
+<li>
+<p>…But if there’s a nested function that is still reachable after the end of <code>f</code>, then its <code>[[Environment]]</code> reference keeps the outer lexical environment alive as well:</p>
+<div data-trusted="1" class="code-example" data-highlight-block="5-5">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function f() {
+  let value = 123;
+
+  function g() { alert(value); }
+
+  return g;
+}
+
+let g = f(); // g is reachable, and keeps the outer lexical environment in memory</code></pre>
+        </div>
+      </div>
+      
+      </div></li>
+<li>
+<p>Please note that if <code>f()</code> is called many times, and resulting functions are saved, then the corresponding Lexical Environment objects will also be retained in memory. All 3 of them in the code below:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function f() {
+  let value = Math.random();
+
+  return function() { alert(value); };
+}
+
+// 3 functions in array, every one of them links to Lexical Environment
+// from the corresponding f() run
+//         LE   LE   LE
+let arr = [f(), f(), f()];</code></pre>
+        </div>
+      </div>
+      
+      </div></li>
+<li>
+<p>A Lexical Environment object dies when it becomes unreachable. That is: when no nested functions remain that reference it. In the code below, after <code>g</code> becomes unreachable, the <code>value</code> is also cleaned from the memory;</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function f() {
+  let value = 123;
+
+  function g() { alert(value); }
+
+  return g;
+}
+
+let g = f(); // while g is alive
+// there corresponding Lexical Environment lives
+
+g = null; // ...and now the memory is cleaned up</code></pre>
+        </div>
+      </div>
+      
+      </div></li>
+</ul>
+<h3><a class="main__anchor" name="real-life-optimizations" href="#real-life-optimizations">Real-life optimizations</a></h3><p>As we’ve seen, in theory while a function is alive, all outer variables are also retained.</p>
+<p>But in practice, JavaScript engines try to optimize that. They analyze variable usage and if it’s easy to see that an outer variable is not used – it is removed.</p>
+<p><strong>An important side effect in V8 (Chrome, Opera) is that such variable will become unavailable in debugging.</strong></p>
+<p>Try running the example below with the open Developer Tools in Chrome.</p>
+<p>When it pauses, in console type <code>alert(value)</code>.</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function f() {
+  let value = Math.random();
+
+  function g() {
+    debugger; // in console: type alert( value ); No such variable!
+  }
+
+  return g;
+}
+
+let g = f();
+g();</code></pre>
+        </div>
+      </div>
+      
+      </div><p>As you could see – there is no such variable! In theory, it should be accessible, but the engine optimized it out.</p>
+<p>That may lead to funny (if not such time-consuming) debugging issues. One of them – we can see a same-named outer variable instead of the expected one:</p>
+<div data-trusted="1" data-global="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let value = &quot;Surprise!&quot;;
+
+function f() {
+  let value = &quot;the closest value&quot;;
+
+  function g() {
+    debugger; // in console: type alert( value ); Surprise!
+  }
+
+  return g;
+}
+
+let g = f();
+g();</code></pre>
+        </div>
+      </div>
+      
+      </div><div class="important important_warn">
+            <div class="important__header"><span class="important__type">See ya!</span></div>
+            <div class="important__content"><p>This feature of V8 is good to know. If you are debugging with Chrome/Opera, sooner or later you will meet it.</p>
+<p>That is not a bug of debugger, but a special feature of V8. Maybe it will be changed sometime.
+You always can check for it by running examples on this page.</p>
+</div></div>
+</div></article><div class="tasks"><h2 id="tasks" class="tasks__title"><a href="#tasks" class="main__anchor main__anchor_noicon tasks__title-anchor">Tasks</a></h2><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a href="#are-counters-independent" name="are-counters-independent" class="main__anchor">Are counters independent?</a></h3><a href="task/counter-independent.html" target="_blank" class="task__open-link"></a></div><div class="task__header-note"><span title="How important is the task, from 1 to 5" class="task__importance">importance: 5</span></div><div class="task__content"><p>Here we make two counters: <code>counter</code> and <code>counter2</code> using the same <code>makeCounter</code> function.</p>
+<p>Are they independent? What is the second counter going to show? <code>0,1</code> or <code>2,3</code> or something else?</p>
+<div data-trusted="1" class="code-example" data-highlight-block="14-15">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function makeCounter() {
+  let count = 0;
+
+  return function() {
+    return count++;
+  };
+}
+
+let counter = makeCounter();
+let counter2 = makeCounter();
+
+alert( counter() ); // 0
+alert( counter() ); // 1
+
+alert( counter2() ); // ?
+alert( counter2() ); // ?</code></pre>
+        </div>
+      </div>
+      
+      </div><button type="button" class="task__solution">solution</button><div class="task__answer"><div class="task__answer-content"><p>The answer: <strong>0,1.</strong></p>
+<p>Functions <code>counter</code> and <code>counter2</code> are created by different invocations of <code>makeCounter</code>.</p>
+<p>So they have independent outer Lexical Environments, each one has it’s own <code>count</code>.</p>
+</div><button type="button" title="close" class="close-button task__answer-close"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a href="#counter-object" name="counter-object" class="main__anchor">Counter object</a></h3><a href="task/counter-object-independent.html" target="_blank" class="task__open-link"></a></div><div class="task__header-note"><span title="How important is the task, from 1 to 5" class="task__importance">importance: 5</span></div><div class="task__content"><p>Here a counter object is made with the help of the constructor function.</p>
+<p>Will it work? What will it show?</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function Counter() {
+  let count = 0;
+
+  this.up = function() {
+    return ++count;
+  };
+  this.down = function() {
+    return --count;
+  };
+}
+
+let counter = new Counter();
+
+alert( counter.up() ); // ?
+alert( counter.up() ); // ?
+alert( counter.down() ); // ?</code></pre>
+        </div>
+      </div>
+      
+      </div><button type="button" class="task__solution">solution</button><div class="task__answer"><div class="task__answer-content"><p>Surely it will work just fine.</p>
+<p>Both nested functions are created within the same outer Lexical Environment, so they share access to the same <code>count</code> variable:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function Counter() {
+  let count = 0;
+
+  this.up = function() {
+    return ++count;
+  };
+
+  this.down = function() {
+    return --count;
+  };
+}
+
+let counter = new Counter();
+
+alert( counter.up() ); // 1
+alert( counter.up() ); // 2
+alert( counter.down() ); // 1</code></pre>
+        </div>
+      </div>
+      
+      </div></div><button type="button" title="close" class="close-button task__answer-close"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a href="#function-in-if" name="function-in-if" class="main__anchor">Function in if</a></h3><a href="task/function-in-if.html" target="_blank" class="task__open-link"></a></div><div class="task__header-note"></div><div class="task__content"><p>Look at the code. What will be result of the call at the last line?</p>
+<div data-trusted="1" class="code-example" data-highlight-block="10-10">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let phrase = &quot;Hello&quot;;
+
+if (true) {
+  let user = &quot;John&quot;;
+
+  function sayHi() {
+    alert(`${phrase}, ${user}`);
+  }
+}
+
+sayHi();</code></pre>
+        </div>
+      </div>
+      
+      </div><button type="button" class="task__solution">solution</button><div class="task__answer"><div class="task__answer-content"><p>The result is <strong>an error</strong>.</p>
+<p>The function <code>sayHi</code> is declared inside the <code>if</code>, so it only lives inside it. There is no <code>sayHi</code> outside.</p>
+</div><button type="button" title="close" class="close-button task__answer-close"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a href="#sum-with-closures" name="sum-with-closures" class="main__anchor">Sum with closures</a></h3><a href="task/closure-sum.html" target="_blank" class="task__open-link"></a></div><div class="task__header-note"><span title="How important is the task, from 1 to 5" class="task__importance">importance: 4</span></div><div class="task__content"><p>Write function <code>sum</code> that works like this: <code>sum(a)(b) = a+b</code>.</p>
+<p>Yes, exactly this way, via double brackets (not a mistype).</p>
+<p>For instance:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">sum(1)(2) = 3
+sum(5)(-1) = 4</code></pre>
+        </div>
+      </div>
+      
+      </div><button type="button" class="task__solution">solution</button><div class="task__answer"><div class="task__answer-content"><p>For the second brackets to work, the first ones must return a function.</p>
+<p>Like this:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function sum(a) {
+
+  return function(b) {
+    return a + b; // takes &quot;a&quot; from the outer lexical environment
+  };
+
+}
+
+alert( sum(1)(2) ); // 3
+alert( sum(5)(-1) ); // 4</code></pre>
+        </div>
+      </div>
+      
+      </div></div><button type="button" title="close" class="close-button task__answer-close"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a href="#filter-through-function" name="filter-through-function" class="main__anchor">Filter through function</a></h3><a href="task/filter-through-function.html" target="_blank" class="task__open-link"></a></div><div class="task__header-note"><span title="How important is the task, from 1 to 5" class="task__importance">importance: 5</span></div><div class="task__content"><p>We have a built-in method <code>arr.filter(f)</code> for arrays. It filters all elements through the function <code>f</code>. If it returns <code>true</code>, then that element is returned in the resulting array.</p>
+<p>Make a set of “ready to use” filters:</p>
+<ul>
+<li><code>inBetween(a, b)</code> – between <code>a</code> and <code>b</code> or equal to them (inclusively).</li>
+<li><code>inArray([...])</code> – in the given array.</li>
+</ul>
+<p>The usage must be like this:</p>
+<ul>
+<li><code>arr.filter(inBetween(3,6))</code> – selects only values between 3 and 6.</li>
+<li><code>arr.filter(inArray([1,2,3]))</code> – selects only elements matching with one of the members of <code>[1,2,3]</code>.</li>
+</ul>
+<p>For instance:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">/* .. your code for inBetween and inArray */
+let arr = [1, 2, 3, 4, 5, 6, 7];
+
+alert( arr.filter(inBetween(3, 6)) ); // 3,4,5,6
+
+alert( arr.filter(inArray([1, 2, 10])) ); // 1,2</code></pre>
+        </div>
+      </div>
+      
+      </div><p><a href="http://plnkr.co/edit/ISIjrKehp65M3KQmIwte?p=preview" target="_blank" data-plunk-id="ISIjrKehp65M3KQmIwte">Open the sandbox with tests.</a></p><button type="button" class="task__solution">solution</button><div class="task__answer"><div class="task__step task__step_open"><button type="button" onclick="showStep(this)" class="task__step-show">Filter inBetween</button><div class="task__answer-content"><h4 class="task__step-title">Filter inBetween</h4><div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function inBetween(a, b) {
+  return function(x) {
+    return x &gt;= a &amp;&amp; x &lt;= b;
+  };
+}
+
+let arr = [1, 2, 3, 4, 5, 6, 7];
+alert( arr.filter(inBetween(3, 6)) ); // 3,4,5,6</code></pre>
+        </div>
+      </div>
+      
+      </div></div></div><div class="task__step task__step_open"><button type="button" onclick="showStep(this)" class="task__step-show">Filter inArray</button><div class="task__answer-content"><h4 class="task__step-title">Filter inArray</h4><div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function inArray(arr) {
+  return function(x) {
+    return arr.includes(x);
+  };
+}
+
+let arr = [1, 2, 3, 4, 5, 6, 7];
+alert( arr.filter(inArray([1, 2, 10])) ); // 1,2</code></pre>
+        </div>
+      </div>
+      
+      </div><p><a href="http://plnkr.co/edit/hZOKDoUE3UixVYLJisFy?p=preview" target="_blank" data-plunk-id="hZOKDoUE3UixVYLJisFy">Open the solution with tests in the sandbox.</a></p></div></div><button type="button" title="close" class="close-button task__answer-close"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a href="#sort-by-field" name="sort-by-field" class="main__anchor">Sort by field</a></h3><a href="task/sort-by-field.html" target="_blank" class="task__open-link"></a></div><div class="task__header-note"><span title="How important is the task, from 1 to 5" class="task__importance">importance: 5</span></div><div class="task__content"><p>We’ve got an array of objects to sort:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let users = [
+  { name: &quot;John&quot;, age: 20, surname: &quot;Johnson&quot; },
+  { name: &quot;Pete&quot;, age: 18, surname: &quot;Peterson&quot; },
+  { name: &quot;Ann&quot;, age: 19, surname: &quot;Hathaway&quot; }
+];</code></pre>
+        </div>
+      </div>
+      
+      </div><p>The usual way to do that would be:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">// by name (Ann, John, Pete)
+users.sort((a, b) =&gt; a.name &gt; b.name ? 1 : -1);
+
+// by age (Pete, Ann, John)
+users.sort((a, b) =&gt; a.age &gt; b.age ? 1 : -1);</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Can we make it even less verbose, like this?</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">users.sort(byField('name'));
+users.sort(byField('age'));</code></pre>
+        </div>
+      </div>
+      
+      </div><p>So, instead of writing a function, just put <code>byField(fieldName)</code>.</p>
+<p>Write the function <code>byField</code> that can be used for that.</p>
+<button type="button" class="task__solution">solution</button><div class="task__answer"><div class="task__answer-content"><div data-trusted="1" class="code-example" data-highlight-block="6-8">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let users = [
+  { name: &quot;John&quot;, age: 20, surname: &quot;Johnson&quot; },
+  { name: &quot;Pete&quot;, age: 18, surname: &quot;Peterson&quot; },
+  { name: &quot;Ann&quot;, age: 19, surname: &quot;Hathaway&quot; }
+];
+
+function byField(field) {
+  return (a, b) =&gt; a[field] &gt; b[field] ? 1 : -1;
+}
+
+users.sort(byField('name'));
+users.forEach(user =&gt; alert(user.name)); // Ann, John, Pete
+
+users.sort(byField('age'));
+users.forEach(user =&gt; alert(user.name)); // Pete, Ann, John</code></pre>
+        </div>
+      </div>
+      
+      </div></div><button type="button" title="close" class="close-button task__answer-close"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a href="#army-of-functions" name="army-of-functions" class="main__anchor">Army of functions</a></h3><a href="task/make-army.html" target="_blank" class="task__open-link"></a></div><div class="task__header-note"><span title="How important is the task, from 1 to 5" class="task__importance">importance: 5</span></div><div class="task__content"><p>The following code creates an array of <code>shooters</code>.</p>
+<p>Every function is meant to output its number. But something is wrong…</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function makeArmy() {
+  let shooters = [];
+
+  let i = 0;
+  while (i &lt; 10) {
+    let shooter = function() { // shooter function
+      alert( i ); // should show its number
+    };
+    shooters.push(shooter);
+    i++;
+  }
+
+  return shooters;
+}
+
+let army = makeArmy();
+
+army[0](); // the shooter number 0 shows 10
+army[5](); // and number 5 also outputs 10...
+// ... all shooters show 10 instead of their 0, 1, 2, 3...</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Why all shooters show the same? Fix the code so that they work as intended.</p>
+<p><a href="http://plnkr.co/edit/sdw9JMeicGMnAh8aRA6D?p=preview" target="_blank" data-plunk-id="sdw9JMeicGMnAh8aRA6D">Open the sandbox with tests.</a></p><button type="button" class="task__solution">solution</button><div class="task__answer"><div class="task__answer-content"><p>Let’s examine what’s done inside <code>makeArmy</code>, and the solution will become obvious.</p>
+<ol>
+<li>
+<p>It creates an empty array <code>shooters</code>:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let shooters = [];</code></pre>
+        </div>
+      </div>
+      
+      </div></li>
+<li>
+<p>Fills it in the loop via <code>shooters.push(function...)</code>.</p>
+<p>Every element is a function, so the resulting array looks like this:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">shooters = [
+  function () { alert(i); },
+  function () { alert(i); },
+  function () { alert(i); },
+  function () { alert(i); },
+  function () { alert(i); },
+  function () { alert(i); },
+  function () { alert(i); },
+  function () { alert(i); },
+  function () { alert(i); },
+  function () { alert(i); }
+];</code></pre>
+        </div>
+      </div>
+      
+      </div></li>
+<li>
+<p>The array is returned from the function.</p>
+</li>
+</ol>
+<p>Then, later, the call to <code>army[5]()</code> will get the element <code>army[5]</code> from the array (it will be a function) and call it.</p>
+<p>Now why all such functions show the same?</p>
+<p>That’s because there’s no local variable <code>i</code> inside <code>shooter</code> functions. When such a function is called, it takes <code>i</code> from its outer lexical environment.</p>
+<p>What will be the value of <code>i</code>?</p>
+<p>If we look at the source:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function makeArmy() {
+  ...
+  let i = 0;
+  while (i &lt; 10) {
+    let shooter = function() { // shooter function
+      alert( i ); // should show its number
+    };
+    ...
+  }
+  ...
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>…We can see that it lives in the lexical environment associated with the current <code>makeArmy()</code> run. But when <code>army[5]()</code> is called, <code>makeArmy</code> has already finished its job, and <code>i</code> has the last value: <code>10</code> (the end of <code>while</code>).</p>
+<p>As a result, all <code>shooter</code> functions get from the outer lexical envrironment the same, last value <code>i=10</code>.</p>
+<p>The fix can be very simple:</p>
+<div data-trusted="1" class="code-example" data-highlight-block="4-4">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function makeArmy() {
+
+  let shooters = [];
+
+  for(let i = 0; i &lt; 10; i++) {
+    let shooter = function() { // shooter function
+      alert( i ); // should show its number
+    };
+    shooters.push(shooter);
+  }
+
+  return shooters;
+}
+
+let army = makeArmy();
+
+army[0](); // 0
+army[5](); // 5</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Now it works correctly, because every time the code block in <code>for (..) {...}</code> is executed, a new Lexical Environment is created for it, with the corresponding value of <code>i</code>.</p>
+<p>So, the value of <code>i</code> now lives a little bit closer. Not in <code>makeArmy()</code> Lexical Environment, but in the Lexical Environment that corresponds the current loop iteration. A <code>shooter</code> gets the value exactly from the one where it was created.</p>
+<figure><div class="image" style="width:529px">
+      <div class="image__ratio" style="padding-top:31.758034026465026%"></div>
+      <img src="task/make-army/lexenv-makearmy.png" alt="" width="529" height="168" class="image__image">
+      </div></figure><p>Here we rewrote <code>while</code> into <code>for</code>.</p>
+<p>Another trick could be possible, let’s see it for better understanding of the subject:</p>
+<div data-trusted="1" class="code-example" data-highlight-block="5-5" data-highlight-inline="7:13-14">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function makeArmy() {
+  let shooters = [];
+
+  let i = 0;
+  while (i &lt; 10) {
+    let j = i;
+    let shooter = function() { // shooter function
+      alert( j ); // should show its number
+    };
+    shooters.push(shooter);
+    i++;
+  }
+
+  return shooters;
+}
+
+let army = makeArmy();
+
+army[0](); // 0
+army[5](); // 5</code></pre>
+        </div>
+      </div>
+      
+      </div><p>The <code>while</code> loop, just like <code>for</code>, makes a new Lexical Environment for each run. So here we make sure that it gets the right value for a <code>shooter</code>.</p>
+<p>We copy <code>let j = i</code>. This makes a loop body local <code>j</code> and copies the value of <code>i</code> to it. Primitives are copied “by value”, so we actually get a complete independent copy of <code>i</code>, belonging to the current loop iteration.</p>
+<p><a href="http://plnkr.co/edit/k3o1vZs45MG44WMmOuRg?p=preview" target="_blank" data-plunk-id="k3o1vZs45MG44WMmOuRg">Open the solution with tests in the sandbox.</a></p></div><button type="button" title="close" class="close-button task__answer-close"></button></div></div></div></div></div><!--  include /blocks/banner-bottom--><!--if lang == 'en'--><!--  include /blocks/banner-bottom.en--></div><div class="page__nav-wrap"><a href="rest-parameters-spread-operator.html" data-tooltip="Rest parameters and spread operator" class="page__nav page__nav_prev"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Previous lesson</span></a><a href="var.html" data-tooltip="The old &quot;var&quot;" class="page__nav page__nav_next"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Next lesson</span></a></div><div class="article-tablet-foot tablet-only"><div class="article-tablet-foot__layout"><div class="share-icons"><span class="share-icons__title">Share</span><a href="https://twitter.com/share?url=http%3A%2F%2Fjavascript.info%2Fclosure" class="share share_tw"></a><a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=http%3A%2F%2Fjavascript.info%2Fclosure" class="share share_fb"></a><a href="https://plus.google.com/share?url=http%3A%2F%2Fjavascript.info%2Fclosure" class="share share_gp"></a><a href="https://vkontakte.ru/share.php?url=http%3A%2F%2Fjavascript.info%2Fclosure" class="share share_vk"></a></div><div class="article-tablet-foot__map"><a href="tutorial/map.html" data-action="tutorial-map" class="map"><span class="map__text">Tutorial map</span></a></div></div></div><div id="comments" class="comments"><div class="comments__header"><h2 class="comments__header-title"><a href="#comments" name="comments">Comments</a></h2><div class="comments__read-before"><span class="comments__read-before-link">read this before commenting…</span><div class="comments__read-before-popup"><div class="comments__read-before-popup-i"><ul><li>You're welcome to post additions, questions to the articles and answers to them.</li><li>To insert a few words of code, use the <code>&lt;code&gt;</code> tag, for several lines – use <code>&lt;pre&gt;</code>, for more than 10 lines – use a sandbox (<a href='http://plnkr.co/edit/?p=preview'>plnkr</a>, <a href='http://jsbin.com/'>JSBin</a>, <a href='http://codepen.io/'>codepen</a>…)</li><li>If you can't understand something in the article – please elaborate.</li></ul></div></div></div></div></div><div id="disqus_thread"></div><script>var disqus_config = function() { if (!this.page) this.page = {}; Object.assign(this.page, {"url":"https:\/\/javascript.info\/closure","identifier":"\/closure","title":"Closure"}); };</script><script>var disqus_shortname = "javascriptinfo";</script><script>var disqus_enabled = true;</script></main></div><div class="page__sidebar sidebar sidebar_sticky-footer"><button data-sidebar-toggle class="sidebar__toggle"></button><a href="tutorial/map.html" data-action="tutorial-map" data-tooltip="Tutorial map" class="map"></a><div class="sidebar__inner"><div class="sidebar__content"><div class="sidebar__section"><h4 class="sidebar__section-title">Chapter</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a href="advanced-functions.html" class="sidebar__link">Advanced working with functions</a></li></ul></nav></div><div class="sidebar__section"><h4 class="sidebar__section-title">Lesson navigation</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a href="#a-couple-of-questions" class="sidebar__link">A couple of questions</a></li><li class="sidebar__navigation-link"><a href="#lexical-environment" class="sidebar__link">Lexical Environment</a></li><li class="sidebar__navigation-link"><a href="#nested-functions" class="sidebar__link">Nested functions</a></li><li class="sidebar__navigation-link"><a href="#environments-in-detail" class="sidebar__link">Environments in detail</a></li><li class="sidebar__navigation-link"><a href="#code-blocks-and-loops-iife" class="sidebar__link">Code blocks and loops, IIFE</a></li><li class="sidebar__navigation-link"><a href="#if" class="sidebar__link">If</a></li><li class="sidebar__navigation-link"><a href="#for-while" class="sidebar__link">For, while</a></li><li class="sidebar__navigation-link"><a href="#garbage-collection" class="sidebar__link">Garbage collection</a></li></ul></nav></div><div class="sidebar__section"><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a href="#tasks" class="sidebar__link">Tasks (7)</a></li><li class="sidebar__navigation-link"><a href="#comments" class="sidebar__link">Comments</a></li></ul></nav></div><div class="sidebar__section"><div class="sidebar__section-title">Share</div><a href="https://twitter.com/share?url=http%3A%2F%2Fjavascript.info%2Fclosure" class="share share_tw sidebar__share"></a><a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=http%3A%2F%2Fjavascript.info%2Fclosure" class="share share_fb sidebar__share"></a><a href="https://plus.google.com/share?url=http%3A%2F%2Fjavascript.info%2Fclosure" class="share share_gp sidebar__share"></a></div><div class="sidebar__section"><a href="https://github.com/iliakan/javascript-tutorial-en/tree/master/1-js/06-advanced-functions/03-closure/article.md" class="sidebar__link">Edit on Github</a></div></div></div></div></div></div><div class="page-footer"><div class="page-footer__left"><ul class="page-footer__list"><li class="page-footer__item">©&nbsp;2007—2017&nbsp; Ilya Kantor</li><li class="page-footer__item"><a href="about.html#contact-us" class="page-footer__link">contact us</a></li><li class="page-footer__item"><a href="about.html" class="page-footer__link">about the project</a></li><li class="page-footer__item"><a href="https://learn.javascript.ru/" class="page-footer__link">RU</a> / EN</li></ul></div><div class="page-footer__right"><ul class="page-footer__list"><li class="page-footer__item">powered by <a rel="nofollow" href="http://nodejs.org/" class="page-footer__link">node.js</a>&nbsp;&amp;&nbsp;<a rel="nofollow" href="http://github.com/iliakan/javascript-tutorial-en" class="page-footer__link">open source</a></li></ul></div></div></body>
+<!-- Mirrored from javascript.info/closure by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 30 Nov 2017 15:28:27 GMT -->
+</html>

@@ -1,0 +1,339 @@
+<!DOCTYPE html><html lang="en">
+<!-- Mirrored from javascript.info/native-prototypes by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 30 Nov 2017 15:28:33 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><script>window.currentUser = null;</script><title itemprop="name">Native prototypes</title><meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, minimum-scale=1.0"><meta name="apple-mobile-web-app-capable" content="yes"><script>if (window.devicePixelRatio > 1) document.cookie = 'pixelRatio=' + window.devicePixelRatio + ';path=/;expires=Tue, 19 Jan 2038 03:14:07 GMT';</script><link href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700%7COpen+Sans+Condensed:700&amp;subset=latin,latin-ext,cyrillic,cyrillic-ext" rel="stylesheet"><link rel="apple-touch-icon-precomposed" href="img/favicon/apple-touch-icon-precomposed.png"><link rel="canonical" href="native-prototypes.html"><meta name="msapplication-TileColor" content="#222A2C"><meta name="msapplication-TileImage" content="/img/favicon/tileicon.png"><!-- favicon the rest--><link rel="icon" href="img/favicon/favicon.png"><meta itemprop="image" content="https://javascript.info/img/site_preview_en_512x512.png"><meta property="og:title" content="Native prototypes"><meta property="og:image" content="https://javascript.info/img/site_preview_en_1200x630.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="fb:admins" content="100001562528165"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Native prototypes"><meta name="twitter:site" content="@iliakan"><meta name="twitter:creator" content="@iliakan"><meta name="twitter:image" content="https://javascript.info/img/site_preview_en_512x512.png"><link href="pack/styles.da59a89b28153875791083e4a8c5adb3.css" rel="stylesheet"><link rel="prev" href="function-prototype.html"><link rel="next" href="prototype-methods.html"><script>window.GA_ID = "UA-2056213-15";</script><script>window.YANDEX_METRIKA_ID = 32184394;</script><script>window.GoogleAnalyticsObject="ga",window.ga=function(){window.ga.q.push(arguments)},window.ga.q=[],window.ga.l=Date.now(),ga("create",GA_ID,"auto"),window.currentUser&&ga("set","&uid",currentUser.id),window.addEventListener("error",function(e){var r=(e.filename||e.errorUrl)+": "+(e.lineno||e.errorLine),n=e.stack||e.error&&e.error.stack;ga("send","exception",{exDescription:e.message+" "+r+" "+n,exFatal:!0})});</script><script src="https://www.google-analytics.com/analytics.js" async></script><script>ga('send', 'pageview');</script><script>window.metrika={reachGoal:function(){}},window.yandex_metrika_callbacks=[function(){try{window.metrika=new Ya.Metrika({id:YANDEX_METRIKA_ID,webvisor:!0,clickmap:!0,params:{user:window.currentUser&&window.currentUser.id}}),metrika.trackLinks({delay:150}),window.addEventListener("error",function(r){window.metrika.reachGoal("JSERROR",{src:(r.filename||r.errorUrl)+": "+(r.lineno||r.errorLine),stack:r.stack||r.error&&r.error.stack,message:r.message})})}catch(r){}}];</script><script src="http://mc.yandex.ru/metrika/watch.js" async></script><script>window.RECAPTCHA_ID = "6Lf9NyETAAAAACZlg-a9Us2SxvYbeVC1ROWaWv4O";</script><script src="initc4ca.js?1"></script><script src="pack/head.688d4fe7c4cf54e23737.js" defer></script><meta property="og:title" content="Native prototypes"><meta property="og:type" content="article"><script src="pack/tutorial.688d4fe7c4cf54e23737.js" defer></script><script src="pack/footer.688d4fe7c4cf54e23737.js" defer></script></head><body class="no-icons"><script>window.fontTest();</script><div class="page-wrapper page-wrapper_sidebar_on"><!--[if lt IE 10]><div style="color:red;text-align:center">Sorry, IE&lt;10 is not supported, please use a newer browser.</div><![endif]--><div class="sitetoolbar sitetoolbar_tutorial"><!-- include ./notification-stripe--><div class="sitetoolbar__content"><div class="sitetoolbar__logo-wrap"><a href="index.html" class="sitetoolbar__link sitetoolbar__link_logo"><img src="img/sitetoolbar__logo_en.svg" width="200" class="sitetoolbar__logo sitetoolbar__logo_normal" alt=""><img src="img/sitetoolbar__logo_small_en.svg" width="70" class="sitetoolbar__logo sitetoolbar__logo_small" alt=""><script>Array.prototype.forEach.call(document.querySelectorAll("img.sitetoolbar__logo"),function(e){var t=document.createElement("object");t.type="image/svg+xml",t.className=e.className,t.style.cssText="left:0;top:0;position:absolute",t.onload=function(){t.onload=null,e.style.visibility="hidden"},t.data=e.src,e.parentNode.insertBefore(t,e)});</script></a></div><div class="sitetoolbar__nav-toggle-wrap"><button type="button" class="sitetoolbar__nav-toggle"></button></div><nav class="sitetoolbar__sections"><ul class="sitetoolbar__sections-list"></ul></nav><div class="sitetoolbar__book-wrap"><a href="ebook.html" class="buy-book-button"><span class="buy-book-button__extra-text">Buy</span>EPUB/PDF</a></div><div class="sitetoolbar__login-wrap"><button data-action-login class="sitetoolbar__login sitetoolbar__login_unready"></button></div><div class="sitetoolbar__search-wrap"><div class="sitetoolbar__search-content"><form method="GET" action="http://javascript.info/search" class="sitetoolbar__search"><button type="button" class="sitetoolbar__search-toggle"></button><div class="sitetoolbar__search-input"><div class="text-input"><input name="query" placeholder="Search on Javascript.info" class="text-input__control" type="text"></div><button type="submit" class="sitetoolbar__find">Search</button></div></form></div></div></div><!-- todo: en variant--><div class="tablet-menu"><div class="tablet-menu__line"><div class="tablet-menu__content"><form action="http://javascript.info/search/" class="tablet-menu-search"><input type="search" name="query" placeholder="Search in the tutorial" required class="tablet-menu-search__input"><button type="submit" name="type" value="articles" class="tablet-menu-search__button">Search</button></form></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><a href="tutorial/map.html" data-action="tutorial-map" class="map"><span class="map__text">Tutorial map</span></a></div></div><!--+e.line--><!--  +e.content--><!--    +b("a").tablet-ebook(href="/ebook")--><!--      +e("span").text Купить учебник--><!--      +e("span").note (EPUB + PDF)--><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="share-icons"><span class="share-icons__title">Share</span><a href="https://twitter.com/share?url=https%3A%2F%2Fjavascript.info%2Fnative-prototypes" class="share share_tw"></a><a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fjavascript.info%2Fnative-prototypes" class="share share_fb"></a><a href="https://plus.google.com/share?url=https%3A%2F%2Fjavascript.info%2Fnative-prototypes" class="share share_gp"></a><a href="https://vkontakte.ru/share.php?url=https%3A%2F%2Fjavascript.info%2Fnative-prototypes" class="share share_vk"></a></div></div></div></div><progress data-sticky value="59" max="67" data-tooltip="Lesson 59 of 67" class="tutorial-progress"></progress></div><div class="page page_sidebar_on"><script>if(localStorage.noSidebar){document.querySelector(".page").classList.remove("page_sidebar_on");var pageWrapper=document.querySelector(".page-wrapper");pageWrapper&&pageWrapper.classList.remove("page-wrapper_sidebar_on")}setTimeout(function(){document.querySelector(".page").classList.add("page_sidebar-animation-on")},0);</script><div class="page__inner"><main class="main main_width-limit"><header class="main__header"><ol class="breadcrumbs"><li itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemref="breadcrumb-1" class="breadcrumbs__item breadcrumbs__item_home"><a href="index.html" itemprop="url" class="breadcrumbs__link"><span itemprop="title" class="breadcrumbs__hidden-text">Учебник</span></a></li><li id="breadcrumb-1" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemref="breadcrumb-2" itemprop="child" class="breadcrumbs__item"><a href="js.html" itemprop="url" class="breadcrumbs__link"><span itemprop="title">The JavaScript language</span></a></li><li id="breadcrumb-2" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemprop="child" class="breadcrumbs__item"><a href="object-oriented-programming.html" itemprop="url" class="breadcrumbs__link"><span itemprop="title">Objects, classes, inheritance</span></a></li></ol><h1 class="main__header-title">Native prototypes</h1></header><div class="content"><article itemscope itemtype="http://schema.org/TechArticle"><meta itemprop="name" content="Native prototypes"><div itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="email" content="iliakan@gmail.com"><meta itemprop="name" content="Ilya Kantor"></div><div itemprop="articleBody"><p>The <code>&quot;prototype&quot;</code> property is widely used by the core of JavaScript itself. All built-in constructor functions use it.</p>
+<p>We’ll see how it is for plain objects first, and then for more complex ones.</p>
+<h2><a class="main__anchor" name="object-prototype" href="#object-prototype">Object.prototype</a></h2><p>Let’s say we output an empty object:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let obj = {};
+alert( obj ); // &quot;[object Object]&quot; ?</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Where’s the code that generates the string <code>&quot;[object Object]&quot;</code>? That’s a built-in <code>toString</code> method, but where is it? The <code>obj</code> is empty!</p>
+<p>…But the short notation <code>obj = {}</code> is the same as <code>obj = new Object()</code>, where <code>Object</code> – is a built-in object constructor function. And that function has <code>Object.prototype</code> that references a huge object with <code>toString</code> and other functions.</p>
+<p>Like this (all that is built-in):</p>
+<figure><div class="image" style="width:433px">
+      <div class="image__ratio" style="padding-top:17.782909930715935%"></div>
+      <img src="article/native-prototypes/object-prototype.png" alt="" width="433" height="77" class="image__image">
+      </div></figure><p>When <code>new Object()</code> is called (or a literal object <code>{...}</code> is created), the <code>[[Prototype]]</code> of it is set to <code>Object.prototype</code> by the rule that we’ve discussed in the previous chapter:</p>
+<figure><div class="image" style="width:433px">
+      <div class="image__ratio" style="padding-top:43.418013856812934%"></div>
+      <img src="article/native-prototypes/object-prototype-1.png" alt="" width="433" height="188" class="image__image">
+      </div></figure><p>Afterwards when <code>obj.toString()</code> is called – the method is taken from <code>Object.prototype</code>.</p>
+<p>We can check it like this:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let obj = {};
+
+alert(obj.__proto__ === Object.prototype); // true
+// obj.toString === obj.__proto__.toString == Object.prototype.toString</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Please note that there is no additional <code>[[Prototype]]</code> in the chain above <code>Object.prototype</code>:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">alert(Object.prototype.__proto__); // null</code></pre>
+        </div>
+      </div>
+      
+      </div><h2><a class="main__anchor" name="other-built-in-prototypes" href="#other-built-in-prototypes">Other built-in prototypes</a></h2><p>Other built-in objects such as <code>Array</code>, <code>Date</code>, <code>Function</code> and others also keep methods in prototypes.</p>
+<p>For instance, when we create an array <code>[1, 2, 3]</code>, the default <code>new Array()</code> constructor is  used internally. So the array data is written into the new object, and <code>Array.prototype</code> becomes its prototype and provides methods. That’s very memory-efficient.</p>
+<p>By specification, all built-in prototypes have <code>Object.prototype</code> on the top. Sometimes people say that “everything inherits from objects”.</p>
+<p>Here’s the overall picture (for 3 built-ins to fit):</p>
+<figure><div class="image" style="width:668px">
+      <div class="image__ratio" style="padding-top:59.73053892215569%"></div>
+      <img src="article/native-prototypes/native-prototypes-classes.png" alt="" width="668" height="399" class="image__image">
+      </div></figure><p>Let’s check the prototypes manually:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let arr = [1, 2, 3];
+
+// it inherits from Array.prototype?
+alert( arr.__proto__ === Array.prototype ); // true
+
+// then from Object.prototype?
+alert( arr.__proto__.__proto__ === Object.prototype ); // true
+
+// and null on the top.
+alert( arr.__proto__.__proto__.__proto__ ); // null</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Some methods in prototypes may overlap, for instance, <code>Array.prototype</code> has its own <code>toString</code> that lists comma-delimited elements:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let arr = [1, 2, 3]
+alert(arr); // 1,2,3 &lt;-- the result of Array.prototype.toString</code></pre>
+        </div>
+      </div>
+      
+      </div><p>As we’ve seen before, <code>Object.prototype</code> has <code>toString</code> as well, but <code>Array.prototype</code> is closer in the chain, so the array variant is used.</p>
+<figure><div class="image" style="width:171px">
+      <div class="image__ratio" style="padding-top:173.6842105263158%"></div>
+      <img src="article/native-prototypes/native-prototypes-array-tostring.png" alt="" width="171" height="297" class="image__image">
+      </div></figure><p>In-browser tools like Chrome developer console also show inheritance (may need to use <code>console.dir</code> for built-in objects):</p>
+<figure><div class="image" style="width:567px">
+      <div class="image__ratio" style="padding-top:51.49911816578483%"></div>
+      <img src="article/native-prototypes/console_dir_array.png" alt="" width="567" height="292" class="image__image">
+      </div></figure><p>Other built-in objects also work the same way. Even functions. They are objects of a built-in <code>Function</code> constructor, and their methods: <code>call/apply</code> and others are taken from <code>Function.prototype</code>. Functions have their own <code>toString</code> too.</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function f() {}
+
+alert(f.__proto__ == Function.prototype); // true
+alert(f.__proto__.__proto__ == Object.prototype); // true, inherit from objects</code></pre>
+        </div>
+      </div>
+      
+      </div><h2><a class="main__anchor" name="primitives" href="#primitives">Primitives</a></h2><p>The most intricate thing happens with strings, numbers and booleans.</p>
+<p>As we remember, they are not objects. But if we try to access their properties, then temporary wrapper objects are created using built-in constructors <code>String</code>, <code>Number</code>, <code>Boolean</code>, they provide the methods and disappear.</p>
+<p>These objects are created invisibly to us and most engines optimize them out, but the specification describes it exactly this way. Methods of these objects also reside in prototypes, available as <code>String.prototype</code>, <code>Number.prototype</code> and <code>Boolean.prototype</code>.</p>
+<div class="important important_warn">
+            <div class="important__header"><span class="important__type">Values <code>null</code> and <code>undefined</code> have no object wrappers</span></div>
+            <div class="important__content"><p>Special values <code>null</code> and <code>undefined</code> stand apart. They have no object wrappers, so methods and properties are not available for them. And there are no corresponding prototypes too.</p>
+</div></div>
+<h2><a class="main__anchor" name="native-prototype-change" href="#native-prototype-change">Changing native prototypes</a></h2><p>Native prototypes can be modified. For instance, if we add a method to <code>String.prototype</code>,  it becomes available to all strings:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">String.prototype.show = function() {
+  alert(this);
+};
+
+&quot;BOOM!&quot;.show(); // BOOM!</code></pre>
+        </div>
+      </div>
+      
+      </div><p>During the process of development we may have ideas which new built-in methods we’d like to have. And there may be a slight temptation to add them to native prototypes. But that is generally a bad idea.</p>
+<p>Prototypes are global, so it’s easy to get a conflict. If two libraries add a method <code>String.prototype.show</code>, then one of them overwrites the other one.</p>
+<p>In modern programming, there is only one case when modifying native prototypes is approved. That’s polyfills. In other words, if there’s a method in JavaScript specification that is not yet supported by our JavaScript engine (or any of those that we want to support), then may implement it manually and populate the built-in prototype with it.</p>
+<p>For instance:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">if (!String.prototype.repeat) { // if there's no such method
+  // add it to the prototype
+
+  String.prototype.repeat = function(n) {
+    // repeat the string n times
+
+    // actually, the code should be more complex than that,
+    // throw errors for negative values of &quot;n&quot;
+    // the full algorithm is in the specification
+    return new Array(n + 1).join(this);
+  };
+}
+
+alert( &quot;La&quot;.repeat(3) ); // LaLaLa</code></pre>
+        </div>
+      </div>
+      
+      </div><h2><a class="main__anchor" name="borrowing-from-prototypes" href="#borrowing-from-prototypes">Borrowing from prototypes</a></h2><p>In the chapter <a href="call-apply-decorators.html#method-borrowing">Decorators and forwarding, call/apply</a> we talked about method borrowing:</p>
+<div data-trusted="1" class="code-example" data-highlight-block="1-2">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function showArgs() {
+  // borrow join from array and call in the context of arguments
+  alert( [].join.call(arguments, &quot; - &quot;) );
+}
+
+showArgs(&quot;John&quot;, &quot;Pete&quot;, &quot;Alice&quot;); // John - Pete - Alice</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Because <code>join</code> resides in <code>Array.prototype</code>, we can call it from there directly and rewrite it as:</p>
+<div data-trusted="1" class="code-example" data-highlight-block="1-1">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function showArgs() {
+  alert( Array.prototype.join.call(arguments, &quot; - &quot;) );
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>That’s more efficient, because it avoids the creation of an extra array object <code>[]</code>. On the other hand, it is longer to write.</p>
+<h2><a class="main__anchor" name="summary" href="#summary">Summary</a></h2><ul>
+<li>All built-in objects follow the same pattern:
+<ul>
+<li>The methods are stored in the prototype (<code>Array.prototype</code>, <code>Object.prototype</code>, <code>Date.prototype</code> etc).</li>
+<li>The object itself stores only the data (array items, object properties, the date).</li>
+</ul>
+</li>
+<li>Primitives also store methods in prototypes of wrapper objects: <code>Number.prototype</code>, <code>String.prototype</code>, <code>Boolean.prototype</code>. There are no wrapper objects only for <code>undefined</code> and <code>null</code>.</li>
+<li>Built-in prototypes can be modified or populated with new methods. But it’s not recommended to change them. Probably the only allowable cause is when we add-in a new standard, but not yet supported by the engine JavaScript method.</li>
+</ul>
+</div></article><div class="tasks"><h2 id="tasks" class="tasks__title"><a href="#tasks" class="main__anchor main__anchor_noicon tasks__title-anchor">Tasks</a></h2><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a href="#add-method-f-defer-ms-to-functions" name="add-method-f-defer-ms-to-functions" class="main__anchor">Add method &quot;f.defer(ms)&quot; to functions</a></h3><a href="task/defer-to-prototype.html" target="_blank" class="task__open-link"></a></div><div class="task__header-note"><span title="How important is the task, from 1 to 5" class="task__importance">importance: 5</span></div><div class="task__content"><p>Add to the prototype of all functions the method <code>defer(ms)</code>, that runs the function after <code>ms</code> milliseconds.</p>
+<p>After you do it, such code should work:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function f() {
+  alert(&quot;Hello!&quot;);
+}
+
+f.defer(1000); // shows &quot;Hello!&quot; after 1 second</code></pre>
+        </div>
+      </div>
+      
+      </div><button type="button" class="task__solution">solution</button><div class="task__answer"><div class="task__answer-content"><div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">Function.prototype.defer = function(ms) {
+  setTimeout(this, ms);
+};
+
+function f() {
+  alert(&quot;Hello!&quot;);
+}
+
+f.defer(1000); // shows &quot;Hello!&quot; after 1 sec</code></pre>
+        </div>
+      </div>
+      
+      </div></div><button type="button" title="close" class="close-button task__answer-close"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a href="#add-the-decorating-defer-to-functions" name="add-the-decorating-defer-to-functions" class="main__anchor">Add the decorating &quot;defer()&quot; to functions</a></h3><a href="task/defer-to-prototype-extended.html" target="_blank" class="task__open-link"></a></div><div class="task__header-note"><span title="How important is the task, from 1 to 5" class="task__importance">importance: 4</span></div><div class="task__content"><p>Add to the prototype of all functions the method <code>defer(ms)</code>, that returns a wrapper, delaying the call by <code>ms</code> milliseconds.</p>
+<p>Here’s an example of how it should work:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function f(a, b) {
+  alert( a + b );
+}
+
+f.defer(1000)(1, 2); // shows 3 after 1 second</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Please note that the arguments should be passed to the original function.</p>
+<button type="button" class="task__solution">solution</button><div class="task__answer"><div class="task__answer-content"><div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">Function.prototype.defer = function(ms) {
+  let f = this;
+  return function(...args) {
+    setTimeout(() =&gt; f.apply(this, args), ms);
+  }
+};
+
+// check it
+function f(a, b) {
+  alert( a + b );
+}
+
+f.defer(1000)(1, 2); // shows 3 after 1 sec</code></pre>
+        </div>
+      </div>
+      
+      </div></div><button type="button" title="close" class="close-button task__answer-close"></button></div></div></div></div></div><!--  include /blocks/banner-bottom--><!--if lang == 'en'--><!--  include /blocks/banner-bottom.en--></div><div class="page__nav-wrap"><a href="function-prototype.html" data-tooltip="F.prototype" class="page__nav page__nav_prev"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Previous lesson</span></a><a href="prototype-methods.html" data-tooltip="Methods for prototypes" class="page__nav page__nav_next"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Next lesson</span></a></div><div class="article-tablet-foot tablet-only"><div class="article-tablet-foot__layout"><div class="share-icons"><span class="share-icons__title">Share</span><a href="https://twitter.com/share?url=https%3A%2F%2Fjavascript.info%2Fnative-prototypes" class="share share_tw"></a><a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fjavascript.info%2Fnative-prototypes" class="share share_fb"></a><a href="https://plus.google.com/share?url=https%3A%2F%2Fjavascript.info%2Fnative-prototypes" class="share share_gp"></a><a href="https://vkontakte.ru/share.php?url=https%3A%2F%2Fjavascript.info%2Fnative-prototypes" class="share share_vk"></a></div><div class="article-tablet-foot__map"><a href="tutorial/map.html" data-action="tutorial-map" class="map"><span class="map__text">Tutorial map</span></a></div></div></div><div id="comments" class="comments"><div class="comments__header"><h2 class="comments__header-title"><a href="#comments" name="comments">Comments</a></h2><div class="comments__read-before"><span class="comments__read-before-link">read this before commenting…</span><div class="comments__read-before-popup"><div class="comments__read-before-popup-i"><ul><li>You're welcome to post additions, questions to the articles and answers to them.</li><li>To insert a few words of code, use the <code>&lt;code&gt;</code> tag, for several lines – use <code>&lt;pre&gt;</code>, for more than 10 lines – use a sandbox (<a href='http://plnkr.co/edit/?p=preview'>plnkr</a>, <a href='http://jsbin.com/'>JSBin</a>, <a href='http://codepen.io/'>codepen</a>…)</li><li>If you can't understand something in the article – please elaborate.</li></ul></div></div></div></div></div><div id="disqus_thread"></div><script>var disqus_config = function() { if (!this.page) this.page = {}; Object.assign(this.page, {"url":"https:\/\/javascript.info\/native-prototypes","identifier":"\/native-prototypes","title":"Native prototypes"}); };</script><script>var disqus_shortname = "javascriptinfo";</script><script>var disqus_enabled = true;</script></main></div><div class="page__sidebar sidebar sidebar_sticky-footer"><button data-sidebar-toggle class="sidebar__toggle"></button><a href="tutorial/map.html" data-action="tutorial-map" data-tooltip="Tutorial map" class="map"></a><div class="sidebar__inner"><div class="sidebar__content"><div class="sidebar__section"><h4 class="sidebar__section-title">Chapter</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a href="object-oriented-programming.html" class="sidebar__link">Objects, classes, inheritance</a></li></ul></nav></div><div class="sidebar__section"><h4 class="sidebar__section-title">Lesson navigation</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a href="#object-prototype" class="sidebar__link">Object.prototype</a></li><li class="sidebar__navigation-link"><a href="#other-built-in-prototypes" class="sidebar__link">Other built-in prototypes</a></li><li class="sidebar__navigation-link"><a href="#primitives" class="sidebar__link">Primitives</a></li><li class="sidebar__navigation-link"><a href="#native-prototype-change" class="sidebar__link">Changing native prototypes</a></li><li class="sidebar__navigation-link"><a href="#borrowing-from-prototypes" class="sidebar__link">Borrowing from prototypes</a></li><li class="sidebar__navigation-link"><a href="#summary" class="sidebar__link">Summary</a></li></ul></nav></div><div class="sidebar__section"><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a href="#tasks" class="sidebar__link">Tasks (2)</a></li><li class="sidebar__navigation-link"><a href="#comments" class="sidebar__link">Comments</a></li></ul></nav></div><div class="sidebar__section"><div class="sidebar__section-title">Share</div><a href="https://twitter.com/share?url=https%3A%2F%2Fjavascript.info%2Fnative-prototypes" class="share share_tw sidebar__share"></a><a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fjavascript.info%2Fnative-prototypes" class="share share_fb sidebar__share"></a><a href="https://plus.google.com/share?url=https%3A%2F%2Fjavascript.info%2Fnative-prototypes" class="share share_gp sidebar__share"></a></div><div class="sidebar__section"><a href="https://github.com/iliakan/javascript-tutorial-en/tree/master/1-js/07-object-oriented-programming/05-native-prototypes/article.md" class="sidebar__link">Edit on Github</a></div></div></div></div></div></div><div class="page-footer"><div class="page-footer__left"><ul class="page-footer__list"><li class="page-footer__item">©&nbsp;2007—2017&nbsp; Ilya Kantor</li><li class="page-footer__item"><a href="about.html#contact-us" class="page-footer__link">contact us</a></li><li class="page-footer__item"><a href="about.html" class="page-footer__link">about the project</a></li><li class="page-footer__item"><a href="https://learn.javascript.ru/" class="page-footer__link">RU</a> / EN</li></ul></div><div class="page-footer__right"><ul class="page-footer__list"><li class="page-footer__item">powered by <a rel="nofollow" href="http://nodejs.org/" class="page-footer__link">node.js</a>&nbsp;&amp;&nbsp;<a rel="nofollow" href="http://github.com/iliakan/javascript-tutorial-en" class="page-footer__link">open source</a></li></ul></div></div></body>
+<!-- Mirrored from javascript.info/native-prototypes by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 30 Nov 2017 15:28:35 GMT -->
+</html>

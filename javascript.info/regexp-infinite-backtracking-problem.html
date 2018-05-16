@@ -1,0 +1,352 @@
+<!DOCTYPE html><html lang="en">
+<!-- Mirrored from javascript.info/regexp-infinite-backtracking-problem by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 30 Nov 2017 15:30:54 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><script>window.currentUser = null;</script><title itemprop="name">Infinite backtracking problem</title><meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, minimum-scale=1.0"><meta name="apple-mobile-web-app-capable" content="yes"><script>if (window.devicePixelRatio > 1) document.cookie = 'pixelRatio=' + window.devicePixelRatio + ';path=/;expires=Tue, 19 Jan 2038 03:14:07 GMT';</script><link href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700%7COpen+Sans+Condensed:700&amp;subset=latin,latin-ext,cyrillic,cyrillic-ext" rel="stylesheet"><link rel="apple-touch-icon-precomposed" href="img/favicon/apple-touch-icon-precomposed.png"><link rel="canonical" href="regexp-infinite-backtracking-problem.html"><meta name="msapplication-TileColor" content="#222A2C"><meta name="msapplication-TileImage" content="/img/favicon/tileicon.png"><!-- favicon the rest--><link rel="icon" href="img/favicon/favicon.png"><meta itemprop="image" content="https://javascript.info/img/site_preview_en_512x512.png"><meta property="og:title" content="Infinite backtracking problem"><meta property="og:image" content="https://javascript.info/img/site_preview_en_1200x630.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="fb:admins" content="100001562528165"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Infinite backtracking problem"><meta name="twitter:site" content="@iliakan"><meta name="twitter:creator" content="@iliakan"><meta name="twitter:image" content="https://javascript.info/img/site_preview_en_512x512.png"><link href="pack/styles.da59a89b28153875791083e4a8c5adb3.css" rel="stylesheet"><link rel="prev" href="regexp-lookahead.html"><link rel="next" href="async.html"><script>window.GA_ID = "UA-2056213-15";</script><script>window.YANDEX_METRIKA_ID = 32184394;</script><script>window.GoogleAnalyticsObject="ga",window.ga=function(){window.ga.q.push(arguments)},window.ga.q=[],window.ga.l=Date.now(),ga("create",GA_ID,"auto"),window.currentUser&&ga("set","&uid",currentUser.id),window.addEventListener("error",function(e){var r=(e.filename||e.errorUrl)+": "+(e.lineno||e.errorLine),n=e.stack||e.error&&e.error.stack;ga("send","exception",{exDescription:e.message+" "+r+" "+n,exFatal:!0})});</script><script src="https://www.google-analytics.com/analytics.js" async></script><script>ga('send', 'pageview');</script><script>window.metrika={reachGoal:function(){}},window.yandex_metrika_callbacks=[function(){try{window.metrika=new Ya.Metrika({id:YANDEX_METRIKA_ID,webvisor:!0,clickmap:!0,params:{user:window.currentUser&&window.currentUser.id}}),metrika.trackLinks({delay:150}),window.addEventListener("error",function(r){window.metrika.reachGoal("JSERROR",{src:(r.filename||r.errorUrl)+": "+(r.lineno||r.errorLine),stack:r.stack||r.error&&r.error.stack,message:r.message})})}catch(r){}}];</script><script src="http://mc.yandex.ru/metrika/watch.js" async></script><script>window.RECAPTCHA_ID = "6Lf9NyETAAAAACZlg-a9Us2SxvYbeVC1ROWaWv4O";</script><script src="initc4ca.js?1"></script><script src="pack/head.688d4fe7c4cf54e23737.js" defer></script><meta property="og:title" content="Infinite backtracking problem"><meta property="og:type" content="article"><script src="pack/tutorial.688d4fe7c4cf54e23737.js" defer></script><script src="pack/footer.688d4fe7c4cf54e23737.js" defer></script></head><body class="no-icons"><script>window.fontTest();</script><div class="page-wrapper page-wrapper_sidebar_on"><!--[if lt IE 10]><div style="color:red;text-align:center">Sorry, IE&lt;10 is not supported, please use a newer browser.</div><![endif]--><div class="sitetoolbar sitetoolbar_tutorial"><!-- include ./notification-stripe--><div class="sitetoolbar__content"><div class="sitetoolbar__logo-wrap"><a href="index.html" class="sitetoolbar__link sitetoolbar__link_logo"><img src="img/sitetoolbar__logo_en.svg" width="200" class="sitetoolbar__logo sitetoolbar__logo_normal" alt=""><img src="img/sitetoolbar__logo_small_en.svg" width="70" class="sitetoolbar__logo sitetoolbar__logo_small" alt=""><script>Array.prototype.forEach.call(document.querySelectorAll("img.sitetoolbar__logo"),function(e){var t=document.createElement("object");t.type="image/svg+xml",t.className=e.className,t.style.cssText="left:0;top:0;position:absolute",t.onload=function(){t.onload=null,e.style.visibility="hidden"},t.data=e.src,e.parentNode.insertBefore(t,e)});</script></a></div><div class="sitetoolbar__nav-toggle-wrap"><button type="button" class="sitetoolbar__nav-toggle"></button></div><nav class="sitetoolbar__sections"><ul class="sitetoolbar__sections-list"></ul></nav><div class="sitetoolbar__book-wrap"><a href="ebook.html" class="buy-book-button"><span class="buy-book-button__extra-text">Buy</span>EPUB/PDF</a></div><div class="sitetoolbar__login-wrap"><button data-action-login class="sitetoolbar__login sitetoolbar__login_unready"></button></div><div class="sitetoolbar__search-wrap"><div class="sitetoolbar__search-content"><form method="GET" action="http://javascript.info/search" class="sitetoolbar__search"><button type="button" class="sitetoolbar__search-toggle"></button><div class="sitetoolbar__search-input"><div class="text-input"><input name="query" placeholder="Search on Javascript.info" class="text-input__control" type="text"></div><button type="submit" class="sitetoolbar__find">Search</button></div></form></div></div></div><!-- todo: en variant--><div class="tablet-menu"><div class="tablet-menu__line"><div class="tablet-menu__content"><form action="http://javascript.info/search/" class="tablet-menu-search"><input type="search" name="query" placeholder="Search in the tutorial" required class="tablet-menu-search__input"><button type="submit" name="type" value="articles" class="tablet-menu-search__button">Search</button></form></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><a href="tutorial/map.html" data-action="tutorial-map" class="map"><span class="map__text">Tutorial map</span></a></div></div><!--+e.line--><!--  +e.content--><!--    +b("a").tablet-ebook(href="/ebook")--><!--      +e("span").text Купить учебник--><!--      +e("span").note (EPUB + PDF)--><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="share-icons"><span class="share-icons__title">Share</span><a href="https://twitter.com/share?url=https%3A%2F%2Fjavascript.info%2Fregexp-infinite-backtracking-problem" class="share share_tw"></a><a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fjavascript.info%2Fregexp-infinite-backtracking-problem" class="share share_fb"></a><a href="https://plus.google.com/share?url=https%3A%2F%2Fjavascript.info%2Fregexp-infinite-backtracking-problem" class="share share_gp"></a><a href="https://vkontakte.ru/share.php?url=https%3A%2F%2Fjavascript.info%2Fregexp-infinite-backtracking-problem" class="share share_vk"></a></div></div></div></div><progress data-sticky value="15" max="15" data-tooltip="Lesson 15 of 15" class="tutorial-progress"></progress></div><div class="page page_sidebar_on"><script>if(localStorage.noSidebar){document.querySelector(".page").classList.remove("page_sidebar_on");var pageWrapper=document.querySelector(".page-wrapper");pageWrapper&&pageWrapper.classList.remove("page-wrapper_sidebar_on")}setTimeout(function(){document.querySelector(".page").classList.add("page_sidebar-animation-on")},0);</script><div class="page__inner"><main class="main main_width-limit"><header class="main__header"><ol class="breadcrumbs"><li itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemref="breadcrumb-1" class="breadcrumbs__item breadcrumbs__item_home"><a href="index.html" itemprop="url" class="breadcrumbs__link"><span itemprop="title" class="breadcrumbs__hidden-text">Учебник</span></a></li><li id="breadcrumb-1" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemprop="child" class="breadcrumbs__item"><a href="regular-expressions.html" itemprop="url" class="breadcrumbs__link"><span itemprop="title">Regular expressions</span></a></li></ol><h1 class="main__header-title">Infinite backtracking problem</h1></header><div class="content"><article itemscope itemtype="http://schema.org/TechArticle"><meta itemprop="name" content="Infinite backtracking problem"><div itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="email" content="iliakan@gmail.com"><meta itemprop="name" content="Ilya Kantor"></div><div itemprop="articleBody"><p>Some regular expressions are looking simple, but can execute veeeeeery long time, and even “hang” the JavaScript engine.</p>
+<p>Sooner or later most developers occasionally face such behavior.</p>
+<p>The typical situation – a regular expression works fine sometimes, but for certain strings it “hangs”  consuming 100% of CPU.</p>
+<p>That may even be a vulnerability. For instance, if JavaScript is on the server, and it uses regular expressions to process user data, then such an input may cause denial of service. The author personally saw and reported such vulnerabilities even for well-known and widely used programs.</p>
+<p>So the problem is definitely worth to deal with.</p>
+<cut>
+<h2><a class="main__anchor" name="example" href="#example">Example</a></h2><p>The plan will be like this:</p>
+<ol>
+<li>First we see the problem how it may occur.</li>
+<li>Then we simplify the situation and see why it occurs.</li>
+<li>Then we fix it.</li>
+</ol>
+<p>For instance let’s consider searching tags in HTML.</p>
+<p>We want to find all tags, with or without attributes – like <code class="subject">&lt;a href=&quot;...&quot; class=&quot;doc&quot; ...&gt;</code>. We need the regexp to work reliably, because HTML comes from the internet and can be messy.</p>
+<p>In particular, we need it to match tags like <code>&lt;a test=&quot;&lt;&gt;&quot; href=&quot;#&quot;&gt;</code> – with <code>&lt;</code> and <code>&gt;</code> in attributes. That’s allowed by <a href="https://html.spec.whatwg.org/multipage/syntax.html#syntax-attributes">HTML standard</a>.</p>
+<p>Now we can see that a simple regexp like <code class="pattern">&lt;[^&gt;]+&gt;</code> doesn’t work, because it stops at the first <code>&gt;</code>, and we need to ignore <code>&lt;&gt;</code> inside an attribute.</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">// the match doesn't reach the end of the tag - wrong!
+alert( '&lt;a test=&quot;&lt;&gt;&quot; href=&quot;#&quot;&gt;'.match(/&lt;[^&gt;]+&gt;/) ); // &lt;a test=&quot;&lt;&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>We need the whole tag.</p>
+<p>To correctly handle such situations we need a more complex regular expression. It will have the form  <code class="pattern">&lt;tag (key=value)*&gt;</code>.</p>
+<p>In the regexp language that is: <code class="pattern">&lt;\w+(\s*\w+=(\w+|&quot;[^&quot;]*&quot;)\s*)*&gt;</code>:</p>
+<ol>
+<li><code class="pattern">&lt;\w+</code> – is the tag start,</li>
+<li><code class="pattern">(\s*\w+=(\w+|&quot;[^&quot;]*&quot;)\s*)*</code> – is an arbitrary number of pairs <code>word=value</code>, where the value can be either a word <code class="pattern">\w+</code> or a quoted string <code class="pattern">&quot;[^&quot;]*&quot;</code>.</li>
+</ol>
+<p>That doesn’t yet support few details of HTML grammar, for instance strings in ‘single’ quotes, but they can be added later, so that’s somewhat close to real life. For now we want the regexp to be simple.</p>
+<p>Let’s try it in action:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let reg = /&lt;\w+(\s*\w+=(\w+|&quot;[^&quot;]*&quot;)\s*)*&gt;/g;
+
+let str='...&lt;a test=&quot;&lt;&gt;&quot; href=&quot;#&quot;&gt;... &lt;b&gt;...';
+
+alert( str.match(reg) ); // &lt;a test=&quot;&lt;&gt;&quot; href=&quot;#&quot;&gt;, &lt;b&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Great, it works! It found both the long tag <code class="match">&lt;a test=&quot;&lt;&gt;&quot; href=&quot;#&quot;&gt;</code> and the short one <code class="match">&lt;b&gt;</code>.</p>
+<p>Now let’s see the problem.</p>
+<p>If you run the example below, it may hang the browser (or whatever JavaScript engine runs):</p>
+<div data-trusted="1" class="code-example" data-highlight-block="5-6">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let reg = /&lt;\w+(\s*\w+=(\w+|&quot;[^&quot;]*&quot;)\s*)*&gt;/g;
+
+let str = `&lt;tag a=b  a=b  a=b  a=b  a=b  a=b  a=b  a=b
+  a=b  a=b  a=b  a=b  a=b  a=b  a=b  a=b  a=b  a=b  a=b  a=b  a=b`;
+
+// The search will take a long long time
+alert( str.match(reg) );</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Some regexp engines can handle that search, but most of them don’t.</p>
+<p>What’s the matter? Why a simple regular expression on such a small string “hangs”?</p>
+<p>Let’s simplify the situation by removing the tag and quoted strings.</p>
+<p>Here we look only for attributes:</p>
+<div data-trusted="1" class="code-example" data-highlight-block="6-7">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">// only search for space-delimited attributes
+let reg = /&lt;(\s*\w+=\w+\s*)*&gt;/g;
+
+let str = `&lt;a=b  a=b  a=b  a=b  a=b  a=b  a=b  a=b
+  a=b  a=b  a=b  a=b  a=b  a=b  a=b  a=b  a=b  a=b  a=b  a=b  a=b`;
+
+// the search will take a long, long time
+alert( str.match(reg) );</code></pre>
+        </div>
+      </div>
+      
+      </div><p>The same problem persists.</p>
+<p>Here we end the demo of the problem and start looking into what’s going on and why it hangs.</p>
+<h2><a class="main__anchor" name="backtracking" href="#backtracking">Backtracking</a></h2><p>To make an example even simpler, let’s consider <code class="pattern">(\d+)*$</code>.</p>
+<p>This regular expression also has the same problem. In most regexp engines that search takes a very long time (careful – can hang):</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">alert( '12345678901234567890123456789123456789z'.match(/(\d+)*$/) );</code></pre>
+        </div>
+      </div>
+      
+      </div><p>So what’s wrong with the regexp?</p>
+<p>First, one may notice that the regexp is a little bit strange. The quantifier <code class="pattern">*</code> looks extraneous. If we want a number, we can use <code class="pattern">\d+$</code>.</p>
+<p>Indeed, the regexp is artificial. But the reason why it is slow is the same as those we saw above. So let’s understand it, and then return to the real-life examples.</p>
+<p>What happen during the search of <code class="pattern">(\d+)*$</code> in the line <code class="subject">123456789z</code>?</p>
+<ol>
+<li>
+<p>First, the regexp engine tries to find a number <code class="pattern">\d+</code>. The plus <code class="pattern">+</code> is greedy by default, so it consumes all digits:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-none"><code class="language-none">\d+.......
+(123456789)z</code></pre>
+        </div>
+      </div>
+      
+      </div></li>
+<li>
+<p>Then it tries to apply the star around the parentheses <code class="pattern">(\d+)*</code>, but there are no more digits, so it the star doesn’t give anything.</p>
+<p>Then the pattern has the string end anchor <code class="pattern">$</code>, and in the text we have <code class="subject">z</code>.</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-none"><code class="language-none">           X
+\d+........$
+(123456789)z</code></pre>
+        </div>
+      </div>
+      
+      </div><p>No match!</p>
+</li>
+<li>
+<p>There’s no match, so the greedy quantifier <code class="pattern">+</code> decreases the count of repetitions (backtracks).</p>
+<p>Now <code>\d+</code> is not all digits, but all except the last one:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-none"><code class="language-none">\d+.......
+(12345678)9z</code></pre>
+        </div>
+      </div>
+      
+      </div></li>
+<li>
+<p>Now the engine tries to continue the search from the new position (<code>9</code>).</p>
+<p>The start <code class="pattern">(\d+)*</code> can now be applied – it gives the number <code class="match">9</code>:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-none"><code class="language-none">\d+.......\d+
+(12345678)(9)z</code></pre>
+        </div>
+      </div>
+      
+      </div><p>The engine tries to match <code>$</code> again, but fails, because meets <code class="subject">z</code>:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-none"><code class="language-none">             X
+\d+.......\d+
+(12345678)(9)z</code></pre>
+        </div>
+      </div>
+      
+      </div><p>There’s no match, so the engine will continue backtracking.</p>
+</li>
+<li>
+<p>Now the first number <code class="pattern">\d+</code> will have 7 digits, and the rest of the string <code class="subject">89</code> becomes the second <code class="pattern">\d+</code>:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-none"><code class="language-none">             X
+\d+......\d+
+(1234567)(89)z</code></pre>
+        </div>
+      </div>
+      
+      </div><p>…Still no match for <code class="pattern">$</code>.</p>
+<p>The search engine backtracks again. Backtracking generally works like this: the last greedy quantifier decreases the number of repetitions until it can. Then the previous greedy quantifier decreases, and so on. In our case the last greedy quantifier is the second <code class="pattern">\d+</code>, from <code class="subject">89</code> to <code class="subject">8</code>, and then the star takes <code class="subject">9</code>:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-none"><code class="language-none">               X
+\d+......\d+\d+
+(1234567)(8)(9)z</code></pre>
+        </div>
+      </div>
+      
+      </div></li>
+<li>
+<p>…Fail again. The second and third <code class="pattern">\d+</code> backtracked to the end, so the first quantifier shortens the match to <code class="subject">123456</code>, and the star takes the rest:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-none"><code class="language-none">             X
+\d+.......\d+
+(123456)(789)z</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Again no match. The process repeats: the last greedy quantifier releases one character (<code>9</code>):</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-none"><code class="language-none">               X
+\d+.....\d+ \d+
+(123456)(78)(9)z</code></pre>
+        </div>
+      </div>
+      
+      </div></li>
+<li>
+<p>…And so on.</p>
+</li>
+</ol>
+<p>The regular expression engine goes through all combinations of <code>123456789</code> and their subsequences. There are a lot of them, that’s why it takes so long.</p>
+<p>A smart guy can say here: “Backtracking? Let’s turn on the lazy mode – and no more backtracking!”.</p>
+<p>Let’s replace <code class="pattern">\d+</code> with <code class="pattern">\d+?</code> and see if it works (careful, can hang the browser)</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">// sloooooowwwwww
+alert( '12345678901234567890123456789123456789z'.match(/(\d+?)*$/) );</code></pre>
+        </div>
+      </div>
+      
+      </div><p>No, it doesn’t.</p>
+<p>Lazy quantifiers actually do the same, but in the reverse order. Just think about how the search engine would work in this case.</p>
+<p>Some regular expression engines have tricky built-in checks to detect infinite backtracking or other means to work around them, but there’s no universal solution.</p>
+<p>In the example above, when we search <code class="pattern">&lt;(\s*\w+=\w+\s*)*&gt;</code> in the string <code class="subject">&lt;a=b a=b a=b a=b</code> – the similar thing happens.</p>
+<p>The string has no <code>&gt;</code> at the end, so the match is impossible, but the regexp engine does not know about it. The search backtracks trying different combinations of <code class="pattern">(\s*\w+=\w+\s*)</code>:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-none"><code class="language-none">(a=b a=b a=b) (a=b)
+(a=b a=b) (a=b a=b)
+...</code></pre>
+        </div>
+      </div>
+      
+      </div><h2><a class="main__anchor" name="how-to-fix" href="#how-to-fix">How to fix?</a></h2><p>The problem – too many variants in backtracking even if we don’t need them.</p>
+<p>For instance, in the pattern <code class="pattern">(\d+)*$</code> we (people) can easily see that <code class="pattern">(\d+)</code> does not need to backtrack.</p>
+<p>Decreasing the count of <code class="pattern">\d+</code> can not help to find a match, there’s no matter between these two:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-none"><code class="language-none">\d+........
+(123456789)z
+
+\d+...\d+....
+(1234)(56789)z</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Let’s get back to more real-life example: <code class="pattern">&lt;(\s*\w+=\w+\s*)*&gt;</code>. We want it to find pairs <code>name=value</code> (as many as it can). There’s no need in backtracking here.</p>
+<p>In other words, if it found many <code>name=value</code> pairs and then can’t find <code>&gt;</code>, then there’s no need to decrease the count of repetitions. Even if we match one pair less, it won’t give us the closing <code>&gt;</code>:</p>
+<p>Modern regexp engines support so-called “possessive” quantifiers for that. They are like greedy, but don’t backtrack at all. Pretty simple, they capture whatever they can, and the search continues. There’s also another tool called “atomic groups” that forbid backtracking inside parentheses.</p>
+<p>Unfortunately, but both these features are not supported by JavaScript.</p>
+<p>Although we can get a similar affect using lookahead. There’s more about the relation between possessive quantifiers and lookahead in articles <a href="http://instanceof.me/post/52245507631/regex-emulate-atomic-grouping-with-lookahead">Regex: Emulate Atomic Grouping (and Possessive Quantifiers) with LookAhead</a> and <a href="http://blog.stevenlevithan.com/archives/mimic-atomic-groups">Mimicking Atomic Groups</a>.</p>
+<p>The pattern to take as much repetitions as possible without backtracking is: <code class="pattern">(?=(a+))\1</code>.</p>
+<p>In other words, the lookahead <code class="pattern">?=</code> looks for the maximal count <code class="pattern">a+</code> from the current position. And then they are “consumed into the result” by the backreference <code class="pattern">\1</code>.</p>
+<p>There will be no backtracking, because lookahead does not backtrack. If it found like 5 times of <code class="pattern">a+</code> and the further match failed, then it doesn’t go back to 4.</p>
+<p>Let’s fix the regexp for a tag with attributes from the beginning of the chapter<code class="pattern">&lt;\w+(\s*\w+=(\w+|&quot;[^&quot;]*&quot;)\s*)*&gt;</code>. We’ll use lookahead to prevent backtracking of <code>name=value</code> pairs:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">// regexp to search name=value
+let attrReg = /(\s*\w+=(\w+|&quot;[^&quot;]*&quot;)\s*)/
+
+// use it inside the regexp for tag
+let reg = new RegExp('&lt;\\w+(?=(' + attrReg.source + '*))\\1&gt;', 'g');
+
+let good = '...&lt;a test=&quot;&lt;&gt;&quot; href=&quot;#&quot;&gt;... &lt;b&gt;...';
+
+let bad = `&lt;tag a=b  a=b  a=b  a=b  a=b  a=b  a=b  a=b
+  a=b  a=b  a=b  a=b  a=b  a=b  a=b  a=b  a=b  a=b  a=b  a=b  a=b`;
+
+alert( good.match(reg) ); // &lt;a test=&quot;&lt;&gt;&quot; href=&quot;#&quot;&gt;, &lt;b&gt;
+alert( bad.match(reg) ); // null (no results, fast!)</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Great, it works! We found a long tag  <code class="match">&lt;a test=&quot;&lt;&gt;&quot; href=&quot;#&quot;&gt;</code> and a small one <code class="match">&lt;b&gt;</code> and didn’t hang the engine.</p>
+<p>Please note the <code>attrReg.source</code> property. <code>RegExp</code> objects provide access to their source string in it. That’s convenient when we want to insert one regexp into another.</p>
+</div></article><!--  include /blocks/banner-bottom--><!--if lang == 'en'--><!--  include /blocks/banner-bottom.en--></div><div class="page__nav-wrap"><a href="regexp-lookahead.html" data-tooltip="Lookahead (in progress)" class="page__nav page__nav_prev"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Previous lesson</span></a><a href="async.html" data-tooltip="Promises, async/await" class="page__nav page__nav_next"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Next lesson</span></a></div><div class="article-tablet-foot tablet-only"><div class="article-tablet-foot__layout"><div class="share-icons"><span class="share-icons__title">Share</span><a href="https://twitter.com/share?url=https%3A%2F%2Fjavascript.info%2Fregexp-infinite-backtracking-problem" class="share share_tw"></a><a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fjavascript.info%2Fregexp-infinite-backtracking-problem" class="share share_fb"></a><a href="https://plus.google.com/share?url=https%3A%2F%2Fjavascript.info%2Fregexp-infinite-backtracking-problem" class="share share_gp"></a><a href="https://vkontakte.ru/share.php?url=https%3A%2F%2Fjavascript.info%2Fregexp-infinite-backtracking-problem" class="share share_vk"></a></div><div class="article-tablet-foot__map"><a href="tutorial/map.html" data-action="tutorial-map" class="map"><span class="map__text">Tutorial map</span></a></div></div></div><div id="comments" class="comments"><div class="comments__header"><h2 class="comments__header-title"><a href="#comments" name="comments">Comments</a></h2><div class="comments__read-before"><span class="comments__read-before-link">read this before commenting…</span><div class="comments__read-before-popup"><div class="comments__read-before-popup-i"><ul><li>You're welcome to post additions, questions to the articles and answers to them.</li><li>To insert a few words of code, use the <code>&lt;code&gt;</code> tag, for several lines – use <code>&lt;pre&gt;</code>, for more than 10 lines – use a sandbox (<a href='http://plnkr.co/edit/?p=preview'>plnkr</a>, <a href='http://jsbin.com/'>JSBin</a>, <a href='http://codepen.io/'>codepen</a>…)</li><li>If you can't understand something in the article – please elaborate.</li></ul></div></div></div></div></div><div id="disqus_thread"></div><script>var disqus_config = function() { if (!this.page) this.page = {}; Object.assign(this.page, {"url":"https:\/\/javascript.info\/regexp-infinite-backtracking-problem","identifier":"\/regexp-infinite-backtracking-problem","title":"Infinite backtracking problem"}); };</script><script>var disqus_shortname = "javascriptinfo";</script><script>var disqus_enabled = true;</script></main></div><div class="page__sidebar sidebar sidebar_sticky-footer"><button data-sidebar-toggle class="sidebar__toggle"></button><a href="tutorial/map.html" data-action="tutorial-map" data-tooltip="Tutorial map" class="map"></a><div class="sidebar__inner"><div class="sidebar__content"><div class="sidebar__section"><h4 class="sidebar__section-title">Chapter</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a href="regular-expressions.html" class="sidebar__link">Regular expressions</a></li></ul></nav></div><div class="sidebar__section"><h4 class="sidebar__section-title">Lesson navigation</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a href="#example" class="sidebar__link">Example</a></li><li class="sidebar__navigation-link"><a href="#backtracking" class="sidebar__link">Backtracking</a></li><li class="sidebar__navigation-link"><a href="#how-to-fix" class="sidebar__link">How to fix?</a></li></ul></nav></div><div class="sidebar__section"><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a href="#comments" class="sidebar__link">Comments</a></li></ul></nav></div><div class="sidebar__section"><div class="sidebar__section-title">Share</div><a href="https://twitter.com/share?url=https%3A%2F%2Fjavascript.info%2Fregexp-infinite-backtracking-problem" class="share share_tw sidebar__share"></a><a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fjavascript.info%2Fregexp-infinite-backtracking-problem" class="share share_fb sidebar__share"></a><a href="https://plus.google.com/share?url=https%3A%2F%2Fjavascript.info%2Fregexp-infinite-backtracking-problem" class="share share_gp sidebar__share"></a></div><div class="sidebar__section"><a href="https://github.com/iliakan/javascript-tutorial-en/tree/master/5-regular-expressions/15-regexp-infinite-backtracking-problem/article.md" class="sidebar__link">Edit on Github</a></div></div></div></div></div></div><div class="page-footer"><div class="page-footer__left"><ul class="page-footer__list"><li class="page-footer__item">©&nbsp;2007—2017&nbsp; Ilya Kantor</li><li class="page-footer__item"><a href="about.html#contact-us" class="page-footer__link">contact us</a></li><li class="page-footer__item"><a href="about.html" class="page-footer__link">about the project</a></li><li class="page-footer__item"><a href="https://learn.javascript.ru/" class="page-footer__link">RU</a> / EN</li></ul></div><div class="page-footer__right"><ul class="page-footer__list"><li class="page-footer__item">powered by <a rel="nofollow" href="http://nodejs.org/" class="page-footer__link">node.js</a>&nbsp;&amp;&nbsp;<a rel="nofollow" href="http://github.com/iliakan/javascript-tutorial-en" class="page-footer__link">open source</a></li></ul></div></div></body>
+<!-- Mirrored from javascript.info/regexp-infinite-backtracking-problem by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 30 Nov 2017 15:30:54 GMT -->
+</html>

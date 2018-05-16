@@ -1,0 +1,405 @@
+<!DOCTYPE html><html lang="en">
+<!-- Mirrored from javascript.info/size-and-scroll by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 30 Nov 2017 15:29:15 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><script>window.currentUser = null;</script><title itemprop="name">Element size and scrolling</title><meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, minimum-scale=1.0"><meta name="apple-mobile-web-app-capable" content="yes"><script>if (window.devicePixelRatio > 1) document.cookie = 'pixelRatio=' + window.devicePixelRatio + ';path=/;expires=Tue, 19 Jan 2038 03:14:07 GMT';</script><link href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700%7COpen+Sans+Condensed:700&amp;subset=latin,latin-ext,cyrillic,cyrillic-ext" rel="stylesheet"><link rel="apple-touch-icon-precomposed" href="img/favicon/apple-touch-icon-precomposed.png"><link rel="canonical" href="size-and-scroll.html"><meta name="msapplication-TileColor" content="#222A2C"><meta name="msapplication-TileImage" content="/img/favicon/tileicon.png"><!-- favicon the rest--><link rel="icon" href="img/favicon/favicon.png"><meta itemprop="image" content="https://javascript.info/img/site_preview_en_512x512.png"><meta property="og:title" content="Element size and scrolling"><meta property="og:image" content="https://javascript.info/img/site_preview_en_1200x630.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="fb:admins" content="100001562528165"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Element size and scrolling"><meta name="twitter:site" content="@iliakan"><meta name="twitter:creator" content="@iliakan"><meta name="twitter:image" content="https://javascript.info/img/site_preview_en_512x512.png"><link href="pack/styles.da59a89b28153875791083e4a8c5adb3.css" rel="stylesheet"><link rel="prev" href="styles-and-classes.html"><link rel="next" href="size-and-scroll-window.html"><script>window.GA_ID = "UA-2056213-15";</script><script>window.YANDEX_METRIKA_ID = 32184394;</script><script>window.GoogleAnalyticsObject="ga",window.ga=function(){window.ga.q.push(arguments)},window.ga.q=[],window.ga.l=Date.now(),ga("create",GA_ID,"auto"),window.currentUser&&ga("set","&uid",currentUser.id),window.addEventListener("error",function(e){var r=(e.filename||e.errorUrl)+": "+(e.lineno||e.errorLine),n=e.stack||e.error&&e.error.stack;ga("send","exception",{exDescription:e.message+" "+r+" "+n,exFatal:!0})});</script><script src="https://www.google-analytics.com/analytics.js" async></script><script>ga('send', 'pageview');</script><script>window.metrika={reachGoal:function(){}},window.yandex_metrika_callbacks=[function(){try{window.metrika=new Ya.Metrika({id:YANDEX_METRIKA_ID,webvisor:!0,clickmap:!0,params:{user:window.currentUser&&window.currentUser.id}}),metrika.trackLinks({delay:150}),window.addEventListener("error",function(r){window.metrika.reachGoal("JSERROR",{src:(r.filename||r.errorUrl)+": "+(r.lineno||r.errorLine),stack:r.stack||r.error&&r.error.stack,message:r.message})})}catch(r){}}];</script><script src="http://mc.yandex.ru/metrika/watch.js" async></script><script>window.RECAPTCHA_ID = "6Lf9NyETAAAAACZlg-a9Us2SxvYbeVC1ROWaWv4O";</script><script src="initc4ca.js?1"></script><script src="pack/head.688d4fe7c4cf54e23737.js" defer></script><meta property="og:title" content="Element size and scrolling"><meta property="og:type" content="article"><script src="pack/tutorial.688d4fe7c4cf54e23737.js" defer></script><script src="pack/footer.688d4fe7c4cf54e23737.js" defer></script></head><body class="no-icons"><script>window.fontTest();</script><div class="page-wrapper page-wrapper_sidebar_on"><!--[if lt IE 10]><div style="color:red;text-align:center">Sorry, IE&lt;10 is not supported, please use a newer browser.</div><![endif]--><div class="sitetoolbar sitetoolbar_tutorial"><!-- include ./notification-stripe--><div class="sitetoolbar__content"><div class="sitetoolbar__logo-wrap"><a href="index.html" class="sitetoolbar__link sitetoolbar__link_logo"><img src="img/sitetoolbar__logo_en.svg" width="200" class="sitetoolbar__logo sitetoolbar__logo_normal" alt=""><img src="img/sitetoolbar__logo_small_en.svg" width="70" class="sitetoolbar__logo sitetoolbar__logo_small" alt=""><script>Array.prototype.forEach.call(document.querySelectorAll("img.sitetoolbar__logo"),function(e){var t=document.createElement("object");t.type="image/svg+xml",t.className=e.className,t.style.cssText="left:0;top:0;position:absolute",t.onload=function(){t.onload=null,e.style.visibility="hidden"},t.data=e.src,e.parentNode.insertBefore(t,e)});</script></a></div><div class="sitetoolbar__nav-toggle-wrap"><button type="button" class="sitetoolbar__nav-toggle"></button></div><nav class="sitetoolbar__sections"><ul class="sitetoolbar__sections-list"></ul></nav><div class="sitetoolbar__book-wrap"><a href="ebook.html" class="buy-book-button"><span class="buy-book-button__extra-text">Buy</span>EPUB/PDF</a></div><div class="sitetoolbar__login-wrap"><button data-action-login class="sitetoolbar__login sitetoolbar__login_unready"></button></div><div class="sitetoolbar__search-wrap"><div class="sitetoolbar__search-content"><form method="GET" action="http://javascript.info/search" class="sitetoolbar__search"><button type="button" class="sitetoolbar__search-toggle"></button><div class="sitetoolbar__search-input"><div class="text-input"><input name="query" placeholder="Search on Javascript.info" class="text-input__control" type="text"></div><button type="submit" class="sitetoolbar__find">Search</button></div></form></div></div></div><!-- todo: en variant--><div class="tablet-menu"><div class="tablet-menu__line"><div class="tablet-menu__content"><form action="http://javascript.info/search/" class="tablet-menu-search"><input type="search" name="query" placeholder="Search in the tutorial" required class="tablet-menu-search__input"><button type="submit" name="type" value="articles" class="tablet-menu-search__button">Search</button></form></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><a href="tutorial/map.html" data-action="tutorial-map" class="map"><span class="map__text">Tutorial map</span></a></div></div><!--+e.line--><!--  +e.content--><!--    +b("a").tablet-ebook(href="/ebook")--><!--      +e("span").text Купить учебник--><!--      +e("span").note (EPUB + PDF)--><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="share-icons"><span class="share-icons__title">Share</span><a href="https://twitter.com/share?url=https%3A%2F%2Fjavascript.info%2Fsize-and-scroll" class="share share_tw"></a><a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fjavascript.info%2Fsize-and-scroll" class="share share_fb"></a><a href="https://plus.google.com/share?url=https%3A%2F%2Fjavascript.info%2Fsize-and-scroll" class="share share_gp"></a><a href="https://vkontakte.ru/share.php?url=https%3A%2F%2Fjavascript.info%2Fsize-and-scroll" class="share share_vk"></a></div></div></div></div><progress data-sticky value="9" max="27" data-tooltip="Lesson 9 of 27" class="tutorial-progress"></progress></div><div class="page page_sidebar_on"><script>if(localStorage.noSidebar){document.querySelector(".page").classList.remove("page_sidebar_on");var pageWrapper=document.querySelector(".page-wrapper");pageWrapper&&pageWrapper.classList.remove("page-wrapper_sidebar_on")}setTimeout(function(){document.querySelector(".page").classList.add("page_sidebar-animation-on")},0);</script><div class="page__inner"><main class="main main_width-limit"><header class="main__header"><ol class="breadcrumbs"><li itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemref="breadcrumb-1" class="breadcrumbs__item breadcrumbs__item_home"><a href="index.html" itemprop="url" class="breadcrumbs__link"><span itemprop="title" class="breadcrumbs__hidden-text">Учебник</span></a></li><li id="breadcrumb-1" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemref="breadcrumb-2" itemprop="child" class="breadcrumbs__item"><a href="ui.html" itemprop="url" class="breadcrumbs__link"><span itemprop="title">Browser: Document, Events, Interfaces</span></a></li><li id="breadcrumb-2" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemprop="child" class="breadcrumbs__item"><a href="document.html" itemprop="url" class="breadcrumbs__link"><span itemprop="title">Document</span></a></li></ol><h1 class="main__header-title">Element size and scrolling</h1></header><div class="content"><article itemscope itemtype="http://schema.org/TechArticle"><meta itemprop="name" content="Element size and scrolling"><div itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="email" content="iliakan@gmail.com"><meta itemprop="name" content="Ilya Kantor"></div><div itemprop="articleBody"><p>There are many JavaScript properties that allow to read information about element width, height and other geometry features.</p>
+<p>We often need them when moving or positioning elements in JavaScript, to correctly calculate coordinates.</p>
+<cut>
+<h2><a class="main__anchor" name="sample-element" href="#sample-element">Sample element</a></h2><p>As a sample element to demonstrate properties we’ll use the one given below:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;div id=&quot;example&quot;&gt;
+  ...Text...
+&lt;/div&gt;
+&lt;style&gt;
+  #example {
+    width: 300px;
+    height: 200px;
+    border: 25px solid #E8C48F;
+    padding: 20px;
+    overflow: auto;
+  }
+&lt;/style&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>It has the border, padding and scrolling. The full set of features. There are no margins, as they are not the part of the element itself, and there are no special properties for them.</p>
+<p>The element looks like this:</p>
+<figure><div class="image" style="width:541px">
+      <div class="image__ratio" style="padding-top:76.52495378927911%"></div>
+      <img src="article/size-and-scroll/metric-css.png" alt="" width="541" height="414" class="image__image">
+      </div></figure><p>You can <a href="http://plnkr.co/edit/ASzuaHeEgqoTMF1XlXLo?p=preview">open the document in the sandbox</a>.</p>
+<div class="important important_smart">
+            <div class="important__header"><span class="important__type">Mind the scrollbar</span></div>
+            <div class="important__content"><p>The picture above demonstrates the most complex case when the element has a scrollbar. Some browsers (not all) reserve the space for it by taking it from the content.</p>
+<p>So, without scrollbar the content width would be <code>300px</code>, but if the scrollbar is <code>16px</code> wide (the width may vary between devices and browsers) then only <code>300-16 = 284px</code> remains, and we should take it into account. That’s why examples from this chapter assume that there’s a scrollbar. If there’s no scrollbar, then things are just a bit simpler.</p>
+</div></div>
+<div class="important important_smart">
+            <div class="important__header"><span class="important__type">The <code>padding-bottom</code> may be filled with text</span></div>
+            <div class="important__content"><p>Usually paddings are shown empty on illustrations, but if there’s a lot of text in the element and it overflows, then browsers show the “overflowing” text at <code>padding-bottom</code>, so you can see that in examples. But the padding is still there, unless specified otherwise.</p>
+</div></div>
+<h2><a class="main__anchor" name="geometry" href="#geometry">Geometry</a></h2><p>Element properties that provide width, height and other geometry are always numbers. They are assumed to be in pixels.</p>
+<p>Here’s the overall picture:</p>
+<figure><div class="image" style="width:670px">
+      <div class="image__ratio" style="padding-top:89.8507462686567%"></div>
+      <img src="article/size-and-scroll/metric-all.png" alt="" width="670" height="602" class="image__image">
+      </div></figure><p>They are many properties, it’s difficult to fit them all in the single picture, but their values are simple and easy to understand.</p>
+<p>Let’s start exploring them from the outside of the element.</p>
+<h2><a class="main__anchor" name="offsetparent-offsetleft-top" href="#offsetparent-offsetleft-top">offsetParent, offsetLeft/Top</a></h2><p>These properties are rarely needed, but still they are the “most outer” geometry properties, so we’ll start with them.</p>
+<p>The <code>offsetParent</code> is the nearest ancestor that is:</p>
+<ol>
+<li>CSS-positioned (<code>position</code> is <code>absolute</code>, <code>relative</code> or <code>fixed</code>),</li>
+<li>or <code>&lt;td&gt;</code>, <code>&lt;th&gt;</code>, <code>&lt;table&gt;</code>,</li>
+<li>or <code>&lt;body&gt;</code>.</li>
+</ol>
+<p>In most practical cases we can use <code>offsetParent</code> to get the nearest CSS-positioned ancestor. And <code>offsetLeft/offsetTop</code> provide x/y coordinates relative to it’s left-upper corner.</p>
+<p>In the example below the inner <code>&lt;div&gt;</code> has <code>&lt;main&gt;</code> as <code>offsetParent</code> and <code>offsetLeft/offsetTop</code> are shifts from its left-upper corner (<code>180</code>):</p>
+<div data-trusted="1" class="code-example" data-demo-height="10">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="show" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;main style=&quot;position: relative&quot; id=&quot;main&quot;&gt;
+  &lt;article&gt;
+    &lt;div id=&quot;example&quot; style=&quot;position: absolute; left: 180px; top: 180px&quot;&gt;...&lt;/div&gt;
+  &lt;/article&gt;
+&lt;/main&gt;
+&lt;script&gt;
+  alert(example.offsetParent.id); // main
+  alert(example.offsetLeft); // 180 (note: a number, not a string &quot;180px&quot;)
+  alert(example.offsetTop); // 180
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><figure><div class="image" style="width:597px">
+      <div class="image__ratio" style="padding-top:87.10217755443887%"></div>
+      <img src="article/size-and-scroll/metric-offset-parent.png" alt="" width="597" height="520" class="image__image">
+      </div></figure><p>There are several occasions when <code>offsetParent</code> is <code>null</code>:</p>
+<ol>
+<li>For not shown elements (<code>display:none</code> or not in the document).</li>
+<li>For <code>&lt;body&gt;</code> and <code>&lt;html&gt;</code>.</li>
+<li>For elements with <code>position:fixed</code> on them.</li>
+</ol>
+<h2><a class="main__anchor" name="offsetwidth-height" href="#offsetwidth-height">offsetWidth/Height</a></h2><p>Now let’s move to the element itself.</p>
+<p>These two properties are the simplest ones. They provide the “outer” width/height of the element. Or, in other words, its full size including borders.</p>
+<figure><div class="image" style="width:479px">
+      <div class="image__ratio" style="padding-top:101.87891440501045%"></div>
+      <img src="article/size-and-scroll/metric-offset-width-height.png" alt="" width="479" height="488" class="image__image">
+      </div></figure><p>For our sample element:</p>
+<ul>
+<li><code>offsetWidth = 390</code> – the outer width, can be calculated as inner CSS-width (<code>300px</code>) plus paddings (<code>2*20px</code>) and borders (<code>2*25px</code>).</li>
+<li><code>offsetHeight = 290</code> – the outer height.</li>
+</ul>
+<div class="important important_smart">
+            <div class="important__header"><span class="important__type">Geometry properties for not shown elements are zero/null</span></div>
+            <div class="important__content"><p>Geometry properties are calculated only for shown elements.</p>
+<p>If an element (or any of its ancestors) has <code>display:none</code> or is not in the document, then all geometry properties are zero or <code>null</code> depending on what it is.</p>
+<p>For example, <code>offsetParent</code> is <code>null</code>, and <code>offsetWidth</code>, <code>offsetHeight</code> are <code>0</code>.</p>
+<p>We can use this to check if an element is hidden, like this:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function isHidden(elem) {
+  return !elem.offsetWidth &amp;&amp; !elem.offsetHeight;
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Please note that such <code>isHidden</code> returns <code>true</code> for elements that are on-screen, but have zero sizes (like an empty <code>&lt;div&gt;</code>).</p>
+</div></div>
+<h2><a class="main__anchor" name="clienttop-left" href="#clienttop-left">clientTop/Left</a></h2><p>Inside the element we have the borders.</p>
+<p>To measure them, there are properties <code>clientTop</code> and <code>clientLeft</code>.</p>
+<p>In our example:</p>
+<ul>
+<li><code>clientLeft = 25</code> – left border width</li>
+<li><code>clientTop = 25</code> – top border width</li>
+</ul>
+<figure><div class="image" style="width:353px">
+      <div class="image__ratio" style="padding-top:89.51841359773371%"></div>
+      <img src="article/size-and-scroll/metric-client-left-top.png" alt="" width="353" height="316" class="image__image">
+      </div></figure><p>…But to be precise – they are not borders, but relative coordinates of the inner side from the outer side.</p>
+<p>What’s the difference?</p>
+<p>It becomes visible when the document is right-to-left (the operation system is in arabic or hebrew languages). The scrollbar is then not on the right, but on the left, and then <code>clientLeft</code> also includes the scrollbar width.</p>
+<p>In that case <code>clientLeft</code> in our example would be not <code>25</code>, but with the scrollbar width <code>25+16=41</code>:</p>
+<figure><div class="image" style="width:359px">
+      <div class="image__ratio" style="padding-top:88.02228412256268%"></div>
+      <img src="article/size-and-scroll/metric-client-left-top-rtl.png" alt="" width="359" height="316" class="image__image">
+      </div></figure><h2><a class="main__anchor" name="clientwidth-height" href="#clientwidth-height">clientWidth/Height</a></h2><p>These properties provide the size of the area inside the element borders.</p>
+<p>They include the content width together with paddings, but without the scrollbar:</p>
+<figure><div class="image" style="width:481px">
+      <div class="image__ratio" style="padding-top:97.5051975051975%"></div>
+      <img src="article/size-and-scroll/metric-client-width-height.png" alt="" width="481" height="469" class="image__image">
+      </div></figure><p>On the picture above let’s first consider <code>clientHeight</code>: it’s easier to evaluate. There’s no horizontal scrollbar, so it’s exactly the sum of what’s inside the borders: CSS-height <code>200px</code> plus top and bottom paddings (<code>2*20px</code>) total <code>240px</code>.</p>
+<p>Now <code>clientWidth</code> – here the content width is not <code>300px</code>, but <code>284px</code>, because <code>16px</code> are occupied by the scrollbar. So the sum is <code>284px</code> plus left and right paddings, total <code>324px</code>.</p>
+<p><strong>If there are no paddings, then <code>clientWidth/Height</code> is exactly the content area, inside the borders and the scrollbar (if any).</strong></p>
+<figure><div class="image" style="width:409px">
+      <div class="image__ratio" style="padding-top:114.18092909535453%"></div>
+      <img src="article/size-and-scroll/metric-client-width-nopadding.png" alt="" width="409" height="467" class="image__image">
+      </div></figure><p>So when there’s no padding we can use <code>clientWidth/clientHeight</code> to get the content area size.</p>
+<h2><a class="main__anchor" name="scrollwidth-height" href="#scrollwidth-height">scrollWidth/Height</a></h2><ul>
+<li>Properties <code>clientWidth/clientHeight</code> only account for the visible part of the element.</li>
+<li>Properties <code>scrollWidth/scrollHeight</code> also include the scrolled out (hidden) part:</li>
+</ul>
+<figure><div class="image" style="width:463px">
+      <div class="image__ratio" style="padding-top:115.76673866090712%"></div>
+      <img src="article/size-and-scroll/metric-scroll-width-height.png" alt="" width="463" height="536" class="image__image">
+      </div></figure><p>On the picture above:</p>
+<ul>
+<li><code>scrollHeight = 723</code> – is the full inner height of the content area including the scrolled out part.</li>
+<li><code>scrollWidth = 324</code> – is the full inner width, here we have no horizontal scroll, so it equals <code>clientWidth</code>.</li>
+</ul>
+<p>We can use these properties to expand the element wide to its full width/height.</p>
+<p>Like this:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">// expand the element to the full content height
+element.style.height = element.scrollHeight + 'px';</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Click the button to expand the element:</p>
+<div id="element" style="width:300px;height:200px; padding: 0;overflow: auto; border:1px solid black;">text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text</div>
+<p><button style="padding:0" onclick="element.style.height = element.scrollHeight + 'px'">element.style.height = element.scrollHeight + ‘px’</button></p>
+<h2><a class="main__anchor" name="scrollleft-scrolltop" href="#scrollleft-scrolltop">scrollLeft/scrollTop</a></h2><p>Properties <code>scrollLeft/scrollTop</code> are the width/height of the hidden, scrolled out part of the element.</p>
+<p>On the picture below we can see <code>scrollHeight</code> and <code>scrollTop</code> for a block with a vertical scroll.</p>
+<figure><div class="image" style="width:489px">
+      <div class="image__ratio" style="padding-top:110.83844580777095%"></div>
+      <img src="article/size-and-scroll/metric-scroll-top.png" alt="" width="489" height="542" class="image__image">
+      </div></figure><p>In other words, <code>scrollTop</code> is “how much is scrolled up”.</p>
+<div class="important important_smart">
+            <div class="important__header"><span class="important__type"><code>scrollLeft/scrollTop</code> can be modified</span></div>
+            <div class="important__content"><p>Most geometry properties that are read-only, but <code>scrollLeft/scrollTop</code> can be changed, and the browser will scroll the element.</p>
+<p>If you click the element below, the code <code>elem.scrollTop+=10</code> executes. That makes the element content scroll <code>10px</code> below.</p>
+<div onclick="this.scrollTop+=10" style="cursor:pointer;border:1px solid black;width:100px;height:80px;overflow:auto">Click<br>Me<br>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9</div>
+<p>Setting <code>scrollTop</code> to <code>0</code> or <code>Infinity</code> will make the element scroll to the very top/bottom respectively.</p>
+</div></div>
+<h2><a class="main__anchor" name="don-t-take-width-height-from-css" href="#don-t-take-width-height-from-css">Don’t take width/height from CSS</a></h2><p>We’ve just covered geometry properties of DOM elements. They are normally used to get widths, heights and calculate distances.</p>
+<p>But as we know from the chapter <a href="styles-and-classes.html">Styles and classes</a>, we can read CSS-height and width using <code>getComputedStyle</code>.</p>
+<p>So why not to read the width of an element like this?</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let elem = document.body;
+
+alert( getComputedStyle(elem).width ); // show CSS width for elem</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Why we should use geometry properties instead? There are two reasons:</p>
+<ol>
+<li>
+<p>First, CSS width/height depend on another property: <code>box-sizing</code> that defines “what is” CSS width and height. A change in <code>box-sizing</code> for CSS purposes may break such JavaScript.</p>
+</li>
+<li>
+<p>Second, CSS <code>width/height</code> may be <code>auto</code>, for instance for an inline element:</p>
+<div data-trusted="1" class="code-example" data-highlight-block="3-3">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="show" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;span id=&quot;elem&quot;&gt;Hello!&lt;/span&gt;
+
+&lt;script&gt;
+  alert( getComputedStyle(elem).width ); // auto
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>From the CSS standpoint, <code>width:auto</code> is perfectly normal, but in JavaScript we need an exact size in <code>px</code> that we can use in calculations. So here CSS width is useless at all.</p>
+</li>
+</ol>
+<p>And there’s one more reason: a scrollbar. Sometimes the code that works fine without a scrollbar starts to bug with it, because a scrollbar takes the space from the content in some browsers. So the real width available for the content is <em>less</em> than CSS width. And <code>clientWidth/clientHeight</code> take that into account.</p>
+<p>…But with <code>getComputedStyle(elem).width</code> the situation is different. Some browsers (e.g. Chrome) return the real inner width, minus the scrollbar, and some of them (e.g. Firefox) – CSS width (ignore the scrollbar). Such cross-browser differences is the reason not to use <code>getComputedStyle</code>, but rather rely on geometry properties.</p>
+<p>If your browser reserves the space for a scrollbar (most browsers for Windows do), then you can test it below.</p>
+<div class="code-result">
+    <div class="code-result__toolbar toolbar"><div class="toolbar__tool">
+        <a href="https://en.js.cx/article/size-and-scroll/cssWidthScroll/" target="_blank" title="open in new window" class="toolbar__button toolbar__button_external"></a>
+      </div>
+      </div>
+    <iframe class="code-result__iframe" data-trusted="1" style="height:300px" src="https://en.js.cx/article/size-and-scroll/cssWidthScroll/"></iframe>
+  </div><p>The element with text has CSS <code>width:300px</code>.</p>
+<p>On a Desktop Windows OS, Firefox, Chrome, Edge all reserve the space for the scrollbar. But  Firefox shows <code>300px</code>, while Chrome and Edge show less. That’s because Firefox returns the CSS width and other browsers return the “real” width.</p>
+<p>Please note that the described difference are only about reading <code>getComputedStyle(...).width</code> from JavaScript, visually everything is correct.</p>
+<h2><a class="main__anchor" name="summary" href="#summary">Summary</a></h2><p>Elements have the following geometry properties:</p>
+<ul>
+<li><code>offsetParent</code> – is the nearest positioned ancestor or <code>td</code>, <code>th</code>, <code>table</code>, <code>body</code>.</li>
+<li><code>offsetLeft/offsetTop</code> – coordinates relative to the left-upper edge of <code>offsetParent</code>.</li>
+<li><code>offsetWidth/offsetHeight</code> – “outer” width/height of an element including borders.</li>
+<li><code>clientLeft/clientTop</code> – the distance from the left-upper outer corner to its left-upper inner corner. For left-to-right OS they are always the widths of left/top borders. For right-to-left OS the vertical scrollbar is on the left so <code>clientLeft</code> includes its width too.</li>
+<li><code>clientWidth/clientHeight</code> – the width/height of the content including paddings, but without the scrollbar.</li>
+<li><code>scrollWidth/scrollHeight</code> – the width/height of the content including the scrolled out part. Also includes paddings, but not the scrollbar.</li>
+<li><code>scrollLeft/scrollTop</code> – width/height of the scrolled out part of the element, starting from its left-upper corner.</li>
+</ul>
+<p>All properties are read-only except <code>scrollLeft/scrollTop</code>. They make the browser scroll the element if changed.</p>
+</div></article><div class="tasks"><h2 id="tasks" class="tasks__title"><a href="#tasks" class="main__anchor main__anchor_noicon tasks__title-anchor">Tasks</a></h2><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a href="#what-s-the-scroll-from-the-bottom" name="what-s-the-scroll-from-the-bottom" class="main__anchor">What's the scroll from the bottom?</a></h3><a href="task/get-scroll-height-bottom.html" target="_blank" class="task__open-link"></a></div><div class="task__header-note"><span title="How important is the task, from 1 to 5" class="task__importance">importance: 5</span></div><div class="task__content"><p>The <code>elem.scrollTop</code> property is the size of the scrolled out part from the top. How to get “<code>scrollBottom</code>” – the size from the bottom?</p>
+<p>Write the code that works for an arbitrary <code>elem</code>.</p>
+<p>P.S. Please check your code: if there’s no scroll or the element is fully scrolled down, then it should return <code>0</code>.</p>
+<button type="button" class="task__solution">solution</button><div class="task__answer"><div class="task__answer-content"><p>The solution is:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let scrollBottom = elem.scrollHeight - elem.scrollTop - elem.clientHeight;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>In other words: (full height) minus (scrolled out top part) minus (visible part) – that’s exactly the scrolled out bottom part.</p>
+</div><button type="button" title="close" class="close-button task__answer-close"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a href="#what-is-the-scrollbar-width" name="what-is-the-scrollbar-width" class="main__anchor">What is the scrollbar width?</a></h3><a href="task/scrollbar-width.html" target="_blank" class="task__open-link"></a></div><div class="task__header-note"><span title="How important is the task, from 1 to 5" class="task__importance">importance: 3</span></div><div class="task__content"><p>Write the code that returns the width of a standard scrollbar.</p>
+<p>For Windows it usually varies between <code>12px</code> and <code>20px</code>. If the browser doesn’t reserves any space for it, then it may be <code>0px</code>.</p>
+<p>P.S. The code should work for any HTML document, do not depend on its content.</p>
+<button type="button" class="task__solution">solution</button><div class="task__answer"><div class="task__answer-content"><p>To get the scrollbar width, we can create an element with the scroll, but without borders and paddings.</p>
+<p>Then the difference between its full width <code>offsetWidth</code> and the inner content area width <code>clientWidth</code> will be exactly the scrollbar:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">// create a div with the scroll
+let div = document.createElement('div');
+
+div.style.overflowY = 'scroll';
+div.style.width = '50px';
+div.style.height = '50px';
+
+// must put it in the document, otherwise sizes will be 0
+document.body.append(div);
+let scrollWidth = div.offsetWidth - div.clientWidth;
+
+div.remove();
+
+alert(scrollWidth);</code></pre>
+        </div>
+      </div>
+      
+      </div></div><button type="button" title="close" class="close-button task__answer-close"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a href="#place-the-ball-in-the-field-center" name="place-the-ball-in-the-field-center" class="main__anchor">Place the ball in the field center</a></h3><a href="task/put-ball-in-center.html" target="_blank" class="task__open-link"></a></div><div class="task__header-note"><span title="How important is the task, from 1 to 5" class="task__importance">importance: 5</span></div><div class="task__content"><p>Here’s how the source document looks:</p>
+<div class="code-result">
+    <div class="code-result__toolbar toolbar"><div class="toolbar__tool">
+        <a href="https://en.js.cx/task/put-ball-in-center/source/" target="_blank" title="open in new window" class="toolbar__button toolbar__button_external"></a>
+      </div>
+      <div class="toolbar__tool">
+        <a href="http://plnkr.co/edit/QQV17fHpY5pnojDdgfyz?p=preview" target="_blank" title="open in sandbox"
+        data-plunk-id="QQV17fHpY5pnojDdgfyz" class="toolbar__button toolbar__button_edit"></a>
+      </div>
+      </div>
+    <iframe class="code-result__iframe" data-trusted="1" style="height:180px" src="https://en.js.cx/task/put-ball-in-center/source/"></iframe>
+  </div><p>What are coordinates of the field center?</p>
+<p>Calculate them and use to place the ball into the center of the field:</p>
+<div class="code-result">
+    <div class="code-result__toolbar toolbar"></div>
+    <iframe class="code-result__iframe" data-trusted="1" style="height:180px" src="https://en.js.cx/task/put-ball-in-center/solution/"></iframe>
+  </div><ul>
+<li>The element should be moved by JavaScript, not CSS.</li>
+<li>The code should work with any ball size (<code>10</code>, <code>20</code>, <code>30</code> pixels) and any field size, not be bound to the given values.</li>
+</ul>
+<p>P.S. Sure, centering could be done with CSS, but here we want exactly JavaScript. Further we’ll meet other topics and more complex situations when JavaScript must be used. Here we do a “warm-up”.</p>
+<p><a href="http://plnkr.co/edit/QQV17fHpY5pnojDdgfyz?p=preview" target="_blank" data-plunk-id="QQV17fHpY5pnojDdgfyz">Open the sandbox for the task.</a></p><button type="button" class="task__solution">solution</button><div class="task__answer"><div class="task__answer-content"><p>The ball has <code>position:absolute</code>. It means that its <code>left/top</code> coordinates are measured from the nearest positioned element, that is <code>#field</code> (because it has <code>position:relative</code>).</p>
+<p>The coordinates start from the inner left-upper corner of the field:</p>
+<figure><div class="image" style="width:224px">
+      <div class="image__ratio" style="padding-top:66.96428571428571%"></div>
+      <img src="task/put-ball-in-center/field.png" alt="" width="224" height="150" class="image__image">
+      </div></figure><p>The inner field width/height is <code>clientWidth/clientHeight</code>. So the field center has coordinates <code>(clientWidth/2, clientHeight/2)</code>.</p>
+<p>…But if we set <code>ball.style.left/top</code> to such values, then not the ball as a whole, but the left-upper edge of the ball would be in the center:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">ball.style.left = Math.round(field.clientWidth / 2) + 'px';
+ball.style.top = Math.round(field.clientHeight / 2) + 'px';</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Here’s how it looks:</p>
+<div class="code-result">
+    <div class="code-result__toolbar toolbar"></div>
+    <iframe class="code-result__iframe" data-trusted="1" style="height:180px" src="https://en.js.cx/task/put-ball-in-center/ball-half/"></iframe>
+  </div><p>To align the ball center with the center of the field, we should move the ball to the half of its width to the left and to the half of its height to the top:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">ball.style.left = Math.round(field.clientWidth / 2 - ball.offsetWidth / 2) + 'px';
+ball.style.top = Math.round(field.clientHeight / 2 - ball.offsetHeight / 2) + 'px';</code></pre>
+        </div>
+      </div>
+      
+      </div><p><strong>Attention: the pitfall!</strong></p>
+<p>The code won’t work reliably while <code>&lt;img&gt;</code> has no width/height:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;img src=&quot;ball.png&quot; id=&quot;ball&quot;&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>When the browser does not know the width/height of an image (from tag attributes or CSS), then it assumes them to equal <code>0</code> until the image finishes loading.</p>
+<p>In real life after the first load browser usually caches the image, and on next loads it will have the size immediately.</p>
+<p>But on the first load the value of <code>ball.offsetWidth</code> is <code>0</code>. That leads to wrong coordinates.</p>
+<p>We should fix that by adding <code>width/height</code> to <code>&lt;img&gt;</code>:</p>
+<div data-trusted="1" class="code-example" data-highlight-inline="0:20-42">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;img src=&quot;ball.png&quot; width=&quot;40&quot; height=&quot;40&quot; id=&quot;ball&quot;&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>…Or provide the size in CSS:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-css"><code class="language-css">#ball {
+  width: 40px;
+  height: 40px;
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p><a href="http://plnkr.co/edit/XWkCmtl6ZBj657LOFg33?p=preview" target="_blank" data-plunk-id="XWkCmtl6ZBj657LOFg33">Open the solution in the sandbox.</a></p></div><button type="button" title="close" class="close-button task__answer-close"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a href="#the-difference-css-width-versus-clientwidth" name="the-difference-css-width-versus-clientwidth" class="main__anchor">The difference: CSS width versus clientWidth</a></h3><a href="task/width-vs-clientwidth.html" target="_blank" class="task__open-link"></a></div><div class="task__header-note"><span title="How important is the task, from 1 to 5" class="task__importance">importance: 5</span></div><div class="task__content"><p>What’s the difference between <code>getComputedStyle(elem).width</code> and <code>elem.clientWidth</code>?</p>
+<p>Give at least 3 differences. The more the better.</p>
+<button type="button" class="task__solution">solution</button><div class="task__answer"><div class="task__answer-content"><p>Differences:</p>
+<ol>
+<li><code>clientWidth</code> is numeric, while <code>getComputedStyle(elem).width</code> returns a string with <code>px</code> at the end.</li>
+<li><code>getComputedStyle</code> may return non-numeric width like <code>&quot;auto&quot;</code> for an inline element.</li>
+<li><code>clientWidth</code> is the inner content area of the element plus paddings, while CSS width (with standard <code>box-sizing</code>) is the inner conand sometent area <em>without paddings</em>.</li>
+<li>If there’s a scrollbar and the browser reserves the space for it, some browser substract that space from CSS width (cause it’s not available for content any more), and some do not. The <code>clientWidth</code> property is always the same: scrollbar size is substracted if reserved.</li>
+</ol>
+</div><button type="button" title="close" class="close-button task__answer-close"></button></div></div></div></div></div><!--  include /blocks/banner-bottom--><!--if lang == 'en'--><!--  include /blocks/banner-bottom.en--></div><div class="page__nav-wrap"><a href="styles-and-classes.html" data-tooltip="Styles and classes" class="page__nav page__nav_prev"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Previous lesson</span></a><a href="size-and-scroll-window.html" data-tooltip="Window sizes and scrolling" class="page__nav page__nav_next"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Next lesson</span></a></div><div class="article-tablet-foot tablet-only"><div class="article-tablet-foot__layout"><div class="share-icons"><span class="share-icons__title">Share</span><a href="https://twitter.com/share?url=https%3A%2F%2Fjavascript.info%2Fsize-and-scroll" class="share share_tw"></a><a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fjavascript.info%2Fsize-and-scroll" class="share share_fb"></a><a href="https://plus.google.com/share?url=https%3A%2F%2Fjavascript.info%2Fsize-and-scroll" class="share share_gp"></a><a href="https://vkontakte.ru/share.php?url=https%3A%2F%2Fjavascript.info%2Fsize-and-scroll" class="share share_vk"></a></div><div class="article-tablet-foot__map"><a href="tutorial/map.html" data-action="tutorial-map" class="map"><span class="map__text">Tutorial map</span></a></div></div></div><div id="comments" class="comments"><div class="comments__header"><h2 class="comments__header-title"><a href="#comments" name="comments">Comments</a></h2><div class="comments__read-before"><span class="comments__read-before-link">read this before commenting…</span><div class="comments__read-before-popup"><div class="comments__read-before-popup-i"><ul><li>You're welcome to post additions, questions to the articles and answers to them.</li><li>To insert a few words of code, use the <code>&lt;code&gt;</code> tag, for several lines – use <code>&lt;pre&gt;</code>, for more than 10 lines – use a sandbox (<a href='http://plnkr.co/edit/?p=preview'>plnkr</a>, <a href='http://jsbin.com/'>JSBin</a>, <a href='http://codepen.io/'>codepen</a>…)</li><li>If you can't understand something in the article – please elaborate.</li></ul></div></div></div></div></div><div id="disqus_thread"></div><script>var disqus_config = function() { if (!this.page) this.page = {}; Object.assign(this.page, {"url":"https:\/\/javascript.info\/size-and-scroll","identifier":"\/size-and-scroll","title":"Element size and scrolling"}); };</script><script>var disqus_shortname = "javascriptinfo";</script><script>var disqus_enabled = true;</script></main></div><div class="page__sidebar sidebar sidebar_sticky-footer"><button data-sidebar-toggle class="sidebar__toggle"></button><a href="tutorial/map.html" data-action="tutorial-map" data-tooltip="Tutorial map" class="map"></a><div class="sidebar__inner"><div class="sidebar__content"><div class="sidebar__section"><h4 class="sidebar__section-title">Chapter</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a href="document.html" class="sidebar__link">Document</a></li></ul></nav></div><div class="sidebar__section"><h4 class="sidebar__section-title">Lesson navigation</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a href="#sample-element" class="sidebar__link">Sample element</a></li><li class="sidebar__navigation-link"><a href="#geometry" class="sidebar__link">Geometry</a></li><li class="sidebar__navigation-link"><a href="#offsetparent-offsetleft-top" class="sidebar__link">offsetParent, offsetLeft/Top</a></li><li class="sidebar__navigation-link"><a href="#offsetwidth-height" class="sidebar__link">offsetWidth/Height</a></li><li class="sidebar__navigation-link"><a href="#clienttop-left" class="sidebar__link">clientTop/Left</a></li><li class="sidebar__navigation-link"><a href="#clientwidth-height" class="sidebar__link">clientWidth/Height</a></li><li class="sidebar__navigation-link"><a href="#scrollwidth-height" class="sidebar__link">scrollWidth/Height</a></li><li class="sidebar__navigation-link"><a href="#scrollleft-scrolltop" class="sidebar__link">scrollLeft/scrollTop</a></li><li class="sidebar__navigation-link"><a href="#don-t-take-width-height-from-css" class="sidebar__link">Don’t take width/height from CSS</a></li><li class="sidebar__navigation-link"><a href="#summary" class="sidebar__link">Summary</a></li></ul></nav></div><div class="sidebar__section"><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a href="#tasks" class="sidebar__link">Tasks (4)</a></li><li class="sidebar__navigation-link"><a href="#comments" class="sidebar__link">Comments</a></li></ul></nav></div><div class="sidebar__section"><div class="sidebar__section-title">Share</div><a href="https://twitter.com/share?url=https%3A%2F%2Fjavascript.info%2Fsize-and-scroll" class="share share_tw sidebar__share"></a><a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fjavascript.info%2Fsize-and-scroll" class="share share_fb sidebar__share"></a><a href="https://plus.google.com/share?url=https%3A%2F%2Fjavascript.info%2Fsize-and-scroll" class="share share_gp sidebar__share"></a></div><div class="sidebar__section"><a href="https://github.com/iliakan/javascript-tutorial-en/tree/master/2-ui/1-document/09-size-and-scroll/article.md" class="sidebar__link">Edit on Github</a></div></div></div></div></div></div><div class="page-footer"><div class="page-footer__left"><ul class="page-footer__list"><li class="page-footer__item">©&nbsp;2007—2017&nbsp; Ilya Kantor</li><li class="page-footer__item"><a href="about.html#contact-us" class="page-footer__link">contact us</a></li><li class="page-footer__item"><a href="about.html" class="page-footer__link">about the project</a></li><li class="page-footer__item"><a href="https://learn.javascript.ru/" class="page-footer__link">RU</a> / EN</li></ul></div><div class="page-footer__right"><ul class="page-footer__list"><li class="page-footer__item">powered by <a rel="nofollow" href="http://nodejs.org/" class="page-footer__link">node.js</a>&nbsp;&amp;&nbsp;<a rel="nofollow" href="http://github.com/iliakan/javascript-tutorial-en" class="page-footer__link">open source</a></li></ul></div></div></body>
+<!-- Mirrored from javascript.info/size-and-scroll by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 30 Nov 2017 15:29:46 GMT -->
+</html>

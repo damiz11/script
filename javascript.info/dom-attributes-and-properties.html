@@ -1,0 +1,679 @@
+<!DOCTYPE html><html lang="en">
+<!-- Mirrored from javascript.info/dom-attributes-and-properties by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 30 Nov 2017 15:29:14 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><script>window.currentUser = null;</script><title itemprop="name">Attributes and properties</title><meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, minimum-scale=1.0"><meta name="apple-mobile-web-app-capable" content="yes"><script>if (window.devicePixelRatio > 1) document.cookie = 'pixelRatio=' + window.devicePixelRatio + ';path=/;expires=Tue, 19 Jan 2038 03:14:07 GMT';</script><link href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700%7COpen+Sans+Condensed:700&amp;subset=latin,latin-ext,cyrillic,cyrillic-ext" rel="stylesheet"><link rel="apple-touch-icon-precomposed" href="img/favicon/apple-touch-icon-precomposed.png"><link rel="canonical" href="dom-attributes-and-properties.html"><meta name="msapplication-TileColor" content="#222A2C"><meta name="msapplication-TileImage" content="/img/favicon/tileicon.png"><!-- favicon the rest--><link rel="icon" href="img/favicon/favicon.png"><meta itemprop="image" content="https://javascript.info/img/site_preview_en_512x512.png"><meta property="og:title" content="Attributes and properties"><meta property="og:image" content="https://javascript.info/img/site_preview_en_1200x630.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="fb:admins" content="100001562528165"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Attributes and properties"><meta name="twitter:site" content="@iliakan"><meta name="twitter:creator" content="@iliakan"><meta name="twitter:image" content="https://javascript.info/img/site_preview_en_512x512.png"><link href="pack/styles.da59a89b28153875791083e4a8c5adb3.css" rel="stylesheet"><link rel="prev" href="basic-dom-node-properties.html"><link rel="next" href="modifying-document.html"><script>window.GA_ID = "UA-2056213-15";</script><script>window.YANDEX_METRIKA_ID = 32184394;</script><script>window.GoogleAnalyticsObject="ga",window.ga=function(){window.ga.q.push(arguments)},window.ga.q=[],window.ga.l=Date.now(),ga("create",GA_ID,"auto"),window.currentUser&&ga("set","&uid",currentUser.id),window.addEventListener("error",function(e){var r=(e.filename||e.errorUrl)+": "+(e.lineno||e.errorLine),n=e.stack||e.error&&e.error.stack;ga("send","exception",{exDescription:e.message+" "+r+" "+n,exFatal:!0})});</script><script src="https://www.google-analytics.com/analytics.js" async></script><script>ga('send', 'pageview');</script><script>window.metrika={reachGoal:function(){}},window.yandex_metrika_callbacks=[function(){try{window.metrika=new Ya.Metrika({id:YANDEX_METRIKA_ID,webvisor:!0,clickmap:!0,params:{user:window.currentUser&&window.currentUser.id}}),metrika.trackLinks({delay:150}),window.addEventListener("error",function(r){window.metrika.reachGoal("JSERROR",{src:(r.filename||r.errorUrl)+": "+(r.lineno||r.errorLine),stack:r.stack||r.error&&r.error.stack,message:r.message})})}catch(r){}}];</script><script src="http://mc.yandex.ru/metrika/watch.js" async></script><script>window.RECAPTCHA_ID = "6Lf9NyETAAAAACZlg-a9Us2SxvYbeVC1ROWaWv4O";</script><script src="initc4ca.js?1"></script><script src="pack/head.688d4fe7c4cf54e23737.js" defer></script><meta property="og:title" content="Attributes and properties"><meta property="og:type" content="article"><script src="pack/tutorial.688d4fe7c4cf54e23737.js" defer></script><script src="pack/footer.688d4fe7c4cf54e23737.js" defer></script></head><body class="no-icons"><script>window.fontTest();</script><div class="page-wrapper page-wrapper_sidebar_on"><!--[if lt IE 10]><div style="color:red;text-align:center">Sorry, IE&lt;10 is not supported, please use a newer browser.</div><![endif]--><div class="sitetoolbar sitetoolbar_tutorial"><!-- include ./notification-stripe--><div class="sitetoolbar__content"><div class="sitetoolbar__logo-wrap"><a href="index.html" class="sitetoolbar__link sitetoolbar__link_logo"><img src="img/sitetoolbar__logo_en.svg" width="200" class="sitetoolbar__logo sitetoolbar__logo_normal" alt=""><img src="img/sitetoolbar__logo_small_en.svg" width="70" class="sitetoolbar__logo sitetoolbar__logo_small" alt=""><script>Array.prototype.forEach.call(document.querySelectorAll("img.sitetoolbar__logo"),function(e){var t=document.createElement("object");t.type="image/svg+xml",t.className=e.className,t.style.cssText="left:0;top:0;position:absolute",t.onload=function(){t.onload=null,e.style.visibility="hidden"},t.data=e.src,e.parentNode.insertBefore(t,e)});</script></a></div><div class="sitetoolbar__nav-toggle-wrap"><button type="button" class="sitetoolbar__nav-toggle"></button></div><nav class="sitetoolbar__sections"><ul class="sitetoolbar__sections-list"></ul></nav><div class="sitetoolbar__book-wrap"><a href="ebook.html" class="buy-book-button"><span class="buy-book-button__extra-text">Buy</span>EPUB/PDF</a></div><div class="sitetoolbar__login-wrap"><button data-action-login class="sitetoolbar__login sitetoolbar__login_unready"></button></div><div class="sitetoolbar__search-wrap"><div class="sitetoolbar__search-content"><form method="GET" action="http://javascript.info/search" class="sitetoolbar__search"><button type="button" class="sitetoolbar__search-toggle"></button><div class="sitetoolbar__search-input"><div class="text-input"><input name="query" placeholder="Search on Javascript.info" class="text-input__control" type="text"></div><button type="submit" class="sitetoolbar__find">Search</button></div></form></div></div></div><!-- todo: en variant--><div class="tablet-menu"><div class="tablet-menu__line"><div class="tablet-menu__content"><form action="http://javascript.info/search/" class="tablet-menu-search"><input type="search" name="query" placeholder="Search in the tutorial" required class="tablet-menu-search__input"><button type="submit" name="type" value="articles" class="tablet-menu-search__button">Search</button></form></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><a href="tutorial/map.html" data-action="tutorial-map" class="map"><span class="map__text">Tutorial map</span></a></div></div><!--+e.line--><!--  +e.content--><!--    +b("a").tablet-ebook(href="/ebook")--><!--      +e("span").text Купить учебник--><!--      +e("span").note (EPUB + PDF)--><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="share-icons"><span class="share-icons__title">Share</span><a href="https://twitter.com/share?url=https%3A%2F%2Fjavascript.info%2Fdom-attributes-and-properties" class="share share_tw"></a><a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fjavascript.info%2Fdom-attributes-and-properties" class="share share_fb"></a><a href="https://plus.google.com/share?url=https%3A%2F%2Fjavascript.info%2Fdom-attributes-and-properties" class="share share_gp"></a><a href="https://vkontakte.ru/share.php?url=https%3A%2F%2Fjavascript.info%2Fdom-attributes-and-properties" class="share share_vk"></a></div></div></div></div><progress data-sticky value="6" max="27" data-tooltip="Lesson 6 of 27" class="tutorial-progress"></progress></div><div class="page page_sidebar_on"><script>if(localStorage.noSidebar){document.querySelector(".page").classList.remove("page_sidebar_on");var pageWrapper=document.querySelector(".page-wrapper");pageWrapper&&pageWrapper.classList.remove("page-wrapper_sidebar_on")}setTimeout(function(){document.querySelector(".page").classList.add("page_sidebar-animation-on")},0);</script><div class="page__inner"><main class="main main_width-limit"><header class="main__header"><ol class="breadcrumbs"><li itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemref="breadcrumb-1" class="breadcrumbs__item breadcrumbs__item_home"><a href="index.html" itemprop="url" class="breadcrumbs__link"><span itemprop="title" class="breadcrumbs__hidden-text">Учебник</span></a></li><li id="breadcrumb-1" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemref="breadcrumb-2" itemprop="child" class="breadcrumbs__item"><a href="ui.html" itemprop="url" class="breadcrumbs__link"><span itemprop="title">Browser: Document, Events, Interfaces</span></a></li><li id="breadcrumb-2" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemprop="child" class="breadcrumbs__item"><a href="document.html" itemprop="url" class="breadcrumbs__link"><span itemprop="title">Document</span></a></li></ol><h1 class="main__header-title">Attributes and properties</h1></header><div class="content"><article itemscope itemtype="http://schema.org/TechArticle"><meta itemprop="name" content="Attributes and properties"><div itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="email" content="iliakan@gmail.com"><meta itemprop="name" content="Ilya Kantor"></div><div itemprop="articleBody"><p>When the browser loads the page, it “reads” (another word: “parses”) HTML text and generates DOM objects from it. For element nodes most standard HTML attributes automatically become properties of DOM objects.</p>
+<p>For instance, if the tag is <code>&lt;body id=&quot;page&quot;&gt;</code>, then the DOM object has <code>body.id=&quot;page&quot;</code>.</p>
+<p>But the attribute-property mapping is not one-to-one! In this chapter we’ll pay attention to separate these two notions, to see how to work with them, when they are same, and when they are different.</p>
+<cut>
+<h2><a class="main__anchor" name="dom-properties" href="#dom-properties">DOM properties</a></h2><p>We’ve already seen built-in DOM properties. There’s a lot. But technically no one limits us, and if it’s not enough – we can add our own.</p>
+<p>DOM nodes are regular JavaScript objects. We can alter them.</p>
+<p>For instance, let’s create a new property in <code>document.body</code>:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">document.body.myData = {
+  name: 'Caesar',
+  title: 'Imperator'
+};
+
+alert(document.body.myData.title); // Imperator</code></pre>
+        </div>
+      </div>
+      
+      </div><p>We can add a method as well:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">document.body.sayHi = function() {
+  alert(this.tagName);
+};
+
+document.body.sayHi(); // BODY (the value of &quot;this&quot; in the method is document.body)</code></pre>
+        </div>
+      </div>
+      
+      </div><p>We can also modify built-in prototypes like <code>Element.prototype</code> and add new methods to all elements:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">Element.prototype.sayHi = function() {
+  alert(`Hello, I'm ${this.tagName}`);
+};
+
+document.documentElement.sayHi(); // Hello, I'm HTML
+document.body.sayHi(); // Hello, I'm BODY</code></pre>
+        </div>
+      </div>
+      
+      </div><p>So, DOM properties and methods behave just like those of regular JavaScript objects:</p>
+<ul>
+<li>They can have any value.</li>
+<li>They are case-sensitive (write <code>elem.nodeType</code>, not <code>elem.NoDeTyPe</code>).</li>
+</ul>
+<h2><a class="main__anchor" name="html-attributes" href="#html-attributes">HTML attributes</a></h2><p>In HTML language, tags may have attributes. When the browser reads HTML text and creates DOM objects for tags, it recognizes <em>standard</em> attributes and creates DOM properties from them.</p>
+<p>So when an element has <code>id</code> or another <em>standard</em> attribute, the corresponding property gets created. But that doesn’t happen if the attribute is non-standard.</p>
+<p>For instance:</p>
+<div data-trusted="1" class="code-example" data-highlight-block="3-4">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="show" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;body id=&quot;test&quot; something=&quot;non-standard&quot;&gt;
+  &lt;script&gt;
+    alert(document.body.id); // test
+    // non-standard attribute does not yield a property
+    alert(document.body.something); // undefined
+  &lt;/script&gt;
+&lt;/body&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Please note that a standard attribute for one element can be unknown for another one. For instance, <code>&quot;type&quot;</code> is standard for <code>&lt;input&gt;</code> (<a href="https://html.spec.whatwg.org/#htmlinputelement">HTMLInputElement</a>), but not for <code>&lt;body&gt;</code> (<a href="https://html.spec.whatwg.org/#htmlbodyelement">HTMLBodyElement</a>). Standard attributes are described in the specification for the corresponding element class.</p>
+<p>Here we can see it:</p>
+<div data-trusted="1" class="code-example" data-highlight-block="4-4">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="show" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;body id=&quot;body&quot; type=&quot;...&quot;&gt;
+  &lt;input id=&quot;input&quot; type=&quot;text&quot;&gt;
+  &lt;script&gt;
+    alert(input.type); // text
+    alert(body.type); // undefined: DOM property not created, because it's non-standard
+  &lt;/script&gt;
+&lt;/body&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>So, if an attribute is non-standard, there won’t be DOM-property for it. Is there a way to access such attributes?</p>
+<p>Sure. All attributes are accessible using following methods:</p>
+<ul>
+<li><code>elem.hasAttribute(name)</code> – checks for existence.</li>
+<li><code>elem.getAttribute(name)</code> – gets the value.</li>
+<li><code>elem.setAttribute(name, value)</code> – sets the value.</li>
+<li><code>elem.removeAttribute(name)</code> – removes the attribute.</li>
+</ul>
+<p>These methods operate exactly with what’s written in HTML.</p>
+<p>Also one can read all attributes using <code>elem.attributes</code>: a collection of objects that belong to a built-in <a href="https://dom.spec.whatwg.org/#attr">Attr</a> class, with <code>name</code> and <code>value</code> properties.</p>
+<p>Here’s a demo of reading a non-standard property:</p>
+<div data-trusted="1" class="code-example" data-highlight-block="2-2">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="show" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;body something=&quot;non-standard&quot;&gt;
+  &lt;script&gt;
+    alert(document.body.getAttribute('something')); // non-standard
+  &lt;/script&gt;
+&lt;/body&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>HTML attributes have following features:</p>
+<ul>
+<li>Their name is case-insensitive (that’s HTML: <code>id</code> is same as <code>ID</code>).</li>
+<li>They are always strings.</li>
+</ul>
+<p>Here’s an extended demo of working with attributes:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="show" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;body&gt;
+  &lt;div id=&quot;elem&quot; about=&quot;Elephant&quot;&gt;&lt;/div&gt;
+
+  &lt;script&gt;
+    alert( elem.getAttribute('About') ); // (1) 'Elephant', reading
+
+    elem.setAttribute('Test', 123); // (2), writing
+
+    alert( elem.outerHTML ); // (3), see it's there
+
+    for (let attr of elem.attributes) { // (4) list all
+      alert( attr.name + &quot; = &quot; + attr.value );
+    }
+  &lt;/script&gt;
+&lt;/body&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Please note:</p>
+<ol>
+<li><code>getAttribute('About')</code> – the first letter is uppercase here, and in HTML it’s all lowercase. But that doesn’t matter: attribute names are case-insensitive.</li>
+<li>We can assign anything to an attribute, but that becomes a string. So here we have <code>&quot;123&quot;</code> as the value.</li>
+<li>All attributes including ones that we set are visible in <code>outerHTML</code>.</li>
+<li>The <code>attributes</code> collection is iterable and has all attributes with <code>name</code> and <code>value</code>.</li>
+</ol>
+<h2><a class="main__anchor" name="property-attribute-synchronization" href="#property-attribute-synchronization">Property-attribute synchronization</a></h2><p>When a standard attribute changes, the corresponding property is auto-updated, and (with some exceptions) vise-versa.</p>
+<p>In the example below <code>id</code> is modified as an attribute, and we can see the property change too. And then the same backwards:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="show" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;input&gt;
+
+&lt;script&gt;
+  let input = document.querySelector('input');
+
+  // attribute =&gt; property
+  input.setAttribute('id', 'id');
+  alert(input.id); // id (updated)
+
+  // property =&gt; attribute
+  input.id = 'newId';
+  alert(input.getAttribute('id')); // newId (updated)
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>But there are exclusions, for instance <code>input.value</code> synchronizes only from attribute → to property, but not back:</p>
+<div data-trusted="1" class="code-example" data-highlight-block="9-11">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="show" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;input&gt;
+
+&lt;script&gt;
+  let input = document.querySelector('input');
+
+  // attribute =&gt; property
+  input.setAttribute('value', 'text');
+  alert(input.value); // text
+
+  // NOT property =&gt; attribute
+  input.value = 'newValue';
+  alert(input.getAttribute('value')); // text (not updated!)
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>In the example above:</p>
+<ul>
+<li>Changing the attribute <code>value</code> updates the property.</li>
+<li>But the property change does not affect the attribute.</li>
+</ul>
+<p>That “feature” may actually can come in handy, because the user may modify <code>value</code>, and then after it, if we want to recover the “original” value from HTML, it’s in the attribute.</p>
+<h2><a class="main__anchor" name="dom-properties-are-typed" href="#dom-properties-are-typed">DOM properties are typed</a></h2><p>DOM properties are not always strings. For instance, <code>input.checked</code> property (for checkboxes) is boolean:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="show" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;input id=&quot;input&quot; type=&quot;checkbox&quot; checked&gt; checkbox
+
+&lt;script&gt;
+  alert(input.getAttribute('checked')); // the attribute value is: empty string
+  alert(input.checked); // the property value is: true
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>There are other examples. The <code>style</code> attribute is a string, but <code>style</code> property is an object:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="show" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;div id=&quot;div&quot; style=&quot;color:red;font-size:120%&quot;&gt;Hello&lt;/div&gt;
+
+&lt;script&gt;
+  // string
+  alert(div.getAttribute('style')); // color:red;font-size:120%
+
+  // object
+  alert(div.style); // [object CSSStyleDeclaration]
+  alert(div.style.color); // red
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>That’s an important difference. But even if a DOM property type is a string, it may differ from the attribute!</p>
+<p>For instance, the <code>href</code> DOM property is always a <em>full</em> URL, even if the attribute contains a relative URL or just a <code>#hash</code>.</p>
+<p>Here’s an example:</p>
+<div data-trusted="1" class="code-example" data-demo-height="30">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="show" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;a id=&quot;a&quot; href=&quot;#hello&quot;&gt;link&lt;/a&gt;
+&lt;script&gt;
+  // attribute
+  alert(a.getAttribute('href')); // #hello
+
+  // property
+  alert(a.href ); // full URL in the form http://site.com/page#hello
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>If we need the value of <code>href</code> or any other attribute exactly as written in the HTML, we can use <code>getAttribute</code>.</p>
+<h2><a class="main__anchor" name="non-standard-attributes-dataset" href="#non-standard-attributes-dataset">Non-standard attributes, dataset</a></h2><p>When writing HTML, we use a lot of standard attributes. But what about non-standard, custom ones? First, let’s see whether they are useful or not? What for?</p>
+<p>Sometimes non-standard attributes are used to pass custom data from HTML to JavaScript, or to “mark” HTML-elements for JavaScript.</p>
+<p>Like this:</p>
+<div data-trusted="1" class="code-example" data-highlight-inline="1:5-21,3:5-20">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="show" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;!-- mark the div to show &quot;name&quot; here --&gt;
+&lt;div show-info=&quot;name&quot;&gt;&lt;/div&gt;
+&lt;!-- and age here --&gt;
+&lt;div show-info=&quot;age&quot;&gt;&lt;/div&gt;
+
+&lt;script&gt;
+  // the code finds an element with the mark and shows what's requested
+  let user = {
+    name: &quot;Pete&quot;,
+    age: 25
+  };
+
+  for(let div of document.querySelectorAll('[show-info]')) {
+    // insert the corresponding info into the field
+    let field = div.getAttribute('show-info');
+    div.innerHTML = user[field]; // Pete, then age
+  }
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Also they can be used to style an element.</p>
+<p>For instance, here for the order state the attribute <code>order-state</code> is used:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="show" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;style&gt;
+  /* styles rely on the custom attribute &quot;order-state&quot; */
+  .order[order-state=&quot;new&quot;] {
+    color: green;
+  }
+
+  .order[order-state=&quot;pending&quot;] {
+    color: blue;
+  }
+
+  .order[order-state=&quot;canceled&quot;] {
+    color: red;
+  }
+&lt;/style&gt;
+
+&lt;div class=&quot;order&quot; order-state=&quot;new&quot;&gt;
+  A new order.
+&lt;/div&gt;
+
+&lt;div class=&quot;order&quot; order-state=&quot;pending&quot;&gt;
+  A pending order.
+&lt;/div&gt;
+
+&lt;div class=&quot;order&quot; order-state=&quot;canceled&quot;&gt;
+  A canceled order.
+&lt;/div&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Why the attribute may be preferable to classes like <code>.order-state-new</code>, <code>.order-state-pending</code>, <code>order-state-canceled</code>?</p>
+<p>That’s because an attribute is more convenient to manage. The state can be changed as easy as:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">// a bit simpler than removing old/adding a new class
+div.setAttribute('order-state', 'canceled');</code></pre>
+        </div>
+      </div>
+      
+      </div><p>But there may be a possible problem with custom attributes. What if we use a non-standard attribute for our purposes and later the standard introduces it and makes it do something? The HTML language is alive, it grows, more attributes appear to suit the needs of developers. There may be unexpected effects in such case.</p>
+<p>To evade conflicts, there exist <a href="https://html.spec.whatwg.org/#embedding-custom-non-visible-data-with-the-data-*-attributes">data-*</a> attributes.</p>
+<p><strong>All attributes starting with “data-” are reserved for programmers’ use. They are available in <code>dataset</code> property.</strong></p>
+<p>For instance, if an <code>elem</code> has an attribute named <code>&quot;data-about&quot;</code>, it’s available as <code>elem.dataset.about</code>.</p>
+<p>Like this:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="show" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;body data-about=&quot;Elephants&quot;&gt;
+&lt;script&gt;
+  alert(document.body.dataset.about); // Elephants
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Multiword attributes like <code>data-order-state</code> become camel-cased: <code>dataset.orderState</code>.</p>
+<p>Here’s a rewritten “order state” example:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="show" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;style&gt;
+  .order[data-order-state=&quot;new&quot;] {
+    color: green;
+  }
+
+  .order[data-order-state=&quot;pending&quot;] {
+    color: blue;
+  }
+
+  .order[data-order-state=&quot;canceled&quot;] {
+    color: red;
+  }
+&lt;/style&gt;
+
+&lt;div id=&quot;order&quot; class=&quot;order&quot; data-order-state=&quot;new&quot;&gt;
+  A new order.
+&lt;/div&gt;
+
+&lt;script&gt;
+  // read
+  alert(order.dataset.orderState); // new
+
+  // modify
+  order.dataset.orderState = &quot;pending&quot;; // (*)
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Using <code>data-*</code> attributes is a valid, safe way to pass custom data.</p>
+<p>Please note that we can not only read, but also modify data-attributes. Then CSS updates the view accordingly: in the example above the last line <code>(*)</code> changes the color to blue.</p>
+<h2><a class="main__anchor" name="summary" href="#summary">Summary</a></h2><ul>
+<li>Attributes – is what’s written in HTML.</li>
+<li>Properties – is what’s in DOM objects.</li>
+</ul>
+<p>A small comparison:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Properties</th>
+<th>Attributes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Type</td>
+<td>Any value, standard properties have types described in the spec</td>
+<td>A string</td>
+</tr>
+<tr>
+<td>Name</td>
+<td>Name is case-sensitive</td>
+<td>Name is not case-sensitive</td>
+</tr>
+</tbody>
+</table>
+<p>Methods to work with attributes are:</p>
+<ul>
+<li><code>elem.hasAttribute(name)</code> – to check for existence.</li>
+<li><code>elem.getAttribute(name)</code> – to get the value.</li>
+<li><code>elem.setAttribute(name, value)</code> – to set the value.</li>
+<li><code>elem.removeAttribute(name)</code> – to remove the attribute.</li>
+<li><code>elem.attributes</code> is a collection of all attributes.</li>
+</ul>
+<p>For most needs DOM properties can serve us well. We should refer to attributes only when DOM properties do not suit us, when we need exactly attributes, for instance:</p>
+<ul>
+<li>We need a non-standard attribute. But if it starts with <code>data-</code>, then we should use <code>dataset</code>.</li>
+<li>We want to read the value “as written” in HTML. The value of the DOM property may be different, for instance <code>href</code> property is always a full URL, and we may want to get the “original” value.</li>
+</ul>
+</div></article><div class="tasks"><h2 id="tasks" class="tasks__title"><a href="#tasks" class="main__anchor main__anchor_noicon tasks__title-anchor">Tasks</a></h2><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a href="#get-the-attribute" name="get-the-attribute" class="main__anchor">Get the attribute</a></h3><a href="task/get-user-attribute.html" target="_blank" class="task__open-link"></a></div><div class="task__header-note"><span title="How important is the task, from 1 to 5" class="task__importance">importance: 5</span></div><div class="task__content"><p>Write the code to select the element with <code>data-widget-name</code> attribute from the document and to read its value.</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="show" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;!DOCTYLE HTML&gt;
+&lt;html&gt;
+&lt;body&gt;
+
+  &lt;div data-widget-name=&quot;menu&quot;&gt;Choose the genre&lt;/div&gt;
+
+  &lt;script&gt;
+    /* your code */
+  &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><button type="button" class="task__solution">solution</button><div class="task__answer"><div class="task__answer-content"><div data-trusted="1" class="code-example" data-demo-height="100">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="show" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;!DOCTYLE HTML&gt;
+&lt;html&gt;
+&lt;body&gt;
+
+  &lt;div data-widget-name=&quot;menu&quot;&gt;Choose the genre&lt;/div&gt;
+
+  &lt;script&gt;
+    // getting it
+    let elem = document.querySelector('[data-widget-name]');
+
+    // reading the value
+    alert(elem.dataset.widgetName);
+    // or
+    alert(elem.getAttribute('data-widget-name'));
+  &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p><a href="http://plnkr.co/edit/oYYilotCCGALUBAzOopU?p=preview" target="_blank" data-plunk-id="oYYilotCCGALUBAzOopU">Open the solution in the sandbox.</a></p></div><button type="button" title="close" class="close-button task__answer-close"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a href="#make-external-links-orange" name="make-external-links-orange" class="main__anchor">Make external links orange</a></h3><a href="task/yellow-links.html" target="_blank" class="task__open-link"></a></div><div class="task__header-note"><span title="How important is the task, from 1 to 5" class="task__importance">importance: 3</span></div><div class="task__content"><p>Make all external links orange by altering their <code>style</code> property.</p>
+<p>A link is external if:</p>
+<ul>
+<li>It’s <code>href</code> has <code>://</code> in it</li>
+<li>But doesn’t start with <code>http://internal.com</code>.</li>
+</ul>
+<p>Example:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="show" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;a name=&quot;list&quot;&gt;the list&lt;/a&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://google.com&quot;&gt;http://google.com&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/tutorial&quot;&gt;/tutorial.html&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;local/path&quot;&gt;local/path&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;ftp://ftp.com/my.zip&quot;&gt;ftp://ftp.com/my.zip&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://nodejs.org&quot;&gt;http://nodejs.org&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://internal.com/test&quot;&gt;http://internal.com/test&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;script&gt;
+  // setting style for a single link
+  let link = document.querySelector('a');
+  link.style.color = 'orange';
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>The result should be:</p>
+<div class="code-result">
+    <div class="code-result__toolbar toolbar"></div>
+    <iframe class="code-result__iframe" data-trusted="1" style="height:180px" src="https://en.js.cx/task/yellow-links/solution/"></iframe>
+  </div><p><a href="http://plnkr.co/edit/ftPfZPJBKBIyjvaK1CMN?p=preview" target="_blank" data-plunk-id="ftPfZPJBKBIyjvaK1CMN">Open the sandbox for the task.</a></p><button type="button" class="task__solution">solution</button><div class="task__answer"><div class="task__answer-content"><p>First, we need to find all external references.</p>
+<p>There are two ways.</p>
+<p>The first is to find all links using <code>document.querySelectorAll('a')</code> and then filter out what we need:</p>
+<div data-trusted="1" class="code-example" data-highlight-block="3-3">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let links = document.querySelectorAll('a');
+
+for (let link of links) {
+  let href = link.getAttribute('href');
+  if (!href) continue; // no attribute
+
+  if (!href.includes('://')) continue; // no protocol
+
+  if (href.startsWith('http://internal.com')) continue; // internal
+
+  link.style.color = 'orange';
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Please note: we use <code>link.getAttribute('href')</code>. Not <code>link.href</code>, because we need the value from HTML.</p>
+<p>…Another, simpler way would be to add the checks to CSS selector:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">// look for all links that have :// in href
+// but href doesn't start with http://internal.com
+let selector = 'a[href*=&quot;://&quot;]:not([href^=&quot;http://internal.com&quot;])';
+let links = document.querySelectorAll(selector);
+
+links.forEach(link =&gt; link.style.color = 'orange');</code></pre>
+        </div>
+      </div>
+      
+      </div><p><a href="http://plnkr.co/edit/pg6lsJnJEQ4TKbpg4gx8?p=preview" target="_blank" data-plunk-id="pg6lsJnJEQ4TKbpg4gx8">Open the solution in the sandbox.</a></p></div><button type="button" title="close" class="close-button task__answer-close"></button></div></div></div></div></div><!--  include /blocks/banner-bottom--><!--if lang == 'en'--><!--  include /blocks/banner-bottom.en--></div><div class="page__nav-wrap"><a href="basic-dom-node-properties.html" data-tooltip="Node properties: type, tag and contents" class="page__nav page__nav_prev"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Previous lesson</span></a><a href="modifying-document.html" data-tooltip="Modifying the document" class="page__nav page__nav_next"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Next lesson</span></a></div><div class="article-tablet-foot tablet-only"><div class="article-tablet-foot__layout"><div class="share-icons"><span class="share-icons__title">Share</span><a href="https://twitter.com/share?url=https%3A%2F%2Fjavascript.info%2Fdom-attributes-and-properties" class="share share_tw"></a><a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fjavascript.info%2Fdom-attributes-and-properties" class="share share_fb"></a><a href="https://plus.google.com/share?url=https%3A%2F%2Fjavascript.info%2Fdom-attributes-and-properties" class="share share_gp"></a><a href="https://vkontakte.ru/share.php?url=https%3A%2F%2Fjavascript.info%2Fdom-attributes-and-properties" class="share share_vk"></a></div><div class="article-tablet-foot__map"><a href="tutorial/map.html" data-action="tutorial-map" class="map"><span class="map__text">Tutorial map</span></a></div></div></div><div id="comments" class="comments"><div class="comments__header"><h2 class="comments__header-title"><a href="#comments" name="comments">Comments</a></h2><div class="comments__read-before"><span class="comments__read-before-link">read this before commenting…</span><div class="comments__read-before-popup"><div class="comments__read-before-popup-i"><ul><li>You're welcome to post additions, questions to the articles and answers to them.</li><li>To insert a few words of code, use the <code>&lt;code&gt;</code> tag, for several lines – use <code>&lt;pre&gt;</code>, for more than 10 lines – use a sandbox (<a href='http://plnkr.co/edit/?p=preview'>plnkr</a>, <a href='http://jsbin.com/'>JSBin</a>, <a href='http://codepen.io/'>codepen</a>…)</li><li>If you can't understand something in the article – please elaborate.</li></ul></div></div></div></div></div><div id="disqus_thread"></div><script>var disqus_config = function() { if (!this.page) this.page = {}; Object.assign(this.page, {"url":"https:\/\/javascript.info\/dom-attributes-and-properties","identifier":"\/dom-attributes-and-properties","title":"Attributes and properties"}); };</script><script>var disqus_shortname = "javascriptinfo";</script><script>var disqus_enabled = true;</script></main></div><div class="page__sidebar sidebar sidebar_sticky-footer"><button data-sidebar-toggle class="sidebar__toggle"></button><a href="tutorial/map.html" data-action="tutorial-map" data-tooltip="Tutorial map" class="map"></a><div class="sidebar__inner"><div class="sidebar__content"><div class="sidebar__section"><h4 class="sidebar__section-title">Chapter</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a href="document.html" class="sidebar__link">Document</a></li></ul></nav></div><div class="sidebar__section"><h4 class="sidebar__section-title">Lesson navigation</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a href="#dom-properties" class="sidebar__link">DOM properties</a></li><li class="sidebar__navigation-link"><a href="#html-attributes" class="sidebar__link">HTML attributes</a></li><li class="sidebar__navigation-link"><a href="#property-attribute-synchronization" class="sidebar__link">Property-attribute synchronization</a></li><li class="sidebar__navigation-link"><a href="#dom-properties-are-typed" class="sidebar__link">DOM properties are typed</a></li><li class="sidebar__navigation-link"><a href="#non-standard-attributes-dataset" class="sidebar__link">Non-standard attributes, dataset</a></li><li class="sidebar__navigation-link"><a href="#summary" class="sidebar__link">Summary</a></li></ul></nav></div><div class="sidebar__section"><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a href="#tasks" class="sidebar__link">Tasks (2)</a></li><li class="sidebar__navigation-link"><a href="#comments" class="sidebar__link">Comments</a></li></ul></nav></div><div class="sidebar__section"><div class="sidebar__section-title">Share</div><a href="https://twitter.com/share?url=https%3A%2F%2Fjavascript.info%2Fdom-attributes-and-properties" class="share share_tw sidebar__share"></a><a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fjavascript.info%2Fdom-attributes-and-properties" class="share share_fb sidebar__share"></a><a href="https://plus.google.com/share?url=https%3A%2F%2Fjavascript.info%2Fdom-attributes-and-properties" class="share share_gp sidebar__share"></a></div><div class="sidebar__section"><a href="https://github.com/iliakan/javascript-tutorial-en/tree/master/2-ui/1-document/06-dom-attributes-and-properties/article.md" class="sidebar__link">Edit on Github</a></div></div></div></div></div></div><div class="page-footer"><div class="page-footer__left"><ul class="page-footer__list"><li class="page-footer__item">©&nbsp;2007—2017&nbsp; Ilya Kantor</li><li class="page-footer__item"><a href="about.html#contact-us" class="page-footer__link">contact us</a></li><li class="page-footer__item"><a href="about.html" class="page-footer__link">about the project</a></li><li class="page-footer__item"><a href="https://learn.javascript.ru/" class="page-footer__link">RU</a> / EN</li></ul></div><div class="page-footer__right"><ul class="page-footer__list"><li class="page-footer__item">powered by <a rel="nofollow" href="http://nodejs.org/" class="page-footer__link">node.js</a>&nbsp;&amp;&nbsp;<a rel="nofollow" href="http://github.com/iliakan/javascript-tutorial-en" class="page-footer__link">open source</a></li></ul></div></div></body>
+<!-- Mirrored from javascript.info/dom-attributes-and-properties by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 30 Nov 2017 15:29:14 GMT -->
+</html>

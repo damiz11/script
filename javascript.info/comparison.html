@@ -1,0 +1,368 @@
+<!DOCTYPE html><html lang="en">
+<!-- Mirrored from javascript.info/comparison by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 30 Nov 2017 15:27:19 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><script>window.currentUser = null;</script><title itemprop="name">Comparisons</title><meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, minimum-scale=1.0"><meta name="apple-mobile-web-app-capable" content="yes"><script>if (window.devicePixelRatio > 1) document.cookie = 'pixelRatio=' + window.devicePixelRatio + ';path=/;expires=Tue, 19 Jan 2038 03:14:07 GMT';</script><link href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700%7COpen+Sans+Condensed:700&amp;subset=latin,latin-ext,cyrillic,cyrillic-ext" rel="stylesheet"><link rel="apple-touch-icon-precomposed" href="img/favicon/apple-touch-icon-precomposed.png"><link rel="canonical" href="comparison.html"><meta name="msapplication-TileColor" content="#222A2C"><meta name="msapplication-TileImage" content="/img/favicon/tileicon.png"><!-- favicon the rest--><link rel="icon" href="img/favicon/favicon.png"><meta itemprop="image" content="https://javascript.info/img/site_preview_en_512x512.png"><meta property="og:title" content="Comparisons"><meta property="og:image" content="https://javascript.info/img/site_preview_en_1200x630.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="fb:admins" content="100001562528165"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Comparisons"><meta name="twitter:site" content="@iliakan"><meta name="twitter:creator" content="@iliakan"><meta name="twitter:image" content="https://javascript.info/img/site_preview_en_512x512.png"><link href="pack/styles.da59a89b28153875791083e4a8c5adb3.css" rel="stylesheet"><link rel="prev" href="operators.html"><link rel="next" href="alert-prompt-confirm.html"><script>window.GA_ID = "UA-2056213-15";</script><script>window.YANDEX_METRIKA_ID = 32184394;</script><script>window.GoogleAnalyticsObject="ga",window.ga=function(){window.ga.q.push(arguments)},window.ga.q=[],window.ga.l=Date.now(),ga("create",GA_ID,"auto"),window.currentUser&&ga("set","&uid",currentUser.id),window.addEventListener("error",function(e){var r=(e.filename||e.errorUrl)+": "+(e.lineno||e.errorLine),n=e.stack||e.error&&e.error.stack;ga("send","exception",{exDescription:e.message+" "+r+" "+n,exFatal:!0})});</script><script src="https://www.google-analytics.com/analytics.js" async></script><script>ga('send', 'pageview');</script><script>window.metrika={reachGoal:function(){}},window.yandex_metrika_callbacks=[function(){try{window.metrika=new Ya.Metrika({id:YANDEX_METRIKA_ID,webvisor:!0,clickmap:!0,params:{user:window.currentUser&&window.currentUser.id}}),metrika.trackLinks({delay:150}),window.addEventListener("error",function(r){window.metrika.reachGoal("JSERROR",{src:(r.filename||r.errorUrl)+": "+(r.lineno||r.errorLine),stack:r.stack||r.error&&r.error.stack,message:r.message})})}catch(r){}}];</script><script src="http://mc.yandex.ru/metrika/watch.js" async></script><script>window.RECAPTCHA_ID = "6Lf9NyETAAAAACZlg-a9Us2SxvYbeVC1ROWaWv4O";</script><script src="initc4ca.js?1"></script><script src="pack/head.688d4fe7c4cf54e23737.js" defer></script><meta property="og:title" content="Comparisons"><meta property="og:type" content="article"><script src="pack/tutorial.688d4fe7c4cf54e23737.js" defer></script><script src="pack/footer.688d4fe7c4cf54e23737.js" defer></script></head><body class="no-icons"><script>window.fontTest();</script><div class="page-wrapper page-wrapper_sidebar_on"><!--[if lt IE 10]><div style="color:red;text-align:center">Sorry, IE&lt;10 is not supported, please use a newer browser.</div><![endif]--><div class="sitetoolbar sitetoolbar_tutorial"><!-- include ./notification-stripe--><div class="sitetoolbar__content"><div class="sitetoolbar__logo-wrap"><a href="index.html" class="sitetoolbar__link sitetoolbar__link_logo"><img src="img/sitetoolbar__logo_en.svg" width="200" class="sitetoolbar__logo sitetoolbar__logo_normal" alt=""><img src="img/sitetoolbar__logo_small_en.svg" width="70" class="sitetoolbar__logo sitetoolbar__logo_small" alt=""><script>Array.prototype.forEach.call(document.querySelectorAll("img.sitetoolbar__logo"),function(e){var t=document.createElement("object");t.type="image/svg+xml",t.className=e.className,t.style.cssText="left:0;top:0;position:absolute",t.onload=function(){t.onload=null,e.style.visibility="hidden"},t.data=e.src,e.parentNode.insertBefore(t,e)});</script></a></div><div class="sitetoolbar__nav-toggle-wrap"><button type="button" class="sitetoolbar__nav-toggle"></button></div><nav class="sitetoolbar__sections"><ul class="sitetoolbar__sections-list"></ul></nav><div class="sitetoolbar__book-wrap"><a href="ebook.html" class="buy-book-button"><span class="buy-book-button__extra-text">Buy</span>EPUB/PDF</a></div><div class="sitetoolbar__login-wrap"><button data-action-login class="sitetoolbar__login sitetoolbar__login_unready"></button></div><div class="sitetoolbar__search-wrap"><div class="sitetoolbar__search-content"><form method="GET" action="http://javascript.info/search" class="sitetoolbar__search"><button type="button" class="sitetoolbar__search-toggle"></button><div class="sitetoolbar__search-input"><div class="text-input"><input name="query" placeholder="Search on Javascript.info" class="text-input__control" type="text"></div><button type="submit" class="sitetoolbar__find">Search</button></div></form></div></div></div><!-- todo: en variant--><div class="tablet-menu"><div class="tablet-menu__line"><div class="tablet-menu__content"><form action="http://javascript.info/search/" class="tablet-menu-search"><input type="search" name="query" placeholder="Search in the tutorial" required class="tablet-menu-search__input"><button type="submit" name="type" value="articles" class="tablet-menu-search__button">Search</button></form></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><a href="tutorial/map.html" data-action="tutorial-map" class="map"><span class="map__text">Tutorial map</span></a></div></div><!--+e.line--><!--  +e.content--><!--    +b("a").tablet-ebook(href="/ebook")--><!--      +e("span").text Купить учебник--><!--      +e("span").note (EPUB + PDF)--><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="share-icons"><span class="share-icons__title">Share</span><a href="https://twitter.com/share?url=https%3A%2F%2Fjavascript.info%2Fcomparison" class="share share_tw"></a><a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fjavascript.info%2Fcomparison" class="share share_fb"></a><a href="https://plus.google.com/share?url=https%3A%2F%2Fjavascript.info%2Fcomparison" class="share share_gp"></a><a href="https://vkontakte.ru/share.php?url=https%3A%2F%2Fjavascript.info%2Fcomparison" class="share share_vk"></a></div></div></div></div><progress data-sticky value="11" max="67" data-tooltip="Lesson 11 of 67" class="tutorial-progress"></progress></div><div class="page page_sidebar_on"><script>if(localStorage.noSidebar){document.querySelector(".page").classList.remove("page_sidebar_on");var pageWrapper=document.querySelector(".page-wrapper");pageWrapper&&pageWrapper.classList.remove("page-wrapper_sidebar_on")}setTimeout(function(){document.querySelector(".page").classList.add("page_sidebar-animation-on")},0);</script><div class="page__inner"><main class="main main_width-limit"><header class="main__header"><ol class="breadcrumbs"><li itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemref="breadcrumb-1" class="breadcrumbs__item breadcrumbs__item_home"><a href="index.html" itemprop="url" class="breadcrumbs__link"><span itemprop="title" class="breadcrumbs__hidden-text">Учебник</span></a></li><li id="breadcrumb-1" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemref="breadcrumb-2" itemprop="child" class="breadcrumbs__item"><a href="js.html" itemprop="url" class="breadcrumbs__link"><span itemprop="title">The JavaScript language</span></a></li><li id="breadcrumb-2" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemprop="child" class="breadcrumbs__item"><a href="first-steps.html" itemprop="url" class="breadcrumbs__link"><span itemprop="title">JavaScript Fundamentals</span></a></li></ol><h1 class="main__header-title">Comparisons</h1></header><div class="content"><article itemscope itemtype="http://schema.org/TechArticle"><meta itemprop="name" content="Comparisons"><div itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="email" content="iliakan@gmail.com"><meta itemprop="name" content="Ilya Kantor"></div><div itemprop="articleBody"><p>Many comparison operators we know from maths:</p>
+<ul>
+<li>Greater/less than: <code>a &gt; b</code>, <code>a &lt; b</code>.</li>
+<li>Greater/less than or equals: <code>a &gt;= b</code>, <code>a &lt;= b</code>.</li>
+<li>Equality check is written as <code>a == b</code> (please note the double equation sign <code>'='</code>. A single symbol <code>a = b</code> would mean an assignment).</li>
+<li>Not equals. In maths the notation is <code>≠</code>, in JavaScript it’s written as an assignment with an exclamation sign before it: <code>a != b</code>.</li>
+</ul>
+<cut>
+<h2><a class="main__anchor" name="boolean-is-the-result" href="#boolean-is-the-result">Boolean is the result</a></h2><p>Just as all other operators, a comparison returns a value. The value is of the boolean type.</p>
+<ul>
+<li><code>true</code> – means “yes”, “correct” or “the truth”.</li>
+<li><code>false</code> – means “no”, “wrong” or “a lie”.</li>
+</ul>
+<p>For example:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">alert( 2 &gt; 1 );  // true (correct)
+alert( 2 == 1 ); // false (wrong)
+alert( 2 != 1 ); // true (correct)</code></pre>
+        </div>
+      </div>
+      
+      </div><p>A comparison result can be assigned to a variable, just like any value:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let result = 5 &gt; 4; // assign the result of the comparison
+alert( result ); // true</code></pre>
+        </div>
+      </div>
+      
+      </div><h2><a class="main__anchor" name="string-comparison" href="#string-comparison">String comparison</a></h2><p>To see which string is greater than the other, the so-called “dictionary” or “lexicographical” order is used.</p>
+<p>In other words, strings are compared letter-by-letter.</p>
+<p>For example:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">alert( 'Z' &gt; 'A' ); // true
+alert( 'Glow' &gt; 'Glee' ); // true
+alert( 'Bee' &gt; 'Be' ); // true</code></pre>
+        </div>
+      </div>
+      
+      </div><p>The algorithm to compare two strings is simple:</p>
+<ol>
+<li>Compare first characters of both strings.</li>
+<li>If the first one is greater(or less), then the first string is greater(or less) than the second. We’re done.</li>
+<li>Otherwise if first characters are equal, compare the second characters the same way.</li>
+<li>Repeat until the end of any string.</li>
+<li>If both strings ended simultaneously, then they are equal. Otherwise the longer string is greater.</li>
+</ol>
+<p>In the example above, the comparison <code>'Z' &gt; 'A'</code> gets the result at the first step.</p>
+<p>Strings <code>&quot;Glow&quot;</code> and <code>&quot;Glee&quot;</code> are compared character-by-character:</p>
+<ol>
+<li><code>G</code> is the same as <code>G</code>.</li>
+<li><code>l</code> is the same as <code>l</code>.</li>
+<li><code>o</code> is greater than <code>e</code>. Stop here. The first string is greater.</li>
+</ol>
+<div class="important important_smart">
+            <div class="important__header"><span class="important__type">Not a real dictionary, but Unicode order</span></div>
+            <div class="important__content"><p>The comparison algorithm given above is roughly equivalent to the one used in book dictionaries or phone books. But it’s not exactly the same.</p>
+<p>For instance, case matters. A capital letter <code>&quot;A&quot;</code> is not equal to the lowercase <code>&quot;a&quot;</code>. Which one is greater? Actually, the lowercase <code>&quot;a&quot;</code> is. Why? Because the lowercase character has a greater index in the internal encoding table (Unicode). We’ll get back to specific details and consequences in the chapter <a href="string.html">Strings</a>.</p>
+</div></div>
+<h2><a class="main__anchor" name="comparison-of-different-types" href="#comparison-of-different-types">Comparison of different types</a></h2><p>When compared values belong to different types, they are converted to numbers.</p>
+<p>For example:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">alert( '2' &gt; 1 ); // true, string '2' becomes a number 2
+alert( '01' == 1 ); // true, string '01' becomes a number 1</code></pre>
+        </div>
+      </div>
+      
+      </div><p>For boolean values, <code>true</code> becomes <code>1</code> and <code>false</code> becomes <code>0</code>, that’s why:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">alert( true == 1 ); // true
+alert( false == 0 ); // true</code></pre>
+        </div>
+      </div>
+      
+      </div><div class="important important_smart">
+            <div class="important__header"><span class="important__type">A funny consequence</span></div>
+            <div class="important__content"><p>It is possible that at the same time:</p>
+<ul>
+<li>Two values are equal.</li>
+<li>One of them is <code>true</code> as a boolean and the other one is <code>false</code> as a boolean.</li>
+</ul>
+<p>For example:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let a = 0;
+alert( Boolean(a) ); // false
+
+let b = &quot;0&quot;;
+alert( Boolean(b) ); // true
+
+alert(a == b); // true!</code></pre>
+        </div>
+      </div>
+      
+      </div><p>From JavaScript’s standpoint that’s quite normal. An equality check converts using the numeric conversion (hence <code>&quot;0&quot;</code> becomes <code>0</code>), while <code>Boolean</code> conversion uses another set of rules.</p>
+</div></div>
+<h2><a class="main__anchor" name="strict-equality" href="#strict-equality">Strict equality</a></h2><p>A regular equality check <code>&quot;==&quot;</code> has a problem. It cannot differ <code>0</code> from <code>false</code>:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">alert( 0 == false ); // true</code></pre>
+        </div>
+      </div>
+      
+      </div><p>The same thing with an empty string:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">alert( '' == false ); // true</code></pre>
+        </div>
+      </div>
+      
+      </div><p>That’s because operands of different types are converted to a number by the equality operator <code>==</code>. An empty string, just like <code>false</code>, becomes a zero.</p>
+<p>What to do if we’d like to differentiate <code>0</code> from <code>false</code>?</p>
+<p><strong>A strict equality operator <code>===</code> checks the equality without type conversion.</strong></p>
+<p>In other words, if <code>a</code> and <code>b</code> are of different types, then <code>a === b</code> immediately returns <code>false</code> without an attempt to convert them.</p>
+<p>Let’s try it:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">alert( 0 === false ); // false, because the types are different</code></pre>
+        </div>
+      </div>
+      
+      </div><p>There also exists a “strict non-equality” operator <code>!==</code>, as an analogy for <code>!=</code>.</p>
+<p>The strict equality check operator is a bit longer to write, but makes it obvious what’s going on and leaves less space for errors.</p>
+<h2><a class="main__anchor" name="comparison-with-null-and-undefined" href="#comparison-with-null-and-undefined">Comparison with null and undefined</a></h2><p>Let’s see more edge cases.</p>
+<p>There’s a non-intuitive behavior when <code>null</code> or <code>undefined</code> are compared with other values.</p>
+<dl>
+<dt>For a strict equality check <code>===</code></dt>
+<dd>
+<p>These values are different, because each of them belong to a separate type of it’s own.</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">alert( null === undefined ); // false</code></pre>
+        </div>
+      </div>
+      
+      </div></dd>
+<dt>For a non-strict check <code>==</code></dt>
+<dd>
+<p>There’s a special rule. These two are a “sweet couple”: they equal each other (in the sense of <code>==</code>), but not any other value.</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">alert( null == undefined ); // true</code></pre>
+        </div>
+      </div>
+      
+      </div></dd>
+<dt>For maths and other comparisons <code>&lt; &gt; &lt;= &gt;=</code></dt>
+<dd>
+<p>Values <code>null/undefined</code> are converted to a number: <code>null</code> becomes <code>0</code>, while <code>undefined</code> becomes <code>NaN</code>.</p>
+</dd>
+</dl>
+<p>Now let’s see funny things that happen when we apply those rules. And, what’s more important, how to not fall into a trap with these features.</p>
+<h3><a class="main__anchor" name="strange-result-null-vs-0" href="#strange-result-null-vs-0">Strange result: null vs 0</a></h3><p>Let’s compare <code>null</code> with a zero:</p>
+<div data-trusted="1" class="code-example" data-highlight-inline="2:27-31">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">alert( null &gt; 0 );  // (1) false
+alert( null == 0 ); // (2) false
+alert( null &gt;= 0 ); // (3) true</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Yeah, mathematically that’s strange. The last result states that &quot;<code>null</code> is greater than or equal to zero&quot;. Then one of the comparisons above must be correct, but they are both false.</p>
+<p>The reason is that an equality check <code>==</code> and comparisons <code>&gt; &lt; &gt;= &lt;=</code> work differently. Comparisons convert <code>null</code> to a number, hence treat it as <code>0</code>. That’s why (3) <code>null &gt;= 0</code> is true and (1) <code>null &gt; 0</code> is false.</p>
+<p>On the other hand, the equality check <code>==</code> for <code>undefined</code> and <code>null</code> works by the rule, without any conversions. They equal each other and don’t equal anything else. That’s why (2) <code>null == 0</code> is false.</p>
+<h3><a class="main__anchor" name="an-incomparable-undefined" href="#an-incomparable-undefined">An incomparable undefined</a></h3><p>The value <code>undefined</code> shouldn’t participate in comparisons at all:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">alert( undefined &gt; 0 ); // false (1)
+alert( undefined &lt; 0 ); // false (2)
+alert( undefined == 0 ); // false (3)</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Why does it dislike a zero so much? Always false!</p>
+<p>We’ve got these results because:</p>
+<ul>
+<li>Comparisons <code>(1)</code> and <code>(2)</code> return <code>false</code> because <code>undefined</code> gets converted to <code>NaN</code>. And <code>NaN</code> is a special numeric value which returns <code>false</code> for all comparisons.</li>
+<li>The equality check <code>(3)</code> returns <code>false</code>, because <code>undefined</code> only equals <code>null</code> and no other value.</li>
+</ul>
+<h3><a class="main__anchor" name="evade-problems" href="#evade-problems">Evade problems</a></h3><p>Why did we observe these examples? Should we remember these peculiarities all the time? Well, not really. Actually, these tricky things will gradually become familiar over time, but there’s a solid way to evade any problems with them.</p>
+<p>Just treat any comparison with <code>undefined/null</code> except the strict equality <code>===</code> with exceptional care.</p>
+<p>Don’t use comparisons <code>&gt;= &gt; &lt; &lt;=</code> with a variable which may be <code>null/undefined</code>, unless you are really sure what you’re doing. If a variable can have such values, then check for them separately.</p>
+<h2><a class="main__anchor" name="summary" href="#summary">Summary</a></h2><ul>
+<li>Comparison operators return a logical value.</li>
+<li>Strings are compared letter-by-letter in the “dictionary” order.</li>
+<li>When values of different types are compared, they get converted to numbers (with the exclusion of a strict equality check).</li>
+<li>Values <code>null</code> and <code>undefined</code> equal <code>==</code> each other and do not equal any other value.</li>
+<li>Be careful when using comparisons like <code>&gt;</code> or <code>&lt;</code> with variables that can occasionally be <code>null/undefined</code>. Making a separate check for <code>null/undefined</code> is a good idea.</li>
+</ul>
+</div></article><div class="tasks"><h2 id="tasks" class="tasks__title"><a href="#tasks" class="main__anchor main__anchor_noicon tasks__title-anchor">Tasks</a></h2><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a href="#comparisons" name="comparisons" class="main__anchor">Comparisons</a></h3><a href="task/comparison-questions.html" target="_blank" class="task__open-link"></a></div><div class="task__header-note"><span title="How important is the task, from 1 to 5" class="task__importance">importance: 5</span></div><div class="task__content"><p>What will be the result for expressions?</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">5 &gt; 4
+&quot;apple&quot; &gt; &quot;pineapple&quot;
+&quot;2&quot; &gt; &quot;12&quot;
+undefined == null
+undefined === null
+null == &quot;\n0\n&quot;
+null === +&quot;\n0\n&quot;</code></pre>
+        </div>
+      </div>
+      
+      </div><button type="button" class="task__solution">solution</button><div class="task__answer"><div class="task__answer-content"><div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">5 &gt; 4 → true
+&quot;apple&quot; &gt; &quot;pineapple&quot; → false
+&quot;2&quot; &gt; &quot;12&quot; → true
+undefined == null → true
+undefined === null → false
+null == &quot;\n0\n&quot; → false
+null === +&quot;\n0\n&quot; → false</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Some of the reasons:</p>
+<ol>
+<li>Obviously, true.</li>
+<li>Dictionary comparison, hence false.</li>
+<li>Again, dictionary comparison, first char of <code>&quot;2&quot;</code> is greater than the first char of <code>&quot;1&quot;</code>.</li>
+<li>Values <code>null</code> and <code>undefined</code> equal each other only.</li>
+<li>Strict equality is strict. Different types from both sides lead to false.</li>
+<li>See (4).</li>
+<li>Strict equality of different types.</li>
+</ol>
+</div><button type="button" title="close" class="close-button task__answer-close"></button></div></div></div></div></div><!--  include /blocks/banner-bottom--><!--if lang == 'en'--><!--  include /blocks/banner-bottom.en--></div><div class="page__nav-wrap"><a href="operators.html" data-tooltip="Operators" class="page__nav page__nav_prev"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Previous lesson</span></a><a href="alert-prompt-confirm.html" data-tooltip="Interaction: alert, prompt, confirm" class="page__nav page__nav_next"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Next lesson</span></a></div><div class="article-tablet-foot tablet-only"><div class="article-tablet-foot__layout"><div class="share-icons"><span class="share-icons__title">Share</span><a href="https://twitter.com/share?url=https%3A%2F%2Fjavascript.info%2Fcomparison" class="share share_tw"></a><a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fjavascript.info%2Fcomparison" class="share share_fb"></a><a href="https://plus.google.com/share?url=https%3A%2F%2Fjavascript.info%2Fcomparison" class="share share_gp"></a><a href="https://vkontakte.ru/share.php?url=https%3A%2F%2Fjavascript.info%2Fcomparison" class="share share_vk"></a></div><div class="article-tablet-foot__map"><a href="tutorial/map.html" data-action="tutorial-map" class="map"><span class="map__text">Tutorial map</span></a></div></div></div><div id="comments" class="comments"><div class="comments__header"><h2 class="comments__header-title"><a href="#comments" name="comments">Comments</a></h2><div class="comments__read-before"><span class="comments__read-before-link">read this before commenting…</span><div class="comments__read-before-popup"><div class="comments__read-before-popup-i"><ul><li>You're welcome to post additions, questions to the articles and answers to them.</li><li>To insert a few words of code, use the <code>&lt;code&gt;</code> tag, for several lines – use <code>&lt;pre&gt;</code>, for more than 10 lines – use a sandbox (<a href='http://plnkr.co/edit/?p=preview'>plnkr</a>, <a href='http://jsbin.com/'>JSBin</a>, <a href='http://codepen.io/'>codepen</a>…)</li><li>If you can't understand something in the article – please elaborate.</li></ul></div></div></div></div></div><div id="disqus_thread"></div><script>var disqus_config = function() { if (!this.page) this.page = {}; Object.assign(this.page, {"url":"https:\/\/javascript.info\/comparison","identifier":"\/comparison","title":"Comparisons"}); };</script><script>var disqus_shortname = "javascriptinfo";</script><script>var disqus_enabled = true;</script></main></div><div class="page__sidebar sidebar sidebar_sticky-footer"><button data-sidebar-toggle class="sidebar__toggle"></button><a href="tutorial/map.html" data-action="tutorial-map" data-tooltip="Tutorial map" class="map"></a><div class="sidebar__inner"><div class="sidebar__content"><div class="sidebar__section"><h4 class="sidebar__section-title">Chapter</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a href="first-steps.html" class="sidebar__link">JavaScript Fundamentals</a></li></ul></nav></div><div class="sidebar__section"><h4 class="sidebar__section-title">Lesson navigation</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a href="#boolean-is-the-result" class="sidebar__link">Boolean is the result</a></li><li class="sidebar__navigation-link"><a href="#string-comparison" class="sidebar__link">String comparison</a></li><li class="sidebar__navigation-link"><a href="#comparison-of-different-types" class="sidebar__link">Comparison of different types</a></li><li class="sidebar__navigation-link"><a href="#strict-equality" class="sidebar__link">Strict equality</a></li><li class="sidebar__navigation-link"><a href="#comparison-with-null-and-undefined" class="sidebar__link">Comparison with null and undefined</a></li><li class="sidebar__navigation-link"><a href="#summary" class="sidebar__link">Summary</a></li></ul></nav></div><div class="sidebar__section"><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a href="#tasks" class="sidebar__link">Tasks (1)</a></li><li class="sidebar__navigation-link"><a href="#comments" class="sidebar__link">Comments</a></li></ul></nav></div><div class="sidebar__section"><div class="sidebar__section-title">Share</div><a href="https://twitter.com/share?url=https%3A%2F%2Fjavascript.info%2Fcomparison" class="share share_tw sidebar__share"></a><a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fjavascript.info%2Fcomparison" class="share share_fb sidebar__share"></a><a href="https://plus.google.com/share?url=https%3A%2F%2Fjavascript.info%2Fcomparison" class="share share_gp sidebar__share"></a></div><div class="sidebar__section"><a href="https://github.com/iliakan/javascript-tutorial-en/tree/master/1-js/02-first-steps/08-comparison/article.md" class="sidebar__link">Edit on Github</a></div></div></div></div></div></div><div class="page-footer"><div class="page-footer__left"><ul class="page-footer__list"><li class="page-footer__item">©&nbsp;2007—2017&nbsp; Ilya Kantor</li><li class="page-footer__item"><a href="about.html#contact-us" class="page-footer__link">contact us</a></li><li class="page-footer__item"><a href="about.html" class="page-footer__link">about the project</a></li><li class="page-footer__item"><a href="https://learn.javascript.ru/" class="page-footer__link">RU</a> / EN</li></ul></div><div class="page-footer__right"><ul class="page-footer__list"><li class="page-footer__item">powered by <a rel="nofollow" href="http://nodejs.org/" class="page-footer__link">node.js</a>&nbsp;&amp;&nbsp;<a rel="nofollow" href="http://github.com/iliakan/javascript-tutorial-en" class="page-footer__link">open source</a></li></ul></div></div></body>
+<!-- Mirrored from javascript.info/comparison by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 30 Nov 2017 15:27:19 GMT -->
+</html>

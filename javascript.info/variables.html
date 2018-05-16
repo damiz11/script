@@ -1,0 +1,513 @@
+<!DOCTYPE html><html lang="en">
+<!-- Mirrored from javascript.info/variables by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 30 Nov 2017 15:27:17 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><script>window.currentUser = null;</script><title itemprop="name">Variables</title><meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, minimum-scale=1.0"><meta name="apple-mobile-web-app-capable" content="yes"><script>if (window.devicePixelRatio > 1) document.cookie = 'pixelRatio=' + window.devicePixelRatio + ';path=/;expires=Tue, 19 Jan 2038 03:14:07 GMT';</script><link href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700%7COpen+Sans+Condensed:700&amp;subset=latin,latin-ext,cyrillic,cyrillic-ext" rel="stylesheet"><link rel="apple-touch-icon-precomposed" href="img/favicon/apple-touch-icon-precomposed.png"><link rel="canonical" href="variables.html"><meta name="msapplication-TileColor" content="#222A2C"><meta name="msapplication-TileImage" content="/img/favicon/tileicon.png"><!-- favicon the rest--><link rel="icon" href="img/favicon/favicon.png"><meta itemprop="image" content="https://javascript.info/img/site_preview_en_512x512.png"><meta property="og:title" content="Variables"><meta property="og:image" content="https://javascript.info/img/site_preview_en_1200x630.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="fb:admins" content="100001562528165"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Variables"><meta name="twitter:site" content="@iliakan"><meta name="twitter:creator" content="@iliakan"><meta name="twitter:image" content="https://javascript.info/img/site_preview_en_512x512.png"><link href="pack/styles.da59a89b28153875791083e4a8c5adb3.css" rel="stylesheet"><link rel="prev" href="strict-mode.html"><link rel="next" href="types.html"><script>window.GA_ID = "UA-2056213-15";</script><script>window.YANDEX_METRIKA_ID = 32184394;</script><script>window.GoogleAnalyticsObject="ga",window.ga=function(){window.ga.q.push(arguments)},window.ga.q=[],window.ga.l=Date.now(),ga("create",GA_ID,"auto"),window.currentUser&&ga("set","&uid",currentUser.id),window.addEventListener("error",function(e){var r=(e.filename||e.errorUrl)+": "+(e.lineno||e.errorLine),n=e.stack||e.error&&e.error.stack;ga("send","exception",{exDescription:e.message+" "+r+" "+n,exFatal:!0})});</script><script src="https://www.google-analytics.com/analytics.js" async></script><script>ga('send', 'pageview');</script><script>window.metrika={reachGoal:function(){}},window.yandex_metrika_callbacks=[function(){try{window.metrika=new Ya.Metrika({id:YANDEX_METRIKA_ID,webvisor:!0,clickmap:!0,params:{user:window.currentUser&&window.currentUser.id}}),metrika.trackLinks({delay:150}),window.addEventListener("error",function(r){window.metrika.reachGoal("JSERROR",{src:(r.filename||r.errorUrl)+": "+(r.lineno||r.errorLine),stack:r.stack||r.error&&r.error.stack,message:r.message})})}catch(r){}}];</script><script src="http://mc.yandex.ru/metrika/watch.js" async></script><script>window.RECAPTCHA_ID = "6Lf9NyETAAAAACZlg-a9Us2SxvYbeVC1ROWaWv4O";</script><script src="initc4ca.js?1"></script><script src="pack/head.688d4fe7c4cf54e23737.js" defer></script><meta property="og:title" content="Variables"><meta property="og:type" content="article"><script src="pack/tutorial.688d4fe7c4cf54e23737.js" defer></script><script src="pack/footer.688d4fe7c4cf54e23737.js" defer></script></head><body class="no-icons"><script>window.fontTest();</script><div class="page-wrapper page-wrapper_sidebar_on"><!--[if lt IE 10]><div style="color:red;text-align:center">Sorry, IE&lt;10 is not supported, please use a newer browser.</div><![endif]--><div class="sitetoolbar sitetoolbar_tutorial"><!-- include ./notification-stripe--><div class="sitetoolbar__content"><div class="sitetoolbar__logo-wrap"><a href="index.html" class="sitetoolbar__link sitetoolbar__link_logo"><img src="img/sitetoolbar__logo_en.svg" width="200" class="sitetoolbar__logo sitetoolbar__logo_normal" alt=""><img src="img/sitetoolbar__logo_small_en.svg" width="70" class="sitetoolbar__logo sitetoolbar__logo_small" alt=""><script>Array.prototype.forEach.call(document.querySelectorAll("img.sitetoolbar__logo"),function(e){var t=document.createElement("object");t.type="image/svg+xml",t.className=e.className,t.style.cssText="left:0;top:0;position:absolute",t.onload=function(){t.onload=null,e.style.visibility="hidden"},t.data=e.src,e.parentNode.insertBefore(t,e)});</script></a></div><div class="sitetoolbar__nav-toggle-wrap"><button type="button" class="sitetoolbar__nav-toggle"></button></div><nav class="sitetoolbar__sections"><ul class="sitetoolbar__sections-list"></ul></nav><div class="sitetoolbar__book-wrap"><a href="ebook.html" class="buy-book-button"><span class="buy-book-button__extra-text">Buy</span>EPUB/PDF</a></div><div class="sitetoolbar__login-wrap"><button data-action-login class="sitetoolbar__login sitetoolbar__login_unready"></button></div><div class="sitetoolbar__search-wrap"><div class="sitetoolbar__search-content"><form method="GET" action="http://javascript.info/search" class="sitetoolbar__search"><button type="button" class="sitetoolbar__search-toggle"></button><div class="sitetoolbar__search-input"><div class="text-input"><input name="query" placeholder="Search on Javascript.info" class="text-input__control" type="text"></div><button type="submit" class="sitetoolbar__find">Search</button></div></form></div></div></div><!-- todo: en variant--><div class="tablet-menu"><div class="tablet-menu__line"><div class="tablet-menu__content"><form action="http://javascript.info/search/" class="tablet-menu-search"><input type="search" name="query" placeholder="Search in the tutorial" required class="tablet-menu-search__input"><button type="submit" name="type" value="articles" class="tablet-menu-search__button">Search</button></form></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><a href="tutorial/map.html" data-action="tutorial-map" class="map"><span class="map__text">Tutorial map</span></a></div></div><!--+e.line--><!--  +e.content--><!--    +b("a").tablet-ebook(href="/ebook")--><!--      +e("span").text Купить учебник--><!--      +e("span").note (EPUB + PDF)--><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="share-icons"><span class="share-icons__title">Share</span><a href="https://twitter.com/share?url=https%3A%2F%2Fjavascript.info%2Fvariables" class="share share_tw"></a><a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fjavascript.info%2Fvariables" class="share share_fb"></a><a href="https://plus.google.com/share?url=https%3A%2F%2Fjavascript.info%2Fvariables" class="share share_gp"></a><a href="https://vkontakte.ru/share.php?url=https%3A%2F%2Fjavascript.info%2Fvariables" class="share share_vk"></a></div></div></div></div><progress data-sticky value="7" max="67" data-tooltip="Lesson 7 of 67" class="tutorial-progress"></progress></div><div class="page page_sidebar_on"><script>if(localStorage.noSidebar){document.querySelector(".page").classList.remove("page_sidebar_on");var pageWrapper=document.querySelector(".page-wrapper");pageWrapper&&pageWrapper.classList.remove("page-wrapper_sidebar_on")}setTimeout(function(){document.querySelector(".page").classList.add("page_sidebar-animation-on")},0);</script><div class="page__inner"><main class="main main_width-limit"><header class="main__header"><ol class="breadcrumbs"><li itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemref="breadcrumb-1" class="breadcrumbs__item breadcrumbs__item_home"><a href="index.html" itemprop="url" class="breadcrumbs__link"><span itemprop="title" class="breadcrumbs__hidden-text">Учебник</span></a></li><li id="breadcrumb-1" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemref="breadcrumb-2" itemprop="child" class="breadcrumbs__item"><a href="js.html" itemprop="url" class="breadcrumbs__link"><span itemprop="title">The JavaScript language</span></a></li><li id="breadcrumb-2" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemprop="child" class="breadcrumbs__item"><a href="first-steps.html" itemprop="url" class="breadcrumbs__link"><span itemprop="title">JavaScript Fundamentals</span></a></li></ol><h1 class="main__header-title">Variables</h1></header><div class="content"><article itemscope itemtype="http://schema.org/TechArticle"><meta itemprop="name" content="Variables"><div itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="email" content="iliakan@gmail.com"><meta itemprop="name" content="Ilya Kantor"></div><div itemprop="articleBody"><p>Most of the time, a JavaScript application needs to work with information. Here are 2 examples:</p>
+<ol>
+<li>An online-shop – the information might include goods being sold and a shopping cart.</li>
+<li>A chat application – the information might include users, messages, and much more.</li>
+</ol>
+<p>Variables are used to store this information.</p>
+<cut>
+<h2><a class="main__anchor" name="a-variable" href="#a-variable">A variable</a></h2><p>A <a href="https://en.wikipedia.org/wiki/Variable_(computer_science)">variable</a> is a “named storage” for data. We can use variables to store goodies, visitors and other data.</p>
+<p>To create a variable in JavaScript, we need to use the <code>let</code> keyword.</p>
+<p>The statement below creates (in other words: <em>declares</em> or <em>defines</em>) a variable with the name “message”:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let message;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Now we can put some data into it by using the assignment operator <code>=</code>:</p>
+<div data-trusted="1" class="code-example" data-highlight-block="2-2">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let message;
+
+message = 'Hello'; // store the string</code></pre>
+        </div>
+      </div>
+      
+      </div><p>The string is now saved into the memory area associated with the variable. We can access it using the variable name:</p>
+<div data-trusted="1" class="code-example" data-highlight-block="3-3">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let message;
+message = 'Hello!';
+
+alert(message); // shows the variable content</code></pre>
+        </div>
+      </div>
+      
+      </div><p>To be concise we can merge the variable declaration and assignment into a single line:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let message = 'Hello!'; // define the variable and assign the value
+
+alert(message); // Hello!</code></pre>
+        </div>
+      </div>
+      
+      </div><p>We can also declare multiple variables in one line:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let user = 'John', age = 25, message = 'Hello';</code></pre>
+        </div>
+      </div>
+      
+      </div><p>That might seem shorter, but it’s not recommended. For the sake of better readability, please use a single line per variable.</p>
+<p>The multiline variant is a bit longer, but easier to read:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let user = 'John';
+let age = 25;
+let message = 'Hello';</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Some people also write many variables like that:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let user = 'John',
+  age = 25,
+  message = 'Hello';</code></pre>
+        </div>
+      </div>
+      
+      </div><p>…Or even in the “comma-first” style:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let user = 'John'
+  , age = 25
+  , message = 'Hello';</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Technically, all these variants do the same. So, it’s a matter of personal taste and aesthetics.</p>
+<div class="important important_smart">
+            <div class="important__header"><span class="important__type"><code>var</code> instead of <code>let</code></span></div>
+            <div class="important__content"><p>In older scripts you may also find another keyword: <code>var</code> instead of <code>let</code>:</p>
+<div data-trusted="1" class="code-example" data-highlight-inline="0:0-3">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">var message = 'Hello';</code></pre>
+        </div>
+      </div>
+      
+      </div><p>The <code>var</code> keyword is <em>almost</em> the same as <code>let</code>. It also declares a variable, but in a slightly different, “old-school” fashion.</p>
+<p>There are subtle differences between <code>let</code> and <code>var</code>, but they do not matter for us yet. We’ll cover them in detail later, in the chapter <a href="var.html">The old &quot;var&quot;</a>.</p>
+</div></div>
+<h2><a class="main__anchor" name="a-real-life-analogy" href="#a-real-life-analogy">A real-life analogy</a></h2><p>We can easily grasp the concept of a “variable” if we imagine it as a “box” for data, with a uniquely-named sticker on it.</p>
+<p>For instance, the variable <code>message</code> can be imagined as a box labelled <code>&quot;message&quot;</code> with the value <code>&quot;Hello!&quot;</code> in it:</p>
+<figure><div class="image" style="width:148px">
+      <div class="image__ratio" style="padding-top:86.48648648648648%"></div>
+      <img src="article/variables/variable.png" alt="" width="148" height="128" class="image__image">
+      </div></figure><p>We can put any value into the box.</p>
+<p>Also we can change it. The value can be changed as many times as needed:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let message;
+
+message = 'Hello!';
+
+message = 'World!'; // value changed
+
+alert(message);</code></pre>
+        </div>
+      </div>
+      
+      </div><p>When the value is changed, the old data is removed from the variable:</p>
+<figure><div class="image" style="width:379px">
+      <div class="image__ratio" style="padding-top:46.17414248021108%"></div>
+      <img src="article/variables/variable-change.png" alt="" width="379" height="175" class="image__image">
+      </div></figure><p>We can also declare two variables and copy data from one into the other.</p>
+<div data-trusted="1" class="code-example" data-highlight-block="4-5">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let hello = 'Hello world!';
+
+let message;
+
+// copy 'Hello world' from hello into message
+message = hello;
+
+// now two variables hold the same data
+alert(hello); // Hello world!
+alert(message); // Hello world!</code></pre>
+        </div>
+      </div>
+      
+      </div><div class="important important_smart">
+            <div class="important__header"><span class="important__type">Functional languages</span></div>
+            <div class="important__content"><p>It may be interesting to know that there also exist <a href="https://en.wikipedia.org/wiki/Functional_programming">functional</a> programming languages that forbid changing a variable value. For example, <a href="http://www.scala-lang.org/">Scala</a> or <a href="http://www.erlang.org/">Erlang</a>.</p>
+<p>In such languages, once the value is stored “in the box”, it’s there forever. If we need to store something else, the language forces us to create a new box (declare a new variable). We can’t reuse the old one.</p>
+<p>Though it may seem a little bit odd at first sight, these languages are quite capable of serious development. More than that, there are areas like parallel computations where this limitation confers certain benefits. Studying such a language (even if not planning to use it soon) is recommended to broaden the mind.</p>
+</div></div>
+<h2><a class="main__anchor" name="variable-naming" href="#variable-naming">Variable naming</a></h2><p>There are two limitations for a variable name in JavaScript:</p>
+<ol>
+<li>The name must contain only letters, digits, symbols <code>$</code> and <code>_</code>.</li>
+<li>The first character must not be a digit.</li>
+</ol>
+<p>Valid names, for instance:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let userName;
+let test123;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>When the name contains multiple words, <a href="https://en.wikipedia.org/wiki/CamelCase">camelCase</a> is commonly used. That is: words go one after another, each word starts with a capital letter: <code>myVeryLongName</code>.</p>
+<p>What’s interesting – the dollar sign <code>'$'</code> and the underscore <code>'_'</code> can also be used in names. They are regular symbols, just like letters, without any special meaning.</p>
+<p>These names are valid:</p>
+<div data-trusted="0" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let $ = 1; // declared a variable with the name &quot;$&quot;
+let _ = 2; // and now a variable with the name &quot;_&quot;
+
+alert($ + _); // 3</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Examples of incorrect variable names:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let 1a; // cannot start with a digit
+
+let my-name; // a hyphen '-' is not allowed in the name</code></pre>
+        </div>
+      </div>
+      
+      </div><div class="important important_smart">
+            <div class="important__header"><span class="important__type">Case matters</span></div>
+            <div class="important__content"><p>Variables named <code>apple</code> and <code>AppLE</code> – are two different variables.</p>
+</div></div>
+<div class="important important_smart">
+            <div class="important__header"><span class="important__type">Non-english letters are allowed, but not recommended</span></div>
+            <div class="important__content"><p>It is possible to use any language, including cyrillic letters or even hieroglyphs, like this:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let имя = '...';
+let 我 = '...';</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Technically, there is no error here, such names are allowed, but there is an international tradition to use English in variable names. Even if we’re writing a small script, it may have a long life ahead. People from other countries may need to read it some time.</p>
+</div></div>
+<div class="important important_warn">
+            <div class="important__header"><span class="important__type">Reserved names</span></div>
+            <div class="important__content"><p>There is a list of reserved words, which cannot be used as variable names, because they are used by the language itself.</p>
+<p>For example, words <code>let</code>, <code>class</code>, <code>return</code>, <code>function</code> are reserved.</p>
+<p>The code below gives a syntax error:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let let = 5; // can't name a variable &quot;let&quot;, error!
+let return = 5; // also can't name it &quot;return&quot;, error!</code></pre>
+        </div>
+      </div>
+      
+      </div></div></div>
+<div class="important important_warn">
+            <div class="important__header"><span class="important__type">An assignment without <code>use strict</code></span></div>
+            <div class="important__content"><p>Normally, we need to define a variable before using it. But in the old times, it was technically possible to create a variable by a mere assignment of the value, without <code>let</code>. This still works now if we don’t put <code>use strict</code>. The behavior is kept for compatibility with old scripts.</p>
+<div data-trusted="1" class="code-example" data-no-strict="1">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">// note: no &quot;use strict&quot; in this example
+
+num = 5; // the variable &quot;num&quot; is created if didn't exist
+
+alert(num); // 5</code></pre>
+        </div>
+      </div>
+      
+      </div><p>That’s a bad practice, it gives an error in the strict mode:</p>
+<div data-trusted="0" class="code-example" data-highlight-block="2-2">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">&quot;use strict&quot;;
+
+num = 5; // error: num is not defined</code></pre>
+        </div>
+      </div>
+      
+      </div></div></div>
+<h2><a class="main__anchor" name="constants" href="#constants">Constants</a></h2><p>To declare a constant (unchanging) variable, one can use <code>const</code> instead of <code>let</code>:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">const myBirthday = '18.04.1982';</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Variables declared using <code>const</code> are called “constants”. They cannot be changed. An attempt to do it would cause an error:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">const myBirthday = '18.04.1982';
+
+myBirthday = '01.01.2001'; // error, can't reassign the constant!</code></pre>
+        </div>
+      </div>
+      
+      </div><p>When a programmer is sure that the variable should never change, he can use <code>const</code> to guarantee it, and also to clearly show that fact to everyone.</p>
+<h3><a class="main__anchor" name="uppercase-constants" href="#uppercase-constants">Uppercase constants</a></h3><p>There is a widespread practice to use constants as aliases for difficult-to-remember values that are known prior to execution.</p>
+<p>Such constants are named using capital letters and underscores.</p>
+<p>Like this:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">const COLOR_RED = &quot;#F00&quot;;
+const COLOR_GREEN = &quot;#0F0&quot;;
+const COLOR_BLUE = &quot;#00F&quot;;
+const COLOR_ORANGE = &quot;#FF7F00&quot;;
+
+// ...when we need to pick a color
+let color = COLOR_ORANGE;
+alert(color); // #FF7F00</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Benefits:</p>
+<ul>
+<li><code>COLOR_ORANGE</code> is much easier to remember than <code>&quot;#FF7F00&quot;</code>.</li>
+<li>It is much easier to mistype in <code>&quot;#FF7F00&quot;</code> than in <code>COLOR_ORANGE</code>.</li>
+<li>When reading the code, <code>COLOR_ORANGE</code> is much more meaningful than <code>#FF7F00</code>.</li>
+</ul>
+<p>When should we use capitals for a constant, and when should we name them normally? Let’s make that clear.</p>
+<p>Being a “constant” just means that the value never changes. But there are constants that are known prior to execution (like a hexadecimal value for red), and there are those that are <em>calculated</em> in run-time, during the execution, but do not change after the assignment.</p>
+<p>For instance:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">const pageLoadTime = /* time taken by a webpage to load */;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>The value of <code>pageLoadTime</code> is not known prior to the page load, so it’s named normally. But it’s still a constant, because it doesn’t change after assignment.</p>
+<p>In other words, capital-named constants are only used as aliases for “hard-coded” values.</p>
+<h2><a class="main__anchor" name="name-things-right" href="#name-things-right">Name things right</a></h2><p>Talking about variables, there’s one more extremely important thing.</p>
+<p>Please name the variables sensibly. Take time to think if needed.</p>
+<p>Variable naming is one of the most important and complex skills in programming. A quick glance at variable names can reveal which code is written by a beginner and which by an experienced developer.</p>
+<p>In a real project, most of the time is spent on modifying and extending the existing code base, rather than writing something completely separate from scratch. And when we return to the code after some time of doing something else, it’s much easier to find information that is well-labelled. Or, in other words, when the variables have good names.</p>
+<p>Please spend some time thinking about the right name for a variable before declaring it. That will repay you a lot.</p>
+<p>Some good-to-follow rules are:</p>
+<ul>
+<li>Use human-readable names like <code>userName</code> or <code>shoppingCart</code>.</li>
+<li>Stay away from abbreviations or short names like <code>a</code>, <code>b</code>, <code>c</code>, unless you really know what you’re doing.</li>
+<li>Make the name maximally descriptive and concise. Examples of bad names are <code>data</code> and <code>value</code>. Such a name says nothing. It is only ok to use them if it’s exceptionally obvious from the context which data or value is meant.</li>
+<li>Agree on terms within your team and in your own mind. If a site visitor is called a “user” then we should name related variables like <code>currentUser</code> or <code>newUser</code>, but not <code>currentVisitor</code> or a <code>newManInTown</code>.</li>
+</ul>
+<p>Sounds simple? Indeed it is, but creating good descriptive-and-concise names in practice is not. Go for it.</p>
+<div class="important important_smart">
+            <div class="important__header"><span class="important__type">Reuse or create?</span></div>
+            <div class="important__content"><p>And the last note. There are some lazy programmers who, instead of declaring a new variable, tend to reuse the existing ones.</p>
+<p>As a result, the variable is like a box where people throw different things without changing the sticker. What is inside it now? Who knows… We need to come closer and check.</p>
+<p>Such a programmer saves a little bit on variable declaration, but loses ten times more on debugging the code.</p>
+<p>An extra variable is good, not evil.</p>
+<p>Modern JavaScript minifiers and browsers optimize code well enough, so it won’t create performance issues. Using different variables for different values can even help the engine to optimize.</p>
+</div></div>
+<h2><a class="main__anchor" name="summary" href="#summary">Summary</a></h2><p>We can declare variables to store data. That can be done using <code>var</code> or <code>let</code> or <code>const</code>.</p>
+<ul>
+<li><code>let</code> – is a modern variable declaration. The code must be in strict mode to use <code>let</code> in Chrome (V8).</li>
+<li><code>var</code> – is an old-school variable declaration. Normally we don’t use it at all, but we’ll cover subtle differences from <code>let</code> in the chapter <a href="var.html">The old &quot;var&quot;</a>, just in case you need them.</li>
+<li><code>const</code> – is like <code>let</code>, but the value of the variable can’t be changed.</li>
+</ul>
+<p>Variables should be named in a way that allows us to easily understand what’s inside.</p>
+</div></article><div class="tasks"><h2 id="tasks" class="tasks__title"><a href="#tasks" class="main__anchor main__anchor_noicon tasks__title-anchor">Tasks</a></h2><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a href="#working-with-variables" name="working-with-variables" class="main__anchor">Working with variables</a></h3><a href="task/hello-variables.html" target="_blank" class="task__open-link"></a></div><div class="task__header-note"><span title="How important is the task, from 1 to 5" class="task__importance">importance: 2</span></div><div class="task__content"><ol>
+<li>Declare two variables: <code>admin</code> and <code>name</code>.</li>
+<li>Assign the value <code>&quot;John&quot;</code> to <code>name</code>.</li>
+<li>Copy the value from <code>name</code> to <code>admin</code>.</li>
+<li>Show the value of <code>admin</code> using <code>alert</code> (must output “John”).</li>
+</ol>
+<button type="button" class="task__solution">solution</button><div class="task__answer"><div class="task__answer-content"><p>In the code below, each line corresponds to the item in the task list.</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let admin, name; // can declare two variables at once
+
+name = &quot;John&quot;;
+
+admin = name;
+
+alert( admin ); // &quot;John&quot;</code></pre>
+        </div>
+      </div>
+      
+      </div></div><button type="button" title="close" class="close-button task__answer-close"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a href="#giving-the-right-name" name="giving-the-right-name" class="main__anchor">Giving the right name</a></h3><a href="task/declare-variables.html" target="_blank" class="task__open-link"></a></div><div class="task__header-note"><span title="How important is the task, from 1 to 5" class="task__importance">importance: 3</span></div><div class="task__content"><ol>
+<li>Create the variable with the name of our planet. How would you name such a variable?</li>
+<li>Create the variable to store the name of the current visitor. How would you name that variable?</li>
+</ol>
+<button type="button" class="task__solution">solution</button><div class="task__answer"><div class="task__answer-content"><p>First, the variable for the name of our planet.</p>
+<p>That’s simple:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let ourPlanetName = &quot;Earth&quot;;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Note, we could use a shorter name <code>planet</code>, but it might be not obvious what planet it refers to. It’s nice to be more verbose. At least until the variable isNotTooLong.</p>
+<p>Second, the name of the current visitor:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let currentUserName = &quot;John&quot;;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Again, we could shorten that to <code>userName</code> if we know for sure that the user is current.</p>
+<p>Modern editors and autocomplete make long variable names easy to write. Don’t save on them. A name with 3 words in it is fine.</p>
+<p>And if your editor does not have proper autocompletion, get <a href="code-editors.html">a new one</a>.</p>
+</div><button type="button" title="close" class="close-button task__answer-close"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a href="#uppercase-const" name="uppercase-const" class="main__anchor">Uppercase const?</a></h3><a href="task/uppercast-constant.html" target="_blank" class="task__open-link"></a></div><div class="task__header-note"><span title="How important is the task, from 1 to 5" class="task__importance">importance: 4</span></div><div class="task__content"><p>Examine the following code:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">const birthday = '18.04.1982';
+
+const age = someCode(birthday);</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Here we have a constant <code>birthday</code> date and the <code>age</code> is calculated from <code>birthday</code> with the help of some code (it is not provided for shortness, and because details don’t matter here).</p>
+<p>Would it be right to use upper case for <code>birthday</code>? For <code>age</code>? Or even for both?</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">const BIRTHDAY = '18.04.1982'; // make uppercase?
+
+const AGE = someCode(BIRTHDAY); // make uppercase?</code></pre>
+        </div>
+      </div>
+      
+      </div><button type="button" class="task__solution">solution</button><div class="task__answer"><div class="task__answer-content"><p>We generally use upper case for constants that are “hard-coded”. Or, in other words, when the value is known prior to execution and directly written into the code.</p>
+<p>In this code, <code>birthday</code> is exactly like that. So we could use the upper case for it.</p>
+<p>In contrast, <code>age</code> is evaluated in run-time. Today we have one age, a year after we’ll have another one. It is constant in a sense that it does not change through the code execution. But it is a bit “less of a constant” than <code>birthday</code>, it is calculated, so we should keep the lower case for it.</p>
+</div><button type="button" title="close" class="close-button task__answer-close"></button></div></div></div></div></div><!--  include /blocks/banner-bottom--><!--if lang == 'en'--><!--  include /blocks/banner-bottom.en--></div><div class="page__nav-wrap"><a href="strict-mode.html" data-tooltip="The modern mode, &quot;use strict&quot;" class="page__nav page__nav_prev"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Previous lesson</span></a><a href="types.html" data-tooltip="Data types" class="page__nav page__nav_next"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Next lesson</span></a></div><div class="article-tablet-foot tablet-only"><div class="article-tablet-foot__layout"><div class="share-icons"><span class="share-icons__title">Share</span><a href="https://twitter.com/share?url=https%3A%2F%2Fjavascript.info%2Fvariables" class="share share_tw"></a><a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fjavascript.info%2Fvariables" class="share share_fb"></a><a href="https://plus.google.com/share?url=https%3A%2F%2Fjavascript.info%2Fvariables" class="share share_gp"></a><a href="https://vkontakte.ru/share.php?url=https%3A%2F%2Fjavascript.info%2Fvariables" class="share share_vk"></a></div><div class="article-tablet-foot__map"><a href="tutorial/map.html" data-action="tutorial-map" class="map"><span class="map__text">Tutorial map</span></a></div></div></div><div id="comments" class="comments"><div class="comments__header"><h2 class="comments__header-title"><a href="#comments" name="comments">Comments</a></h2><div class="comments__read-before"><span class="comments__read-before-link">read this before commenting…</span><div class="comments__read-before-popup"><div class="comments__read-before-popup-i"><ul><li>You're welcome to post additions, questions to the articles and answers to them.</li><li>To insert a few words of code, use the <code>&lt;code&gt;</code> tag, for several lines – use <code>&lt;pre&gt;</code>, for more than 10 lines – use a sandbox (<a href='http://plnkr.co/edit/?p=preview'>plnkr</a>, <a href='http://jsbin.com/'>JSBin</a>, <a href='http://codepen.io/'>codepen</a>…)</li><li>If you can't understand something in the article – please elaborate.</li></ul></div></div></div></div></div><div id="disqus_thread"></div><script>var disqus_config = function() { if (!this.page) this.page = {}; Object.assign(this.page, {"url":"https:\/\/javascript.info\/variables","identifier":"\/variables","title":"Variables"}); };</script><script>var disqus_shortname = "javascriptinfo";</script><script>var disqus_enabled = true;</script></main></div><div class="page__sidebar sidebar sidebar_sticky-footer"><button data-sidebar-toggle class="sidebar__toggle"></button><a href="tutorial/map.html" data-action="tutorial-map" data-tooltip="Tutorial map" class="map"></a><div class="sidebar__inner"><div class="sidebar__content"><div class="sidebar__section"><h4 class="sidebar__section-title">Chapter</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a href="first-steps.html" class="sidebar__link">JavaScript Fundamentals</a></li></ul></nav></div><div class="sidebar__section"><h4 class="sidebar__section-title">Lesson navigation</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a href="#a-variable" class="sidebar__link">A variable</a></li><li class="sidebar__navigation-link"><a href="#a-real-life-analogy" class="sidebar__link">A real-life analogy</a></li><li class="sidebar__navigation-link"><a href="#variable-naming" class="sidebar__link">Variable naming</a></li><li class="sidebar__navigation-link"><a href="#constants" class="sidebar__link">Constants</a></li><li class="sidebar__navigation-link"><a href="#name-things-right" class="sidebar__link">Name things right</a></li><li class="sidebar__navigation-link"><a href="#summary" class="sidebar__link">Summary</a></li></ul></nav></div><div class="sidebar__section"><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a href="#tasks" class="sidebar__link">Tasks (3)</a></li><li class="sidebar__navigation-link"><a href="#comments" class="sidebar__link">Comments</a></li></ul></nav></div><div class="sidebar__section"><div class="sidebar__section-title">Share</div><a href="https://twitter.com/share?url=https%3A%2F%2Fjavascript.info%2Fvariables" class="share share_tw sidebar__share"></a><a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fjavascript.info%2Fvariables" class="share share_fb sidebar__share"></a><a href="https://plus.google.com/share?url=https%3A%2F%2Fjavascript.info%2Fvariables" class="share share_gp sidebar__share"></a></div><div class="sidebar__section"><a href="https://github.com/iliakan/javascript-tutorial-en/tree/master/1-js/02-first-steps/04-variables/article.md" class="sidebar__link">Edit on Github</a></div></div></div></div></div></div><div class="page-footer"><div class="page-footer__left"><ul class="page-footer__list"><li class="page-footer__item">©&nbsp;2007—2017&nbsp; Ilya Kantor</li><li class="page-footer__item"><a href="about.html#contact-us" class="page-footer__link">contact us</a></li><li class="page-footer__item"><a href="about.html" class="page-footer__link">about the project</a></li><li class="page-footer__item"><a href="https://learn.javascript.ru/" class="page-footer__link">RU</a> / EN</li></ul></div><div class="page-footer__right"><ul class="page-footer__list"><li class="page-footer__item">powered by <a rel="nofollow" href="http://nodejs.org/" class="page-footer__link">node.js</a>&nbsp;&amp;&nbsp;<a rel="nofollow" href="http://github.com/iliakan/javascript-tutorial-en" class="page-footer__link">open source</a></li></ul></div></div></body>
+<!-- Mirrored from javascript.info/variables by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 30 Nov 2017 15:27:19 GMT -->
+</html>

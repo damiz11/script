@@ -1,0 +1,279 @@
+<!DOCTYPE html><html lang="en">
+<!-- Mirrored from javascript.info/focus-blur by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 30 Nov 2017 15:30:28 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><script>window.currentUser = null;</script><title itemprop="name">Focusing: focus/blur</title><meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, minimum-scale=1.0"><meta name="apple-mobile-web-app-capable" content="yes"><script>if (window.devicePixelRatio > 1) document.cookie = 'pixelRatio=' + window.devicePixelRatio + ';path=/;expires=Tue, 19 Jan 2038 03:14:07 GMT';</script><link href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700%7COpen+Sans+Condensed:700&amp;subset=latin,latin-ext,cyrillic,cyrillic-ext" rel="stylesheet"><link rel="apple-touch-icon-precomposed" href="img/favicon/apple-touch-icon-precomposed.png"><link rel="canonical" href="focus-blur.html"><meta name="msapplication-TileColor" content="#222A2C"><meta name="msapplication-TileImage" content="/img/favicon/tileicon.png"><!-- favicon the rest--><link rel="icon" href="img/favicon/favicon.png"><meta itemprop="image" content="https://javascript.info/img/site_preview_en_512x512.png"><meta property="og:title" content="Focusing: focus/blur"><meta property="og:image" content="https://javascript.info/img/site_preview_en_1200x630.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="fb:admins" content="100001562528165"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Focusing: focus/blur"><meta name="twitter:site" content="@iliakan"><meta name="twitter:creator" content="@iliakan"><meta name="twitter:image" content="https://javascript.info/img/site_preview_en_512x512.png"><link href="pack/styles.da59a89b28153875791083e4a8c5adb3.css" rel="stylesheet"><link rel="prev" href="form-elements.html"><link rel="next" href="events-change-input.html"><script>window.GA_ID = "UA-2056213-15";</script><script>window.YANDEX_METRIKA_ID = 32184394;</script><script>window.GoogleAnalyticsObject="ga",window.ga=function(){window.ga.q.push(arguments)},window.ga.q=[],window.ga.l=Date.now(),ga("create",GA_ID,"auto"),window.currentUser&&ga("set","&uid",currentUser.id),window.addEventListener("error",function(e){var r=(e.filename||e.errorUrl)+": "+(e.lineno||e.errorLine),n=e.stack||e.error&&e.error.stack;ga("send","exception",{exDescription:e.message+" "+r+" "+n,exFatal:!0})});</script><script src="https://www.google-analytics.com/analytics.js" async></script><script>ga('send', 'pageview');</script><script>window.metrika={reachGoal:function(){}},window.yandex_metrika_callbacks=[function(){try{window.metrika=new Ya.Metrika({id:YANDEX_METRIKA_ID,webvisor:!0,clickmap:!0,params:{user:window.currentUser&&window.currentUser.id}}),metrika.trackLinks({delay:150}),window.addEventListener("error",function(r){window.metrika.reachGoal("JSERROR",{src:(r.filename||r.errorUrl)+": "+(r.lineno||r.errorLine),stack:r.stack||r.error&&r.error.stack,message:r.message})})}catch(r){}}];</script><script src="http://mc.yandex.ru/metrika/watch.js" async></script><script>window.RECAPTCHA_ID = "6Lf9NyETAAAAACZlg-a9Us2SxvYbeVC1ROWaWv4O";</script><script src="initc4ca.js?1"></script><script src="pack/head.688d4fe7c4cf54e23737.js" defer></script><meta property="og:title" content="Focusing: focus/blur"><meta property="og:type" content="article"><script src="pack/tutorial.688d4fe7c4cf54e23737.js" defer></script><script src="pack/footer.688d4fe7c4cf54e23737.js" defer></script></head><body class="no-icons"><script>window.fontTest();</script><div class="page-wrapper page-wrapper_sidebar_on"><!--[if lt IE 10]><div style="color:red;text-align:center">Sorry, IE&lt;10 is not supported, please use a newer browser.</div><![endif]--><div class="sitetoolbar sitetoolbar_tutorial"><!-- include ./notification-stripe--><div class="sitetoolbar__content"><div class="sitetoolbar__logo-wrap"><a href="index.html" class="sitetoolbar__link sitetoolbar__link_logo"><img src="img/sitetoolbar__logo_en.svg" width="200" class="sitetoolbar__logo sitetoolbar__logo_normal" alt=""><img src="img/sitetoolbar__logo_small_en.svg" width="70" class="sitetoolbar__logo sitetoolbar__logo_small" alt=""><script>Array.prototype.forEach.call(document.querySelectorAll("img.sitetoolbar__logo"),function(e){var t=document.createElement("object");t.type="image/svg+xml",t.className=e.className,t.style.cssText="left:0;top:0;position:absolute",t.onload=function(){t.onload=null,e.style.visibility="hidden"},t.data=e.src,e.parentNode.insertBefore(t,e)});</script></a></div><div class="sitetoolbar__nav-toggle-wrap"><button type="button" class="sitetoolbar__nav-toggle"></button></div><nav class="sitetoolbar__sections"><ul class="sitetoolbar__sections-list"></ul></nav><div class="sitetoolbar__book-wrap"><a href="ebook.html" class="buy-book-button"><span class="buy-book-button__extra-text">Buy</span>EPUB/PDF</a></div><div class="sitetoolbar__login-wrap"><button data-action-login class="sitetoolbar__login sitetoolbar__login_unready"></button></div><div class="sitetoolbar__search-wrap"><div class="sitetoolbar__search-content"><form method="GET" action="http://javascript.info/search" class="sitetoolbar__search"><button type="button" class="sitetoolbar__search-toggle"></button><div class="sitetoolbar__search-input"><div class="text-input"><input name="query" placeholder="Search on Javascript.info" class="text-input__control" type="text"></div><button type="submit" class="sitetoolbar__find">Search</button></div></form></div></div></div><!-- todo: en variant--><div class="tablet-menu"><div class="tablet-menu__line"><div class="tablet-menu__content"><form action="http://javascript.info/search/" class="tablet-menu-search"><input type="search" name="query" placeholder="Search in the tutorial" required class="tablet-menu-search__input"><button type="submit" name="type" value="articles" class="tablet-menu-search__button">Search</button></form></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><a href="tutorial/map.html" data-action="tutorial-map" class="map"><span class="map__text">Tutorial map</span></a></div></div><!--+e.line--><!--  +e.content--><!--    +b("a").tablet-ebook(href="/ebook")--><!--      +e("span").text Купить учебник--><!--      +e("span").note (EPUB + PDF)--><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="share-icons"><span class="share-icons__title">Share</span><a href="https://twitter.com/share?url=https%3A%2F%2Fjavascript.info%2Ffocus-blur" class="share share_tw"></a><a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fjavascript.info%2Ffocus-blur" class="share share_fb"></a><a href="https://plus.google.com/share?url=https%3A%2F%2Fjavascript.info%2Ffocus-blur" class="share share_gp"></a><a href="https://vkontakte.ru/share.php?url=https%3A%2F%2Fjavascript.info%2Ffocus-blur" class="share share_vk"></a></div></div></div></div><progress data-sticky value="25" max="27" data-tooltip="Lesson 25 of 27" class="tutorial-progress"></progress></div><div class="page page_sidebar_on"><script>if(localStorage.noSidebar){document.querySelector(".page").classList.remove("page_sidebar_on");var pageWrapper=document.querySelector(".page-wrapper");pageWrapper&&pageWrapper.classList.remove("page-wrapper_sidebar_on")}setTimeout(function(){document.querySelector(".page").classList.add("page_sidebar-animation-on")},0);</script><div class="page__inner"><main class="main main_width-limit"><header class="main__header"><ol class="breadcrumbs"><li itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemref="breadcrumb-1" class="breadcrumbs__item breadcrumbs__item_home"><a href="index.html" itemprop="url" class="breadcrumbs__link"><span itemprop="title" class="breadcrumbs__hidden-text">Учебник</span></a></li><li id="breadcrumb-1" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemref="breadcrumb-2" itemprop="child" class="breadcrumbs__item"><a href="ui.html" itemprop="url" class="breadcrumbs__link"><span itemprop="title">Browser: Document, Events, Interfaces</span></a></li><li id="breadcrumb-2" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemprop="child" class="breadcrumbs__item"><a href="forms-controls.html" itemprop="url" class="breadcrumbs__link"><span itemprop="title">Forms, controls</span></a></li></ol><h1 class="main__header-title">Focusing: focus/blur</h1></header><div class="content"><article itemscope itemtype="http://schema.org/TechArticle"><meta itemprop="name" content="Focusing: focus/blur"><div itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="email" content="iliakan@gmail.com"><meta itemprop="name" content="Ilya Kantor"></div><div itemprop="articleBody"><p>An element receives a focus when the user either clicks on it or uses the <kbd class="shortcut">Tab</kbd> key on the keyboard. There’s also an <code>autofocus</code> HTML attribute that puts the focus into an element by default when a page loads and other means of getting a focus.</p>
+<p>Focusing generally means: “prepare to accept the data here”, so that’s the moment when we can run the code to initialize or load something.</p>
+<p>The moment of losing the focus (“blur”) can be even more important. That’s when a user clicks somewhere else or presses <kbd class="shortcut">Tab</kbd> to go to the next form field, or there are other means as well.</p>
+<p>Losing the focus generally means: “the data has been entered”, so we can run the code to check it or even to save it to the server and so on.</p>
+<p>There are important peculiarities when working with focus events. We’ll do the best to cover them here.</p>
+<cut>
+<h2><a class="main__anchor" name="events-focus-blur" href="#events-focus-blur">Events focus/blur</a></h2><p>The <code>focus</code> event is called on focusing, and <code>blur</code> – when the element loses the focus.</p>
+<p>Let’s use them for validation of an input field.</p>
+<p>In the example below:</p>
+<ul>
+<li>The <code>blur</code> handler checks if the field the email is entered, and if not – shows an error.</li>
+<li>The <code>focus</code> handler hides the error message (on <code>blur</code> it will be checked again):</li>
+</ul>
+<div data-trusted="1" class="code-example" data-demo-height="60" data-autorun="true" data-highlight-inline="10:0-12,17:0-13">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="show" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;style&gt;
+  .invalid { border-color: red; }
+  #error { color: red }
+&lt;/style&gt;
+
+Your email please: &lt;input type=&quot;email&quot; id=&quot;input&quot;&gt;
+
+&lt;div id=&quot;error&quot;&gt;&lt;/div&gt;
+
+&lt;script&gt;
+input.onblur = function() {
+  if (!input.value.includes('@')) { // not email
+    input.classList.add('invalid');
+    error.innerHTML = 'Please enter a correct email.'
+  }
+};
+
+input.onfocus = function() {
+  if (this.classList.contains('invalid')) {
+    // remove the &quot;error&quot; indication, because the user wants to re-enter something
+    this.classList.remove('invalid');
+    error.innerHTML = &quot;&quot;;
+  }
+};
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+      <div class="code-result code-example__result">
+        <iframe
+          class="code-result__iframe"
+          name="code-result-5i72io"
+          style="height:60px"
+          src="about:blank"></iframe>
+      </div>
+      </div><p>Modern HTML allows to do many validations using input attributes: <code>required</code>, <code>pattern</code> and so on. And sometimes they are just what we need. JavaScript can be used when we want more flexibility. Also we could automatically send the changed value on the server if it’s correct.</p>
+<h2><a class="main__anchor" name="methods-focus-blur" href="#methods-focus-blur">Methods focus/blur</a></h2><p>Methods <code>elem.focus()</code> and <code>elem.blur()</code> set/unset the focus on the element.</p>
+<p>For instance, let’s make the visitor unable to leave the input if the value is invalid:</p>
+<div data-trusted="1" class="code-example" data-demo-height="80" data-autorun="true" data-highlight-block="14-15">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="show" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;style&gt;
+  .error {
+    background: red;
+  }
+&lt;/style&gt;
+
+Your email please: &lt;input type=&quot;email&quot; id=&quot;input&quot;&gt;
+&lt;input type=&quot;text&quot; style=&quot;width:220px&quot; placeholder=&quot;make email invalid and try to focus here&quot;&gt;
+
+&lt;script&gt;
+  input.onblur = function() {
+    if (!this.value.includes('@')) { // not email
+      // show the error
+      this.classList.add(&quot;error&quot;);
+      // ...and put the focus back
+      input.focus();
+    } else {
+      this.classList.remove(&quot;error&quot;);
+    }
+  };
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+      <div class="code-result code-example__result">
+        <iframe
+          class="code-result__iframe"
+          name="code-result-9q1z24"
+          style="height:80px"
+          src="about:blank"></iframe>
+      </div>
+      </div><p>It works in all browsers except Firefox (<a href="https://bugzilla.mozilla.org/show_bug.cgi?id=53579">bug</a>).</p>
+<p>If we enter something into the input and then try to use <kbd class="shortcut">Tab</kbd> or click away from the <code>&lt;input&gt;</code>, then <code>onblur</code> returns the focus back.</p>
+<p>Please note that we can’t “prevent losing focus” by calling <code>event.preventDefault()</code> in <code>onblur</code>, because <code>onblur</code> works <em>after</em> the element lost the focus.</p>
+<div class="important important_warn">
+            <div class="important__header"><span class="important__type">JavaScript-initiated focus loss</span></div>
+            <div class="important__content"><p>A focus loss can occur for many reasons.</p>
+<p>One of them is when the visitor clicks somewhere else. But also JavaScript itself may cause it, for instance:</p>
+<ul>
+<li>An <code>alert</code> moves focus to itself, so it causes the focus loss at the element (<code>blur</code> event), and when the <code>alert</code> is dismissed, the focus comes back (<code>focus</code> event).</li>
+<li>If an element is removed from DOM, then it also causes the focus loss. If it is reinserted later, then the focus doesn’t return.</li>
+</ul>
+<p>These features sometimes cause <code>focus/blur</code> handlers to misbehave – to trigger when they are not needed.</p>
+<p>The best recipe is to be careful when using these events. If we want to track user-initiated focus-loss, then we should evade causing it by ourselves.</p>
+</div></div>
+<h2><a class="main__anchor" name="allow-focusing-on-any-element-tabindex" href="#allow-focusing-on-any-element-tabindex">Allow focusing on any element: tabindex</a></h2><p>By default many elements do not support focusing.</p>
+<p>The list varies between browsers, but one thing is always correct: <code>focus/blur</code> support is guaranteed for elements that a visitor can interact with: <code>&lt;button&gt;</code>, <code>&lt;input&gt;</code>, <code>&lt;select&gt;</code>, <code>&lt;a&gt;</code> and so on.</p>
+<p>From the other hand, elements that exist to format something like <code>&lt;div&gt;</code>, <code>&lt;span&gt;</code>, <code>&lt;table&gt;</code> – are unfocusable by default. The method <code>elem.focus()</code> doesn’t work on them, and <code>focus/blur</code> events are never triggered.</p>
+<p>This can be changed using HTML-attribute <code>tabindex</code>.</p>
+<p>The purpose of this attribute is to specify the order number of the element when <kbd class="shortcut">Tab</kbd> is used to switch between them.</p>
+<p>That is: if we have two elements, the first has <code>tabindex=&quot;1&quot;</code>, and the second has <code>tabindex=&quot;2&quot;</code>, then pressing <kbd class="shortcut">Tab</kbd> while in the first element – moves us to the second one.</p>
+<p>There are two special values:</p>
+<ul>
+<li><code>tabindex=&quot;0&quot;</code> makes the element the last one.</li>
+<li><code>tabindex=&quot;-1&quot;</code> means that <kbd class="shortcut">Tab</kbd> should ignore that element.</li>
+</ul>
+<p><strong>Any element supports focusing if it has <code>tabindex</code>.</strong></p>
+<p>For instance, here’s a list. Click the first item and press <kbd class="shortcut">Tab</kbd>:</p>
+<div data-trusted="1" class="code-example" data-autorun="true">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">Click the first item and press Tab. Keep track of the order. Please note that many subsequent Tabs can move the focus out of the iframe with the example.
+&lt;ul&gt;
+  &lt;li tabindex=&quot;1&quot;&gt;One&lt;/li&gt;
+  &lt;li tabindex=&quot;0&quot;&gt;Zero&lt;/li&gt;
+  &lt;li tabindex=&quot;2&quot;&gt;Two&lt;/li&gt;
+  &lt;li tabindex=&quot;-1&quot;&gt;Minus one&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;style&gt;
+  li { cursor: pointer; }
+  :focus { outline: 1px dashed green; }
+&lt;/style&gt;</code></pre>
+        </div>
+      </div>
+      <div class="code-result code-example__result">
+        <iframe
+          class="code-result__iframe"
+          name="code-result-cie1o3"
+          style="height:200px"
+          src="about:blank"></iframe>
+      </div>
+      </div><p>The order is like this: <code>1 - 2 - 0</code> (zero is always the last). Normally, <code>&lt;li&gt;</code> does not support focusing, but <code>tabindex</code> full enables it, along with events and styling with <code>:focus</code>.</p>
+<div class="important important_smart">
+            <div class="important__header"><span class="important__type"><code>elem.tabIndex</code> works too</span></div>
+            <div class="important__content"><p>We can add <code>tabindex</code> from JavaScript by using the <code>elem.tabIndex</code> property. That has the same effect.</p>
+</div></div>
+<h2><a class="main__anchor" name="delegation-focusin-focusout" href="#delegation-focusin-focusout">Delegation: focusin/focusout</a></h2><p>Events <code>focus</code> and <code>blur</code> do not bubble.</p>
+<p>For instance, we can’t put <code>onfocus</code> on the <code>&lt;form&gt;</code> to highlight it, like this:</p>
+<div data-trusted="1" class="code-example" data-demo-height="80" data-autorun="true" data-highlight-inline="1:6-40">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;!-- on focusing in the form -- add the class --&gt;
+&lt;form onfocus=&quot;this.className='focused'&quot;&gt;
+  &lt;input type=&quot;text&quot; name=&quot;name&quot; value=&quot;Name&quot;&gt;
+  &lt;input type=&quot;text&quot; name=&quot;surname&quot; value=&quot;Surname&quot;&gt;
+&lt;/form&gt;
+
+&lt;style&gt; .focused { outline: 1px solid red; } &lt;/style&gt;</code></pre>
+        </div>
+      </div>
+      <div class="code-result code-example__result">
+        <iframe
+          class="code-result__iframe"
+          name="code-result-4ng8qv"
+          style="height:80px"
+          src="about:blank"></iframe>
+      </div>
+      </div><p>The example above doesn’t work, because when user focuses on an <code>&lt;input&gt;</code>, the <code>focus</code> event triggers on that input only. It doesn’t bubble up. So <code>form.onfocus</code> never triggers.</p>
+<p>There are two solutions.</p>
+<p>First, there’s a funny historical feature: <code>focus/blur</code> do not bubble up, but propagate down on the capturing phase.</p>
+<p>This will work:</p>
+<div data-trusted="1" class="code-example" data-demo-height="80" data-autorun="true" data-highlight-block="8-10">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;form id=&quot;form&quot;&gt;
+  &lt;input type=&quot;text&quot; name=&quot;name&quot; value=&quot;Name&quot;&gt;
+  &lt;input type=&quot;text&quot; name=&quot;surname&quot; value=&quot;Surname&quot;&gt;
+&lt;/form&gt;
+
+&lt;style&gt; .focused { outline: 1px solid red; } &lt;/style&gt;
+
+&lt;script&gt;
+  // put the handler on capturing phase (last argument true)
+  form.addEventListener(&quot;focus&quot;, () =&gt; form.classList.add('focused'), true);
+  form.addEventListener(&quot;blur&quot;, () =&gt; form.classList.remove('focused'), true);
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+      <div class="code-result code-example__result">
+        <iframe
+          class="code-result__iframe"
+          name="code-result-w18g5"
+          style="height:80px"
+          src="about:blank"></iframe>
+      </div>
+      </div><p>Second, there are <code>focusin</code> and <code>focusout</code> events – exactly the same as <code>focus/blur</code>, but they bubble.</p>
+<p>Note that they must be assigned using <code>elem.addEventListener</code>, not <code>on&lt;event&gt;</code>.</p>
+<p>So here’s another working variant:</p>
+<div data-trusted="1" class="code-example" data-demo-height="80" data-autorun="true" data-highlight-block="8-10">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;form id=&quot;form&quot;&gt;
+  &lt;input type=&quot;text&quot; name=&quot;name&quot; value=&quot;Name&quot;&gt;
+  &lt;input type=&quot;text&quot; name=&quot;surname&quot; value=&quot;Surname&quot;&gt;
+&lt;/form&gt;
+
+&lt;style&gt; .focused { outline: 1px solid red; } &lt;/style&gt;
+
+&lt;script&gt;
+  // put the handler on capturing phase (last argument true)
+  form.addEventListener(&quot;focusin&quot;, () =&gt; form.classList.add('focused'));
+  form.addEventListener(&quot;focusout&quot;, () =&gt; form.classList.remove('focused'));
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+      <div class="code-result code-example__result">
+        <iframe
+          class="code-result__iframe"
+          name="code-result-1bv366"
+          style="height:80px"
+          src="about:blank"></iframe>
+      </div>
+      </div><h2><a class="main__anchor" name="summary" href="#summary">Summary</a></h2><p>Events <code>focus</code> and <code>blur</code> trigger on focusing/losing focus on the element.</p>
+<p>Their specials are:</p>
+<ul>
+<li>They do not bubble. Can use capturing state instead or <code>focusin/focusout</code>.</li>
+<li>Most elements do not support focus by default. Use <code>tabindex</code> to make anything focusable.</li>
+</ul>
+<p>The current focused element is available as <code>document.activeElement</code>.</p>
+</div></article><div class="tasks"><h2 id="tasks" class="tasks__title"><a href="#tasks" class="main__anchor main__anchor_noicon tasks__title-anchor">Tasks</a></h2><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a href="#editable-div" name="editable-div" class="main__anchor">Editable div</a></h3><a href="task/editable-div.html" target="_blank" class="task__open-link"></a></div><div class="task__header-note"><span title="How important is the task, from 1 to 5" class="task__importance">importance: 5</span></div><div class="task__content"><p>Create a <code>&lt;div&gt;</code> that turns into <code>&lt;textarea&gt;</code> when clicked.</p>
+<p>The textarea allows to edit the HTML in the <code>&lt;div&gt;</code>.</p>
+<p>When the user presses <kbd class="shortcut">Enter</kbd> or it looses focus, the <code>&lt;textarea&gt;</code> turns back into <code>&lt;div&gt;</code>, and its content becomes HTML in <code>&lt;div&gt;</code>.</p>
+<p><a href="https://en.js.cx/task/editable-div/solution/" target="blank">Demo in new window</a></p><p><a href="http://plnkr.co/edit/wwQw0pM1ApidAm6NWHWQ?p=preview" target="_blank" data-plunk-id="wwQw0pM1ApidAm6NWHWQ">Open the sandbox for the task.</a></p><button type="button" class="task__solution">solution</button><div class="task__answer"><div class="task__answer-content"><p><a href="http://plnkr.co/edit/OVnraEnofozTuBGWgysP?p=preview" target="_blank" data-plunk-id="OVnraEnofozTuBGWgysP">Open the solution in the sandbox.</a></p></div><button type="button" title="close" class="close-button task__answer-close"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a href="#edit-td-on-click" name="edit-td-on-click" class="main__anchor">Edit TD on click</a></h3><a href="task/edit-td-click.html" target="_blank" class="task__open-link"></a></div><div class="task__header-note"><span title="How important is the task, from 1 to 5" class="task__importance">importance: 5</span></div><div class="task__content"><p>Make table cells editable on click.</p>
+<ul>
+<li>On click – the cell should became “editable” (textarea appears inside), we can change HTML. There should be no resize, all geometry should remain the same.</li>
+<li>Buttons OK and CANCEL appear below the cell to finish/cancel the editing.</li>
+<li>Only one cell may be editable at a moment. While a <code>&lt;td&gt;</code> is in “edit mode”, clicks on other cells are ignored.</li>
+<li>The table may have many cells. Use event delegation.</li>
+</ul>
+<p>The demo:</p>
+<div class="code-result">
+    <div class="code-result__toolbar toolbar"></div>
+    <iframe class="code-result__iframe" data-trusted="1" style="height:400px" src="https://en.js.cx/task/edit-td-click/solution/"></iframe>
+  </div><p><a href="http://plnkr.co/edit/OJ6xFJOY0HzrsJMVRUna?p=preview" target="_blank" data-plunk-id="OJ6xFJOY0HzrsJMVRUna">Open the sandbox for the task.</a></p><button type="button" class="task__solution">solution</button><div class="task__answer"><div class="task__answer-content"><ol>
+<li>On click – replace <code>innerHTML</code> of the cell by <code>&lt;textarea&gt;</code> with same sizes and no border. Can use JavaScript or CSS to set the right size.</li>
+<li>Set <code>textarea.value</code> to <code>td.innerHTML</code>.</li>
+<li>Focus on the textarea.</li>
+<li>Show buttons OK/CANCEL under the cell, handle clicks on them.</li>
+</ol>
+<p><a href="http://plnkr.co/edit/EX2G2qMVFPWyI2Xchutm?p=preview" target="_blank" data-plunk-id="EX2G2qMVFPWyI2Xchutm">Open the solution in the sandbox.</a></p></div><button type="button" title="close" class="close-button task__answer-close"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a href="#keyboard-driven-mouse" name="keyboard-driven-mouse" class="main__anchor">Keyboard-driven mouse</a></h3><a href="task/keyboard-mouse.html" target="_blank" class="task__open-link"></a></div><div class="task__header-note"><span title="How important is the task, from 1 to 5" class="task__importance">importance: 4</span></div><div class="task__content"><p>Focus on the mouse. Then use arrow keys to move it:</p>
+<p><a href="https://en.js.cx/task/keyboard-mouse/solution/" target="blank">Demo in new window</a></p><p>P.S. Don’t put event handlers anywhere except the <code>#mouse</code> element.
+P.P.S. Don’t modify HTML/CSS, the approach should be generic and work with any element.</p>
+<p><a href="http://plnkr.co/edit/vBbAOCseNGfEcX4mdDBr?p=preview" target="_blank" data-plunk-id="vBbAOCseNGfEcX4mdDBr">Open the sandbox for the task.</a></p><button type="button" class="task__solution">solution</button><div class="task__answer"><div class="task__answer-content"><p>We can use <code>mouse.onclick</code> to handle the click and make the mouse “moveable” with <code>position:fixed</code>, then then <code>mouse.onkeydown</code> to handle arrow keys.</p>
+<p>The only pitfall is that <code>keydown</code> only triggers on elements with focus. So we need to add <code>tabindex</code> to the element.  As we’re forbidden to change HTML, we can use <code>mouse.tabIndex</code> property for that.</p>
+<p>P.S. We also can replace <code>mouse.onclick</code> with <code>mouse.onfocus</code>.</p>
+<p><a href="http://plnkr.co/edit/H3LCTS0TVc2qwE5WRZm7?p=preview" target="_blank" data-plunk-id="H3LCTS0TVc2qwE5WRZm7">Open the solution in the sandbox.</a></p></div><button type="button" title="close" class="close-button task__answer-close"></button></div></div></div></div></div><!--  include /blocks/banner-bottom--><!--if lang == 'en'--><!--  include /blocks/banner-bottom.en--></div><div class="page__nav-wrap"><a href="form-elements.html" data-tooltip="Form properties and methods" class="page__nav page__nav_prev"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Previous lesson</span></a><a href="events-change-input.html" data-tooltip="Events: change, input, cut, copy, paste" class="page__nav page__nav_next"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Next lesson</span></a></div><div class="article-tablet-foot tablet-only"><div class="article-tablet-foot__layout"><div class="share-icons"><span class="share-icons__title">Share</span><a href="https://twitter.com/share?url=https%3A%2F%2Fjavascript.info%2Ffocus-blur" class="share share_tw"></a><a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fjavascript.info%2Ffocus-blur" class="share share_fb"></a><a href="https://plus.google.com/share?url=https%3A%2F%2Fjavascript.info%2Ffocus-blur" class="share share_gp"></a><a href="https://vkontakte.ru/share.php?url=https%3A%2F%2Fjavascript.info%2Ffocus-blur" class="share share_vk"></a></div><div class="article-tablet-foot__map"><a href="tutorial/map.html" data-action="tutorial-map" class="map"><span class="map__text">Tutorial map</span></a></div></div></div><div id="comments" class="comments"><div class="comments__header"><h2 class="comments__header-title"><a href="#comments" name="comments">Comments</a></h2><div class="comments__read-before"><span class="comments__read-before-link">read this before commenting…</span><div class="comments__read-before-popup"><div class="comments__read-before-popup-i"><ul><li>You're welcome to post additions, questions to the articles and answers to them.</li><li>To insert a few words of code, use the <code>&lt;code&gt;</code> tag, for several lines – use <code>&lt;pre&gt;</code>, for more than 10 lines – use a sandbox (<a href='http://plnkr.co/edit/?p=preview'>plnkr</a>, <a href='http://jsbin.com/'>JSBin</a>, <a href='http://codepen.io/'>codepen</a>…)</li><li>If you can't understand something in the article – please elaborate.</li></ul></div></div></div></div></div><div id="disqus_thread"></div><script>var disqus_config = function() { if (!this.page) this.page = {}; Object.assign(this.page, {"url":"https:\/\/javascript.info\/focus-blur","identifier":"\/focus-blur","title":"Focusing: focus\/blur"}); };</script><script>var disqus_shortname = "javascriptinfo";</script><script>var disqus_enabled = true;</script></main></div><div class="page__sidebar sidebar sidebar_sticky-footer"><button data-sidebar-toggle class="sidebar__toggle"></button><a href="tutorial/map.html" data-action="tutorial-map" data-tooltip="Tutorial map" class="map"></a><div class="sidebar__inner"><div class="sidebar__content"><div class="sidebar__section"><h4 class="sidebar__section-title">Chapter</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a href="forms-controls.html" class="sidebar__link">Forms, controls</a></li></ul></nav></div><div class="sidebar__section"><h4 class="sidebar__section-title">Lesson navigation</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a href="#events-focus-blur" class="sidebar__link">Events focus/blur</a></li><li class="sidebar__navigation-link"><a href="#methods-focus-blur" class="sidebar__link">Methods focus/blur</a></li><li class="sidebar__navigation-link"><a href="#allow-focusing-on-any-element-tabindex" class="sidebar__link">Allow focusing on any element: tabindex</a></li><li class="sidebar__navigation-link"><a href="#delegation-focusin-focusout" class="sidebar__link">Delegation: focusin/focusout</a></li><li class="sidebar__navigation-link"><a href="#summary" class="sidebar__link">Summary</a></li></ul></nav></div><div class="sidebar__section"><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a href="#tasks" class="sidebar__link">Tasks (3)</a></li><li class="sidebar__navigation-link"><a href="#comments" class="sidebar__link">Comments</a></li></ul></nav></div><div class="sidebar__section"><div class="sidebar__section-title">Share</div><a href="https://twitter.com/share?url=https%3A%2F%2Fjavascript.info%2Ffocus-blur" class="share share_tw sidebar__share"></a><a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fjavascript.info%2Ffocus-blur" class="share share_fb sidebar__share"></a><a href="https://plus.google.com/share?url=https%3A%2F%2Fjavascript.info%2Ffocus-blur" class="share share_gp sidebar__share"></a></div><div class="sidebar__section"><a href="https://github.com/iliakan/javascript-tutorial-en/tree/master/2-ui/4-forms-controls/2-focus-blur/article.md" class="sidebar__link">Edit on Github</a></div></div></div></div></div></div><div class="page-footer"><div class="page-footer__left"><ul class="page-footer__list"><li class="page-footer__item">©&nbsp;2007—2017&nbsp; Ilya Kantor</li><li class="page-footer__item"><a href="about.html#contact-us" class="page-footer__link">contact us</a></li><li class="page-footer__item"><a href="about.html" class="page-footer__link">about the project</a></li><li class="page-footer__item"><a href="https://learn.javascript.ru/" class="page-footer__link">RU</a> / EN</li></ul></div><div class="page-footer__right"><ul class="page-footer__list"><li class="page-footer__item">powered by <a rel="nofollow" href="http://nodejs.org/" class="page-footer__link">node.js</a>&nbsp;&amp;&nbsp;<a rel="nofollow" href="http://github.com/iliakan/javascript-tutorial-en" class="page-footer__link">open source</a></li></ul></div></div></body>
+<!-- Mirrored from javascript.info/focus-blur by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 30 Nov 2017 15:30:28 GMT -->
+</html>

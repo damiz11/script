@@ -1,0 +1,801 @@
+<!DOCTYPE html><html lang="en">
+<!-- Mirrored from javascript.info/map-set-weakmap-weakset by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 30 Nov 2017 15:28:07 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><script>window.currentUser = null;</script><title itemprop="name">Map, Set, WeakMap and WeakSet</title><meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, minimum-scale=1.0"><meta name="apple-mobile-web-app-capable" content="yes"><script>if (window.devicePixelRatio > 1) document.cookie = 'pixelRatio=' + window.devicePixelRatio + ';path=/;expires=Tue, 19 Jan 2038 03:14:07 GMT';</script><link href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700%7COpen+Sans+Condensed:700&amp;subset=latin,latin-ext,cyrillic,cyrillic-ext" rel="stylesheet"><link rel="apple-touch-icon-precomposed" href="img/favicon/apple-touch-icon-precomposed.png"><link rel="canonical" href="map-set-weakmap-weakset.html"><meta name="msapplication-TileColor" content="#222A2C"><meta name="msapplication-TileImage" content="/img/favicon/tileicon.png"><!-- favicon the rest--><link rel="icon" href="img/favicon/favicon.png"><meta itemprop="image" content="https://javascript.info/img/site_preview_en_512x512.png"><meta property="og:title" content="Map, Set, WeakMap and WeakSet"><meta property="og:image" content="https://javascript.info/img/site_preview_en_1200x630.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="fb:admins" content="100001562528165"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Map, Set, WeakMap and WeakSet"><meta name="twitter:site" content="@iliakan"><meta name="twitter:creator" content="@iliakan"><meta name="twitter:image" content="https://javascript.info/img/site_preview_en_512x512.png"><link href="pack/styles.da59a89b28153875791083e4a8c5adb3.css" rel="stylesheet"><link rel="prev" href="iterable.html"><link rel="next" href="keys-values-entries.html"><script>window.GA_ID = "UA-2056213-15";</script><script>window.YANDEX_METRIKA_ID = 32184394;</script><script>window.GoogleAnalyticsObject="ga",window.ga=function(){window.ga.q.push(arguments)},window.ga.q=[],window.ga.l=Date.now(),ga("create",GA_ID,"auto"),window.currentUser&&ga("set","&uid",currentUser.id),window.addEventListener("error",function(e){var r=(e.filename||e.errorUrl)+": "+(e.lineno||e.errorLine),n=e.stack||e.error&&e.error.stack;ga("send","exception",{exDescription:e.message+" "+r+" "+n,exFatal:!0})});</script><script src="https://www.google-analytics.com/analytics.js" async></script><script>ga('send', 'pageview');</script><script>window.metrika={reachGoal:function(){}},window.yandex_metrika_callbacks=[function(){try{window.metrika=new Ya.Metrika({id:YANDEX_METRIKA_ID,webvisor:!0,clickmap:!0,params:{user:window.currentUser&&window.currentUser.id}}),metrika.trackLinks({delay:150}),window.addEventListener("error",function(r){window.metrika.reachGoal("JSERROR",{src:(r.filename||r.errorUrl)+": "+(r.lineno||r.errorLine),stack:r.stack||r.error&&r.error.stack,message:r.message})})}catch(r){}}];</script><script src="http://mc.yandex.ru/metrika/watch.js" async></script><script>window.RECAPTCHA_ID = "6Lf9NyETAAAAACZlg-a9Us2SxvYbeVC1ROWaWv4O";</script><script src="initc4ca.js?1"></script><script src="pack/head.688d4fe7c4cf54e23737.js" defer></script><meta property="og:title" content="Map, Set, WeakMap and WeakSet"><meta property="og:type" content="article"><script src="pack/tutorial.688d4fe7c4cf54e23737.js" defer></script><script src="pack/footer.688d4fe7c4cf54e23737.js" defer></script></head><body class="no-icons"><script>window.fontTest();</script><div class="page-wrapper page-wrapper_sidebar_on"><!--[if lt IE 10]><div style="color:red;text-align:center">Sorry, IE&lt;10 is not supported, please use a newer browser.</div><![endif]--><div class="sitetoolbar sitetoolbar_tutorial"><!-- include ./notification-stripe--><div class="sitetoolbar__content"><div class="sitetoolbar__logo-wrap"><a href="index.html" class="sitetoolbar__link sitetoolbar__link_logo"><img src="img/sitetoolbar__logo_en.svg" width="200" class="sitetoolbar__logo sitetoolbar__logo_normal" alt=""><img src="img/sitetoolbar__logo_small_en.svg" width="70" class="sitetoolbar__logo sitetoolbar__logo_small" alt=""><script>Array.prototype.forEach.call(document.querySelectorAll("img.sitetoolbar__logo"),function(e){var t=document.createElement("object");t.type="image/svg+xml",t.className=e.className,t.style.cssText="left:0;top:0;position:absolute",t.onload=function(){t.onload=null,e.style.visibility="hidden"},t.data=e.src,e.parentNode.insertBefore(t,e)});</script></a></div><div class="sitetoolbar__nav-toggle-wrap"><button type="button" class="sitetoolbar__nav-toggle"></button></div><nav class="sitetoolbar__sections"><ul class="sitetoolbar__sections-list"></ul></nav><div class="sitetoolbar__book-wrap"><a href="ebook.html" class="buy-book-button"><span class="buy-book-button__extra-text">Buy</span>EPUB/PDF</a></div><div class="sitetoolbar__login-wrap"><button data-action-login class="sitetoolbar__login sitetoolbar__login_unready"></button></div><div class="sitetoolbar__search-wrap"><div class="sitetoolbar__search-content"><form method="GET" action="http://javascript.info/search" class="sitetoolbar__search"><button type="button" class="sitetoolbar__search-toggle"></button><div class="sitetoolbar__search-input"><div class="text-input"><input name="query" placeholder="Search on Javascript.info" class="text-input__control" type="text"></div><button type="submit" class="sitetoolbar__find">Search</button></div></form></div></div></div><!-- todo: en variant--><div class="tablet-menu"><div class="tablet-menu__line"><div class="tablet-menu__content"><form action="http://javascript.info/search/" class="tablet-menu-search"><input type="search" name="query" placeholder="Search in the tutorial" required class="tablet-menu-search__input"><button type="submit" name="type" value="articles" class="tablet-menu-search__button">Search</button></form></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><a href="tutorial/map.html" data-action="tutorial-map" class="map"><span class="map__text">Tutorial map</span></a></div></div><!--+e.line--><!--  +e.content--><!--    +b("a").tablet-ebook(href="/ebook")--><!--      +e("span").text Купить учебник--><!--      +e("span").note (EPUB + PDF)--><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="share-icons"><span class="share-icons__title">Share</span><a href="https://twitter.com/share?url=https%3A%2F%2Fjavascript.info%2Fmap-set-weakmap-weakset" class="share share_tw"></a><a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fjavascript.info%2Fmap-set-weakmap-weakset" class="share share_fb"></a><a href="https://plus.google.com/share?url=https%3A%2F%2Fjavascript.info%2Fmap-set-weakmap-weakset" class="share share_gp"></a><a href="https://vkontakte.ru/share.php?url=https%3A%2F%2Fjavascript.info%2Fmap-set-weakmap-weakset" class="share share_vk"></a></div></div></div></div><progress data-sticky value="38" max="67" data-tooltip="Lesson 38 of 67" class="tutorial-progress"></progress></div><div class="page page_sidebar_on"><script>if(localStorage.noSidebar){document.querySelector(".page").classList.remove("page_sidebar_on");var pageWrapper=document.querySelector(".page-wrapper");pageWrapper&&pageWrapper.classList.remove("page-wrapper_sidebar_on")}setTimeout(function(){document.querySelector(".page").classList.add("page_sidebar-animation-on")},0);</script><div class="page__inner"><main class="main main_width-limit"><header class="main__header"><ol class="breadcrumbs"><li itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemref="breadcrumb-1" class="breadcrumbs__item breadcrumbs__item_home"><a href="index.html" itemprop="url" class="breadcrumbs__link"><span itemprop="title" class="breadcrumbs__hidden-text">Учебник</span></a></li><li id="breadcrumb-1" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemref="breadcrumb-2" itemprop="child" class="breadcrumbs__item"><a href="js.html" itemprop="url" class="breadcrumbs__link"><span itemprop="title">The JavaScript language</span></a></li><li id="breadcrumb-2" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemprop="child" class="breadcrumbs__item"><a href="data-types.html" itemprop="url" class="breadcrumbs__link"><span itemprop="title">Data types</span></a></li></ol><h1 class="main__header-title">Map, Set, WeakMap and WeakSet</h1></header><div class="content"><article itemscope itemtype="http://schema.org/TechArticle"><meta itemprop="name" content="Map, Set, WeakMap and WeakSet"><div itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="email" content="iliakan@gmail.com"><meta itemprop="name" content="Ilya Kantor"></div><div itemprop="articleBody"><p>Now we know the following complex data structures:</p>
+<ul>
+<li>Objects for storing keyed collections.</li>
+<li>Arrays for storing ordered collections.</li>
+</ul>
+<p>But that’s not enough for real life. That’s why there also exist <code>Map</code> and <code>Set</code>.</p>
+<h2><a class="main__anchor" name="map" href="#map">Map</a></h2><p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map">Map</a> is a collection of keyed data items. Just like an <code>Object</code>. But the main difference is that <code>Map</code> allows keys of any type.</p>
+<p>The main methods are:</p>
+<ul>
+<li><code>new Map()</code> – creates the map.</li>
+<li><code>map.set(key, value)</code> – stores the value by the key.</li>
+<li><code>map.get(key)</code> – returns the value by the key, <code>undefined</code> if <code>key</code> doesn’t exist in map.</li>
+<li><code>map.has(key)</code> – returns <code>true</code> if the <code>key</code> exists, <code>false</code> otherwise.</li>
+<li><code>map.delete(key)</code> – removes the value by the key.</li>
+<li><code>map.clear()</code> – clears the map</li>
+<li><code>map.size</code> – is the current elements count.</li>
+</ul>
+<p>For instance:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let map = new Map();
+
+map.set('1', 'str1');   // a string key
+map.set(1, 'num1');     // a numeric key
+map.set(true, 'bool1'); // a boolean key
+
+// remember the regular Object? it would convert keys to string
+// Map keeps the type, so these two are different:
+alert( map.get(1)   ); // 'num1'
+alert( map.get('1') ); // 'str1'
+
+alert( map.size ); // 3</code></pre>
+        </div>
+      </div>
+      
+      </div><p>As we can see, unlike objects, keys are not converted to strings. Any type of key is possible.</p>
+<p><strong>Map can also use objects as keys.</strong></p>
+<p>For instance:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let john = { name: &quot;John&quot; };
+
+// for every user, let's store his visits count
+let visitsCountMap = new Map();
+
+// john is the key for the map
+visitsCountMap.set(john, 123);
+
+alert( visitsCountMap.get(john) ); // 123</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Using objects as keys is one of most notable and important <code>Map</code> features. For string keys, <code>Object</code> can be fine, but it would be difficult to replace the <code>Map</code> with a regular <code>Object</code> in the example above.</p>
+<p>In the old times, before <code>Map</code> existed, people added unique identifiers to objects for that:</p>
+<div data-trusted="1" class="code-example" data-highlight-inline="1:27-32">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">// we add the id field
+let john = { name: &quot;John&quot;, id: 1 };
+
+let visitsCounts = {};
+
+// now store the value by id
+visitsCounts[john.id] = 123;
+
+alert( visitsCounts[john.id] ); // 123</code></pre>
+        </div>
+      </div>
+      
+      </div><p>…But <code>Map</code> is much more elegant.</p>
+<div class="important important_smart">
+            <div class="important__header"><span class="important__type">How <code>Map</code> compares keys</span></div>
+            <div class="important__content"><p>To test values for equivalence, <code>Map</code> uses the algorithm <a href="https://tc39.github.io/ecma262/#sec-samevaluezero">SameValueZero</a>. It is roughly the same as the strict equality <code>===</code>, but the difference is that <code>NaN</code> is considered equal to <code>NaN</code>. So <code>NaN</code> can be used as the key as well.</p>
+<p>This algorithm can’t be changed or customized.</p>
+</div></div>
+<div class="important important_smart">
+            <div class="important__header"><span class="important__type">Chaining</span></div>
+            <div class="important__content"><p>Every <code>map.set</code> call returns the map itself, so we can “chain” the calls:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">map.set('1', 'str1')
+  .set(1, 'num1')
+  .set(true, 'bool1');</code></pre>
+        </div>
+      </div>
+      
+      </div></div></div>
+<h2><a class="main__anchor" name="map-from-object" href="#map-from-object">Map from Object</a></h2><p>When a <code>Map</code> is created, we can pass an array (or another iterable) with key-value pairs, like this:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">// array of [key, value] pairs
+let map = new Map([
+  ['1',  'str1'],
+  [1,    'num1'],
+  [true, 'bool1']
+]);</code></pre>
+        </div>
+      </div>
+      
+      </div><p>There is a built-in method <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/entries">Object.entries(obj)</a> that returns the array of key/value pairs for an object exactly in that format.</p>
+<p>So we can initialize a map from an object like this:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let map = new Map(Object.entries({
+  name: &quot;John&quot;,
+  age: 30
+}));</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Here, <code>Object.entries</code> returns the array of key/value pairs: <code>[ [&quot;name&quot;,&quot;John&quot;], [&quot;age&quot;, 30] ]</code>. That’s what <code>Map</code> needs.</p>
+<h2><a class="main__anchor" name="iteration-over-map" href="#iteration-over-map">Iteration over Map</a></h2><p>For looping over a <code>map</code>, there are 3 methods:</p>
+<ul>
+<li><code>map.keys()</code> – returns an iterable for keys,</li>
+<li><code>map.values()</code> – returns an iterable for values,</li>
+<li><code>map.entries()</code> – returns an iterable for entries <code>[key, value]</code>, it’s used by default in <code>for..of</code>.</li>
+</ul>
+<p>For instance:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let recipeMap = new Map([
+  ['cucumber', 500],
+  ['tomatoes', 350],
+  ['onion',    50]
+]);
+
+// iterate over keys (vegetables)
+for (let vegetable of recipeMap.keys()) {
+  alert(vegetable); // cucumber, tomateos, onion
+}
+
+// iterate over values (amounts)
+for (let amount of recipeMap.values()) {
+  alert(amount); // 500, 350, 50
+}
+
+// iterate over [key, value] entries
+for (let entry of recipeMap) { // the same as of recipeMap.entries()
+  alert(entry); // cucumber,500 (and so on)
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><div class="important important_smart">
+            <div class="important__header"><span class="important__type">The insertion order is used</span></div>
+            <div class="important__content"><p>The iteration goes in the same order as the values were inserted. <code>Map</code> preserves this order, unlike a regular <code>Object</code>.</p>
+</div></div>
+<p>Besides that, <code>Map</code> has a built-in <code>forEach</code> method, similar to <code>Array</code>:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">recipeMap.forEach( (value, key, map) =&gt; {
+  alert(`${key}: ${value}`); // cucumber: 500 etc
+});</code></pre>
+        </div>
+      </div>
+      
+      </div><h2><a class="main__anchor" name="set" href="#set">Set</a></h2><p><code>Set</code> – is a collection of values, where each value may occur only once.</p>
+<p>The main methods are:</p>
+<ul>
+<li><code>new Set(iterable)</code> – creates the set, optionally from an array of values (any iterable will do).</li>
+<li><code>set.add(value)</code> – adds a value, returns the set itself.</li>
+<li><code>set.delete(value)</code> – removes the value, returns <code>true</code> if <code>value</code> existed at the moment of the call, otherwise <code>false</code>.</li>
+<li><code>set.has(value)</code> – returns <code>true</code> if the value exists in the set, otherwise <code>false</code>.</li>
+<li><code>set.clear()</code> – removes everything from the set.</li>
+<li><code>set.size</code> – is the elements count.</li>
+</ul>
+<p>For example, we have visitors coming, and we’d like to remember everyone. But repeated visits should not lead to duplicates. A visitor must be “counted” only once.</p>
+<p><code>Set</code> is just the right thing for that:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let set = new Set();
+
+let john = { name: &quot;John&quot; };
+let pete = { name: &quot;Pete&quot; };
+let mary = { name: &quot;Mary&quot; };
+
+// visits, some users come multiple times
+set.add(john);
+set.add(pete);
+set.add(mary);
+set.add(john);
+set.add(mary);
+
+// set keeps only unique values
+alert( set.size ); // 3
+
+for (let user of set) {
+  alert(user.name); // John (then Pete and Mary)
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>The alternative to <code>Set</code> could be an array of users, and the code to check for duplicates on every insertion using <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find">arr.find</a>. But the performance would be much worse, because this method walks through the whole array checking every element. <code>Set</code> is much better optimized internally for uniqueness checks.</p>
+<h2><a class="main__anchor" name="iteration-over-set" href="#iteration-over-set">Iteration over Set</a></h2><p>We can loop over a set either with <code>for..of</code> or using <code>forEach</code>:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let set = new Set([&quot;oranges&quot;, &quot;apples&quot;, &quot;bananas&quot;]);
+
+for (let value of set) alert(value);
+
+// the same with forEach:
+set.forEach((value, valueAgain, set) =&gt; {
+  alert(value);
+});</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Note the funny thing. The <code>forEach</code> function in the <code>Set</code> has 3 arguments: a value, then <em>again a value</em>, and then the target object. Indeed, the same value appears in the arguments twice.</p>
+<p>That’s made for compatibility with <code>Map</code> where <code>forEach</code> has three arguments.</p>
+<p>The same methods as <code>Map</code> has for iterators are also supported:</p>
+<ul>
+<li><code>set.keys()</code> – returns an iterable object for values,</li>
+<li><code>set.values()</code> – same as <code>set.keys</code>, for compatibility with <code>Map</code>,</li>
+<li><code>set.entries()</code> – returns an iterable object for entries <code>[value, value]</code>, exists for compatibility with <code>Map</code>.</li>
+</ul>
+<h2><a class="main__anchor" name="weakmap-and-weakset" href="#weakmap-and-weakset">WeakMap and WeakSet</a></h2><p><code>WeakSet</code> is a special kind of <code>Set</code> that does not prevent JavaScript from removing its items from memory. <code>WeakMap</code> is the same thing for <code>Map</code>.</p>
+<p>As we know from the chapter <a href="garbage-collection.html">Garbage collection</a>, JavaScript engine stores a value in memory while it is reachable (and can potentially be used).</p>
+<p>For instance:</p>
+<div data-trusted="1" class="code-example" data-highlight-block="7-7">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let john = { name: &quot;John&quot; };
+
+// the object can be accessed, john is the reference to it
+
+// overwrite the reference
+john = null;
+
+// the object will be removed from memory</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Usually, properties of an object or elements of an array or another data structure are considered reachable and kept in memory while that data structure is in memory.</p>
+<p>In a regular <code>Map</code>, it does not matter if we store an object as a key or as a value. It’s kept in memory even if there are no more references to it.</p>
+<p>For instance:</p>
+<div data-trusted="1" class="code-example" data-highlight-block="7-8">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let john = { name: &quot;John&quot; };
+
+let map = new Map();
+map.set(john, &quot;...&quot;);
+
+john = null; // overwrite the reference
+
+// john is stored inside the map
+// we can get it by using map.keys()</code></pre>
+        </div>
+      </div>
+      
+      </div><p>With the exception of <code>WeakMap/WeakSet</code>.</p>
+<p><strong><code>WeakMap/WeakSet</code> does not prevent the object removal from the memory.</strong></p>
+<p>Let’s start with <code>WeakMap</code>.</p>
+<p>The first difference from <code>Map</code> is that its keys must be  objects, not primitive values:</p>
+<div data-trusted="1" class="code-example" data-highlight-block="6-6">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let weakMap = new WeakMap();
+
+let obj = {};
+
+weakMap.set(obj, &quot;ok&quot;); // works fine (object key)
+
+weakMap.set(&quot;test&quot;, &quot;Whoops&quot;); // Error, because &quot;test&quot; is a primitive</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Now, if we use an object as the key in it, and there are no other references to that object – it will be removed from memory (and from the map) automatically.</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let john = { name: &quot;John&quot; };
+
+let weakMap = new WeakMap();
+weakMap.set(john, &quot;...&quot;);
+
+john = null; // overwrite the reference
+
+// john is removed from memory!</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Compare it with the regular <code>Map</code> example above. Now if <code>john</code> only exists as the key of <code>WeakMap</code> – it is to be automatically deleted.</p>
+<p>…And <code>WeakMap</code> does not support methods <code>keys()</code>, <code>values()</code>, <code>entries()</code>, we can not iterate over it. So there’s really no way to receive all keys or values from it.</p>
+<p><code>WeakMap</code> has only the following methods:</p>
+<ul>
+<li><code>weakMap.get(key)</code></li>
+<li><code>weakMap.set(key, value)</code></li>
+<li><code>weakMap.delete(key, value)</code></li>
+<li><code>weakMap.has(key)</code></li>
+</ul>
+<p>Why such a limitation? That’s for technical reasons. If the object has lost all other references (like <code>john</code> in the code above), then it is to be deleted automatically. But technically it’s not exactly specified <em>when the cleanup happens</em>.</p>
+<p>The JavaScript engine decides that. It may choose to perform the memory cleanup immediately or to wait and do the cleaning later when more deletions happen. So, technically the current element count of the <code>WeakMap</code> is not known. The engine may have cleaned it up or not, or did it partially. For that reason, methods that access <code>WeakMap</code> as a whole are not supported.</p>
+<p>Now where do we need such thing?</p>
+<p>The idea of <code>WeakMap</code> is that we can store something for an object that exists only while the object exists. But we do not force the object to live by the mere fact that we store something for it.</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">weakMap.put(john, &quot;secret documents&quot;);
+// if john dies, secret documents will be destroyed</code></pre>
+        </div>
+      </div>
+      
+      </div><p>That’s useful for situations when we have a main storage for the objects somewhere and need to keep additional information that is only relevant while the object lives.</p>
+<p>Let’s see an example.</p>
+<p>For instance, we have a code that keeps a visit count for each user. The information is stored in a map: a user is the key and the visit count is the value. When a user leaves, we don’t want to store his visit count anymore.</p>
+<p>One way would be to keep track of leaving users and clean up the storage manually:</p>
+<div data-trusted="1" class="code-example" data-highlight-block="11-11">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let john = { name: &quot;John&quot; };
+
+// map: user =&gt; visits count
+let visitsCountMap = new Map();
+
+// john is the key for the map
+visitsCountMap.set(john, 123);
+
+// now john leaves us, we don't need him anymore
+john = null;
+
+// but it's still in the map, we need to clean it!
+alert( visitsCountMap.size ); // 1
+// it's also in the memory, because Map uses it as the key</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Another way would be to use <code>WeakMap</code>:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let john = { name: &quot;John&quot; };
+
+let visitsCountMap = new WeakMap();
+
+visitsCountMap.set(john, 123);
+
+// now john leaves us, we don't need him anymore
+john = null;
+
+// there are no references except WeakMap,
+// so the object is removed both from the memory and from visitsCountMap automatically</code></pre>
+        </div>
+      </div>
+      
+      </div><p>With a regular <code>Map</code>, cleaning up after a user has left becomes a tedious task: we not only need to remove the user from its main storage (be it a variable or an array), but also need to clean up the additional stores like <code>visitsCountMap</code>. And it can become cumbersome in more complex cases when users are managed in one place of the code and the additional structure is at another place and is getting no information about removals.</p>
+<p><code>WeakMap</code> can make things simpler, because it is cleaned up automatically. The information in it like visits count in the example above lives only while the key object exists.</p>
+<p><code>WeakSet</code> behaves similarly:</p>
+<ul>
+<li>It is analogous to <code>Set</code>, but we may only add objects to <code>WeakSet</code> (not primitives).</li>
+<li>An object exists in the set while it has reachable from somewhere else.</li>
+<li>Like <code>Set</code>, it supports <code>add</code>, <code>has</code> and <code>delete</code>, but not <code>size</code>, <code>keys()</code> and no iterations.</li>
+</ul>
+<p>For instance, we can use it to keep track of whether an item is checked:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let messages = [
+    {text: &quot;Hello&quot;, from: &quot;John&quot;},
+    {text: &quot;How goes?&quot;, from: &quot;John&quot;},
+    {text: &quot;See you soon&quot;, from: &quot;Alice&quot;}
+];
+
+// fill it with array elements (3 items)
+let unreadSet = new WeakSet(messages);
+
+// we can use unreadSet to see whether a message is unread
+alert(unreadSet.has(messages[1])); // true
+// remove it from the set after reading
+unreadSet.delete(messages[1]); // true
+
+// and when we shift our messages history, the set is cleaned up automatically
+messages.shift();
+// no need to clean unreadSet, it now has 2 items
+// unfortunately, there's no method to get the exact count of items, so can't show it</code></pre>
+        </div>
+      </div>
+      
+      </div><p>The most notable limitation of <code>WeakMap</code> and <code>WeakSet</code> is the absence of iterations, and inability to get all current content. That may appear inconvenient, but actually does not prevent <code>WeakMap/WeakSet</code> from doing their main job – be an “additional” storage of data for objects which are stored/managed at another place.</p>
+<h2><a class="main__anchor" name="summary" href="#summary">Summary</a></h2><ul>
+<li>
+<p><code>Map</code> – is a collection of keyed values.</p>
+<p>The differences from a regular <code>Object</code>:</p>
+<ul>
+<li>Any keys, objects can be keys.</li>
+<li>Iterates in the insertion order.</li>
+<li>Additional convenient methods, the <code>size</code> property.</li>
+</ul>
+</li>
+<li>
+<p><code>Set</code> – is a collection of unique values.</p>
+<ul>
+<li>Unlike an array, does not allow to reorder elements.</li>
+<li>Keeps the insertion order.</li>
+</ul>
+</li>
+<li>
+<p><code>WeakMap</code> – a variant of <code>Map</code> that allows only objects as keys and removes them once they become inaccessible by other means.</p>
+<ul>
+<li>It does not support operations on the structure as a whole: no <code>size</code>, no <code>clear()</code>, no iterations.</li>
+</ul>
+</li>
+<li>
+<p><code>WeakSet</code> – is a variant of <code>Set</code> that only stores objects and removes them once they become inaccessible by other means.</p>
+<ul>
+<li>Also does not support <code>size/clear()</code> and iterations.</li>
+</ul>
+</li>
+</ul>
+<p><code>WeakMap</code> and <code>WeakSet</code> are used as “secondary” data structures in addition to the “main” object storage. Once the object is removed from the main storage, so it only stays in <code>WeakMap/WeakSet</code>, they clean up automatically.</p>
+</div></article><div class="tasks"><h2 id="tasks" class="tasks__title"><a href="#tasks" class="main__anchor main__anchor_noicon tasks__title-anchor">Tasks</a></h2><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a href="#filter-unique-array-members" name="filter-unique-array-members" class="main__anchor">Filter unique array members</a></h3><a href="task/array-unique-map.html" target="_blank" class="task__open-link"></a></div><div class="task__header-note"><span title="How important is the task, from 1 to 5" class="task__importance">importance: 5</span></div><div class="task__content"><p>Let <code>arr</code> be an array.</p>
+<p>Create a function <code>unique(arr)</code> that should return an array with unique items of <code>arr</code>.</p>
+<p>For instance:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function unique(arr) {
+  /* your code */
+}
+
+let values = [&quot;Hare&quot;, &quot;Krishna&quot;, &quot;Hare&quot;, &quot;Krishna&quot;,
+  &quot;Krishna&quot;, &quot;Krishna&quot;, &quot;Hare&quot;, &quot;Hare&quot;, &quot;:-O&quot;
+];
+
+alert( unique(values) ); // Hare, Krishna, :-O</code></pre>
+        </div>
+      </div>
+      
+      </div><p>P.S. Here strings are used, but can be values of any type.</p>
+<p>P.P.S. Use <code>Set</code> to store unique values.</p>
+<p><a href="http://plnkr.co/edit/5723QOW4plHd72CFnXkt?p=preview" target="_blank" data-plunk-id="5723QOW4plHd72CFnXkt">Open the sandbox with tests.</a></p><button type="button" class="task__solution">solution</button><div class="task__answer"><div class="task__answer-content"><p><a href="http://plnkr.co/edit/K1mUBA0aoBVuzuGORbwa?p=preview" target="_blank" data-plunk-id="K1mUBA0aoBVuzuGORbwa">Open the solution with tests in the sandbox.</a></p></div><button type="button" title="close" class="close-button task__answer-close"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a href="#filter-anagrams" name="filter-anagrams" class="main__anchor">Filter anagrams</a></h3><a href="task/filter-anagrams.html" target="_blank" class="task__open-link"></a></div><div class="task__header-note"><span title="How important is the task, from 1 to 5" class="task__importance">importance: 4</span></div><div class="task__content"><p><a href="https://en.wikipedia.org/wiki/Anagram">Anagrams</a> are words that have the same number of same letters, but in different order.</p>
+<p>For instance:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-none"><code class="language-none">nap - pan
+ear - are - era
+cheaters - hectares - teachers</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Write a function <code>aclean(arr)</code> that returns an array cleaned from anagrams.</p>
+<p>For instance:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let arr = [&quot;nap&quot;, &quot;teachers&quot;, &quot;cheaters&quot;, &quot;PAN&quot;, &quot;ear&quot;, &quot;era&quot;, &quot;hectares&quot;];
+
+alert( aclean(arr) ); // &quot;nap,teachers,ear&quot; or &quot;PAN,cheaters,era&quot;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>From every anagram group should remain only one word, no matter which one.</p>
+<p><a href="http://plnkr.co/edit/mOXBagh2btVcbeVvyR6s?p=preview" target="_blank" data-plunk-id="mOXBagh2btVcbeVvyR6s">Open the sandbox with tests.</a></p><button type="button" class="task__solution">solution</button><div class="task__answer"><div class="task__answer-content"><p>To find all anagrams, let’s split every word to letters and sort them. When letter-sorted, all anagrams are same.</p>
+<p>For instance:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-none"><code class="language-none">nap, pan -&gt; anp
+ear, era, are -&gt; aer
+cheaters, hectares, teachers -&gt; aceehrst
+...</code></pre>
+        </div>
+      </div>
+      
+      </div><p>We’ll use the letter-sorted variants as map keys to store only one value per each key:</p>
+<div data-trusted="1" class="code-example" data-highlight-block="5-5">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function aclean(arr) {
+  let map = new Map();
+
+  for (let word of arr) {
+    // split the word by letters, sort them and join back
+    let sorted = word.toLowerCase().split('').sort().join(''); // (*)
+    map.set(sorted, word);
+  }
+
+  return Array.from(map.values());
+}
+
+let arr = [&quot;nap&quot;, &quot;teachers&quot;, &quot;cheaters&quot;, &quot;PAN&quot;, &quot;ear&quot;, &quot;era&quot;, &quot;hectares&quot;];
+
+alert( aclean(arr) );</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Letter-sorting is done by the chain of calls in the line <code>(*)</code>.</p>
+<p>For convenience let’s split it into multiple lines:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let sorted = arr[i] // PAN
+  .toLowerCase() // pan
+  .split('') // ['p','a','n']
+  .sort() // ['a','n','p']
+  .join(''); // anp</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Two different words <code>'PAN'</code> and <code>'nap'</code> receive the same letter-sorted form <code>'anp'</code>.</p>
+<p>The next line put the word into the map:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">map.set(sorted, word);</code></pre>
+        </div>
+      </div>
+      
+      </div><p>If we ever meet a word the same letter-sorted form again, then it would overwrite the previous value with the same key in the map. So we’ll always have at maximum one word per letter-form.</p>
+<p>At the end <code>Array.from(map.values())</code> takes an iterable over map values (we don’t need keys in the result) and returns an array of them.</p>
+<p>Here we could also use a plain object instead of the <code>Map</code>, because keys are strings.</p>
+<p>That’s how the solution can look:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function aclean(arr) {
+  let obj = {};
+
+  for (let i = 0; i &lt; arr.length; i++) {
+    let sorted = arr[i].toLowerCase().split(&quot;&quot;).sort().join(&quot;&quot;);
+    obj[sorted] = arr[i];
+  }
+
+  return Array.from(Object.values(obj));
+}
+
+let arr = [&quot;nap&quot;, &quot;teachers&quot;, &quot;cheaters&quot;, &quot;PAN&quot;, &quot;ear&quot;, &quot;era&quot;, &quot;hectares&quot;];
+
+alert( aclean(arr) );</code></pre>
+        </div>
+      </div>
+      
+      </div><p><a href="http://plnkr.co/edit/aRcFAWDuMSZOOwfJVIrR?p=preview" target="_blank" data-plunk-id="aRcFAWDuMSZOOwfJVIrR">Open the solution with tests in the sandbox.</a></p></div><button type="button" title="close" class="close-button task__answer-close"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a href="#iterable-keys" name="iterable-keys" class="main__anchor">Iterable keys</a></h3><a href="task/iterable-keys.html" target="_blank" class="task__open-link"></a></div><div class="task__header-note"><span title="How important is the task, from 1 to 5" class="task__importance">importance: 5</span></div><div class="task__content"><p>We want to get an array of <code>map.keys()</code> and go on working with it (apart from the map itself).</p>
+<p>But there’s a problem:</p>
+<div data-trusted="1" class="code-example" data-highlight-block="6-7">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let map = new Map();
+
+map.set(&quot;name&quot;, &quot;John&quot;);
+
+let keys = map.keys();
+
+// Error: numbers.push is not a function
+keys.push(&quot;more&quot;);</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Why? How can we fix the code to make <code>keys.push</code> work?</p>
+<button type="button" class="task__solution">solution</button><div class="task__answer"><div class="task__answer-content"><p>That’s because <code>map.keys()</code> returns an iterable, but not an array.</p>
+<p>We can convert it into an array using <code>Array.from</code>:</p>
+<div data-trusted="1" class="code-example" data-highlight-block="4-4">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let map = new Map();
+
+map.set(&quot;name&quot;, &quot;John&quot;);
+
+let keys = Array.from(map.keys());
+
+keys.push(&quot;more&quot;);
+
+alert(keys); // name, more</code></pre>
+        </div>
+      </div>
+      
+      </div></div><button type="button" title="close" class="close-button task__answer-close"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a href="#store-unread-flags" name="store-unread-flags" class="main__anchor">Store &quot;unread&quot; flags</a></h3><a href="task/recipients-read.html" target="_blank" class="task__open-link"></a></div><div class="task__header-note"><span title="How important is the task, from 1 to 5" class="task__importance">importance: 5</span></div><div class="task__content"><p>There’s an array of messages:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let messages = [
+    {text: &quot;Hello&quot;, from: &quot;John&quot;},
+    {text: &quot;How goes?&quot;, from: &quot;John&quot;},
+    {text: &quot;See you soon&quot;, from: &quot;Alice&quot;}
+];</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Your code can access it, but the messages are managed by someone else’s code. New messages are added, old ones are removed regularly by that code, and you don’t know the exact moments when it happens.</p>
+<p>Now, which data structure you could use to store information whether the message “have been read”? The structure must be well-suited to give the answer “was it read?” for the given message object.</p>
+<p>P.S. When a message is removed from <code>messages</code>, it should disappear from your structure as well.</p>
+<p>P.P.S. We shouldn’t modify message objects directly. If they are managed by someone else’s code, then adding extra properties to them may have bad consequences.</p>
+<button type="button" class="task__solution">solution</button><div class="task__answer"><div class="task__answer-content"><p>The sane choice here is a <code>WeakSet</code>:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let messages = [
+    {text: &quot;Hello&quot;, from: &quot;John&quot;},
+    {text: &quot;How goes?&quot;, from: &quot;John&quot;},
+    {text: &quot;See you soon&quot;, from: &quot;Alice&quot;}
+];
+
+let readMessages = new WeakSet();
+
+// two messages have been read
+readMessages.add(messages[0]);
+readMessages.add(messages[1]);
+// readMessages has 2 elements
+
+// ...let's read the first message again!
+readMessages.add(messages[0]);
+// readMessages still has 2 unique elements
+
+// answer: was the message[0] read?
+alert(&quot;Read message 0: &quot; + readMessages.has(messages[0])); // true
+
+messages.shift();
+// now readMessages has 1 element (technically memory may be cleaned later)</code></pre>
+        </div>
+      </div>
+      
+      </div><p>The <code>WeakSet</code> allows to store a set of messages and easily check for the existance of a message in it.</p>
+<p>It cleans up itself automatically. The tradeoff is that we can’t iterate over it. We can’t get “all read messages” directly. But we can do it by iterating over all messages and filtering those that are in the set.</p>
+<p>P.S. Adding a property of our own to each message may be dangerous if messages are managed by someone else’s code, but we can make it a symbol to evade conflicts.</p>
+<p>Like this:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">// the symbolic property is only known to our code
+let isRead = Symbol(&quot;isRead&quot;);
+messages[0][isRead] = true;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Now even if someone else’s code uses <code>for..in</code> loop for message properties, our secret flag won’t appear.</p>
+</div><button type="button" title="close" class="close-button task__answer-close"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a href="#store-read-dates" name="store-read-dates" class="main__anchor">Store read dates</a></h3><a href="task/recipients-when-read.html" target="_blank" class="task__open-link"></a></div><div class="task__header-note"><span title="How important is the task, from 1 to 5" class="task__importance">importance: 5</span></div><div class="task__content"><p>There’s an array of messages as in the <a href="task/recipients-read.html">previous task</a>. The situation is similar.</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let messages = [
+    {text: &quot;Hello&quot;, from: &quot;John&quot;},
+    {text: &quot;How goes?&quot;, from: &quot;John&quot;},
+    {text: &quot;See you soon&quot;, from: &quot;Alice&quot;}
+];</code></pre>
+        </div>
+      </div>
+      
+      </div><p>The question now is: which data structure you’d suggest to store the information: “when the message was read?”.</p>
+<p>In the previous task we only needed to store the “yes/no” fact. Now we need to store the date and it, once again, should disappear if the message is gone.</p>
+<button type="button" class="task__solution">solution</button><div class="task__answer"><div class="task__answer-content"><p>To store a date, we can use <code>WeakMap</code>:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let messages = [
+    {text: &quot;Hello&quot;, from: &quot;John&quot;},
+    {text: &quot;How goes?&quot;, from: &quot;John&quot;},
+    {text: &quot;See you soon&quot;, from: &quot;Alice&quot;}
+];
+
+let readMap = new WeakMap();
+
+readMap.set(messages[0], new Date(2017, 1, 1));
+// Date object we'll study later</code></pre>
+        </div>
+      </div>
+      
+      </div></div><button type="button" title="close" class="close-button task__answer-close"></button></div></div></div></div></div><!--  include /blocks/banner-bottom--><!--if lang == 'en'--><!--  include /blocks/banner-bottom.en--></div><div class="page__nav-wrap"><a href="iterable.html" data-tooltip="Iterables" class="page__nav page__nav_prev"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Previous lesson</span></a><a href="keys-values-entries.html" data-tooltip="Object.keys, values, entries" class="page__nav page__nav_next"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Next lesson</span></a></div><div class="article-tablet-foot tablet-only"><div class="article-tablet-foot__layout"><div class="share-icons"><span class="share-icons__title">Share</span><a href="https://twitter.com/share?url=https%3A%2F%2Fjavascript.info%2Fmap-set-weakmap-weakset" class="share share_tw"></a><a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fjavascript.info%2Fmap-set-weakmap-weakset" class="share share_fb"></a><a href="https://plus.google.com/share?url=https%3A%2F%2Fjavascript.info%2Fmap-set-weakmap-weakset" class="share share_gp"></a><a href="https://vkontakte.ru/share.php?url=https%3A%2F%2Fjavascript.info%2Fmap-set-weakmap-weakset" class="share share_vk"></a></div><div class="article-tablet-foot__map"><a href="tutorial/map.html" data-action="tutorial-map" class="map"><span class="map__text">Tutorial map</span></a></div></div></div><div id="comments" class="comments"><div class="comments__header"><h2 class="comments__header-title"><a href="#comments" name="comments">Comments</a></h2><div class="comments__read-before"><span class="comments__read-before-link">read this before commenting…</span><div class="comments__read-before-popup"><div class="comments__read-before-popup-i"><ul><li>You're welcome to post additions, questions to the articles and answers to them.</li><li>To insert a few words of code, use the <code>&lt;code&gt;</code> tag, for several lines – use <code>&lt;pre&gt;</code>, for more than 10 lines – use a sandbox (<a href='http://plnkr.co/edit/?p=preview'>plnkr</a>, <a href='http://jsbin.com/'>JSBin</a>, <a href='http://codepen.io/'>codepen</a>…)</li><li>If you can't understand something in the article – please elaborate.</li></ul></div></div></div></div></div><div id="disqus_thread"></div><script>var disqus_config = function() { if (!this.page) this.page = {}; Object.assign(this.page, {"url":"https:\/\/javascript.info\/map-set-weakmap-weakset","identifier":"\/map-set-weakmap-weakset","title":"Map, Set, WeakMap and WeakSet"}); };</script><script>var disqus_shortname = "javascriptinfo";</script><script>var disqus_enabled = true;</script></main></div><div class="page__sidebar sidebar sidebar_sticky-footer"><button data-sidebar-toggle class="sidebar__toggle"></button><a href="tutorial/map.html" data-action="tutorial-map" data-tooltip="Tutorial map" class="map"></a><div class="sidebar__inner"><div class="sidebar__content"><div class="sidebar__section"><h4 class="sidebar__section-title">Chapter</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a href="data-types.html" class="sidebar__link">Data types</a></li></ul></nav></div><div class="sidebar__section"><h4 class="sidebar__section-title">Lesson navigation</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a href="#map" class="sidebar__link">Map</a></li><li class="sidebar__navigation-link"><a href="#map-from-object" class="sidebar__link">Map from Object</a></li><li class="sidebar__navigation-link"><a href="#iteration-over-map" class="sidebar__link">Iteration over Map</a></li><li class="sidebar__navigation-link"><a href="#set" class="sidebar__link">Set</a></li><li class="sidebar__navigation-link"><a href="#iteration-over-set" class="sidebar__link">Iteration over Set</a></li><li class="sidebar__navigation-link"><a href="#weakmap-and-weakset" class="sidebar__link">WeakMap and WeakSet</a></li><li class="sidebar__navigation-link"><a href="#summary" class="sidebar__link">Summary</a></li></ul></nav></div><div class="sidebar__section"><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a href="#tasks" class="sidebar__link">Tasks (5)</a></li><li class="sidebar__navigation-link"><a href="#comments" class="sidebar__link">Comments</a></li></ul></nav></div><div class="sidebar__section"><div class="sidebar__section-title">Share</div><a href="https://twitter.com/share?url=https%3A%2F%2Fjavascript.info%2Fmap-set-weakmap-weakset" class="share share_tw sidebar__share"></a><a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fjavascript.info%2Fmap-set-weakmap-weakset" class="share share_fb sidebar__share"></a><a href="https://plus.google.com/share?url=https%3A%2F%2Fjavascript.info%2Fmap-set-weakmap-weakset" class="share share_gp sidebar__share"></a></div><div class="sidebar__section"><a href="https://github.com/iliakan/javascript-tutorial-en/tree/master/1-js/05-data-types/07-map-set-weakmap-weakset/article.md" class="sidebar__link">Edit on Github</a></div></div></div></div></div></div><div class="page-footer"><div class="page-footer__left"><ul class="page-footer__list"><li class="page-footer__item">©&nbsp;2007—2017&nbsp; Ilya Kantor</li><li class="page-footer__item"><a href="about.html#contact-us" class="page-footer__link">contact us</a></li><li class="page-footer__item"><a href="about.html" class="page-footer__link">about the project</a></li><li class="page-footer__item"><a href="https://learn.javascript.ru/" class="page-footer__link">RU</a> / EN</li></ul></div><div class="page-footer__right"><ul class="page-footer__list"><li class="page-footer__item">powered by <a rel="nofollow" href="http://nodejs.org/" class="page-footer__link">node.js</a>&nbsp;&amp;&nbsp;<a rel="nofollow" href="http://github.com/iliakan/javascript-tutorial-en" class="page-footer__link">open source</a></li></ul></div></div></body>
+<!-- Mirrored from javascript.info/map-set-weakmap-weakset by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 30 Nov 2017 15:28:07 GMT -->
+</html>

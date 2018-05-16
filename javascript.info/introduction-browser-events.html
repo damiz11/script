@@ -1,0 +1,903 @@
+<!DOCTYPE html><html lang="en">
+<!-- Mirrored from javascript.info/introduction-browser-events by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 30 Nov 2017 15:29:57 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><script>window.currentUser = null;</script><title itemprop="name">Introduction to browser events</title><meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, minimum-scale=1.0"><meta name="apple-mobile-web-app-capable" content="yes"><script>if (window.devicePixelRatio > 1) document.cookie = 'pixelRatio=' + window.devicePixelRatio + ';path=/;expires=Tue, 19 Jan 2038 03:14:07 GMT';</script><link href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700%7COpen+Sans+Condensed:700&amp;subset=latin,latin-ext,cyrillic,cyrillic-ext" rel="stylesheet"><link rel="apple-touch-icon-precomposed" href="img/favicon/apple-touch-icon-precomposed.png"><link rel="canonical" href="introduction-browser-events.html"><meta name="msapplication-TileColor" content="#222A2C"><meta name="msapplication-TileImage" content="/img/favicon/tileicon.png"><!-- favicon the rest--><link rel="icon" href="img/favicon/favicon.png"><meta itemprop="image" content="https://javascript.info/img/site_preview_en_512x512.png"><meta property="og:title" content="Introduction to browser events"><meta property="og:image" content="https://javascript.info/img/site_preview_en_1200x630.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="fb:admins" content="100001562528165"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Introduction to browser events"><meta name="twitter:site" content="@iliakan"><meta name="twitter:creator" content="@iliakan"><meta name="twitter:image" content="https://javascript.info/img/site_preview_en_512x512.png"><link href="pack/styles.da59a89b28153875791083e4a8c5adb3.css" rel="stylesheet"><link rel="prev" href="events.html"><link rel="next" href="bubbling-and-capturing.html"><script>window.GA_ID = "UA-2056213-15";</script><script>window.YANDEX_METRIKA_ID = 32184394;</script><script>window.GoogleAnalyticsObject="ga",window.ga=function(){window.ga.q.push(arguments)},window.ga.q=[],window.ga.l=Date.now(),ga("create",GA_ID,"auto"),window.currentUser&&ga("set","&uid",currentUser.id),window.addEventListener("error",function(e){var r=(e.filename||e.errorUrl)+": "+(e.lineno||e.errorLine),n=e.stack||e.error&&e.error.stack;ga("send","exception",{exDescription:e.message+" "+r+" "+n,exFatal:!0})});</script><script src="https://www.google-analytics.com/analytics.js" async></script><script>ga('send', 'pageview');</script><script>window.metrika={reachGoal:function(){}},window.yandex_metrika_callbacks=[function(){try{window.metrika=new Ya.Metrika({id:YANDEX_METRIKA_ID,webvisor:!0,clickmap:!0,params:{user:window.currentUser&&window.currentUser.id}}),metrika.trackLinks({delay:150}),window.addEventListener("error",function(r){window.metrika.reachGoal("JSERROR",{src:(r.filename||r.errorUrl)+": "+(r.lineno||r.errorLine),stack:r.stack||r.error&&r.error.stack,message:r.message})})}catch(r){}}];</script><script src="http://mc.yandex.ru/metrika/watch.js" async></script><script>window.RECAPTCHA_ID = "6Lf9NyETAAAAACZlg-a9Us2SxvYbeVC1ROWaWv4O";</script><script src="initc4ca.js?1"></script><script src="pack/head.688d4fe7c4cf54e23737.js" defer></script><style>
+/*
+.d0 { text-align:center;margin:auto; }
+.d1 p { margin: 0 }
+.d1 {
+margin:2em;
+background-color:green;
+width:13em;
+height:13em;
+text-align:center;
+}
+.d1 .number {
+  line-height: 2em;
+}
+.d2 {
+text-align:center;
+margin:auto;
+background-color:blue;
+width:9em;
+height:9em;
+}
+.d1 .d2 ,number {
+  line-height: 2em;
+}
+.d3 {
+text-align:center;
+margin:auto;
+background-color:red;
+width:5em;
+height:5em;
+}
+.d1 .d2 .d3 .number {
+  line-height: 5em;
+}
+.d1 .d2 .d2a {
+  color:white;
+  line-height: 2em;
+}
+*/
+</style>
+<script>
+/*
+function highlightMe(elem) {
+    elem.style.backgroundColor='yellow'
+    alert(elem.className)
+    elem.style.backgroundColor = ''
+}
+
+function highlightMe2(e) {
+    highlightMe(e.currentTarget);
+}
+*/
+</script>
+<meta property="og:title" content="Introduction to browser events"><meta property="og:type" content="article"><script src="pack/tutorial.688d4fe7c4cf54e23737.js" defer></script><script src="pack/footer.688d4fe7c4cf54e23737.js" defer></script></head><body class="no-icons"><script>window.fontTest();</script><div class="page-wrapper page-wrapper_sidebar_on"><!--[if lt IE 10]><div style="color:red;text-align:center">Sorry, IE&lt;10 is not supported, please use a newer browser.</div><![endif]--><div class="sitetoolbar sitetoolbar_tutorial"><!-- include ./notification-stripe--><div class="sitetoolbar__content"><div class="sitetoolbar__logo-wrap"><a href="index.html" class="sitetoolbar__link sitetoolbar__link_logo"><img src="img/sitetoolbar__logo_en.svg" width="200" class="sitetoolbar__logo sitetoolbar__logo_normal" alt=""><img src="img/sitetoolbar__logo_small_en.svg" width="70" class="sitetoolbar__logo sitetoolbar__logo_small" alt=""><script>Array.prototype.forEach.call(document.querySelectorAll("img.sitetoolbar__logo"),function(e){var t=document.createElement("object");t.type="image/svg+xml",t.className=e.className,t.style.cssText="left:0;top:0;position:absolute",t.onload=function(){t.onload=null,e.style.visibility="hidden"},t.data=e.src,e.parentNode.insertBefore(t,e)});</script></a></div><div class="sitetoolbar__nav-toggle-wrap"><button type="button" class="sitetoolbar__nav-toggle"></button></div><nav class="sitetoolbar__sections"><ul class="sitetoolbar__sections-list"></ul></nav><div class="sitetoolbar__book-wrap"><a href="ebook.html" class="buy-book-button"><span class="buy-book-button__extra-text">Buy</span>EPUB/PDF</a></div><div class="sitetoolbar__login-wrap"><button data-action-login class="sitetoolbar__login sitetoolbar__login_unready"></button></div><div class="sitetoolbar__search-wrap"><div class="sitetoolbar__search-content"><form method="GET" action="http://javascript.info/search" class="sitetoolbar__search"><button type="button" class="sitetoolbar__search-toggle"></button><div class="sitetoolbar__search-input"><div class="text-input"><input name="query" placeholder="Search on Javascript.info" class="text-input__control" type="text"></div><button type="submit" class="sitetoolbar__find">Search</button></div></form></div></div></div><!-- todo: en variant--><div class="tablet-menu"><div class="tablet-menu__line"><div class="tablet-menu__content"><form action="http://javascript.info/search/" class="tablet-menu-search"><input type="search" name="query" placeholder="Search in the tutorial" required class="tablet-menu-search__input"><button type="submit" name="type" value="articles" class="tablet-menu-search__button">Search</button></form></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><a href="tutorial/map.html" data-action="tutorial-map" class="map"><span class="map__text">Tutorial map</span></a></div></div><!--+e.line--><!--  +e.content--><!--    +b("a").tablet-ebook(href="/ebook")--><!--      +e("span").text Купить учебник--><!--      +e("span").note (EPUB + PDF)--><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="share-icons"><span class="share-icons__title">Share</span><a href="https://twitter.com/share?url=https%3A%2F%2Fjavascript.info%2Fintroduction-browser-events" class="share share_tw"></a><a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fjavascript.info%2Fintroduction-browser-events" class="share share_fb"></a><a href="https://plus.google.com/share?url=https%3A%2F%2Fjavascript.info%2Fintroduction-browser-events" class="share share_gp"></a><a href="https://vkontakte.ru/share.php?url=https%3A%2F%2Fjavascript.info%2Fintroduction-browser-events" class="share share_vk"></a></div></div></div></div><progress data-sticky value="12" max="27" data-tooltip="Lesson 12 of 27" class="tutorial-progress"></progress></div><div class="page page_sidebar_on"><script>if(localStorage.noSidebar){document.querySelector(".page").classList.remove("page_sidebar_on");var pageWrapper=document.querySelector(".page-wrapper");pageWrapper&&pageWrapper.classList.remove("page-wrapper_sidebar_on")}setTimeout(function(){document.querySelector(".page").classList.add("page_sidebar-animation-on")},0);</script><div class="page__inner"><main class="main main_width-limit"><header class="main__header"><ol class="breadcrumbs"><li itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemref="breadcrumb-1" class="breadcrumbs__item breadcrumbs__item_home"><a href="index.html" itemprop="url" class="breadcrumbs__link"><span itemprop="title" class="breadcrumbs__hidden-text">Учебник</span></a></li><li id="breadcrumb-1" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemref="breadcrumb-2" itemprop="child" class="breadcrumbs__item"><a href="ui.html" itemprop="url" class="breadcrumbs__link"><span itemprop="title">Browser: Document, Events, Interfaces</span></a></li><li id="breadcrumb-2" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemprop="child" class="breadcrumbs__item"><a href="events.html" itemprop="url" class="breadcrumbs__link"><span itemprop="title">Introduction into Events</span></a></li></ol><h1 class="main__header-title">Introduction to browser events</h1></header><div class="content"><article itemscope itemtype="http://schema.org/TechArticle"><meta itemprop="name" content="Introduction to browser events"><div itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="email" content="iliakan@gmail.com"><meta itemprop="name" content="Ilya Kantor"></div><div itemprop="articleBody"><p><em>An event</em> is a signal that something has happened. All DOM nodes generate such signals (but events are not limited to DOM).</p>
+<cut>
+<p>Here’s a list of the most useful DOM events, just to take a look at:</p>
+<p><strong>Mouse events:</strong></p>
+<ul>
+<li><code>click</code> – when the mouse clicks on an element (touchscreen devices generate it on a tap).</li>
+<li><code>contextmenu</code> – when the mouse right-clicks on an element.</li>
+<li><code>mouseover</code> / <code>mouseout</code> – when the mouse cursor comes over / leaves an element.</li>
+<li><code>mousedown</code> / <code>mouseup</code> – when the mouse button is pressed / released over an element.</li>
+<li><code>mousemove</code> – when the mouse is moved.</li>
+</ul>
+<p><strong>Form element events:</strong></p>
+<ul>
+<li><code>submit</code> – when the visitor submits a <code>&lt;form&gt;</code>.</li>
+<li><code>focus</code> –  when the visitor focuses on an element, e.g. on an <code>&lt;input&gt;</code>.</li>
+</ul>
+<p><strong>Keyboard events:</strong></p>
+<ul>
+<li><code>keydown</code> and <code>keyup</code> – when the visitor presses and then releases the button.</li>
+</ul>
+<p><strong>Document events</strong></p>
+<ul>
+<li><code>DOMContentLoaded</code> – when the HTML is loaded and processed, DOM is fully built.</li>
+</ul>
+<p><strong>CSS events:</strong></p>
+<ul>
+<li><code>transitionend</code> – when a CSS-animation finishes.</li>
+</ul>
+<p>There are many other events. We’ll get into more details of particular events in next chapters.</p>
+<h2><a class="main__anchor" name="event-handlers" href="#event-handlers">Event handlers</a></h2><p>To react on events we can assign a <em>handler</em> – a function that runs in case of an event.</p>
+<p>Handlers is a way to run JavaScript code in case of user actions.</p>
+<p>There are several ways to assign a handler. Let’s see them, starting from the simplest one.</p>
+<h3><a class="main__anchor" name="html-attribute" href="#html-attribute">HTML-attribute</a></h3><p>A handler can be set in HTML with an attribute named <code>on&lt;event&gt;</code>.</p>
+<p>For instance, to assign a <code>click</code> handler for an <code>input</code>, we can use <code>onclick</code>, like here:</p>
+<div data-trusted="1" class="code-example" data-highlight-inline="0:24-49">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="show" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;input value=&quot;Click me&quot; onclick=&quot;alert('Click!')&quot; type=&quot;button&quot;&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>On mouse click, the code inside <code>onclick</code> runs.</p>
+<p>Please note that inside <code>onclick</code> we use single quotes, because the attribute itself is in double quotes. If we forget that the code is inside the attribute and use double quotes inside, like this:  <code>onclick=&quot;alert(&quot;Click!&quot;)&quot;</code>, then it won’t work right.</p>
+<p>An HTML-attribute is not a convenient place to write a lot of code, so we’d better create a JavaScript function and call it there.</p>
+<p>Here a click runs the function <code>countRabbits()</code>:</p>
+<div data-trusted="1" class="code-example" data-demo-height="50" data-autorun="true" data-highlight-inline="8:21-45">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;script&gt;
+  function countRabbits() {
+    for(let i=1; i&lt;=3; i++) {
+      alert(&quot;Rabbit number &quot; + i);
+    }
+  }
+&lt;/script&gt;
+
+&lt;input type=&quot;button&quot; onclick=&quot;countRabbits()&quot; value=&quot;Count rabbits!&quot;&gt;</code></pre>
+        </div>
+      </div>
+      <div class="code-result code-example__result">
+        <iframe
+          class="code-result__iframe"
+          name="code-result-321rx2"
+          style="height:50px"
+          src="about:blank"></iframe>
+      </div>
+      </div><p>As we know, HTML attribute names are not case-sensitive, so <code>ONCLICK</code> works as well as <code>onClick</code> and <code>onCLICK</code>… But usually attributes are lowercased: <code>onclick</code>.</p>
+<h3><a class="main__anchor" name="dom-property" href="#dom-property">DOM property</a></h3><p>We can assign a handler using a DOM property <code>on&lt;event&gt;</code>.</p>
+<p>For instance, <code>elem.onclick</code>:</p>
+<div data-trusted="1" class="code-example" data-autorun="true" data-highlight-block="2-4">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;input id=&quot;elem&quot; type=&quot;button&quot; value=&quot;Click me&quot;&gt;
+&lt;script&gt;
+  elem.onclick = function() {
+    alert('Thank you');
+  };
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+      <div class="code-result code-example__result">
+        <iframe
+          class="code-result__iframe"
+          name="code-result-8wa3c4"
+          style="height:200px"
+          src="about:blank"></iframe>
+      </div>
+      </div><p>If the handler is assigned using an HTML-attribute then the browser reads it, creates a new function from the attribute content and writes it to the DOM property.</p>
+<p>So this way is actually the same as the previous one.</p>
+<p><strong>The handler is always in the DOM property: the HTML-attribute is just one of the ways to initialize it.</strong></p>
+<p>These two code pieces work the same:</p>
+<ol>
+<li>
+<p>Only HTML:</p>
+<div data-trusted="1" class="code-example" data-demo-height="50" data-autorun="true" data-highlight-inline="0:21-46">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;input type=&quot;button&quot; onclick=&quot;alert('Click!')&quot; value=&quot;Button&quot;&gt;</code></pre>
+        </div>
+      </div>
+      <div class="code-result code-example__result">
+        <iframe
+          class="code-result__iframe"
+          name="code-result-dbicp8"
+          style="height:50px"
+          src="about:blank"></iframe>
+      </div>
+      </div></li>
+<li>
+<p>HTML + JS:</p>
+<div data-trusted="1" class="code-example" data-demo-height="50" data-autorun="true" data-highlight-block="2-4">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;input type=&quot;button&quot; id=&quot;button&quot; value=&quot;Button&quot;&gt;
+&lt;script&gt;
+  button.onclick = function() {
+    alert('Click!');
+  };
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+      <div class="code-result code-example__result">
+        <iframe
+          class="code-result__iframe"
+          name="code-result-6hq6lx"
+          style="height:50px"
+          src="about:blank"></iframe>
+      </div>
+      </div></li>
+</ol>
+<p><strong>As there’s only one <code>onclick</code> property, we can’t assign more than one event handler.</strong></p>
+<p>In the example below adding a handler with JavaScript overwrites the existing handler:</p>
+<div data-trusted="1" class="code-example" data-demo-height="50" data-autorun="true" data-highlight-block="2-4">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="show" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;input type=&quot;button&quot; id=&quot;elem&quot; onclick=&quot;alert('Before')&quot; value=&quot;Click me&quot;&gt;
+&lt;script&gt;
+  elem.onclick = function() { // overwrites the existing handler
+    alert('After'); // only this will be shown
+  };
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+      <div class="code-result code-example__result">
+        <iframe
+          class="code-result__iframe"
+          name="code-result-hopir"
+          style="height:50px"
+          src="about:blank"></iframe>
+      </div>
+      </div><p>By the way, we can assign an existing function as a handler directly:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function sayThanks() {
+  alert('Thanks!');
+}
+
+elem.onclick = sayThanks;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>To remove a handler – assign <code>elem.onclick = null</code>.</p>
+<h2><a class="main__anchor" name="accessing-the-element-this" href="#accessing-the-element-this">Accessing the element: this</a></h2><p>The value of <code>this</code> inside a handler is the element. The one which has the handler on it.</p>
+<p>In the code below <code>button</code> shows its contents using <code>this.innerHTML</code>:</p>
+<div data-trusted="1" class="code-example" data-demo-height="50" data-autorun="true">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;button onclick=&quot;alert(this.innerHTML)&quot;&gt;Click me&lt;/button&gt;</code></pre>
+        </div>
+      </div>
+      <div class="code-result code-example__result">
+        <iframe
+          class="code-result__iframe"
+          name="code-result-3ayc5j"
+          style="height:50px"
+          src="about:blank"></iframe>
+      </div>
+      </div><h2><a class="main__anchor" name="possible-mistakes" href="#possible-mistakes">Possible mistakes</a></h2><p>If you’re starting to work with event – please note some subtleties.</p>
+<p><strong>The function should be assigned as <code>sayThanks</code>, not <code>sayThanks()</code>.</strong></p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">// right
+button.onclick = sayThanks;
+
+// wrong
+button.onclick = sayThanks();</code></pre>
+        </div>
+      </div>
+      
+      </div><p>If we add brackets, then <code>sayThanks()</code> –  will be the <em>result</em> of the function execution, so <code>onclick</code> in the last code becomes <code>undefined</code> (the function returns nothing). That won’t work.</p>
+<p>…But in the markup we do need the brackets:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;input type=&quot;button&quot; id=&quot;button&quot; onclick=&quot;sayThanks()&quot;&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>The difference is easy to explain. When the browser reads the attribute, it creates a handler function with the body from its content.</p>
+<p>So the last example is the same as:</p>
+<div data-trusted="1" class="code-example" data-highlight-block="1-1">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">button.onclick = function() {
+  sayThanks(); // the attribute content
+};</code></pre>
+        </div>
+      </div>
+      
+      </div><p><strong>Use functions, not strings.</strong></p>
+<p>The assignment <code>elem.onclick = &quot;alert(1)&quot;</code> would work too. It works for compatibility reasons, but strongly not recommended.</p>
+<p><strong>Don’t use <code>setAttribute</code> for handlers.</strong></p>
+<p>Such a call won’t work:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">// a click on &lt;body&gt; will generate errors,
+// because attributes are always strings, function becomes a string
+document.body.setAttribute('onclick', function() { alert(1) });</code></pre>
+        </div>
+      </div>
+      
+      </div><p><strong>DOM-property case matters.</strong></p>
+<p>Assign a handler to <code>elem.onclick</code>, not <code>elem.ONCLICK</code>, because DOM properties are case-sensitive.</p>
+<h2><a class="main__anchor" name="addeventlistener" href="#addeventlistener">addEventListener</a></h2><p>The fundamental problem of the aforementioned ways to assign handlers – we can’t assign multiple handlers to one event.</p>
+<p>For instance, one part of our code wants to highlight a button on click, and another one wants to show a message.</p>
+<p>We’d like to assign two event handlers for that. But a new DOM property will overwrite the existing one:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">input.onclick = function() { alert(1); }
+// ...
+input.onclick = function() { alert(2); } // replaces the previous handler</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Web-standard developers understood that long ago and suggested an alternative way of managing handlers using special methods <code>addEventListener</code> and <code>removeEventListener</code>. They are free of such a problem.</p>
+<p>The syntax to add a handler:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">element.addEventListener(event, handler[, phase]);</code></pre>
+        </div>
+      </div>
+      
+      </div><dl>
+<dt><code>event</code></dt>
+<dd>Event name, e.g. <code>&quot;click&quot;</code>.</dd>
+<dt><code>handler</code></dt>
+<dd>The handler function.</dd>
+<dt><code>phase</code></dt>
+<dd>An optional argument, the “phase” for the handler to work. To be covered later. Usually we don’t use it.</dd>
+</dl>
+<p>To remove the handler, use <code>removeEventListener</code>:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">// exactly the same arguments as addEventListener
+element.removeEventListener(event, handler[, phase]);</code></pre>
+        </div>
+      </div>
+      
+      </div><div class="important important_warn">
+            <div class="important__header"><span class="important__type">Removal requires the same function</span></div>
+            <div class="important__content"><p>To remove a handler we should pass exactly the same function as was assigned.</p>
+<p>That doesn’t work:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">elem.addEventListener( &quot;click&quot; , () =&gt; alert('Thanks!'));
+// ....
+elem.removeEventListener( &quot;click&quot;, () =&gt; alert('Thanks!'));</code></pre>
+        </div>
+      </div>
+      
+      </div><p>The handler won’t be removed, because <code>removeEventListener</code> gets another function – with the same code, but that doesn’t matter.</p>
+<p>Here’s the right way:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function handler() {
+  alert( 'Thanks!' );
+}
+
+input.addEventListener(&quot;click&quot;, handler);
+// ....
+input.removeEventListener(&quot;click&quot;, handler);</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Please note – if we don’t store the function in a variable, then we can’t remove it. There’s no way to “read back” handlers assigned by <code>addEventListener</code>.</p>
+</div></div>
+<p>Multiple calls to <code>addEventListener</code> allow to add multiple handlers, like this:</p>
+<div data-trusted="1" class="code-example" data-highlight-block="11-13">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="show" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;input id=&quot;elem&quot; type=&quot;button&quot; value=&quot;Click me&quot;/&gt;
+
+&lt;script&gt;
+  function handler1() {
+    alert('Thanks!');
+  };
+
+  function handler2() {
+    alert('Thanks again!');
+  }
+
+  elem.onclick = () =&gt; alert(&quot;Hello&quot;);
+  elem.addEventListener(&quot;click&quot;, handler1); // Thanks!
+  elem.addEventListener(&quot;click&quot;, handler2); // Thanks again!
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>As we can see in the example above, we can set handlers <em>both</em> using a DOM-property and <code>addEventListener</code>. But generally we use only one of these ways.</p>
+<div class="important important_warn">
+            <div class="important__header"><span class="important__type">For some events handlers only work with <code>addEventListener</code></span></div>
+            <div class="important__content"><p>There exist events that can’t be assigned via a DOM-property. Must use <code>addEventListener</code>.</p>
+<p>For instance, the event <code>transitionend</code> (CSS animation finished) is like that.</p>
+<p>Try the code below. In most browsers only the second handler works, not the first one.</p>
+<div data-trusted="1" class="code-example" data-highlight-block="18-20">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="show" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;style&gt;
+  input {
+    transition: width 1s;
+    width: 100px;
+  }
+
+  .wide {
+    width: 300px;
+  }
+&lt;/style&gt;
+
+&lt;input type=&quot;button&quot; id=&quot;elem&quot; onclick=&quot;this.classList.toggle('wide')&quot; value=&quot;Click me&quot;&gt;
+
+&lt;script&gt;
+  elem.ontransitionend = function() {
+    alert(&quot;DOM property&quot;); // doesn't work
+  };
+
+  elem.addEventListener(&quot;transitionend&quot;, function() {
+    alert(&quot;addEventListener&quot;); // shows up when the animation finishes
+  });
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div></div></div>
+<h2><a class="main__anchor" name="event-object" href="#event-object">Event object</a></h2><p>To properly handle an event we’d want to know more about what’s happened. Not just a “click” or a “keypress”, but what were the pointer coordinates? Which key was pressed? And so on.</p>
+<p>When an event happens, the browser creates an <em>event object</em>, puts details into it and passes it as an argument to the handler.</p>
+<p>Here’s an example of getting mouse coordinates from the event object:</p>
+<div data-trusted="1" class="code-example" data-highlight-inline="3:26-31">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="show" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;input type=&quot;button&quot; value=&quot;Click me&quot; id=&quot;elem&quot;&gt;
+
+&lt;script&gt;
+  elem.onclick = function(event) {
+    // show event type, element and coordinates of the click
+    alert(event.type + &quot; at &quot; + event.currentTarget);
+    alert(&quot;Coordinates: &quot; + event.clientX + &quot;:&quot; + event.clientY);
+  };
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Some properties of <code>event</code> object:</p>
+<dl>
+<dt><code>event.type</code></dt>
+<dd>Event type, here it’s <code>&quot;click&quot;</code>.</dd>
+<dt><code>event.currentTarget</code></dt>
+<dd>Element that handled the event. That’s exactly the same as <code>this</code>, unless you bind <code>this</code> to something else, and then <code>event.currentTarget</code> becomes useful.</dd>
+<dt><code>event.clientX / event.clientY</code></dt>
+<dd>Window-relative coordinates of the cursor, for mouse events.</dd>
+</dl>
+<p>There are more properties. They depend on the event type, so we’ll study them later when come to different events in details.</p>
+<div class="important important_smart">
+            <div class="important__header"><span class="important__type">The event object is also accessible from HTML</span></div>
+            <div class="important__content"><p>If we assign a handler in HTML, we can also use the <code>event</code> object, like this:</p>
+<div data-trusted="1" class="code-example" data-demo-height="60" data-autorun="true" data-highlight-inline="0:30-47">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;input type=&quot;button&quot; onclick=&quot;alert(event.type)&quot; value=&quot;Event type&quot;&gt;</code></pre>
+        </div>
+      </div>
+      <div class="code-result code-example__result">
+        <iframe
+          class="code-result__iframe"
+          name="code-result-en4hgo"
+          style="height:60px"
+          src="about:blank"></iframe>
+      </div>
+      </div><p>That’s possible because when the browser reads the attribute, it creates a handler like this:  <code>function(event) { alert(event.type) }</code>. That is: its first argument is called <code>&quot;event&quot;</code>, and the body is taken from the attribute.</p>
+</div></div>
+<h2><a class="main__anchor" name="object-handlers-handleevent" href="#object-handlers-handleevent">Object handlers: handleEvent</a></h2><p>We can assign an object as an event handler using <code>addEventListener</code>. When an event occurs, its <code>handleEvent</code> method is called with it.</p>
+<p>For instance:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="show" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;button id=&quot;elem&quot;&gt;Click me&lt;/button&gt;
+
+&lt;script&gt;
+  elem.addEventListener('click', {
+    handleEvent(event) {
+      alert(event.type + &quot; at &quot; + event.currentTarget);
+    }
+  });
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>In other words, when <code>addEventListener</code> receives an object as the handler, it calls <code>object.handleEvent(event)</code> in case of an event.</p>
+<p>We could also use a class for that:</p>
+<div data-trusted="1" class="code-example" data-highlight-block="16-18">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="show" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;button id=&quot;elem&quot;&gt;Click me&lt;/button&gt;
+
+&lt;script&gt;
+  class Menu {
+    handleEvent(event) {
+      switch(event.type) {
+        case 'mousedown':
+          elem.innerHTML = &quot;Mouse button pressed&quot;;
+          break;
+        case 'mouseup':
+          elem.innerHTML += &quot;...and released.&quot;;
+          break;
+      }
+    }
+  }
+
+  let menu = new Menu();
+  elem.addEventListener('mousedown', menu);
+  elem.addEventListener('mouseup', menu);
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Here the same object handles both events. Please note that we need to explicitly setup the events to listen using <code>addEventListener</code>. The <code>menu</code> object only gets <code>mousedown</code> and <code>mouseup</code> here, not any other types of events.</p>
+<p>The method <code>handleEvent</code> does not have to do all the job by itself. It can call other event-specific methods instead, like this:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="show" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;button id=&quot;elem&quot;&gt;Click me&lt;/button&gt;
+
+&lt;script&gt;
+  class Menu {
+    handleEvent(event) {
+      // mousedown -&gt; onMousedown
+      let method = 'on' + event.type[0].toUpperCase() + event.type.slice(1);
+      this[method](event);
+    }
+
+    onMousedown() {
+      elem.innerHTML = &quot;Mouse button pressed&quot;;
+    }
+
+    onMouseup() {
+      elem.innerHTML += &quot;...and released.&quot;;
+    }
+  }
+
+  let menu = new Menu();
+  elem.addEventListener('mousedown', menu);
+  elem.addEventListener('mouseup', menu);
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Now event handlers are clearly separated, that may be easier to support.</p>
+<h2><a class="main__anchor" name="summary" href="#summary">Summary</a></h2><p>There are 3 ways to assign event handlers:</p>
+<ol>
+<li>HTML attribute: <code>onclick=&quot;...&quot;</code>.</li>
+<li>DOM property: <code>elem.onclick = function</code>.</li>
+<li>Methods: <code>elem.addEventListener(event, handler[, phase])</code> to add, <code>removeEventListener</code> to remove.</li>
+</ol>
+<p>HTML attributes are used sparingly, because JavaScript in the middle of an HTML tag looks a little bit odd and alien. Also can’t write lots of code in there.</p>
+<p>DOM properties are ok to use, but we can’t assign more than one handler of the particular event. In many cases that limitation is not pressing.</p>
+<p>The last way is the most flexible, but it is also the longest to write. There are few events that only work with it, for instance <code>transtionend</code> and <code>DOMContentLoaded</code> (to be covered). Also <code>addEventListener</code> supports objects as event handlers. In that case the method <code>handleEvent</code> is called in case of the event.</p>
+<p>No matter how you assign the handler – it gets an event object as the first argument. That object contains the details about what’s happened.</p>
+<p>We’ll learn more about events in general and about different types of events in the next chapters.</p>
+</div></article><div class="tasks"><h2 id="tasks" class="tasks__title"><a href="#tasks" class="main__anchor main__anchor_noicon tasks__title-anchor">Tasks</a></h2><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a href="#hide-on-click" name="hide-on-click" class="main__anchor">Hide on click</a></h3><a href="task/hide-other.html" target="_blank" class="task__open-link"></a></div><div class="task__header-note"><span title="How important is the task, from 1 to 5" class="task__importance">importance: 5</span></div><div class="task__content"><p>Add JavaScript to the <code>button</code> to make <code>&lt;div id=&quot;text&quot;&gt;</code> disappear when we click it.</p>
+<p>The demo:</p>
+<div class="code-result">
+    <div class="code-result__toolbar toolbar"></div>
+    <iframe class="code-result__iframe" data-trusted="1" style="height:80px" src="https://en.js.cx/task/hide-other/solution/"></iframe>
+  </div><p><a href="http://plnkr.co/edit/tknv77Kwr6qfdnuwWY02?p=preview" target="_blank" data-plunk-id="tknv77Kwr6qfdnuwWY02">Open the sandbox for the task.</a></p><button type="button" class="task__solution">solution</button><div class="task__answer"><div class="task__answer-content"><p><a href="http://plnkr.co/edit/4LUWOEJ98Dsgpjzo8SLg?p=preview" target="_blank" data-plunk-id="4LUWOEJ98Dsgpjzo8SLg">Open the solution in the sandbox.</a></p></div><button type="button" title="close" class="close-button task__answer-close"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a href="#hide-self" name="hide-self" class="main__anchor">Hide self</a></h3><a href="task/hide-self-onclick.html" target="_blank" class="task__open-link"></a></div><div class="task__header-note"><span title="How important is the task, from 1 to 5" class="task__importance">importance: 5</span></div><div class="task__content"><p>Create a button that hides itself on click.</p>
+<p>Like this:
+<input type="button" onclick="this.hidden=true" value="Click to hide"></p>
+<button type="button" class="task__solution">solution</button><div class="task__answer"><div class="task__answer-content"><p>Can use <code>this</code> in the handler to reference “itself” here:</p>
+<div data-trusted="1" class="code-example" data-demo-height="50">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="show" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;input type=&quot;button&quot; onclick=&quot;this.hidden=true&quot; value=&quot;Click to hide&quot;&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div></div><button type="button" title="close" class="close-button task__answer-close"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a href="#which-handlers-run" name="which-handlers-run" class="main__anchor">Which handlers run?</a></h3><a href="task/which-handlers-run.html" target="_blank" class="task__open-link"></a></div><div class="task__header-note"><span title="How important is the task, from 1 to 5" class="task__importance">importance: 5</span></div><div class="task__content"><p>There’s a button in the variable. There are no handlers on it.</p>
+<p>Which handlers run on click after the following code? Which alerts show up?</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">button.addEventListener(&quot;click&quot;, () =&gt; alert(&quot;1&quot;));
+
+button.removeEventListener(&quot;click&quot;, () =&gt; alert(&quot;1&quot;));
+
+button.onclick = () =&gt; alert(2);</code></pre>
+        </div>
+      </div>
+      
+      </div><button type="button" class="task__solution">solution</button><div class="task__answer"><div class="task__answer-content"><p>The answer: <code>1</code> and <code>2</code>.</p>
+<p>The first handler triggers, because it’s not removed by <code>removeEventListener</code>. To remove the handler we need to pass exactly the function that was assigned. And in the code a new function is passed, that looks the same, but is still another function.</p>
+<p>To remove a function object, we need to store a reference to it, like this:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function handler() {
+  alert(1);
+}
+
+button.addEventListener(&quot;click&quot;, handler);
+button.removeEventListener(&quot;click&quot;, handler);</code></pre>
+        </div>
+      </div>
+      
+      </div><p>The handler <code>button.onclick</code> works independantly and in addition to <code>addEventListener</code>.</p>
+</div><button type="button" title="close" class="close-button task__answer-close"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a href="#move-the-ball-across-the-field" name="move-the-ball-across-the-field" class="main__anchor">Move the ball across the field</a></h3><a href="task/move-ball-field.html" target="_blank" class="task__open-link"></a></div><div class="task__header-note"><span title="How important is the task, from 1 to 5" class="task__importance">importance: 5</span></div><div class="task__content"><p>Move the ball across the field to a click. Like this:</p>
+<div class="code-result">
+    <div class="code-result__toolbar toolbar"><div class="toolbar__tool">
+        <a href="https://en.js.cx/task/move-ball-field/solution/" target="_blank" title="open in new window" class="toolbar__button toolbar__button_external"></a>
+      </div>
+      </div>
+    <iframe class="code-result__iframe" data-trusted="1" style="height:260px" src="https://en.js.cx/task/move-ball-field/solution/"></iframe>
+  </div><p>Requirements:</p>
+<ul>
+<li>The ball center should come exactly under the pointer on click (if possible without crossing the field edge).</li>
+<li>CSS-animation is welcome.</li>
+<li>The ball must not cross field boundaries.</li>
+<li>When the page is scrolled, nothing should break.</li>
+</ul>
+<p>Notes:</p>
+<ul>
+<li>The code should also work with different ball and field sizes, not be bound to any fixed values.</li>
+<li>Use properties <code>event.clientX/event.clientY</code> for click coordinates.</li>
+</ul>
+<p><a href="http://plnkr.co/edit/021wJG1HpUqplMqVAFog?p=preview" target="_blank" data-plunk-id="021wJG1HpUqplMqVAFog">Open the sandbox for the task.</a></p><button type="button" class="task__solution">solution</button><div class="task__answer"><div class="task__answer-content"><p>First we need to choose a method of positioning the ball.</p>
+<p>We can’t use <code>position:fixed</code> for it, because scrolling the page would move the ball from the field.</p>
+<p>So we should use <code>position:absolute</code> and, to make the positioning really solid, make <code>field</code> itself positioned.</p>
+<p>Then the ball will be positioned relatively to the field:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-css"><code class="language-css">#field {
+  width: 200px;
+  height: 150px;
+  position: relative;
+}
+
+#ball {
+  position: absolute;
+  left: 0; /* relative to the closest positioned ancestor (field) */
+  top: 0;
+  transition: 1s all; /* CSS animation for left/top makes the ball fly */
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Next we need to assign the correct <code>ball.style.position.left/top</code>. They contain field-relative coordinates now.</p>
+<p>Here’s the picture:</p>
+<figure><div class="image" style="width:501px">
+      <div class="image__ratio" style="padding-top:63.07385229540918%"></div>
+      <img src="task/move-ball-field/move-ball-coords.png" alt="" width="501" height="316" class="image__image">
+      </div></figure><p>We have <code>event.clientX/clientY</code> – window-relative coordinates of the click.</p>
+<p>To get field-relative <code>left</code> coordinate of the click, we can substract the field left edge and the border width:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let left = event.clientX - fieldInnerCoords.left - field.clientLeft;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Normally, <code>ball.style.position.left</code> means the “left edge of the element” (the ball). So if we assign that <code>left</code>, then the ball edge would be under the mouse cursor.</p>
+<p>We need to move the ball half-width left and half-height up to make it center.</p>
+<p>So the final <code>left</code> would be:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let left = event.clientX - fieldInnerCoords.left - field.clientLeft - ball.offsetWidth/2;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>The vertical coordinate is calculated using the same logic.</p>
+<p>Please note that the ball width/height must be known at the time we access <code>ball.offsetWidth</code>. Should be specified in HTML or CSS.</p>
+<p><a href="http://plnkr.co/edit/uicFeQ8SWHYctHdiows7?p=preview" target="_blank" data-plunk-id="uicFeQ8SWHYctHdiows7">Open the solution in the sandbox.</a></p></div><button type="button" title="close" class="close-button task__answer-close"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a href="#create-a-menu-sliding-menu" name="create-a-menu-sliding-menu" class="main__anchor">Create a menu sliding menu</a></h3><a href="task/sliding-menu.html" target="_blank" class="task__open-link"></a></div><div class="task__header-note"><span title="How important is the task, from 1 to 5" class="task__importance">importance: 5</span></div><div class="task__content"><p>Create a menu that opens/collapses on click:</p>
+<div class="code-result">
+    <div class="code-result__toolbar toolbar"></div>
+    <iframe class="code-result__iframe" data-trusted="1" style="height:100px" src="https://en.js.cx/task/sliding-menu/solution/"></iframe>
+  </div><p>P.S. HTML/CSS of the source document is to be modified.</p>
+<p><a href="http://plnkr.co/edit/2mjXFQwj8xONP6bPhVT4?p=preview" target="_blank" data-plunk-id="2mjXFQwj8xONP6bPhVT4">Open the sandbox for the task.</a></p><button type="button" class="task__solution">solution</button><div class="task__answer"><div class="task__step task__step_open"><button type="button" onclick="showStep(this)" class="task__step-show">HTML/CSS</button><div class="task__answer-content"><h4 class="task__step-title">HTML/CSS</h4><p>First let’s create HTML/CSS.</p>
+<p>A menu is a standalone graphical component on the page, so its better to put it into a single DOM element.</p>
+<p>A list of menu items can be layed out as a list <code>ul/li</code>.</p>
+<p>Here’s the example structure:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;div class=&quot;menu&quot;&gt;
+  &lt;span class=&quot;title&quot;&gt;Sweeties (click me)!&lt;/span&gt;
+  &lt;ul&gt;
+    &lt;li&gt;Cake&lt;/li&gt;
+    &lt;li&gt;Donut&lt;/li&gt;
+    &lt;li&gt;Honey&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>We use <code>&lt;span&gt;</code> for the title, because <code>&lt;div&gt;</code> has an implicit <code>display:block</code> on it, and it will occupy 100% of the horizontal width.</p>
+<p>Like this:</p>
+<div data-trusted="1" class="code-example" data-demo-height="50" data-autorun="true">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;div style=&quot;border: solid red 1px&quot; onclick=&quot;alert(1)&quot;&gt;Sweeties (click me)!&lt;/div&gt;</code></pre>
+        </div>
+      </div>
+      <div class="code-result code-example__result">
+        <iframe
+          class="code-result__iframe"
+          name="code-result-e38hdj"
+          style="height:50px"
+          src="about:blank"></iframe>
+      </div>
+      </div><p>So if we set <code>onclick</code> on it, then it will catch clicks to the right of the text.</p>
+<p>…but <code>&lt;span&gt;</code> has an implicit <code>display: inline</code>, so it occupies exactly enough place to fit all the text:</p>
+<div data-trusted="1" class="code-example" data-demo-height="50" data-autorun="true">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;span style=&quot;border: solid red 1px&quot; onclick=&quot;alert(1)&quot;&gt;Sweeties (click me)!&lt;/span&gt;</code></pre>
+        </div>
+      </div>
+      <div class="code-result code-example__result">
+        <iframe
+          class="code-result__iframe"
+          name="code-result-3ygbfr"
+          style="height:50px"
+          src="about:blank"></iframe>
+      </div>
+      </div></div></div><div class="task__step task__step_open"><button type="button" onclick="showStep(this)" class="task__step-show">Toggling the menu</button><div class="task__answer-content"><h4 class="task__step-title">Toggling the menu</h4><p>Toggling the menu should change the arrow and show/hide the menu list.</p>
+<p>All these changes are perfectly handled by CSS. In JavaScript we should label the current state of the menu by adding/removing the class <code>.open</code>.</p>
+<p>Without it, the menu will be closed:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-css"><code class="language-css">.menu ul {
+  margin: 0;
+  list-style: none;
+  padding-left: 20px;
+  display: none;
+}
+
+.menu .title::before {
+  content: '▶ ';
+  font-size: 80%;
+  color: green;
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>…And with <code>.open</code> the arrow changes and the list shows up:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-css"><code class="language-css">.menu.open .title::before {
+  content: '▼ ';
+}
+
+.menu.open ul {
+  display: block;
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p><a href="http://plnkr.co/edit/azLUvqjKgoPmfbjThdaz?p=preview" target="_blank" data-plunk-id="azLUvqjKgoPmfbjThdaz">Open the solution in the sandbox.</a></p></div></div><button type="button" title="close" class="close-button task__answer-close"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a href="#add-a-closing-button" name="add-a-closing-button" class="main__anchor">Add a closing button</a></h3><a href="task/hide-message.html" target="_blank" class="task__open-link"></a></div><div class="task__header-note"><span title="How important is the task, from 1 to 5" class="task__importance">importance: 5</span></div><div class="task__content"><p>There’s a list of messages.</p>
+<p>Use JavaScript to add a closing button to the right-upper corner of each message.</p>
+<p>The result should look like this:</p>
+<div class="code-result">
+    <div class="code-result__toolbar toolbar"></div>
+    <iframe class="code-result__iframe" data-trusted="1" style="height:450px" src="https://en.js.cx/task/hide-message/solution/"></iframe>
+  </div><p><a href="http://plnkr.co/edit/kGSW4ZrKom08M8zhPImd?p=preview" target="_blank" data-plunk-id="kGSW4ZrKom08M8zhPImd">Open the sandbox for the task.</a></p><button type="button" class="task__solution">solution</button><div class="task__answer"><div class="task__answer-content"><p>To add the button we can use either <code>position:absolute</code> (and make the pane <code>position:relative</code>) or <code>float:right</code>. The <code>float:right</code> has the benefit that the button never overlaps the text, but <code>position:absolute</code> gives more freedom. So the choice is yours.</p>
+<p>Then for each pane the code can be like:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">pane.insertAdjacentHTML(&quot;afterbegin&quot;, '&lt;button class=&quot;remove-button&quot;&gt;[x]&lt;/button&gt;');</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Then the <code>&lt;button&gt;</code> becomes <code>pane.firstChild</code>, so we can add a handler to it like this:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">pane.firstChild.onclick = () =&gt; pane.remove();</code></pre>
+        </div>
+      </div>
+      
+      </div><p><a href="http://plnkr.co/edit/9j74pthW3hCMcrkdgQBs?p=preview" target="_blank" data-plunk-id="9j74pthW3hCMcrkdgQBs">Open the solution in the sandbox.</a></p></div><button type="button" title="close" class="close-button task__answer-close"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a href="#carousel" name="carousel" class="main__anchor">Carousel</a></h3><a href="task/carousel.html" target="_blank" class="task__open-link"></a></div><div class="task__header-note"><span title="How important is the task, from 1 to 5" class="task__importance">importance: 4</span></div><div class="task__content"><p>Create a “carousel” – a ribbon of images that can be scrolled by clicking on arrows.</p>
+<div class="code-result">
+    <div class="code-result__toolbar toolbar"></div>
+    <iframe class="code-result__iframe" data-trusted="1" style="height:200px" src="https://en.js.cx/task/carousel/solution/"></iframe>
+  </div><p>Later we can add more features to it: infinite scrolling, dynamic loading etc.</p>
+<p>P.S. For this task HTML/CSS structure is actually 90% of the solution.</p>
+<p><a href="http://plnkr.co/edit/A3uHdDcPRwpzDaj4sSVY?p=preview" target="_blank" data-plunk-id="A3uHdDcPRwpzDaj4sSVY">Open the sandbox for the task.</a></p><button type="button" class="task__solution">solution</button><div class="task__answer"><div class="task__answer-content"><p>The images ribbon can be represented as <code>ul/li</code> list of images <code>&lt;img&gt;</code>.</p>
+<p>Normally, such a ribbon is wide, but we put a fixed-size <code>&lt;div&gt;</code> around to “cut” it, so that only a part of the ribbon is visibble:</p>
+<figure><div class="image" style="width:444px">
+      <div class="image__ratio" style="padding-top:43.24324324324324%"></div>
+      <img src="task/carousel/carousel1.png" alt="" width="444" height="192" class="image__image">
+      </div></figure><p>To make the list show horizontally we need to apply correct CSS properties for <code>&lt;li&gt;</code>, like <code>display: inline-block</code>.</p>
+<p>For <code>&lt;img&gt;</code> we should also adjust <code>display</code>, because by default it’s <code>inline</code>. There’s extra space reserved under <code>inline</code> elements for “letter tails”, so we can use <code>display:block</code> to remove it.</p>
+<p>To do the scrolling, we can shift <code>&lt;ul&gt;</code>. There are many ways to do it, for instance by changing <code>margin-left</code> or (better performance) use <code>transform: translateX()</code>:</p>
+<figure><div class="image" style="width:561px">
+      <div class="image__ratio" style="padding-top:34.22459893048128%"></div>
+      <img src="task/carousel/carousel2.png" alt="" width="561" height="192" class="image__image">
+      </div></figure><p>The outer <code>&lt;div&gt;</code> has a fixed width, so “extra” images are cut.</p>
+<p>The whole carousel is a self-contained “graphical component” on the page, so we’d better wrap it into a single <code>&lt;div class=&quot;carousel&quot;&gt;</code> and style things inside it.</p>
+<p><a href="http://plnkr.co/edit/VdxdE2JWQbdS7AycM520?p=preview" target="_blank" data-plunk-id="VdxdE2JWQbdS7AycM520">Open the solution in the sandbox.</a></p></div><button type="button" title="close" class="close-button task__answer-close"></button></div></div></div></div></div><!--  include /blocks/banner-bottom--><!--if lang == 'en'--><!--  include /blocks/banner-bottom.en--></div><div class="page__nav-wrap"><a href="events.html" data-tooltip="Introduction into Events" class="page__nav page__nav_prev"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Previous lesson</span></a><a href="bubbling-and-capturing.html" data-tooltip="Bubbling and capturing" class="page__nav page__nav_next"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Next lesson</span></a></div><div class="article-tablet-foot tablet-only"><div class="article-tablet-foot__layout"><div class="share-icons"><span class="share-icons__title">Share</span><a href="https://twitter.com/share?url=https%3A%2F%2Fjavascript.info%2Fintroduction-browser-events" class="share share_tw"></a><a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fjavascript.info%2Fintroduction-browser-events" class="share share_fb"></a><a href="https://plus.google.com/share?url=https%3A%2F%2Fjavascript.info%2Fintroduction-browser-events" class="share share_gp"></a><a href="https://vkontakte.ru/share.php?url=https%3A%2F%2Fjavascript.info%2Fintroduction-browser-events" class="share share_vk"></a></div><div class="article-tablet-foot__map"><a href="tutorial/map.html" data-action="tutorial-map" class="map"><span class="map__text">Tutorial map</span></a></div></div></div><div id="comments" class="comments"><div class="comments__header"><h2 class="comments__header-title"><a href="#comments" name="comments">Comments</a></h2><div class="comments__read-before"><span class="comments__read-before-link">read this before commenting…</span><div class="comments__read-before-popup"><div class="comments__read-before-popup-i"><ul><li>You're welcome to post additions, questions to the articles and answers to them.</li><li>To insert a few words of code, use the <code>&lt;code&gt;</code> tag, for several lines – use <code>&lt;pre&gt;</code>, for more than 10 lines – use a sandbox (<a href='http://plnkr.co/edit/?p=preview'>plnkr</a>, <a href='http://jsbin.com/'>JSBin</a>, <a href='http://codepen.io/'>codepen</a>…)</li><li>If you can't understand something in the article – please elaborate.</li></ul></div></div></div></div></div><div id="disqus_thread"></div><script>var disqus_config = function() { if (!this.page) this.page = {}; Object.assign(this.page, {"url":"https:\/\/javascript.info\/introduction-browser-events","identifier":"\/introduction-browser-events","title":"Introduction to browser events"}); };</script><script>var disqus_shortname = "javascriptinfo";</script><script>var disqus_enabled = true;</script></main></div><div class="page__sidebar sidebar sidebar_sticky-footer"><button data-sidebar-toggle class="sidebar__toggle"></button><a href="tutorial/map.html" data-action="tutorial-map" data-tooltip="Tutorial map" class="map"></a><div class="sidebar__inner"><div class="sidebar__content"><div class="sidebar__section"><h4 class="sidebar__section-title">Chapter</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a href="events.html" class="sidebar__link">Introduction into Events</a></li></ul></nav></div><div class="sidebar__section"><h4 class="sidebar__section-title">Lesson navigation</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a href="#event-handlers" class="sidebar__link">Event handlers</a></li><li class="sidebar__navigation-link"><a href="#accessing-the-element-this" class="sidebar__link">Accessing the element: this</a></li><li class="sidebar__navigation-link"><a href="#possible-mistakes" class="sidebar__link">Possible mistakes</a></li><li class="sidebar__navigation-link"><a href="#addeventlistener" class="sidebar__link">addEventListener</a></li><li class="sidebar__navigation-link"><a href="#event-object" class="sidebar__link">Event object</a></li><li class="sidebar__navigation-link"><a href="#object-handlers-handleevent" class="sidebar__link">Object handlers: handleEvent</a></li><li class="sidebar__navigation-link"><a href="#summary" class="sidebar__link">Summary</a></li></ul></nav></div><div class="sidebar__section"><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a href="#tasks" class="sidebar__link">Tasks (7)</a></li><li class="sidebar__navigation-link"><a href="#comments" class="sidebar__link">Comments</a></li></ul></nav></div><div class="sidebar__section"><div class="sidebar__section-title">Share</div><a href="https://twitter.com/share?url=https%3A%2F%2Fjavascript.info%2Fintroduction-browser-events" class="share share_tw sidebar__share"></a><a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fjavascript.info%2Fintroduction-browser-events" class="share share_fb sidebar__share"></a><a href="https://plus.google.com/share?url=https%3A%2F%2Fjavascript.info%2Fintroduction-browser-events" class="share share_gp sidebar__share"></a></div><div class="sidebar__section"><a href="https://github.com/iliakan/javascript-tutorial-en/tree/master/2-ui/2-events/01-introduction-browser-events/article.md" class="sidebar__link">Edit on Github</a></div></div></div></div></div></div><div class="page-footer"><div class="page-footer__left"><ul class="page-footer__list"><li class="page-footer__item">©&nbsp;2007—2017&nbsp; Ilya Kantor</li><li class="page-footer__item"><a href="about.html#contact-us" class="page-footer__link">contact us</a></li><li class="page-footer__item"><a href="about.html" class="page-footer__link">about the project</a></li><li class="page-footer__item"><a href="https://learn.javascript.ru/" class="page-footer__link">RU</a> / EN</li></ul></div><div class="page-footer__right"><ul class="page-footer__list"><li class="page-footer__item">powered by <a rel="nofollow" href="http://nodejs.org/" class="page-footer__link">node.js</a>&nbsp;&amp;&nbsp;<a rel="nofollow" href="http://github.com/iliakan/javascript-tutorial-en" class="page-footer__link">open source</a></li></ul></div></div></body>
+<!-- Mirrored from javascript.info/introduction-browser-events by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 30 Nov 2017 15:30:01 GMT -->
+</html>

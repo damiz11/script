@@ -1,0 +1,421 @@
+<!DOCTYPE html><html lang="en">
+<!-- Mirrored from javascript.info/promise-api by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 30 Nov 2017 15:30:59 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><script>window.currentUser = null;</script><title itemprop="name">Promise API</title><meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, minimum-scale=1.0"><meta name="apple-mobile-web-app-capable" content="yes"><script>if (window.devicePixelRatio > 1) document.cookie = 'pixelRatio=' + window.devicePixelRatio + ';path=/;expires=Tue, 19 Jan 2038 03:14:07 GMT';</script><link href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700%7COpen+Sans+Condensed:700&amp;subset=latin,latin-ext,cyrillic,cyrillic-ext" rel="stylesheet"><link rel="apple-touch-icon-precomposed" href="img/favicon/apple-touch-icon-precomposed.png"><link rel="canonical" href="promise-api.html"><meta name="msapplication-TileColor" content="#222A2C"><meta name="msapplication-TileImage" content="/img/favicon/tileicon.png"><!-- favicon the rest--><link rel="icon" href="img/favicon/favicon.png"><meta itemprop="image" content="https://javascript.info/img/site_preview_en_512x512.png"><meta property="og:title" content="Promise API"><meta property="og:image" content="https://javascript.info/img/site_preview_en_1200x630.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="fb:admins" content="100001562528165"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Promise API"><meta name="twitter:site" content="@iliakan"><meta name="twitter:creator" content="@iliakan"><meta name="twitter:image" content="https://javascript.info/img/site_preview_en_512x512.png"><link href="pack/styles.da59a89b28153875791083e4a8c5adb3.css" rel="stylesheet"><link rel="prev" href="promise-chaining.html"><link rel="next" href="async-await.html"><script>window.GA_ID = "UA-2056213-15";</script><script>window.YANDEX_METRIKA_ID = 32184394;</script><script>window.GoogleAnalyticsObject="ga",window.ga=function(){window.ga.q.push(arguments)},window.ga.q=[],window.ga.l=Date.now(),ga("create",GA_ID,"auto"),window.currentUser&&ga("set","&uid",currentUser.id),window.addEventListener("error",function(e){var r=(e.filename||e.errorUrl)+": "+(e.lineno||e.errorLine),n=e.stack||e.error&&e.error.stack;ga("send","exception",{exDescription:e.message+" "+r+" "+n,exFatal:!0})});</script><script src="https://www.google-analytics.com/analytics.js" async></script><script>ga('send', 'pageview');</script><script>window.metrika={reachGoal:function(){}},window.yandex_metrika_callbacks=[function(){try{window.metrika=new Ya.Metrika({id:YANDEX_METRIKA_ID,webvisor:!0,clickmap:!0,params:{user:window.currentUser&&window.currentUser.id}}),metrika.trackLinks({delay:150}),window.addEventListener("error",function(r){window.metrika.reachGoal("JSERROR",{src:(r.filename||r.errorUrl)+": "+(r.lineno||r.errorLine),stack:r.stack||r.error&&r.error.stack,message:r.message})})}catch(r){}}];</script><script src="http://mc.yandex.ru/metrika/watch.js" async></script><script>window.RECAPTCHA_ID = "6Lf9NyETAAAAACZlg-a9Us2SxvYbeVC1ROWaWv4O";</script><script src="initc4ca.js?1"></script><script src="pack/head.688d4fe7c4cf54e23737.js" defer></script><script>
+function loadScript(src) {
+  return new Promise(function(resolve, reject) {
+    let script = document.createElement('script');
+    script.src = src;
+
+    script.onload = () => resolve(script);
+    script.onerror = () => reject(new Error("Script load error: " + src));
+
+    document.head.append(script);
+  });
+}
+</script>
+<meta property="og:title" content="Promise API"><meta property="og:type" content="article"><script src="pack/tutorial.688d4fe7c4cf54e23737.js" defer></script><script src="pack/footer.688d4fe7c4cf54e23737.js" defer></script></head><body class="no-icons"><script>window.fontTest();</script><div class="page-wrapper page-wrapper_sidebar_on"><!--[if lt IE 10]><div style="color:red;text-align:center">Sorry, IE&lt;10 is not supported, please use a newer browser.</div><![endif]--><div class="sitetoolbar sitetoolbar_tutorial"><!-- include ./notification-stripe--><div class="sitetoolbar__content"><div class="sitetoolbar__logo-wrap"><a href="index.html" class="sitetoolbar__link sitetoolbar__link_logo"><img src="img/sitetoolbar__logo_en.svg" width="200" class="sitetoolbar__logo sitetoolbar__logo_normal" alt=""><img src="img/sitetoolbar__logo_small_en.svg" width="70" class="sitetoolbar__logo sitetoolbar__logo_small" alt=""><script>Array.prototype.forEach.call(document.querySelectorAll("img.sitetoolbar__logo"),function(e){var t=document.createElement("object");t.type="image/svg+xml",t.className=e.className,t.style.cssText="left:0;top:0;position:absolute",t.onload=function(){t.onload=null,e.style.visibility="hidden"},t.data=e.src,e.parentNode.insertBefore(t,e)});</script></a></div><div class="sitetoolbar__nav-toggle-wrap"><button type="button" class="sitetoolbar__nav-toggle"></button></div><nav class="sitetoolbar__sections"><ul class="sitetoolbar__sections-list"></ul></nav><div class="sitetoolbar__book-wrap"><a href="ebook.html" class="buy-book-button"><span class="buy-book-button__extra-text">Buy</span>EPUB/PDF</a></div><div class="sitetoolbar__login-wrap"><button data-action-login class="sitetoolbar__login sitetoolbar__login_unready"></button></div><div class="sitetoolbar__search-wrap"><div class="sitetoolbar__search-content"><form method="GET" action="http://javascript.info/search" class="sitetoolbar__search"><button type="button" class="sitetoolbar__search-toggle"></button><div class="sitetoolbar__search-input"><div class="text-input"><input name="query" placeholder="Search on Javascript.info" class="text-input__control" type="text"></div><button type="submit" class="sitetoolbar__find">Search</button></div></form></div></div></div><!-- todo: en variant--><div class="tablet-menu"><div class="tablet-menu__line"><div class="tablet-menu__content"><form action="http://javascript.info/search/" class="tablet-menu-search"><input type="search" name="query" placeholder="Search in the tutorial" required class="tablet-menu-search__input"><button type="submit" name="type" value="articles" class="tablet-menu-search__button">Search</button></form></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><a href="tutorial/map.html" data-action="tutorial-map" class="map"><span class="map__text">Tutorial map</span></a></div></div><!--+e.line--><!--  +e.content--><!--    +b("a").tablet-ebook(href="/ebook")--><!--      +e("span").text Купить учебник--><!--      +e("span").note (EPUB + PDF)--><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="share-icons"><span class="share-icons__title">Share</span><a href="https://twitter.com/share?url=https%3A%2F%2Fjavascript.info%2Fpromise-api" class="share share_tw"></a><a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fjavascript.info%2Fpromise-api" class="share share_fb"></a><a href="https://plus.google.com/share?url=https%3A%2F%2Fjavascript.info%2Fpromise-api" class="share share_gp"></a><a href="https://vkontakte.ru/share.php?url=https%3A%2F%2Fjavascript.info%2Fpromise-api" class="share share_vk"></a></div></div></div></div><progress data-sticky value="4" max="5" data-tooltip="Lesson 4 of 5" class="tutorial-progress"></progress></div><div class="page page_sidebar_on"><script>if(localStorage.noSidebar){document.querySelector(".page").classList.remove("page_sidebar_on");var pageWrapper=document.querySelector(".page-wrapper");pageWrapper&&pageWrapper.classList.remove("page-wrapper_sidebar_on")}setTimeout(function(){document.querySelector(".page").classList.add("page_sidebar-animation-on")},0);</script><div class="page__inner"><main class="main main_width-limit"><header class="main__header"><ol class="breadcrumbs"><li itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemref="breadcrumb-1" class="breadcrumbs__item breadcrumbs__item_home"><a href="index.html" itemprop="url" class="breadcrumbs__link"><span itemprop="title" class="breadcrumbs__hidden-text">Учебник</span></a></li><li id="breadcrumb-1" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemprop="child" class="breadcrumbs__item"><a href="async.html" itemprop="url" class="breadcrumbs__link"><span itemprop="title">Promises, async/await</span></a></li></ol><h1 class="main__header-title">Promise API</h1></header><div class="content"><article itemscope itemtype="http://schema.org/TechArticle"><meta itemprop="name" content="Promise API"><div itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="email" content="iliakan@gmail.com"><meta itemprop="name" content="Ilya Kantor"></div><div itemprop="articleBody"><p>There are 4 static methods in the <code>Promise</code> class. We’ll quickly cover their use cases here.</p>
+<h2><a class="main__anchor" name="promise-resolve" href="#promise-resolve">Promise.resolve</a></h2><p>The syntax:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let promise = Promise.resolve(value);</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Returns a resolved promise with the given <code>value</code>.</p>
+<p>Same as:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let promise = new Promise(resolve =&gt; resolve(value));</code></pre>
+        </div>
+      </div>
+      
+      </div><p>The method is used when we already have a value, but would like to have it “wrapped” into a promise.</p>
+<p>For instance, the <code>loadCached</code> function below fetches the <code>url</code> and remembers the result, so that future calls on the same URL return it immediately:</p>
+<div data-trusted="1" class="code-example" data-highlight-block="4-4">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function loadCached(url) {
+  let cache = loadCached.cache || (loadCached.cache = new Map());
+
+  if (cache.has(url)) {
+    return Promise.resolve(cache.get(url)); // (*)
+  }
+
+  return fetch(url)
+    .then(response =&gt; response.text())
+    .then(text =&gt; {
+      cache[url] = text;
+      return text;
+    });
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>We can use <code>loadCached(url).then(…)</code>, because the function is guaranteed to return a promise. That’s the purpose <code>Promise.resolve</code> in the line <code>(*)</code>: it makes sure the interface unified. We can always use <code>.then</code> after <code>loadCached</code>.</p>
+<h2><a class="main__anchor" name="promise-reject" href="#promise-reject">Promise.reject</a></h2><p>The syntax:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let promise = Promise.reject(error);</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Create a rejected promise with the <code>error</code>.</p>
+<p>Same as:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let promise = new Promise((resolve, reject) =&gt; reject(error));</code></pre>
+        </div>
+      </div>
+      
+      </div><p>We cover it here for completeness, rarely used in real code.</p>
+<h2><a class="main__anchor" name="promise-all" href="#promise-all">Promise.all</a></h2><p>The method to run many promises in parallel and wait till all of them are ready.</p>
+<p>The syntax is:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let promise = Promise.all(iterable);</code></pre>
+        </div>
+      </div>
+      
+      </div><p>It takes an <code>iterable</code> object with promises, technically it can be any iterable, but usually it’s an array, and returns a new promise. The new promise resolves with when all of them are settled and has an array of their results.</p>
+<p>For instance, the <code>Promise.all</code> below settles after 3 seconds, and then its result is an array <code>[1, 2, 3]</code>:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">Promise.all([
+  new Promise((resolve, reject) =&gt; setTimeout(() =&gt; resolve(1), 3000)), // 1
+  new Promise((resolve, reject) =&gt; setTimeout(() =&gt; resolve(2), 2000)), // 2
+  new Promise((resolve, reject) =&gt; setTimeout(() =&gt; resolve(3), 1000))  // 3
+]).then(alert); // 1,2,3 when promises are ready: each promise contributes an array member</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Please note that the relative order is the same. Even though the first promise takes the longest time to resolve, it is still first in the array of results.</p>
+<p>A common trick is to map an array of job data into an array of promises, and then wrap that into <code>Promise.all</code>.</p>
+<p>For instance, if we have an array of URLs, we can fetch them all like this:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let urls = [
+  'https://api.github.com/users/iliakan',
+  'https://api.github.com/users/remy',
+  'https://api.github.com/users/jeresig'
+];
+
+// map every url to the promise fetch(github url)
+let requests = urls.map(url =&gt; fetch(url));
+
+// Promise.all waits until all jobs are resolved
+Promise.all(requests)
+  .then(responses =&gt; responses.forEach(
+    response =&gt; alert(`${response.url}: ${response.status}`)
+  ));</code></pre>
+        </div>
+      </div>
+      
+      </div><p>A more real-life example with fetching user information for an array of github users by their names (or we could fetch an array of goods by their ids, the logic is same):</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let names = ['iliakan', 'remy', 'jeresig'];
+
+let requests = names.map(name =&gt; fetch(`https://api.github.com/users/${name}`));
+
+Promise.all(requests)
+  .then(responses =&gt; {
+    // all responses are ready, we can show HTTP status codes
+    for(let response of responses) {
+      alert(`${response.url}: ${response.status}`); // shows 200 for every url
+    }
+
+    return responses;
+  })
+  // map array of responses into array of response.json() to read their content
+  .then(responses =&gt; Promise.all(responses.map(r =&gt; r.json())))
+  // all JSON answers are parsed: &quot;users&quot; is the array of them
+  .then(users =&gt; users.forEach(user =&gt; alert(user.name)));</code></pre>
+        </div>
+      </div>
+      
+      </div><p>If any of the promises is rejected, <code>Promise.all</code> immediately rejects with that error.</p>
+<p>For instance:</p>
+<div data-trusted="1" class="code-example" data-highlight-block="2-2">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">Promise.all([
+  new Promise((resolve, reject) =&gt; setTimeout(() =&gt; resolve(1), 1000)),
+  new Promise((resolve, reject) =&gt; setTimeout(() =&gt; reject(new Error(&quot;Whoops!&quot;)), 2000)),
+  new Promise((resolve, reject) =&gt; setTimeout(() =&gt; resolve(3), 3000))
+]).catch(alert); // Error: Whoops!</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Here the second promise rejects in two seconds. That leads to immediate rejection of <code>Promise.all</code>, so <code>.catch</code> executes: the rejection error becomes the outcome of the whole <code>Promise.all</code>.</p>
+<p>The important detail is that promises provide no way to “cancel” or “abort” their execution. So other promises continue to execute, and the eventually settle, but all their results are ignored.</p>
+<p>There are ways to avoid this: we can either write additional code to <code>clearTimeout</code> (or otherwise cancel) the promises in case of an error, or we can make errors show up as members in the resulting array (see the task below this chapter about it).</p>
+<div class="important important_smart">
+            <div class="important__header"><span class="important__type"><code>Promise.all(iterable)</code> allows non-promise items in <code>iterable</code></span></div>
+            <div class="important__content"><p>Normally, <code>Promise.all(iterable)</code> accepts an iterable (in most cases an array) of promises. But if any of those objects is not a promise, it’s wrapped in <code>Promise.resolve</code>.</p>
+<p>For instance, here the results are <code>[1, 2, 3]</code>:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">Promise.all([
+  new Promise((resolve, reject) =&gt; {
+    setTimeout(() =&gt; resolve(1), 1000)
+  }),
+  2, // treated as Promise.resolve(2)
+  3  // treated as Promise.resolve(3)
+]).then(alert); // 1, 2, 3</code></pre>
+        </div>
+      </div>
+      
+      </div><p>So we are able to pass non-promise values to <code>Promise.all</code> where convenient.</p>
+</div></div>
+<h2><a class="main__anchor" name="promise-race" href="#promise-race">Promise.race</a></h2><p>Similar to <code>Promise.all</code> takes an iterable of promises, but instead of waiting for all of them to finish – waits for the first result (or error), and goes on with it.</p>
+<p>The syntax is:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let promise = Promise.race(iterable);</code></pre>
+        </div>
+      </div>
+      
+      </div><p>For instance, here the result will be <code>1</code>:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">Promise.race([
+  new Promise((resolve, reject) =&gt; setTimeout(() =&gt; resolve(1), 1000)),
+  new Promise((resolve, reject) =&gt; setTimeout(() =&gt; reject(new Error(&quot;Whoops!&quot;)), 2000)),
+  new Promise((resolve, reject) =&gt; setTimeout(() =&gt; resolve(3), 3000))
+]).then(alert); // 1</code></pre>
+        </div>
+      </div>
+      
+      </div><p>So, the first result/error becomes the result of the whole <code>Promise.race</code>. After the first settled promise “wins the race”, all further results/errors are ignored.</p>
+<h2><a class="main__anchor" name="summary" href="#summary">Summary</a></h2><p>There are 4 static methods of <code>Promise</code> class:</p>
+<ol>
+<li><code>Promise.resolve(value)</code> – makes a resolved promise with the given value,</li>
+<li><code>Promise.reject(error)</code> – makes a rejected promise with the given error,</li>
+<li><code>Promise.all(promises)</code> – waits for all promises to resolve and returns an array of their results. If any of the given promises rejects, then it becomes the error of <code>Promise.all</code>, and all other results are ignored.</li>
+<li><code>Promise.race(promises)</code> – waits for the first promise to settle, and its result/error becomes the outcome.</li>
+</ol>
+<p>Of these four, <code>Promise.all</code> is the most common in practice.</p>
+</div></article><div class="tasks"><h2 id="tasks" class="tasks__title"><a href="#tasks" class="main__anchor main__anchor_noicon tasks__title-anchor">Tasks</a></h2><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a href="#fault-tolerant-promise-all" name="fault-tolerant-promise-all" class="main__anchor">Fault-tolerant Promise.all</a></h3><a href="task/promise-errors-as-results.html" target="_blank" class="task__open-link"></a></div><div class="task__header-note"></div><div class="task__content"><p>We’d like to fetch multiple URLs in parallel.</p>
+<p>Here’s the code to do that:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let urls = [
+  'https://api.github.com/users/iliakan',
+  'https://api.github.com/users/remy',
+  'https://api.github.com/users/jeresig'
+];
+
+Promise.all(urls.map(url =&gt; fetch(url)))
+  // for each response show its status
+  .then(responses =&gt; { // (*)
+    for(let response of responses) {
+      alert(`${response.url}: ${response.status}`);
+    }
+  ));</code></pre>
+        </div>
+      </div>
+      
+      </div><p>The problem is that if any of requests fails, then <code>Promise.all</code> rejects with the error, and we loose results of all the other requests.</p>
+<p>That’s not good.</p>
+<p>Modify the code so that the array <code>responses</code> in the line <code>(*)</code> would include the response objects for successful fetches and error objects for failed ones.</p>
+<p>For instance, if one of URLs is bad, then it should be like:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let urls = [
+  'https://api.github.com/users/iliakan',
+  'https://api.github.com/users/remy',
+  'http://no-such-url'
+];
+
+Promise.all(...) // your code to fetch URLs...
+  // ...and pass fetch errors as members of the resulting array...
+  .then(responses =&gt; {
+    // 3 urls =&gt; 3 array members
+    alert(responses[0].status); // 200
+    alert(responses[1].status); // 200
+    alert(responses[2]); // TypeError: failed to fetch (text may vary)
+  });</code></pre>
+        </div>
+      </div>
+      
+      </div><p>P.S. In this task you don’t have to load the full response using <code>response.text()</code> or <code>response.json()</code>. Just handle fetch errors the right way.</p>
+<p><a href="http://plnkr.co/edit/laAmxL0woc6K5AShUtHJ?p=preview" target="_blank" data-plunk-id="laAmxL0woc6K5AShUtHJ">Open the sandbox for the task.</a></p><button type="button" class="task__solution">solution</button><div class="task__answer"><div class="task__answer-content"><p>The solution is actually pretty simple.</p>
+<p>Take a look at this:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">Promise.all(
+  fetch('https://api.github.com/users/iliakan'),
+  fetch('https://api.github.com/users/remy'),
+  fetch('http://no-such-url')
+)</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Here we have an array of <code>fetch(...)</code> promises that goes to <code>Promise.all</code>.</p>
+<p>We can’t change the way <code>Promise.all</code> works: if it detects an error, then it rejects with it. So we need to prevent any error from occuring. Instead, if a <code>fetch</code> error happens, we need to treat it as a “normal” result.</p>
+<p>Here’s how:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">Promise.all(
+  fetch('https://api.github.com/users/iliakan').catch(err =&gt; err),
+  fetch('https://api.github.com/users/remy').catch(err =&gt; err),
+  fetch('http://no-such-url').catch(err =&gt; err)
+)</code></pre>
+        </div>
+      </div>
+      
+      </div><p>In other words, the <code>.catch</code> takes an error for all of the promises and returns it normally. By the rules of how promises work, if a <code>.then/catch</code> handler returns a value (doesn’t matter if it’s an error object or something else), then the execution continues the “normal” flow.</p>
+<p>So the <code>.catch</code> returns the error as a “normal” result into the outer <code>Promise.all</code>.</p>
+<p>This code:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">Promise.all(
+  urls.map(url =&gt; fetch(url))
+)</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Can be rewritten as:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">Promise.all(
+  urls.map(url =&gt; fetch(url).catch(err =&gt; err))
+)</code></pre>
+        </div>
+      </div>
+      
+      </div><p><a href="http://plnkr.co/edit/LXZe80niZ2uq9SriexSC?p=preview" target="_blank" data-plunk-id="LXZe80niZ2uq9SriexSC">Open the solution in the sandbox.</a></p></div><button type="button" title="close" class="close-button task__answer-close"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a href="#fault-tolerant-fetch-with-json" name="fault-tolerant-fetch-with-json" class="main__anchor">Fault-tolerant fetch with JSON</a></h3><a href="task/promise-errors-as-results-2.html" target="_blank" class="task__open-link"></a></div><div class="task__header-note"></div><div class="task__content"><p>Improve the solution of the previous task <a href="task/promise-errors-as-results.html">Fault-tolerant Promise.all</a>. Now we need not just to call <code>fetch</code>, but to load the JSON objects from given URLs.</p>
+<p>Here’s the example code to do that:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let urls = [
+  'https://api.github.com/users/iliakan',
+  'https://api.github.com/users/remy',
+  'https://api.github.com/users/jeresig'
+];
+
+// make fetch requests
+Promise.all(urls.map(url =&gt; fetch(url)))
+  // map each response to response.json()
+  .then(responses =&gt; Promise.all(
+    responses.map(r =&gt; r.json())
+  ))
+  // show name of each user
+  .then(users =&gt; {  // (*)
+    for(let user of users) {
+      alert(user.name);
+    }
+  });</code></pre>
+        </div>
+      </div>
+      
+      </div><p>The problem is that if any of requests fails, then <code>Promise.all</code> rejects with the error, and we loose results of all the other requests. So the code above is not fault-tolerant, just like the one in the previous task.</p>
+<p>Modify the code so that the array in the line <code>(*)</code> would include parsed JSON for successful requests and error for errored ones.</p>
+<p>Please note that the error may occur both in <code>fetch</code> (if the network request fails) and in <code>response.json()</code> (if the response is invalid JSON). In both cases the error should become a member of the results object.</p>
+<p>The sandbox has both of these cases.</p>
+<p><a href="http://plnkr.co/edit/kFD92Ahqa6vyhGfkxfgT?p=preview" target="_blank" data-plunk-id="kFD92Ahqa6vyhGfkxfgT">Open the sandbox for the task.</a></p><button type="button" class="task__solution">solution</button><div class="task__answer"><div class="task__answer-content"><p><a href="http://plnkr.co/edit/keHJ1rigDtUgpNDDlUJe?p=preview" target="_blank" data-plunk-id="keHJ1rigDtUgpNDDlUJe">Open the solution in the sandbox.</a></p></div><button type="button" title="close" class="close-button task__answer-close"></button></div></div></div></div></div><!--  include /blocks/banner-bottom--><!--if lang == 'en'--><!--  include /blocks/banner-bottom.en--></div><div class="page__nav-wrap"><a href="promise-chaining.html" data-tooltip="Promises chaining" class="page__nav page__nav_prev"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Previous lesson</span></a><a href="async-await.html" data-tooltip="Async/await" class="page__nav page__nav_next"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Next lesson</span></a></div><div class="article-tablet-foot tablet-only"><div class="article-tablet-foot__layout"><div class="share-icons"><span class="share-icons__title">Share</span><a href="https://twitter.com/share?url=https%3A%2F%2Fjavascript.info%2Fpromise-api" class="share share_tw"></a><a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fjavascript.info%2Fpromise-api" class="share share_fb"></a><a href="https://plus.google.com/share?url=https%3A%2F%2Fjavascript.info%2Fpromise-api" class="share share_gp"></a><a href="https://vkontakte.ru/share.php?url=https%3A%2F%2Fjavascript.info%2Fpromise-api" class="share share_vk"></a></div><div class="article-tablet-foot__map"><a href="tutorial/map.html" data-action="tutorial-map" class="map"><span class="map__text">Tutorial map</span></a></div></div></div><div id="comments" class="comments"><div class="comments__header"><h2 class="comments__header-title"><a href="#comments" name="comments">Comments</a></h2><div class="comments__read-before"><span class="comments__read-before-link">read this before commenting…</span><div class="comments__read-before-popup"><div class="comments__read-before-popup-i"><ul><li>You're welcome to post additions, questions to the articles and answers to them.</li><li>To insert a few words of code, use the <code>&lt;code&gt;</code> tag, for several lines – use <code>&lt;pre&gt;</code>, for more than 10 lines – use a sandbox (<a href='http://plnkr.co/edit/?p=preview'>plnkr</a>, <a href='http://jsbin.com/'>JSBin</a>, <a href='http://codepen.io/'>codepen</a>…)</li><li>If you can't understand something in the article – please elaborate.</li></ul></div></div></div></div></div><div id="disqus_thread"></div><script>var disqus_config = function() { if (!this.page) this.page = {}; Object.assign(this.page, {"url":"https:\/\/javascript.info\/promise-api","identifier":"\/promise-api","title":"Promise API"}); };</script><script>var disqus_shortname = "javascriptinfo";</script><script>var disqus_enabled = true;</script></main></div><div class="page__sidebar sidebar sidebar_sticky-footer"><button data-sidebar-toggle class="sidebar__toggle"></button><a href="tutorial/map.html" data-action="tutorial-map" data-tooltip="Tutorial map" class="map"></a><div class="sidebar__inner"><div class="sidebar__content"><div class="sidebar__section"><h4 class="sidebar__section-title">Chapter</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a href="async.html" class="sidebar__link">Promises, async/await</a></li></ul></nav></div><div class="sidebar__section"><h4 class="sidebar__section-title">Lesson navigation</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a href="#promise-resolve" class="sidebar__link">Promise.resolve</a></li><li class="sidebar__navigation-link"><a href="#promise-reject" class="sidebar__link">Promise.reject</a></li><li class="sidebar__navigation-link"><a href="#promise-all" class="sidebar__link">Promise.all</a></li><li class="sidebar__navigation-link"><a href="#promise-race" class="sidebar__link">Promise.race</a></li><li class="sidebar__navigation-link"><a href="#summary" class="sidebar__link">Summary</a></li></ul></nav></div><div class="sidebar__section"><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a href="#tasks" class="sidebar__link">Tasks (2)</a></li><li class="sidebar__navigation-link"><a href="#comments" class="sidebar__link">Comments</a></li></ul></nav></div><div class="sidebar__section"><div class="sidebar__section-title">Share</div><a href="https://twitter.com/share?url=https%3A%2F%2Fjavascript.info%2Fpromise-api" class="share share_tw sidebar__share"></a><a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fjavascript.info%2Fpromise-api" class="share share_fb sidebar__share"></a><a href="https://plus.google.com/share?url=https%3A%2F%2Fjavascript.info%2Fpromise-api" class="share share_gp sidebar__share"></a></div><div class="sidebar__section"><a href="https://github.com/iliakan/javascript-tutorial-en/tree/master/6-async/04-promise-api/article.md" class="sidebar__link">Edit on Github</a></div></div></div></div></div></div><div class="page-footer"><div class="page-footer__left"><ul class="page-footer__list"><li class="page-footer__item">©&nbsp;2007—2017&nbsp; Ilya Kantor</li><li class="page-footer__item"><a href="about.html#contact-us" class="page-footer__link">contact us</a></li><li class="page-footer__item"><a href="about.html" class="page-footer__link">about the project</a></li><li class="page-footer__item"><a href="https://learn.javascript.ru/" class="page-footer__link">RU</a> / EN</li></ul></div><div class="page-footer__right"><ul class="page-footer__list"><li class="page-footer__item">powered by <a rel="nofollow" href="http://nodejs.org/" class="page-footer__link">node.js</a>&nbsp;&amp;&nbsp;<a rel="nofollow" href="http://github.com/iliakan/javascript-tutorial-en" class="page-footer__link">open source</a></li></ul></div></div></body>
+<!-- Mirrored from javascript.info/promise-api by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 30 Nov 2017 15:30:59 GMT -->
+</html>

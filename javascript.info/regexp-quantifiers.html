@@ -1,0 +1,379 @@
+<!DOCTYPE html><html lang="en">
+<!-- Mirrored from javascript.info/regexp-quantifiers by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 30 Nov 2017 15:30:48 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><script>window.currentUser = null;</script><title itemprop="name">Quantifiers +, *, ? and {n}</title><meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, minimum-scale=1.0"><meta name="apple-mobile-web-app-capable" content="yes"><script>if (window.devicePixelRatio > 1) document.cookie = 'pixelRatio=' + window.devicePixelRatio + ';path=/;expires=Tue, 19 Jan 2038 03:14:07 GMT';</script><link href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700%7COpen+Sans+Condensed:700&amp;subset=latin,latin-ext,cyrillic,cyrillic-ext" rel="stylesheet"><link rel="apple-touch-icon-precomposed" href="img/favicon/apple-touch-icon-precomposed.png"><link rel="canonical" href="regexp-quantifiers.html"><meta name="msapplication-TileColor" content="#222A2C"><meta name="msapplication-TileImage" content="/img/favicon/tileicon.png"><!-- favicon the rest--><link rel="icon" href="img/favicon/favicon.png"><meta itemprop="image" content="https://javascript.info/img/site_preview_en_512x512.png"><meta property="og:title" content="Quantifiers +, *, ? and {n}"><meta property="og:image" content="https://javascript.info/img/site_preview_en_1200x630.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="fb:admins" content="100001562528165"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Quantifiers +, *, ? and {n}"><meta name="twitter:site" content="@iliakan"><meta name="twitter:creator" content="@iliakan"><meta name="twitter:image" content="https://javascript.info/img/site_preview_en_512x512.png"><link href="pack/styles.da59a89b28153875791083e4a8c5adb3.css" rel="stylesheet"><link rel="prev" href="regexp-unicode.html"><link rel="next" href="regexp-greedy-and-lazy.html"><script>window.GA_ID = "UA-2056213-15";</script><script>window.YANDEX_METRIKA_ID = 32184394;</script><script>window.GoogleAnalyticsObject="ga",window.ga=function(){window.ga.q.push(arguments)},window.ga.q=[],window.ga.l=Date.now(),ga("create",GA_ID,"auto"),window.currentUser&&ga("set","&uid",currentUser.id),window.addEventListener("error",function(e){var r=(e.filename||e.errorUrl)+": "+(e.lineno||e.errorLine),n=e.stack||e.error&&e.error.stack;ga("send","exception",{exDescription:e.message+" "+r+" "+n,exFatal:!0})});</script><script src="https://www.google-analytics.com/analytics.js" async></script><script>ga('send', 'pageview');</script><script>window.metrika={reachGoal:function(){}},window.yandex_metrika_callbacks=[function(){try{window.metrika=new Ya.Metrika({id:YANDEX_METRIKA_ID,webvisor:!0,clickmap:!0,params:{user:window.currentUser&&window.currentUser.id}}),metrika.trackLinks({delay:150}),window.addEventListener("error",function(r){window.metrika.reachGoal("JSERROR",{src:(r.filename||r.errorUrl)+": "+(r.lineno||r.errorLine),stack:r.stack||r.error&&r.error.stack,message:r.message})})}catch(r){}}];</script><script src="http://mc.yandex.ru/metrika/watch.js" async></script><script>window.RECAPTCHA_ID = "6Lf9NyETAAAAACZlg-a9Us2SxvYbeVC1ROWaWv4O";</script><script src="initc4ca.js?1"></script><script src="pack/head.688d4fe7c4cf54e23737.js" defer></script><meta property="og:title" content="Quantifiers +, *, ? and {n}"><meta property="og:type" content="article"><script src="pack/tutorial.688d4fe7c4cf54e23737.js" defer></script><script src="pack/footer.688d4fe7c4cf54e23737.js" defer></script></head><body class="no-icons"><script>window.fontTest();</script><div class="page-wrapper page-wrapper_sidebar_on"><!--[if lt IE 10]><div style="color:red;text-align:center">Sorry, IE&lt;10 is not supported, please use a newer browser.</div><![endif]--><div class="sitetoolbar sitetoolbar_tutorial"><!-- include ./notification-stripe--><div class="sitetoolbar__content"><div class="sitetoolbar__logo-wrap"><a href="index.html" class="sitetoolbar__link sitetoolbar__link_logo"><img src="img/sitetoolbar__logo_en.svg" width="200" class="sitetoolbar__logo sitetoolbar__logo_normal" alt=""><img src="img/sitetoolbar__logo_small_en.svg" width="70" class="sitetoolbar__logo sitetoolbar__logo_small" alt=""><script>Array.prototype.forEach.call(document.querySelectorAll("img.sitetoolbar__logo"),function(e){var t=document.createElement("object");t.type="image/svg+xml",t.className=e.className,t.style.cssText="left:0;top:0;position:absolute",t.onload=function(){t.onload=null,e.style.visibility="hidden"},t.data=e.src,e.parentNode.insertBefore(t,e)});</script></a></div><div class="sitetoolbar__nav-toggle-wrap"><button type="button" class="sitetoolbar__nav-toggle"></button></div><nav class="sitetoolbar__sections"><ul class="sitetoolbar__sections-list"></ul></nav><div class="sitetoolbar__book-wrap"><a href="ebook.html" class="buy-book-button"><span class="buy-book-button__extra-text">Buy</span>EPUB/PDF</a></div><div class="sitetoolbar__login-wrap"><button data-action-login class="sitetoolbar__login sitetoolbar__login_unready"></button></div><div class="sitetoolbar__search-wrap"><div class="sitetoolbar__search-content"><form method="GET" action="http://javascript.info/search" class="sitetoolbar__search"><button type="button" class="sitetoolbar__search-toggle"></button><div class="sitetoolbar__search-input"><div class="text-input"><input name="query" placeholder="Search on Javascript.info" class="text-input__control" type="text"></div><button type="submit" class="sitetoolbar__find">Search</button></div></form></div></div></div><!-- todo: en variant--><div class="tablet-menu"><div class="tablet-menu__line"><div class="tablet-menu__content"><form action="http://javascript.info/search/" class="tablet-menu-search"><input type="search" name="query" placeholder="Search in the tutorial" required class="tablet-menu-search__input"><button type="submit" name="type" value="articles" class="tablet-menu-search__button">Search</button></form></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><a href="tutorial/map.html" data-action="tutorial-map" class="map"><span class="map__text">Tutorial map</span></a></div></div><!--+e.line--><!--  +e.content--><!--    +b("a").tablet-ebook(href="/ebook")--><!--      +e("span").text Купить учебник--><!--      +e("span").note (EPUB + PDF)--><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="share-icons"><span class="share-icons__title">Share</span><a href="https://twitter.com/share?url=https%3A%2F%2Fjavascript.info%2Fregexp-quantifiers" class="share share_tw"></a><a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fjavascript.info%2Fregexp-quantifiers" class="share share_fb"></a><a href="https://plus.google.com/share?url=https%3A%2F%2Fjavascript.info%2Fregexp-quantifiers" class="share share_gp"></a><a href="https://vkontakte.ru/share.php?url=https%3A%2F%2Fjavascript.info%2Fregexp-quantifiers" class="share share_vk"></a></div></div></div></div><progress data-sticky value="7" max="15" data-tooltip="Lesson 7 of 15" class="tutorial-progress"></progress></div><div class="page page_sidebar_on"><script>if(localStorage.noSidebar){document.querySelector(".page").classList.remove("page_sidebar_on");var pageWrapper=document.querySelector(".page-wrapper");pageWrapper&&pageWrapper.classList.remove("page-wrapper_sidebar_on")}setTimeout(function(){document.querySelector(".page").classList.add("page_sidebar-animation-on")},0);</script><div class="page__inner"><main class="main main_width-limit"><header class="main__header"><ol class="breadcrumbs"><li itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemref="breadcrumb-1" class="breadcrumbs__item breadcrumbs__item_home"><a href="index.html" itemprop="url" class="breadcrumbs__link"><span itemprop="title" class="breadcrumbs__hidden-text">Учебник</span></a></li><li id="breadcrumb-1" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemprop="child" class="breadcrumbs__item"><a href="regular-expressions.html" itemprop="url" class="breadcrumbs__link"><span itemprop="title">Regular expressions</span></a></li></ol><h1 class="main__header-title">Quantifiers +, *, ? and {n}</h1></header><div class="content"><article itemscope itemtype="http://schema.org/TechArticle"><meta itemprop="name" content="Quantifiers +, *, ? and {n}"><div itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="email" content="iliakan@gmail.com"><meta itemprop="name" content="Ilya Kantor"></div><div itemprop="articleBody"><p>Let’s say we have a string like <code>+7(903)-123-45-67</code> and want to find all numbers in it. But unlike before, we are interested in not digits, but full numbers: <code>7, 903, 123, 45, 67</code>.</p>
+<p>A number is a sequence of 1 or more digits <code>\d</code>. The instrument to say how many we need is called <em>quantifiers</em>.</p>
+<h2><a class="main__anchor" name="quantity-n" href="#quantity-n">Quantity {n}</a></h2><p>The most obvious quantifier is a number in figure quotes: <code class="pattern">{n}</code>. A quantifier is put after a character (or a character class and so on) and specifies exactly how many we need.</p>
+<p>It also has advanced forms, here we go with examples:</p>
+<dl>
+<dt>Exact count: <code>{5}</code></dt>
+<dd>
+<p><code class="pattern">\d{5}</code> denotes exactly 5 digits, the same as <code class="pattern">\d\d\d\d\d</code>.</p>
+<p>The example below looks for a 5-digit number:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">alert( &quot;I'm 12345 years old&quot;.match(/\d{5}/) ); //  &quot;12345&quot;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>We can add <code>\b</code> to exclude longer numbers: <code class="pattern">\b\d{5}\b</code>.</p>
+</dd>
+<dt>The count from-to: <code>{3,5}</code></dt>
+<dd>
+<p>To find numbers from 3 to 5 digits we can put the limits into figure brackets: <code class="pattern">\d{3,5}</code></p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">alert( &quot;I'm not 12, but 1234 years old&quot;.match(/\d{3,5}/) ); // &quot;1234&quot;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>We can omit the upper limit. Then a regexp <code class="pattern">\d{3,}</code> looks for numbers of <code>3</code> and more digits:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">alert( &quot;I'm not 12, but 345678 years old&quot;.match(/\d{3,}/) ); // &quot;345678&quot;</code></pre>
+        </div>
+      </div>
+      
+      </div></dd>
+</dl>
+<p>In case with the string <code>+7(903)-123-45-67</code> we need numbers: one or more digits in a row. That is  <code class="pattern">\d{1,}</code>:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let str = &quot;+7(903)-123-45-67&quot;;
+
+let numbers = str.match(/\d{1,}/g);
+
+alert(numbers); // 7,903,123,45,67</code></pre>
+        </div>
+      </div>
+      
+      </div><h2><a class="main__anchor" name="shorthands" href="#shorthands">Shorthands</a></h2><p>Most often needed quantifiers have shorthands:</p>
+<dl>
+<dt><code>+</code></dt>
+<dd>
+<p>Means “one or more”, the same as <code>{1,}</code>.</p>
+<p>For instance, <code class="pattern">\d+</code> looks for numbers:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let str = &quot;+7(903)-123-45-67&quot;;
+
+alert( str.match(/\d+/g) ); // 7,903,123,45,67</code></pre>
+        </div>
+      </div>
+      
+      </div></dd>
+<dt><code>?</code></dt>
+<dd>
+<p>Means “zero or one”, the same as <code>{0,1}</code>. In other words, it makes the symbol optional.</p>
+<p>For instance, the pattern <code class="pattern">ou?r</code> looks for <code class="match">o</code> followed by zero or one <code class="match">u</code>, and then <code class="match">r</code>.</p>
+<p>So it can find <code class="match">or</code> in the word <code class="subject">color</code> and <code class="match">our</code> in <code class="subject">colour</code>:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let str = &quot;Should I write color or colour?&quot;;
+
+alert( str.match(/colou?r/g) ); // color, colour</code></pre>
+        </div>
+      </div>
+      
+      </div></dd>
+<dt><code>*</code></dt>
+<dd>
+<p>Means “zero or more”, the same as <code>{0,}</code>. That is, the character may repeat any times or be absent.</p>
+<p>The example below looks for a digit followed by any number of zeroes:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">alert( &quot;100 10 1&quot;.match(/\d0*/g) ); // 100, 10, 1</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Compare it with <code>'+'</code> (one or more):</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">alert( &quot;100 10 1&quot;.match(/\d0+/g) ); // 100, 10</code></pre>
+        </div>
+      </div>
+      
+      </div></dd>
+</dl>
+<h2><a class="main__anchor" name="more-examples" href="#more-examples">More examples</a></h2><p>Quantifiers are used very often. They are one of the main “building blocks” for complex regular expressions, so let’s see more examples.</p>
+<dl>
+<dt>Regexp “decimal fraction” (a number with a floating point): <code class="pattern">\d+\.\d+</code></dt>
+<dd>
+<p>In action:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">alert( &quot;0 1 12.345 7890&quot;.match(/\d+\.\d+/g) ); // 12.345</code></pre>
+        </div>
+      </div>
+      
+      </div></dd>
+<dt>Regexp “open HTML-tag without attributes”, like <code>&lt;span&gt;</code> or <code>&lt;p&gt;</code>: <code class="pattern">/&lt;[a-z]+&gt;/i</code></dt>
+<dd>
+<p>In action:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">alert( &quot;&lt;body&gt; ... &lt;/body&gt;&quot;.match(/&lt;[a-z]+&gt;/gi) ); // &lt;body&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>We look for character <code class="pattern">'&lt;'</code> followed by one or more English letters, and then  <code class="pattern">'&gt;'</code>.</p>
+</dd>
+<dt>Regexp “open HTML-tag without attributes” (improved): <code class="pattern">/&lt;[a-z][a-z0-9]*&gt;/i</code></dt>
+<dd>
+<p>Better regexp: according to the standard, HTML tag name may have a digit at any position except the first one, like <code>&lt;h1&gt;</code>.</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">alert( &quot;&lt;h1&gt;Hi!&lt;/h1&gt;&quot;.match(/&lt;[a-z][a-z0-9]*&gt;/gi) ); // &lt;h1&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div></dd>
+<dt>Regexp “opening or closing HTML-tag without attributes”: <code class="pattern">/&lt;\/?[a-z][a-z0-9]*&gt;/i</code></dt>
+<dd>
+<p>We added an optional slash <code class="pattern">/?</code> before the tag. Had to escape it with a backslash, otherwise JavaScript would think it is the pattern end.</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">alert( &quot;&lt;h1&gt;Hi!&lt;/h1&gt;&quot;.match(/&lt;\/?[a-z][a-z0-9]*&gt;/gi) ); // &lt;h1&gt;, &lt;/h1&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div></dd>
+</dl>
+<div class="important important_smart">
+            <div class="important__header"><span class="important__type">More precise means more complex</span></div>
+            <div class="important__content"><p>We can see one common rule in these examples: the more precise is the regular expression – the longer and more complex it is.</p>
+<p>For instance, HTML tags could use a simpler regexp: <code class="pattern">&lt;\w+&gt;</code>.</p>
+<p>Because <code class="pattern">\w</code> means any English letter or a digit or <code>'_'</code>, the regexp also matches non-tags, for instance <code class="match">&lt;_&gt;</code>. But it’s much simpler than <code class="pattern">&lt;[a-z][a-z0-9]*&gt;</code>.</p>
+<p>Are we ok with <code class="pattern">&lt;\w+&gt;</code> or we need <code class="pattern">&lt;[a-z][a-z0-9]*&gt;</code>?</p>
+<p>In real life both variants are acceptable. Depends on how tolerant we can be to “extra” matches and whether it’s difficult or not to filter them out by other means.</p>
+</div></div>
+</div></article><div class="tasks"><h2 id="tasks" class="tasks__title"><a href="#tasks" class="main__anchor main__anchor_noicon tasks__title-anchor">Tasks</a></h2><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a href="#how-to-find-an-ellipsis" name="how-to-find-an-ellipsis" class="main__anchor">How to find an ellipsis &quot;...&quot; ?</a></h3><a href="task/find-text-manydots.html" target="_blank" class="task__open-link"></a></div><div class="task__header-note"><span title="How important is the task, from 1 to 5" class="task__importance">importance: 5</span></div><div class="task__content"><p>Create a regexp to find ellipsis: 3 (or more?) dots in a row.</p>
+<p>Check it:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let reg = /your regexp/g;
+alert( &quot;Hello!... How goes?.....&quot;.match(reg) ); // ..., .....</code></pre>
+        </div>
+      </div>
+      
+      </div><button type="button" class="task__solution">solution</button><div class="task__answer"><div class="task__answer-content"><p>Solution:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let reg = /\.{3,}/g;
+alert( &quot;Hello!... How goes?.....&quot;.match(reg) ); // ..., .....</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Please note that the dot is a special character, so we have to escape it and insert as <code>\.</code>.</p>
+</div><button type="button" title="close" class="close-button task__answer-close"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a href="#regexp-for-html-colors" name="regexp-for-html-colors" class="main__anchor">Regexp for HTML colors</a></h3><a href="task/find-html-colors-6hex.html" target="_blank" class="task__open-link"></a></div><div class="task__header-note"></div><div class="task__content"><p>Create a regexp to search HTML-colors written as <code>#ABCDEF</code>: first <code>#</code> and then 6 hexadimal characters.</p>
+<p>An example of use:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let reg = /...your regexp.../
+
+let str = &quot;color:#121212; background-color:#AA00ef bad-colors:f#fddee #fd2 #12345678&quot;;
+
+alert( str.match(reg) )  // #121212,#AA00ef</code></pre>
+        </div>
+      </div>
+      
+      </div><p>P.S. In this task we do not need other color formats like <code>#123</code> or <code>rgb(1,2,3)</code> etc.</p>
+<button type="button" class="task__solution">solution</button><div class="task__answer"><div class="task__answer-content"><p>We need to look for <code>#</code> followed by 6 hexadimal characters.</p>
+<p>A hexadimal character can be described as <code class="pattern">[0-9a-fA-F]</code>. Or if we use the <code>i</code> flag, then just  <code class="pattern">[0-9a-f]</code>.</p>
+<p>Then we can look for 6 of them using the quantifier <code class="pattern">{6}</code>.</p>
+<p>As a result, we have the regexp: <code class="pattern">/#[a-f0-9]{6}/gi</code>.</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let reg = /#[a-f0-9]{6}/gi;
+
+let str = &quot;color:#121212; background-color:#AA00ef bad-colors:f#fddee #fd2&quot;
+
+alert( str.match(reg) );  // #121212,#AA00ef</code></pre>
+        </div>
+      </div>
+      
+      </div><p>The problem is that it finds the color in longer sequences:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">alert( &quot;#12345678&quot;.match( /#[a-f0-9]{6}/gi ) ) // #12345678</code></pre>
+        </div>
+      </div>
+      
+      </div><p>To fix that, we can add <code class="pattern">\b</code> to the end:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="run" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="open in sandbox" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">// color
+alert( &quot;#123456&quot;.match( /#[a-f0-9]{6}\b/gi ) ); // #123456
+
+// not a color
+alert( &quot;#12345678&quot;.match( /#[a-f0-9]{6}\b/gi ) ); // null</code></pre>
+        </div>
+      </div>
+      
+      </div></div><button type="button" title="close" class="close-button task__answer-close"></button></div></div></div></div></div><!--  include /blocks/banner-bottom--><!--if lang == 'en'--><!--  include /blocks/banner-bottom.en--></div><div class="page__nav-wrap"><a href="regexp-unicode.html" data-tooltip="The unicode flag" class="page__nav page__nav_prev"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Previous lesson</span></a><a href="regexp-greedy-and-lazy.html" data-tooltip="Greedy and lazy quantifiers" class="page__nav page__nav_next"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Next lesson</span></a></div><div class="article-tablet-foot tablet-only"><div class="article-tablet-foot__layout"><div class="share-icons"><span class="share-icons__title">Share</span><a href="https://twitter.com/share?url=https%3A%2F%2Fjavascript.info%2Fregexp-quantifiers" class="share share_tw"></a><a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fjavascript.info%2Fregexp-quantifiers" class="share share_fb"></a><a href="https://plus.google.com/share?url=https%3A%2F%2Fjavascript.info%2Fregexp-quantifiers" class="share share_gp"></a><a href="https://vkontakte.ru/share.php?url=https%3A%2F%2Fjavascript.info%2Fregexp-quantifiers" class="share share_vk"></a></div><div class="article-tablet-foot__map"><a href="tutorial/map.html" data-action="tutorial-map" class="map"><span class="map__text">Tutorial map</span></a></div></div></div><div id="comments" class="comments"><div class="comments__header"><h2 class="comments__header-title"><a href="#comments" name="comments">Comments</a></h2><div class="comments__read-before"><span class="comments__read-before-link">read this before commenting…</span><div class="comments__read-before-popup"><div class="comments__read-before-popup-i"><ul><li>You're welcome to post additions, questions to the articles and answers to them.</li><li>To insert a few words of code, use the <code>&lt;code&gt;</code> tag, for several lines – use <code>&lt;pre&gt;</code>, for more than 10 lines – use a sandbox (<a href='http://plnkr.co/edit/?p=preview'>plnkr</a>, <a href='http://jsbin.com/'>JSBin</a>, <a href='http://codepen.io/'>codepen</a>…)</li><li>If you can't understand something in the article – please elaborate.</li></ul></div></div></div></div></div><div id="disqus_thread"></div><script>var disqus_config = function() { if (!this.page) this.page = {}; Object.assign(this.page, {"url":"https:\/\/javascript.info\/regexp-quantifiers","identifier":"\/regexp-quantifiers","title":"Quantifiers +, *, ? and {n}"}); };</script><script>var disqus_shortname = "javascriptinfo";</script><script>var disqus_enabled = true;</script></main></div><div class="page__sidebar sidebar sidebar_sticky-footer"><button data-sidebar-toggle class="sidebar__toggle"></button><a href="tutorial/map.html" data-action="tutorial-map" data-tooltip="Tutorial map" class="map"></a><div class="sidebar__inner"><div class="sidebar__content"><div class="sidebar__section"><h4 class="sidebar__section-title">Chapter</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a href="regular-expressions.html" class="sidebar__link">Regular expressions</a></li></ul></nav></div><div class="sidebar__section"><h4 class="sidebar__section-title">Lesson navigation</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a href="#quantity-n" class="sidebar__link">Quantity {n}</a></li><li class="sidebar__navigation-link"><a href="#shorthands" class="sidebar__link">Shorthands</a></li><li class="sidebar__navigation-link"><a href="#more-examples" class="sidebar__link">More examples</a></li></ul></nav></div><div class="sidebar__section"><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a href="#tasks" class="sidebar__link">Tasks (2)</a></li><li class="sidebar__navigation-link"><a href="#comments" class="sidebar__link">Comments</a></li></ul></nav></div><div class="sidebar__section"><div class="sidebar__section-title">Share</div><a href="https://twitter.com/share?url=https%3A%2F%2Fjavascript.info%2Fregexp-quantifiers" class="share share_tw sidebar__share"></a><a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fjavascript.info%2Fregexp-quantifiers" class="share share_fb sidebar__share"></a><a href="https://plus.google.com/share?url=https%3A%2F%2Fjavascript.info%2Fregexp-quantifiers" class="share share_gp sidebar__share"></a></div><div class="sidebar__section"><a href="https://github.com/iliakan/javascript-tutorial-en/tree/master/5-regular-expressions/07-regexp-quantifiers/article.md" class="sidebar__link">Edit on Github</a></div></div></div></div></div></div><div class="page-footer"><div class="page-footer__left"><ul class="page-footer__list"><li class="page-footer__item">©&nbsp;2007—2017&nbsp; Ilya Kantor</li><li class="page-footer__item"><a href="about.html#contact-us" class="page-footer__link">contact us</a></li><li class="page-footer__item"><a href="about.html" class="page-footer__link">about the project</a></li><li class="page-footer__item"><a href="https://learn.javascript.ru/" class="page-footer__link">RU</a> / EN</li></ul></div><div class="page-footer__right"><ul class="page-footer__list"><li class="page-footer__item">powered by <a rel="nofollow" href="http://nodejs.org/" class="page-footer__link">node.js</a>&nbsp;&amp;&nbsp;<a rel="nofollow" href="http://github.com/iliakan/javascript-tutorial-en" class="page-footer__link">open source</a></li></ul></div></div></body>
+<!-- Mirrored from javascript.info/regexp-quantifiers by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 30 Nov 2017 15:30:48 GMT -->
+</html>

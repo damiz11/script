@@ -1,0 +1,73 @@
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{9AE66E24-D2D9-4FF2-AB7F-CE79F20F2B8B}") = "FortranFrontend", "FortranFrontend\FortranFrontend.ftn95p", "{29566A3C-00BF-4672-BDCA-34E46A0DB519}"
+	ProjectSection(ProjectDependencies) = postProject
+		{AA6B8A26-0B0F-4858-8CA0-ED9333EF2DE6} = {AA6B8A26-0B0F-4858-8CA0-ED9333EF2DE6}
+	EndProjectSection
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "VBBackend", "VBBackend\VBBackend.vbproj", "{AA6B8A26-0B0F-4858-8CA0-ED9333EF2DE6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		CheckMate|.NET = CheckMate|.NET
+		CheckMate|Any CPU = CheckMate|Any CPU
+		CheckMate|Mixed Platforms = CheckMate|Mixed Platforms
+		CheckMate|Win32 = CheckMate|Win32
+		Debug|.NET = Debug|.NET
+		Debug|Any CPU = Debug|Any CPU
+		Debug|Mixed Platforms = Debug|Mixed Platforms
+		Debug|Win32 = Debug|Win32
+		Release|.NET = Release|.NET
+		Release|Any CPU = Release|Any CPU
+		Release|Mixed Platforms = Release|Mixed Platforms
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{29566A3C-00BF-4672-BDCA-34E46A0DB519}.CheckMate|.NET.ActiveCfg = CheckMate|.NET
+		{29566A3C-00BF-4672-BDCA-34E46A0DB519}.CheckMate|.NET.Build.0 = CheckMate|.NET
+		{29566A3C-00BF-4672-BDCA-34E46A0DB519}.CheckMate|Any CPU.ActiveCfg = CheckMate|Win32
+		{29566A3C-00BF-4672-BDCA-34E46A0DB519}.CheckMate|Any CPU.Build.0 = CheckMate|Win32
+		{29566A3C-00BF-4672-BDCA-34E46A0DB519}.CheckMate|Mixed Platforms.ActiveCfg = CheckMate|.NET
+		{29566A3C-00BF-4672-BDCA-34E46A0DB519}.CheckMate|Mixed Platforms.Build.0 = CheckMate|.NET
+		{29566A3C-00BF-4672-BDCA-34E46A0DB519}.CheckMate|Win32.ActiveCfg = CheckMate|Win32
+		{29566A3C-00BF-4672-BDCA-34E46A0DB519}.CheckMate|Win32.Build.0 = CheckMate|Win32
+		{29566A3C-00BF-4672-BDCA-34E46A0DB519}.Debug|.NET.ActiveCfg = Debug|.NET
+		{29566A3C-00BF-4672-BDCA-34E46A0DB519}.Debug|.NET.Build.0 = Debug|.NET
+		{29566A3C-00BF-4672-BDCA-34E46A0DB519}.Debug|Any CPU.ActiveCfg = Debug|Win32
+		{29566A3C-00BF-4672-BDCA-34E46A0DB519}.Debug|Any CPU.Build.0 = Debug|Win32
+		{29566A3C-00BF-4672-BDCA-34E46A0DB519}.Debug|Mixed Platforms.ActiveCfg = Debug|.NET
+		{29566A3C-00BF-4672-BDCA-34E46A0DB519}.Debug|Mixed Platforms.Build.0 = Debug|.NET
+		{29566A3C-00BF-4672-BDCA-34E46A0DB519}.Debug|Win32.ActiveCfg = Debug|Win32
+		{29566A3C-00BF-4672-BDCA-34E46A0DB519}.Debug|Win32.Build.0 = Debug|Win32
+		{29566A3C-00BF-4672-BDCA-34E46A0DB519}.Release|.NET.ActiveCfg = Release|.NET
+		{29566A3C-00BF-4672-BDCA-34E46A0DB519}.Release|.NET.Build.0 = Release|.NET
+		{29566A3C-00BF-4672-BDCA-34E46A0DB519}.Release|Any CPU.ActiveCfg = Release|Win32
+		{29566A3C-00BF-4672-BDCA-34E46A0DB519}.Release|Any CPU.Build.0 = Release|Win32
+		{29566A3C-00BF-4672-BDCA-34E46A0DB519}.Release|Mixed Platforms.ActiveCfg = Release|.NET
+		{29566A3C-00BF-4672-BDCA-34E46A0DB519}.Release|Mixed Platforms.Build.0 = Release|.NET
+		{29566A3C-00BF-4672-BDCA-34E46A0DB519}.Release|Win32.ActiveCfg = Release|Win32
+		{29566A3C-00BF-4672-BDCA-34E46A0DB519}.Release|Win32.Build.0 = Release|Win32
+		{AA6B8A26-0B0F-4858-8CA0-ED9333EF2DE6}.CheckMate|.NET.ActiveCfg = Release|Any CPU
+		{AA6B8A26-0B0F-4858-8CA0-ED9333EF2DE6}.CheckMate|Any CPU.ActiveCfg = Release|Any CPU
+		{AA6B8A26-0B0F-4858-8CA0-ED9333EF2DE6}.CheckMate|Any CPU.Build.0 = Release|Any CPU
+		{AA6B8A26-0B0F-4858-8CA0-ED9333EF2DE6}.CheckMate|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{AA6B8A26-0B0F-4858-8CA0-ED9333EF2DE6}.CheckMate|Mixed Platforms.Build.0 = Release|Any CPU
+		{AA6B8A26-0B0F-4858-8CA0-ED9333EF2DE6}.CheckMate|Win32.ActiveCfg = Release|Any CPU
+		{AA6B8A26-0B0F-4858-8CA0-ED9333EF2DE6}.Debug|.NET.ActiveCfg = Debug|Any CPU
+		{AA6B8A26-0B0F-4858-8CA0-ED9333EF2DE6}.Debug|.NET.Build.0 = Debug|Any CPU
+		{AA6B8A26-0B0F-4858-8CA0-ED9333EF2DE6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA6B8A26-0B0F-4858-8CA0-ED9333EF2DE6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA6B8A26-0B0F-4858-8CA0-ED9333EF2DE6}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{AA6B8A26-0B0F-4858-8CA0-ED9333EF2DE6}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{AA6B8A26-0B0F-4858-8CA0-ED9333EF2DE6}.Debug|Win32.ActiveCfg = Debug|Any CPU
+		{AA6B8A26-0B0F-4858-8CA0-ED9333EF2DE6}.Release|.NET.ActiveCfg = Release|Any CPU
+		{AA6B8A26-0B0F-4858-8CA0-ED9333EF2DE6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA6B8A26-0B0F-4858-8CA0-ED9333EF2DE6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AA6B8A26-0B0F-4858-8CA0-ED9333EF2DE6}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{AA6B8A26-0B0F-4858-8CA0-ED9333EF2DE6}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{AA6B8A26-0B0F-4858-8CA0-ED9333EF2DE6}.Release|Win32.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
